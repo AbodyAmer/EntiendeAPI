@@ -1,0 +1,56 @@
+// models/User.js
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+  email: { 
+    type: String, 
+    required: true, 
+    unique: true, 
+    index: true 
+  },
+  name: { 
+    type: String, 
+    required: true, 
+    trim: true 
+  },
+  hash: { 
+    // argon2 hash of the user’s password
+    type: String, 
+    required: true 
+  },
+  emailVerified: { 
+    type: Boolean, 
+    default: false 
+  },
+  createdAt: { 
+    type: Date, 
+    default: Date.now 
+  },
+
+  // ——————————————————————————————
+  // Efham-specific profile fields
+  // ——————————————————————————————
+
+  // User’s current reading-level 1–19 (CEFR-aligned)
+  level: { 
+    type: Number, 
+    min: 1, 
+    max: 19, 
+    default: 6 
+  },
+
+  // Default dialect for content & audio
+  defaultDialect: { 
+    type: String, 
+    enum: ['MSA', 'Egyptian', 'Levantine', 'Gulf', 'Maghrebi'], 
+    default: 'MSA' 
+  },
+}, {
+    timestamps: true
+ });
+
+// Create indexes for faster queries
+userSchema.index({ email: 1 }, { unique: true });
+
+// Export the model
+module.exports = mongoose.model('User', userSchema);
