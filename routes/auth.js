@@ -13,7 +13,8 @@ const limiter = require('../utils/limiter');
 const {
     generateAccessToken,
     generateRefreshToken,
-    setRefreshCookie
+    setRefreshCookie,
+    setTokenCookie
 } = require('../utils/tokens');
 
 const router = express.Router();
@@ -85,6 +86,7 @@ router.post(
 
             // 7. Send refresh token in HttpOnly Secure cookie
             setRefreshCookie(res, refreshToken);
+            setTokenCookie(res, accessToken)
 
             // 8. Respond with access token (in-memory on client)
             res.status(201).json({ accessToken });
@@ -149,6 +151,7 @@ router.post(
 
             // 7. Send refresh token in HttpOnly Secure cookie
             setRefreshCookie(res, refreshToken);
+            setTokenCookie(res, accessToken)
 
             // 8. Return access token (client holds in memory)
             return res.json({ accessToken });

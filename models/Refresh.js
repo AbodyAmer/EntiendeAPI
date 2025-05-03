@@ -39,6 +39,12 @@ const refreshSchema = new mongoose.Schema({
   createdByIp: { 
     type: String 
   },
+   // Last activity timestamp
+   lastActivity: {
+    type: Date,
+    default: Date.now,
+    index: true
+  },
 
   // Revocation info (set when you rotate or invalidate this token)
   revoked: {
@@ -50,7 +56,9 @@ const refreshSchema = new mongoose.Schema({
     timestamps: true
 });
 
+refreshSchema.index({ 'revoked.time': 1 });
 // Optional: auto-delete expired docs after `expires`
 refreshSchema.index({ expires: 1 }, { expireAfterSeconds: 0 });
+
 
 module.exports = mongoose.model('Refresh', refreshSchema);

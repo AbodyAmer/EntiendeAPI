@@ -1,38 +1,143 @@
 // middleware/requireAuth.js
-const jwt     = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const Refresh = require('../models/Refresh');
+const argon2 = require('argon2');
+const { v4: uuid } = require('uuid');
+const {
+  generateAccessToken,
+  generateRefreshToken,
+  setRefreshCookie,
+  setTokenCookie // Make sure this is imported
+} = require('../utils/tokens');
+const ms = require('ms');
 
 async function requireAuth(req, res, next) {
   try {
+    let token;
+    
+    // First try to get token from Authorization header
     const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ error: 'Authorization header missing or malformed' });
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      token = authHeader.split(' ')[1];
+    } 
+    // If not in header, try to get from cookie
+    else if (req.cookies && req.cookies.at) {
+      token = req.cookies.at;
+    }
+    
+    if (!token) {
+      return res.status(401).json({ error: 'Authentication required' });
+    }
+    
+    let payload;
+    try {
+      payload = jwt.verify(token, process.env.JWT_ACCESS_SECRET, {
+        audience: 'api.efham.com',
+        issuer: 'https://api.efham.com'
+      });
+    } catch (tokenError) {
+      // If token is expired, try to refresh using the refresh token
+      if (tokenError.name === 'TokenExpiredError' && req.cookies && req.cookies.rt) {
+        return handleTokenRefresh(req, res, next);
+      }
+      
+      // For other token errors, return unauthorized
+      return res.status(401).json({ error: 'Invalid token', details: tokenError.message });
     }
 
-    const token = authHeader.split(' ')[1];
-    const payload = jwt.verify(token, process.env.JWT_ACCESS_SECRET, {
-      audience: 'api.efham.com',
-      issuer: 'https://api.efham.com'
-    });
-
     // Ensure the session behind this token is still active
-    // (requires that generateAccessToken embedded the refresh-session JTI as payload.sid)
     const session = await Refresh.findOne({
-      jti:           payload.jti,
+      jti: payload.jti,
       'revoked.time': { $exists: false },
-      expires:       { $gt: new Date() }
+      expires: { $gt: new Date() }
     });
+    
     if (!session) {
       return res.status(401).json({ error: 'Session has been revoked or expired' });
     }
 
+      // Update lastActivity timestamp
+      session.lastActivity = new Date();
+      session.save();
+
     // Attach the user ID for downstream handlers
     req.user = payload.sub;
     next();
-
   } catch (err) {
     console.error('Error in requireAuth middleware:', err);
     return res.status(401).json({ error: 'Unauthorized' });
+  }
+}
+
+// Helper function to handle token refresh
+async function handleTokenRefresh(req, res, next) {
+  try {
+    console.log('generate new token')
+    const refreshToken = req.cookies.rt;
+    if (!refreshToken) {
+      return res.status(401).json({ error: 'Refresh token missing' });
+    }
+
+    // Find refresh tokens that aren't revoked and haven't expired
+    const refreshSessions = await Refresh.find({
+      'revoked.time': { $exists: false },
+      expires: { $gt: new Date() }
+    });
+
+    // Find the matching token by verifying hashes
+    let matchingSession = null;
+    let userId = null;
+
+    for (const session of refreshSessions) {
+      try {
+        const isMatch = await argon2.verify(session.tokenHash, refreshToken);
+        if (isMatch) {
+          matchingSession = session;
+          userId = session.userId;
+          break;
+        }
+      } catch (err) {
+        // Continue checking other tokens
+      }
+    }
+
+    if (!matchingSession) {
+      return res.status(401).json({ error: 'Invalid or expired refresh token' });
+    }
+
+    // Generate new tokens
+    const jti = uuid();
+    const newAccessToken = generateAccessToken(userId, jti);
+    const newRefreshToken = generateRefreshToken();
+
+    // Revoke the old refresh token
+    matchingSession.revoked = {
+      time: new Date(),
+      reason: 'rotated',
+      replacedBy: jti
+    };
+    await matchingSession.save();
+
+    // Store the new refresh token
+    await Refresh.create({
+      userId,
+      tokenHash: await argon2.hash(newRefreshToken),
+      jti,
+      expires: new Date(Date.now() + ms(process.env.REFRESH_TTL || '7d')),
+      createdAt: new Date(),
+      createdByIp: req.ip
+    });
+
+    // Set the new tokens in cookies
+    setRefreshCookie(res, newRefreshToken);
+    setTokenCookie(res, newAccessToken);
+
+    // Attach the user ID for downstream handlers
+    req.user = userId;
+    next();
+  } catch (err) {
+    console.error('Error refreshing token:', err);
+    return res.status(401).json({ error: 'Failed to refresh token' });
   }
 }
 

@@ -54,8 +54,22 @@ function setRefreshCookie(res, token) {
   });
 }
 
+function setTokenCookie(res, token) {
+    const ttl = process.env.REFRESH_TTL || '15m';
+    const maxAge = typeof ttl === 'string' ? ms(ttl) : Number(ttl);
+    res.cookie('token', token, {
+        secure: process.env.COOKIE_SECURE === 'true',
+        sameSite: 'Strict',
+        domain: process.env.COOKIE_DOMAIN || '.efham.com',
+        path: '/',
+        maxAge
+    });
+
+}
+
 module.exports = {
   generateAccessToken,
   generateRefreshToken,
-  setRefreshCookie
+  setRefreshCookie,
+  setTokenCookie
 };
