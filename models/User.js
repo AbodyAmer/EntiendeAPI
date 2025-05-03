@@ -45,6 +45,10 @@ const userSchema = new mongoose.Schema({
     enum: ['MSA', 'Egyptian', 'Levantine', 'Gulf', 'Maghrebi'], 
     default: 'MSA' 
   },
+  currentEssay: {
+    type: mongoose.Schema.Types.ObjectId,                // or mongoose.Schema.Types.ObjectId if you use ObjectIds
+    ref: 'Essay', 
+  }
 }, {
     timestamps: true
  });
