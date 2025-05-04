@@ -1,5 +1,6 @@
 // models/User.js
 const mongoose = require('mongoose');
+const { dialects } = require('../utils/enums')
 
 const userSchema = new mongoose.Schema({
   email: { 
@@ -42,8 +43,8 @@ const userSchema = new mongoose.Schema({
   // Default dialect for content & audio
   defaultDialect: { 
     type: String, 
-    enum: ['MSA', 'Egyptian', 'Levantine', 'Gulf', 'Maghrebi'], 
-    default: 'MSA' 
+    enum: dialects, 
+    default: dialects[0]
   },
   currentEssay: {
     type: mongoose.Schema.Types.ObjectId,                // or mongoose.Schema.Types.ObjectId if you use ObjectIds

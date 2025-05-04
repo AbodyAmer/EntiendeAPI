@@ -9,6 +9,32 @@ const essaySchema = new mongoose.Schema({
         type: String, 
         required: true, 
     },
+    level: { 
+        type: Number, 
+        min: 1, 
+        max: 19, 
+        required: true
+      },
+    wordCount: {
+        type: Number,
+        min: 1,
+        required: true
+    },
+    like: {
+        type: Number,
+        min: 0,
+        default: 0
+    },
+    dislike: {
+        type: Number,
+        min: 0,
+        default: 0
+    },
+    contentType: {
+        type: String,
+        required: true,
+        enum: ["STANDARD", "PREMIUM"]
+    }
 }, {
     timestamps: true
 })
