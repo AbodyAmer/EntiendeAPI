@@ -33,4 +33,28 @@ router.post('/postMSAEssay', async (req, res) => {
         return res.status(500).json({ error: error.message })
     }
 })
+
+router.post('/postDialectEssay', async (req, res) => {
+    try {
+        const { essayId, dialect, htmlContentTashkeel, htmlContentPlain } = req.body
+
+        const essay = await Essay.findById(essayId)
+        if (!essay) {
+            return res.status(404).json({ error: 'Essay not found' })
+        }
+
+        const essayContent = new EssayContent({
+            essayId: essay._id,
+            dialect,
+            tashkeelContent: htmlContentTashkeel,
+            plainContent: htmlContentPlain
+        })
+
+        const savedContent = await essayContent.save()
+        return res.json({ savedContent })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: error.message })
+    }
+})
 module.exports = router;

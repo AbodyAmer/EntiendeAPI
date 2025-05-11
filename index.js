@@ -4,13 +4,15 @@ const routes = require('./routes')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const express = require('express')
+const cors = require('cors');
 const app = express()
 
 mongoose.connect(process.env.MONGO_URI).then(() => console.log("MongoDB connected")).catch(err => console.log(err))
 
+app.use(cors({ origin: ['http://localhost:3000'], credentials: true }));
 app.use(bodyParser.json())
 app.use(cookieParser())
 
 // last
 app.use('/', routes)
-app.listen(3000, () => console.log("API is running"))
+app.listen(7070, () => console.log("API is running"))

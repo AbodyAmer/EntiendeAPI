@@ -123,10 +123,6 @@ router.post(
                 return res.status(401).json({ error: 'Invalid email or password' });
             }
 
-            // 3. (Optional) enforce email verification
-            // if (!user.emailVerified) {
-            //   return res.status(403).json({ error: 'Please verify your email first' });
-            // }
 
             // 4. Verify password
             const valid = await argon2.verify(user.hash, password);
@@ -225,26 +221,6 @@ router.post('/logout', limiter, async (req, res) => {
                 reason: 'logout'
             }
         });
-        // if (token) {
-        //     // Find all non-revoked sessions for this user
-        //     const sessions = await Refresh.find({
-        //         userId: req.user,
-        //         'revoked.time': { $exists: false }
-        //     });
-        //     // Locate the session matching our cookie and revoke it
-        //     for (const session of sessions) {
-        //         if (await argon2.verify(session.tokenHash, token)) {
-        //             console.log('revoke')
-        //             session.revoked = {
-        //                 time: new Date(),
-        //                 reason: 'logout'
-        //             };
-        //             await session.save();
-        //             break;
-        //         }
-        //     }
-        // }
-
         // Clear the cookie on the client
         res.clearCookie('rt', {
             httpOnly: true,

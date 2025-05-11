@@ -49,7 +49,7 @@ function setRefreshCookie(res, token) {
     secure: process.env.COOKIE_SECURE === 'true',    // ensure HTTPS in production
     sameSite: 'Strict',                              // CSRF protection
     domain: process.env.COOKIE_DOMAIN || '.efham.com',
-    path: '/auth/refresh-token',
+    path: '/',
     maxAge
   });
 }

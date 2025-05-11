@@ -13,7 +13,8 @@ const essaySchema = new mongoose.Schema({
         type: Number, 
         min: 1, 
         max: 19, 
-        required: true
+        required: true,
+        index: true
       },
     wordCount: {
         type: Number,
@@ -34,6 +35,10 @@ const essaySchema = new mongoose.Schema({
         type: String,
         required: true,
         enum: ["STANDARD", "PREMIUM"]
+    },
+    category: {
+        type: [String],
+        require: true,
     }
 }, {
     timestamps: true

@@ -7,7 +7,7 @@ const {
   generateAccessToken,
   generateRefreshToken,
   setRefreshCookie,
-  setTokenCookie // Make sure this is imported
+  setTokenCookie
 } = require('../utils/tokens');
 const ms = require('ms');
 
@@ -15,14 +15,16 @@ async function requireAuth(req, res, next) {
   try {
     let token;
     
-    // First try to get token from Authorization header
-    const authHeader = req.headers.authorization;
-    if (authHeader && authHeader.startsWith('Bearer ')) {
-      token = authHeader.split(' ')[1];
-    } 
-    // If not in header, try to get from cookie
-    else if (req.cookies && req.cookies.at) {
-      token = req.cookies.at;
+    // First try to get token from cookie (prioritized)
+    if (req.cookies && req.cookies.token) {
+      token = req.cookies.token;
+    }
+    // If not in cookie, try to get from Authorization header as fallback
+    else {
+      const authHeader = req.headers.authorization;
+      if (authHeader && authHeader.startsWith('Bearer ')) {
+        token = authHeader.split(' ')[1];
+      }
     }
     
     if (!token) {
@@ -56,9 +58,9 @@ async function requireAuth(req, res, next) {
       return res.status(401).json({ error: 'Session has been revoked or expired' });
     }
 
-      // Update lastActivity timestamp
-      session.lastActivity = new Date();
-      session.save();
+    // Update lastActivity timestamp
+    session.lastActivity = new Date();
+    await session.save();
 
     // Attach the user ID for downstream handlers
     req.user = payload.sub;
@@ -72,9 +74,10 @@ async function requireAuth(req, res, next) {
 // Helper function to handle token refresh
 async function handleTokenRefresh(req, res, next) {
   try {
-    console.log('generate new token')
+    console.log('try to refresh')
     const refreshToken = req.cookies.rt;
     if (!refreshToken) {
+      console.log('no refresh token')
       return res.status(401).json({ error: 'Refresh token missing' });
     }
 
@@ -98,6 +101,7 @@ async function handleTokenRefresh(req, res, next) {
         }
       } catch (err) {
         // Continue checking other tokens
+        console.log(err)
       }
     }
 
