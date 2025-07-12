@@ -23,6 +23,18 @@ const ReadHistorySchema = new Schema({
   ended: {
     type: Boolean,
     default: false
+  },
+  like: {
+    type: Boolean,
+    default: false
+  },
+  dislike: {
+    type: Boolean,
+    default: false
+  },
+  answers: {
+    type: [Object],
+    default: []
   }
 });
 

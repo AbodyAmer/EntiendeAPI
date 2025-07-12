@@ -118,16 +118,17 @@ router.post(
             const { email, password } = req.body;
 
             // 2. Look up user
+            console.log(email, password)
             const user = await Users.findOne({ email });
             if (!user) {
-                return res.status(401).json({ error: 'Invalid email or password' });
+                return res.status(401).json({ error: 'Invalid email' });
             }
 
 
             // 4. Verify password
             const valid = await argon2.verify(user.hash, password);
             if (!valid) {
-                return res.status(401).json({ error: 'Invalid email or password' });
+                return res.status(401).json({ error: 'Invalid password' });
             }
 
             // 5. Generate tokens
@@ -236,5 +237,21 @@ router.post('/logout', limiter, async (req, res) => {
         return res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+router.post('/level', limiter, requireAuth, async (req, res) => {
+    try {
+        const { level } = req.body
+        const user = await Users.findByIdAndUpdate(req.user, {
+            level
+        }, {
+            new: true,
+            runValidators: true
+        }).select('-hash').lean();
+        return res.json({ level })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: error.message })
+    }
+})
 
 module.exports = router;

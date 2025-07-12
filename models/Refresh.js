@@ -28,7 +28,6 @@ const refreshSchema = new mongoose.Schema({
   expires: { 
     type: Date, 
     required: true, 
-    index: true 
   },
 
   // Creation metadata

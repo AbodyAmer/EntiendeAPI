@@ -1,6 +1,7 @@
 // middleware/requireAuth.js
 const jwt = require('jsonwebtoken');
 const Refresh = require('../models/Refresh');
+const Users = require('../models/User');
 const argon2 = require('argon2');
 const { v4: uuid } = require('uuid');
 const {
@@ -8,7 +9,7 @@ const {
   generateRefreshToken,
   setRefreshCookie,
   setTokenCookie
-} = require('../utils/tokens');
+} = require('./tokens');
 const ms = require('ms');
 
 async function requireAuth(req, res, next) {
@@ -69,6 +70,10 @@ async function requireAuth(req, res, next) {
 
     // Attach the user ID for downstream handlers
     req.user = payload.sub;
+    const isVerified = await Users.findById(payload.sub)
+    if (!isVerified.emailVerified) {
+      return res.status(401).json({ error: 'User not verified' });
+    }
     console.timeEnd('requireAuth')
     next();
   } catch (err) {
@@ -113,6 +118,11 @@ async function handleTokenRefresh(req, res, next) {
 
     if (!matchingSession) {
       return res.status(401).json({ error: 'Invalid or expired refresh token' });
+    }
+
+    const isVerified = await Users.findById(userId)
+    if (!isVerified.emailVerified) {
+      return res.status(401).json({ error: 'User not verified' });
     }
 
     // Generate new tokens
