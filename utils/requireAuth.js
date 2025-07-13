@@ -13,7 +13,6 @@ const ms = require('ms');
 
 async function requireAuth(req, res, next) {
   try {
-    console.time('requireAuth')
     let token;
     
     // First try to get token from cookie (prioritized)
@@ -34,12 +33,10 @@ async function requireAuth(req, res, next) {
     
     let payload;
     try {
-      console.time('jwt.verify')
       payload = jwt.verify(token, process.env.JWT_ACCESS_SECRET, {
         audience: 'api.efham.com',
         issuer: 'https://api.efham.com'
       });
-      console.timeEnd('jwt.verify')
     } catch (tokenError) {
       // If token is expired, try to refresh using the refresh token
       if (tokenError.name === 'TokenExpiredError' && req.cookies && req.cookies.rt) {
@@ -51,15 +48,18 @@ async function requireAuth(req, res, next) {
     }
 
     // Ensure the session behind this token is still active
-    console.time('Refresh.findOne')
+    console.log('payload.jti', payload)
     const session = await Refresh.findOne({
       jti: payload.jti,
       'revoked.time': { $exists: false },
       expires: { $gt: new Date() }
     }).select('jti');
-    console.timeEnd('Refresh.findOne')
     
     if (!session) {
+      // Clear authentication cookies since session is invalid
+      // res.clearCookie('token');
+      // res.clearCookie('rt');
+      
       return res.status(401).json({ error: 'Session has been revoked or expired' });
     }
 
@@ -69,7 +69,6 @@ async function requireAuth(req, res, next) {
 
     // Attach the user ID for downstream handlers
     req.user = payload.sub;
-    console.timeEnd('requireAuth')
     next();
   } catch (err) {
     console.error('Error in requireAuth middleware:', err);
