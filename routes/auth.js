@@ -260,6 +260,13 @@ router.post('/logout', requireAuth, limiter, async (req, res) => {
         }
         
         // Clear the cookies
+        console.log({
+            httpOnly: true,
+            secure: process.env.COOKIE_SECURE === 'true',
+            sameSite: 'Strict',
+            domain: process.env.COOKIE_DOMAIN || '.efham.com',
+            path: '/'
+        })
         res.clearCookie('rt', {
             httpOnly: true,
             secure: process.env.COOKIE_SECURE === 'true',
