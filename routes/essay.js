@@ -7,7 +7,7 @@ const Essay = require('../models/Essay');
 const { adjustLevel} = require('../utils/leveladjustment');
 const EssayContent = require('../models/EssayContent'); // added missing require statement
 const router = express.Router();
-const jsonToHtml = require('../utils/jsontohtml');
+const jsonToHtml = require('../utils/jsonToHtml');
 
 
 router.get('/', requireAuth, async (req, res) => {
