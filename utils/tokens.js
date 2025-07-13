@@ -44,6 +44,14 @@ function setRefreshCookie(res, token) {
   const ttl = process.env.REFRESH_TTL || '7d';
   const maxAge = typeof ttl === 'string' ? ms(ttl) : Number(ttl);
 
+  console.log({
+    httpOnly: true,
+    secure: process.env.COOKIE_SECURE === 'true',    // ensure HTTPS in production
+    sameSite: 'Strict',                              // CSRF protection
+    domain: process.env.COOKIE_DOMAIN || '.efham.com',
+    path: '/',
+    maxAge
+  })
   res.cookie('rt', token, {
     httpOnly: true,
     secure: process.env.COOKIE_SECURE === 'true',    // ensure HTTPS in production

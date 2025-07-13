@@ -143,10 +143,8 @@ router.post(
 
             const { email, password } = req.body;
 
-            console.log(email, password)
             // 2. Look up user
             const user = await Users.findOne({ email: email.toLowerCase() });
-            console.log(user)
             if (!user) {
                 return res.status(401).json({ error: 'Invalid email' });
             }
@@ -260,13 +258,6 @@ router.post('/logout', requireAuth, limiter, async (req, res) => {
         }
         
         // Clear the cookies
-        console.log({
-            httpOnly: true,
-            secure: process.env.COOKIE_SECURE === 'true',
-            sameSite: 'Strict',
-            domain: process.env.COOKIE_DOMAIN || '.efham.com',
-            path: '/'
-        })
         res.clearCookie('rt', {
             httpOnly: true,
             secure: process.env.COOKIE_SECURE === 'true',
