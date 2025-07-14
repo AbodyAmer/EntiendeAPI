@@ -48,7 +48,6 @@ async function requireAuth(req, res, next) {
     }
 
     // Ensure the session behind this token is still active
-    console.log('payload.jti', payload)
     const session = await Refresh.findOne({
       jti: payload.jti,
       'revoked.time': { $exists: false },
