@@ -21,8 +21,59 @@ const {
     sendPasswordResetEmail,
     sendWelcomeEmail 
 } = require('../utils/resend');
+const VerificationCodes = require('../models/verificationcodes');
 
 const router = express.Router();
+
+
+router.post('/verify-email', requireAuth, async (req, res) => {
+    try {
+        const { code } = req.body;
+
+        const verificationCodeDoc = await VerificationCodes.findOne({ code, userId: req.user });
+        if (!verificationCodeDoc) {
+            return res.status(404).json({ message: 'Invalid verification code' });
+        }
+
+        await Users.findByIdAndUpdate(req.user, { emailVerified: true });
+        await VerificationCodes.deleteOne({ code, userId: req.user });
+
+        res.json({ message: 'Email verified successfully' });
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: error.message })
+    }
+})
+router.post('/resend-verification', requireAuth, async (req, res) => {
+    try {
+        const user = await Users.findById(req.user);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        let verificationCode = null;
+        // check if user has a verification code
+        const verificationCodeDoc = await VerificationCodes.findOne({ userId: user._id });
+        
+        const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000);
+        if (verificationCodeDoc && verificationCodeDoc.createdAt > tenMinutesAgo) {
+            // Code is too recent, delete old one and create new
+            verificationCode = verificationCodeDoc.code;
+        } else {
+            // No existing code, create new one
+            verificationCode = Math.floor(100000 + Math.random() * 900000);
+            await VerificationCodes.create({
+                userId: user._id,
+                code: verificationCode,
+            });
+        }
+
+        await sendVerificationEmail(user.email, verificationCode);
+        res.json({ message: 'Verification email sent successfully' });
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
 
 router.post(
     '/register',
@@ -79,19 +130,17 @@ router.post(
             });
 
             // 5. Generate verification token
-            const verificationToken = uuid();
-            const verificationExpires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
+            const verificationCode = Math.floor(100000 + Math.random() * 900000);
 
-            // 6. Store verification token (you might want to create a separate model for this)
-            // For now, we'll store it in the user document temporarily
-            await Users.findByIdAndUpdate(user._id, {
-                verificationToken,
-                verificationExpires
+            // 6. Store verification token
+            await VerificationCodes.create({
+                userId: user._id,
+                code: verificationCode,
             });
 
             // 7. Send verification email
             try {
-                await sendVerificationEmail(email, verificationToken, name);
+                await sendVerificationEmail(email, verificationCode, name);
             } catch (emailError) {
                 console.error('Failed to send verification email:', emailError);
                 // Don't fail registration if email fails, but log it

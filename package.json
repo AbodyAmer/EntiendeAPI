@@ -2,8 +2,8 @@
   "name": "efhamwebapp",
   "packageManager": "yarn@4.3.1",
   "scripts": {
-    "start": "yarn node index.js",
-    "dev": "yarn nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "argon2": "^0.43.0",
