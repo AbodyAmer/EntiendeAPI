@@ -9,6 +9,10 @@ const app = express()
 
 mongoose.connect(process.env.MONGO_URI).then(() => console.log("MongoDB connected")).catch(err => console.log(err))
 
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`)
+  next()
+})
 app.use(cors({ origin: ['http://localhost:3000', 'https://efhamarabi.com', 'https://api.efhamarabi.com'], credentials: true }));
 app.use(bodyParser.json())
 app.use(cookieParser())
