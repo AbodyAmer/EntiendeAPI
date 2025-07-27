@@ -12,7 +12,6 @@ const jsonToHtml = require('../utils/jsonToHtml');
 
 router.get('/', requireAuth, async (req, res) => {
     try {
-        console.count("Is this called?")
         const userId = req.user
         const user = await Users.findById(userId)
             .select('-hash')                // remove password hash
@@ -34,7 +33,6 @@ router.get('/', requireAuth, async (req, res) => {
                 return res.status(404).json({ message: 'No essay found for this level.' });
             }
             const random = Math.floor(Math.random() * count);
-            console.log(random)
             const essay = await Essay.findOne({ level: user.level, _id: { $nin: ids } }).skip(random);
             if (!essay) {
                 return res.status(404).json({ message: 'No essay found for this level.' });
