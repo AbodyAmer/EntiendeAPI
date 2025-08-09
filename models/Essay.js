@@ -39,6 +39,11 @@ const essaySchema = new mongoose.Schema({
     category: {
         type: [String],
         require: true,
+    },
+    image: "String",
+    collection: {
+        type: String,
+        enum: ["Folk Tales", "True Story"],
     }
 }, {
     timestamps: true

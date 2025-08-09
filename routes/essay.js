@@ -177,4 +177,63 @@ router.post('/finish', limiter, requireAuth, async (req, res) => {
     }
 })
 
+
+router.get('/free/getlatest', limiter, async (req, res) => {
+    try {
+        const { page = 1 } = req.query;
+        const limit = 9; // Number of essays per page
+        const skip = (page - 1) * limit;
+        const essays = await Essay.find({ contentType: "PREMIUM" }).sort({ _id: -1 }).skip(skip).limit(limit).lean();
+
+        return res.json({
+            essays: essays.map(essay => ({
+                _id: essay._id,
+                titleAr: essay.titleAr,
+                titleEn: essay.titleEn,
+                wordCount: essay.wordCount,
+                level: essay.level,
+                createdAt: essay.createdAt,
+                image: essay.image,
+                collection: essay.collection,
+            }))
+        });
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: error.message })
+    }
+})
+
+router.get('/free/:id', limiter, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { dialect = "MSA" } = req.query;
+        const essay = await Essay.findById(id).lean();
+        if (!essay) {
+            return res.status(404).json({ error: 'Essay not found' });
+        }
+
+        const essayContents = await EssayContent.find({ essayId: essay._id }).lean();
+        if (!essayContents) {
+            return res.status(404).json({ error: 'Essay content not found for any dialect.' });
+        }
+        // Prefer MSA dialect if available, otherwise default to the first content
+        const selectedContent = essayContents.find(content => content.dialect.toLowerCase() === dialect.toLowerCase()) || essayContents[0];
+        return res.json({
+            essayId: essay._id,
+            titleAr: essay.titleAr,
+            titleEn: essay.titleEn,
+            wordCount: essay.wordCount,
+            image: essay.image,
+            collection: essay.collection,
+            level: essay.level,
+            dialect: selectedContent.dialect,
+            content: jsonToHtml(selectedContent.plainContent),
+            tashkeelContent: jsonToHtml(selectedContent.tashkeelContent),
+            availableDialects: essayContents.map(content => content.dialect)
+        });
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: error.message })
+    }
+})
 module.exports = router;

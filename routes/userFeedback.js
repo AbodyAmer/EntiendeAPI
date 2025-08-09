@@ -4,6 +4,7 @@ const limiter = require('../utils/limiter');
 const DialectVote = require('../models/dialectVote');
 const ContentNotify = require('../models/contentnotify');
 const Feedback = require('../models/feedback');
+const Subscriber = require('../models/subscribers'); 
 const router = express.Router();
 
 router.post('/voteDialect', [limiter, requireVerifiedAuth], async (req, res) => {
@@ -44,4 +45,16 @@ router.post('/feedback', [limiter, requireVerifiedAuth], async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 })
+
+router.post('/subscribe', async (req, res) => {
+    try {
+        const { email } = req.body;
+        const subscriber = new Subscriber({ email });
+        await subscriber.save();
+        return res.status(201).json({ message: 'Subscription successful' });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
 module.exports = router;
