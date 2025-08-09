@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => console.log("MongoDB connecte
 app.use((req, res, next) => {
   next()
 })
-app.use(cors({ origin: ['http://localhost:3000', 'https://efhamarabi.com', 'https://api.efhamarabi.com'], credentials: true }));
+app.use(cors({ origin: ['http://localhost:3000', 'https://efhamarabi.com', 'https://stories.efhamarabi.com'], credentials: true }));
 app.use(bodyParser.json())
 app.use(cookieParser())
 
