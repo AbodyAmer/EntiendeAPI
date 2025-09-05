@@ -4,7 +4,6 @@ const essay = require('./essay')
 const userFeedback = require('./userFeedback')
 const oneSentence = require('./oneSentence')
 const fillin = require('./fillin')
-const publicmobile = require('./mobile/public')
 const express = require('express')
 const router = express.Router()
 
