@@ -2,7 +2,7 @@
 const express = require('express');
 const argon2 = require('argon2');
 const { body, validationResult } = require('express-validator');
-const jwt     = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const uuid = require('uuid').v4;
 const ms = require('ms');
 const trustedDomains = require('../utils/trustedDomains')
@@ -16,10 +16,10 @@ const {
     setRefreshCookie,
     setTokenCookie
 } = require('../utils/tokens');
-const { 
-    sendVerificationEmail, 
+const {
+    sendVerificationEmail,
     sendPasswordResetEmail,
-    sendWelcomeEmail 
+    sendWelcomeEmail
 } = require('../utils/resend');
 const VerificationCodes = require('../models/verificationcodes');
 
@@ -54,7 +54,7 @@ router.post('/resend-verification', requireAuth, async (req, res) => {
         let verificationCode = null;
         // check if user has a verification code
         const verificationCodeDoc = await VerificationCodes.findOne({ userId: user._id });
-        
+
         const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000);
         if (verificationCodeDoc && verificationCodeDoc.createdAt > tenMinutesAgo) {
             // Code is too recent, delete old one and create new
@@ -195,7 +195,7 @@ router.post(
             // 2. Look up user
             const user = await Users.findOne({ email: email.toLowerCase() });
             if (!user) {
-                return res.status(401).json({ error: 'Invalid email' });
+                return res.status(401).json({ error: 'Email not found' });
             }
 
 
@@ -225,7 +225,18 @@ router.post(
             setTokenCookie(res, accessToken)
 
             // 8. Return access token (client holds in memory)
-            return res.json({ accessToken });
+            return res.json({
+                accessToken,
+                user: {
+                    id: user._id,
+                    email: user.email,
+                    name: user.name,
+                    emailVerified: user.emailVerified,
+                    createdAt: user.createdAt,
+                    level: user.level,
+                    defaultDialect: user.defaultDialect,
+                }
+            });
 
         } catch (err) {
             console.error('Error in /auth/login:', err);
@@ -257,12 +268,6 @@ router.get('/me', requireAuth, async function (req, res) {
             createdAt: user.createdAt,
             level: user.level,
             defaultDialect: user.defaultDialect,
-            dialectPreferences: user.dialectPreferences,
-            subscriptionTier: user.subscriptionTier,
-            subscriptionExpires: user.subscriptionExpires,
-            settings: user.settings,
-            lastLogin: user.lastLogin,
-            stats: user.stats
         });
 
     } catch (err) {
@@ -280,14 +285,14 @@ router.post('/logout', requireAuth, limiter, async (req, res) => {
         } else if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
             token = req.headers.authorization.split(' ')[1];
         }
-        
+
         if (token) {
             try {
                 const payload = jwt.verify(token, process.env.JWT_ACCESS_SECRET, {
                     audience: 'api.efham.com',
                     issuer: 'https://api.efham.com'
                 });
-                
+
                 // Revoke the current refresh token session
                 if (payload.jti) {
                     await Refresh.findOneAndUpdate(
@@ -305,7 +310,7 @@ router.post('/logout', requireAuth, limiter, async (req, res) => {
                 console.log('Token verification failed during logout:', tokenError.message);
             }
         }
-        
+
         // Clear the cookies
         res.clearCookie('rt', {
             httpOnly: true,
@@ -314,14 +319,14 @@ router.post('/logout', requireAuth, limiter, async (req, res) => {
             domain: process.env.COOKIE_DOMAIN || '.efham.com',
             path: '/'
         });
-        
+
         res.clearCookie('token', {
             secure: process.env.COOKIE_SECURE === 'true',
             sameSite: 'Strict',
             domain: process.env.COOKIE_DOMAIN || '.efham.com',
             path: '/'
         });
-        
+
         return res.status(200).json({ message: 'Logged out successfully' });
     } catch (err) {
         console.error('Error in POST /auth/logout:', err);
@@ -357,8 +362,8 @@ router.get('/verify-email/:token', async (req, res) => {
         });
 
         if (!user) {
-            return res.status(400).json({ 
-                message: 'Invalid or expired verification token' 
+            return res.status(400).json({
+                message: 'Invalid or expired verification token'
             });
         }
 
@@ -478,11 +483,11 @@ router.post('/reset-password', limiter, async (req, res) => {
             minNumbers: 1,
             minSymbols: 1
         });
-        
+
         const passwordError = passwordValidation.run({ password });
         if (passwordError.errors.length > 0) {
-            return res.status(400).json({ 
-                message: 'Password must contain at least one lowercase letter, one uppercase letter, one number, and one symbol' 
+            return res.status(400).json({
+                message: 'Password must contain at least one lowercase letter, one uppercase letter, one number, and one symbol'
             });
         }
 
