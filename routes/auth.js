@@ -272,6 +272,8 @@ router.get('/me', requireAuth, async function (req, res) {
 
         // Return profile info
         return res.json({
+            success: true,
+            user: {
             id: user._id,
             email: user.email,
             name: user.name,
@@ -279,6 +281,7 @@ router.get('/me', requireAuth, async function (req, res) {
             createdAt: user.createdAt,
             level: user.level,
             defaultDialect: user.defaultDialect,
+        }
         });
 
     } catch (err) {
