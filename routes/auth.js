@@ -217,7 +217,17 @@ router.post(
                 jti,
                 expires: new Date(Date.now() + ms(process.env.REFRESH_TTL)),
                 createdAt: new Date(),
-                createdByIp: req.ip
+                createdByIp: req.ip,
+                deviceInfo: {
+                    clientType: req.clientType,
+                    isNativeApp: req.clientInfo.isNativeApp,
+                    deviceType: req.clientInfo.deviceType,
+                    deviceModel: req.clientInfo.deviceModel,
+                    deviceVendor: req.clientInfo.deviceVendor,
+                    osName: req.clientInfo.osName,
+                    osVersion: req.clientInfo.osVersion,
+                    userAgent: req.clientInfo.userAgent
+                }
             });
 
             // 7. Send refresh token in HttpOnly Secure cookie

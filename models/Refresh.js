@@ -38,6 +38,43 @@ const refreshSchema = new mongoose.Schema({
   createdByIp: { 
     type: String 
   },
+
+  // Device information from clientDetector
+  deviceInfo: {
+    clientType: { 
+      type: String, 
+      enum: ['mobile-app', 'mobile-web', 'desktop-web'],
+      default: 'desktop-web'
+    },
+    isNativeApp: { 
+      type: Boolean, 
+      default: false 
+    },
+    deviceType: { 
+      type: String, 
+      default: 'unknown' 
+    },
+    deviceModel: { 
+      type: String, 
+      default: 'unknown' 
+    },
+    deviceVendor: { 
+      type: String, 
+      default: 'unknown' 
+    },
+    osName: { 
+      type: String, 
+      default: 'unknown' 
+    },
+    osVersion: { 
+      type: String, 
+      default: 'unknown' 
+    },
+    userAgent: { 
+      type: String, 
+      default: 'unknown' 
+    }
+  },
    // Last activity timestamp
    lastActivity: {
     type: Date,
