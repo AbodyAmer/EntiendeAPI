@@ -30,6 +30,7 @@ router.post('/verify-email', requireAuth, async (req, res) => {
     try {
         const { code } = req.body;
 
+        console.log(`Verifying email for user ${req.user} with code ${code}`);
         const verificationCodeDoc = await VerificationCodes.findOne({ code, userId: req.user });
         if (!verificationCodeDoc) {
             return res.status(404).json({ message: 'Invalid verification code' });

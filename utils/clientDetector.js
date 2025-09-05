@@ -9,7 +9,7 @@ const clientDetector = (req, res, next) => {
   req.clientInfo = {
     isMobile: device.type === 'mobile' || device.type === 'tablet',
     isDesktop: !device.type || device.type === 'desktop',
-    deviceType: device.type || 'desktop',
+    deviceType: device.type || 'unknown',
     deviceModel: device.model || 'unknown',
     deviceVendor: device.vendor || 'unknown',
     osName: os.name || 'unknown',

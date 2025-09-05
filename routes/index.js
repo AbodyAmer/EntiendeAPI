@@ -15,7 +15,4 @@ router.use('/one-sentence', oneSentence)
 router.use('/user-feedback', userFeedback)
 router.use('/fillin', fillin)
 
-router.use('/mobile/public', publicmobile);  // No auth required
-// router.use('/mobile/auth', mobileRoutes.auth);      // User auth required
-
 module.exports = router
