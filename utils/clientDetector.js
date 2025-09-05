@@ -1,6 +1,7 @@
 // middleware/clientDetector.js
 const clientDetector = (req, res, next) => {
   // Detect client type based on headers
+  console.log(req.headers)
   const clientType = req.headers['x-client-type'];
   const deviceId = req.headers['x-device-id'];
   
