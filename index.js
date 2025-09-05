@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const express = require('express')
 const cors = require('cors');
 const app = express()
+const { clientDetector } = require('./utils/clientDetector')
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
@@ -22,6 +23,7 @@ app.use(cors({
   credentials: true 
 }));
 
+app.use(clientDetector)  // Detect client type
 app.use(bodyParser.json())
 app.use(cookieParser())
 
