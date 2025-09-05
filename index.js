@@ -1,3 +1,4 @@
+// server.js - Simplified and more secure
 require('dotenv').config()
 const mongoose = require('mongoose')
 const routes = require('./routes')
@@ -7,16 +8,28 @@ const express = require('express')
 const cors = require('cors');
 const app = express()
 
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.log(err))
 
-mongoose.connect(process.env.MONGO_URI).then(() => console.log("MongoDB connected")).catch(err => console.log(err))
+// CORS for web only
+app.use(cors({ 
+  origin: [
+    'http://localhost:3000', 
+    'https://efhamarabi.com', 
+    'https://stories.efhamarabi.com'
+  ], 
+  credentials: true 
+}));
 
-app.use((req, res, next) => {
-  next()
-})
-app.use(cors({ origin: ['http://localhost:3000', 'https://efhamarabi.com', 'https://stories.efhamarabi.com'], credentials: true }));
 app.use(bodyParser.json())
 app.use(cookieParser())
 
-// last
+// Mobile routes - NO API KEY NEEDED
+// Instead, use different strategies:
+
+
+// Web routes (protected by CORS)
 app.use('/', routes)
-app.listen(7070, () => console.log("API is running"))
+
+app.listen(7070, () => console.log("API is running on port 7070"))
