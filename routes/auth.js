@@ -39,7 +39,7 @@ router.post('/verify-email', requireAuth, async (req, res) => {
         await Users.findByIdAndUpdate(req.user, { emailVerified: true });
         await VerificationCodes.deleteOne({ code, userId: req.user });
 
-        res.json({ message: 'Email verified successfully' });
+        res.json({ message: 'Email verified successfully', success: true });
     } catch (error) {
         console.log(error)
         res.status(500).json({ message: error.message })
