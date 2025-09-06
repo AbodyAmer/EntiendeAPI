@@ -1,7 +1,6 @@
 // middleware/requireAuth.js
 const jwt = require('jsonwebtoken');
 const Refresh = require('../models/Refresh');
-const Users = require('../models/User');
 const argon2 = require('argon2');
 const { v4: uuid } = require('uuid');
 const {
@@ -12,153 +11,250 @@ const {
 } = require('./tokens');
 const ms = require('ms');
 
-async function requireAuth(req, res, next) {
+async function requireVerifiedAuth(req, res, next) {
   try {
-    console.time('requireAuth')
-    let token;
+    console.time('requireAuth');
     
-    // First try to get token from cookie (prioritized)
-    if (req.cookies && req.cookies.token) {
-      token = req.cookies.token;
-    }
-    // If not in cookie, try to get from Authorization header as fallback
-    else {
-      const authHeader = req.headers.authorization;
-      if (authHeader && authHeader.startsWith('Bearer ')) {
-        token = authHeader.split(' ')[1];
-      }
-    }
+    // Extract token from cookie or header
+    const token = extractAccessToken(req);
     
     if (!token) {
-      return res.status(401).json({ error: 'Authentication required' });
+      return res.status(401).json({ 
+        error: 'Authentication required',
+        code: 'NO_TOKEN' 
+      });
     }
     
+    // Verify the access token
     let payload;
     try {
-      console.time('jwt.verify')
+      console.time('jwt.verify');
       payload = jwt.verify(token, process.env.JWT_ACCESS_SECRET, {
         audience: 'api.efham.com',
         issuer: 'https://api.efham.com'
       });
-      console.timeEnd('jwt.verify')
+      console.timeEnd('jwt.verify');
     } catch (tokenError) {
-      // If token is expired, try to refresh using the refresh token
-      if (tokenError.name === 'TokenExpiredError' && req.cookies && req.cookies.rt) {
-        return handleTokenRefresh(req, res, next);
+      // Only attempt refresh for expired tokens, not malformed ones
+      if (tokenError.name === 'TokenExpiredError') {
+        // For mobile/API clients, return a specific error code
+        // Let them handle refresh through a dedicated endpoint
+        return res.status(401).json({ 
+          error: 'Token expired',
+          code: 'TOKEN_EXPIRED',
+          canRefresh: true 
+        });
       }
       
-      // For other token errors, return unauthorized
-      return res.status(401).json({ error: 'Invalid token', details: tokenError.message });
+      return res.status(401).json({ 
+        error: 'Invalid token',
+        code: 'INVALID_TOKEN',
+        details: tokenError.message 
+      });
     }
 
-    // Ensure the session behind this token is still active
-    console.time('Refresh.findOne')
+    // Verify session and user in a single query (more efficient)
+    console.time('Session.verify');
     const session = await Refresh.findOne({
       jti: payload.jti,
+      userId: payload.sub,
       'revoked.time': { $exists: false },
       expires: { $gt: new Date() }
-    }).select('jti');
-    console.timeEnd('Refresh.findOne')
+    })
+    .populate('userId', 'emailVerified')
+    .lean();
+    console.timeEnd('Session.verify');
     
     if (!session) {
-      return res.status(401).json({ error: 'Session has been revoked or expired' });
+      return res.status(401).json({ 
+        error: 'Session expired or revoked',
+        code: 'SESSION_INVALID' 
+      });
     }
 
-    // Update lastActivity timestamp
-    session.lastActivity = new Date();
-    session.save();
+    if (!session.userId?.emailVerified) {
+      return res.status(403).json({ 
+        error: 'Email verification required',
+        code: 'EMAIL_NOT_VERIFIED' 
+      });
+    }
 
-    // Attach the user ID for downstream handlers
+    // Update last activity asynchronously (non-blocking)
+    Refresh.updateOne(
+      { _id: session._id },
+      { lastActivity: new Date() }
+    ).exec().catch(err => {
+      console.error('Failed to update session activity:', err);
+    });
+
+    // Attach user info for downstream handlers
     req.user = payload.sub;
-    const isVerified = await Users.findById(payload.sub)
-    if (!isVerified.emailVerified) {
-      return res.status(401).json({ error: 'User not verified' });
-    }
-    console.timeEnd('requireAuth')
+    req.sessionId = payload.jti;
+    
+    console.timeEnd('requireAuth');
     next();
   } catch (err) {
     console.error('Error in requireAuth middleware:', err);
-    return res.status(401).json({ error: 'Unauthorized' });
+    return res.status(500).json({ 
+      error: 'Authentication error',
+      code: 'AUTH_ERROR' 
+    });
   }
 }
 
-// Helper function to handle token refresh
-async function handleTokenRefresh(req, res, next) {
+// Separate endpoint for token refresh (recommended approach)
+async function refreshToken(req, res) {
   try {
-    console.log('try to refresh')
-    const refreshToken = req.cookies.rt;
+    console.time('refreshToken');
+    
+    // Get refresh token from cookie or body (for mobile)
+    const refreshToken = req.cookies?.rt || req.body?.refreshToken;
+    
     if (!refreshToken) {
-      console.log('no refresh token')
-      return res.status(401).json({ error: 'Refresh token missing' });
+      return res.status(401).json({ 
+        error: 'Refresh token required',
+        code: 'NO_REFRESH_TOKEN' 
+      });
     }
 
-    // Find refresh tokens that aren't revoked and haven't expired
-    const refreshSessions = await Refresh.find({
+    // Decode the refresh token to get the JTI (if you store it there)
+    // Or use a more efficient lookup strategy
+    let payload;
+    try {
+      payload = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET, {
+        audience: 'api.efham.com',
+        issuer: 'https://api.efham.com'
+      });
+    } catch (err) {
+      return res.status(401).json({ 
+        error: 'Invalid refresh token',
+        code: 'INVALID_REFRESH_TOKEN' 
+      });
+    }
+
+    // Find the refresh session more efficiently
+    const session = await Refresh.findOne({
+      jti: payload.jti,
+      userId: payload.sub,
       'revoked.time': { $exists: false },
       expires: { $gt: new Date() }
-    });
+    }).populate('userId', 'emailVerified _id');
 
-    // Find the matching token by verifying hashes
-    let matchingSession = null;
-    let userId = null;
+    if (!session) {
+      return res.status(401).json({ 
+        error: 'Refresh token expired or revoked',
+        code: 'REFRESH_TOKEN_INVALID' 
+      });
+    }
 
-    for (const session of refreshSessions) {
-      try {
-        const isMatch = await argon2.verify(session.tokenHash, refreshToken);
-        if (isMatch) {
-          matchingSession = session;
-          userId = session.userId;
-          break;
+    // Verify the token hash
+    const isValid = await argon2.verify(session.tokenHash, refreshToken);
+    if (!isValid) {
+      // Possible token theft attempt
+      console.warn('Invalid refresh token hash for session:', session.jti);
+      
+      // Revoke all sessions for this user as a security measure
+      await Refresh.updateMany(
+        { userId: session.userId._id, 'revoked.time': { $exists: false } },
+        { 
+          revoked: {
+            time: new Date(),
+            reason: 'security_breach',
+            replacedBy: null
+          }
         }
-      } catch (err) {
-        // Continue checking other tokens
-        console.log(err)
-      }
+      );
+      
+      return res.status(401).json({ 
+        error: 'Invalid refresh token - all sessions revoked',
+        code: 'SECURITY_BREACH' 
+      });
     }
 
-    if (!matchingSession) {
-      return res.status(401).json({ error: 'Invalid or expired refresh token' });
-    }
-
-    const isVerified = await Users.findById(userId)
-    if (!isVerified.emailVerified) {
-      return res.status(401).json({ error: 'User not verified' });
+    if (!session.userId?.emailVerified) {
+      return res.status(403).json({ 
+        error: 'Email verification required',
+        code: 'EMAIL_NOT_VERIFIED' 
+      });
     }
 
     // Generate new tokens
-    const jti = uuid();
-    const newAccessToken = generateAccessToken(userId, jti);
+    const newJti = uuid();
+    const newAccessToken = generateAccessToken(session.userId._id, newJti);
     const newRefreshToken = generateRefreshToken();
 
-    // Revoke the old refresh token
-    matchingSession.revoked = {
-      time: new Date(),
-      reason: 'rotated',
-      replacedBy: jti
+    // Use a transaction for token rotation (if using MongoDB 4.0+)
+    const mongoSession = await mongoose.startSession();
+    try {
+      await mongoSession.withTransaction(async () => {
+        // Revoke old token
+        session.revoked = {
+          time: new Date(),
+          reason: 'rotated',
+          replacedBy: newJti
+        };
+        await session.save({ session: mongoSession });
+
+        // Create new refresh session
+        await Refresh.create([{
+          userId: session.userId._id,
+          tokenHash: await argon2.hash(newRefreshToken),
+          jti: newJti,
+          expires: new Date(Date.now() + ms(process.env.REFRESH_TTL || '7d')),
+          createdAt: new Date(),
+          createdByIp: req.ip,
+          userAgent: req.get('user-agent'),
+          deviceId: req.body?.deviceId // For mobile tracking
+        }], { session: mongoSession });
+      });
+    } finally {
+      await mongoSession.endSession();
+    }
+
+    // Return tokens based on client type
+    const response = {
+      accessToken: newAccessToken,
+      tokenType: 'Bearer',
+      expiresIn: ms(process.env.ACCESS_TTL || '15m') / 1000
     };
-    await matchingSession.save();
 
-    // Store the new refresh token
-    await Refresh.create({
-      userId,
-      tokenHash: await argon2.hash(newRefreshToken),
-      jti,
-      expires: new Date(Date.now() + ms(process.env.REFRESH_TTL || '7d')),
-      createdAt: new Date(),
-      createdByIp: req.ip
-    });
+    // For web clients, also set cookies
+    if (req.cookies?.rt) {
+      setRefreshCookie(res, newRefreshToken);
+      setTokenCookie(res, newAccessToken);
+    } else {
+      // For mobile clients, return refresh token in response
+      response.refreshToken = newRefreshToken;
+    }
 
-    // Set the new tokens in cookies
-    setRefreshCookie(res, newRefreshToken);
-    setTokenCookie(res, newAccessToken);
-
-    // Attach the user ID for downstream handlers
-    req.user = userId;
-    next();
+    console.timeEnd('refreshToken');
+    return res.json(response);
   } catch (err) {
     console.error('Error refreshing token:', err);
-    return res.status(401).json({ error: 'Failed to refresh token' });
+    return res.status(500).json({ 
+      error: 'Failed to refresh token',
+      code: 'REFRESH_ERROR' 
+    });
   }
 }
 
-module.exports = requireAuth;
+// Helper function to extract access token
+function extractAccessToken(req) {
+  // Prioritize cookie
+  if (req.cookies?.token) {
+    return req.cookies.token;
+  }
+  
+  // Fallback to Authorization header
+  const authHeader = req.headers.authorization;
+  if (authHeader?.startsWith('Bearer ')) {
+    return authHeader.substring(7);
+  }
+  
+  return null;
+}
+
+module.exports = {
+  requireVerifiedAuth,
+  refreshToken
+};

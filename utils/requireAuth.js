@@ -8,145 +8,112 @@ const {
   generateRefreshToken,
   setRefreshCookie,
   setTokenCookie
-} = require('../utils/tokens');
+} = require('./tokens');
 const ms = require('ms');
 
 async function requireAuth(req, res, next) {
   try {
-    let token;
+    console.time('requireAuth');
     
-    // First try to get token from cookie (prioritized)
-    if (req.cookies && req.cookies.token) {
-      token = req.cookies.token;
-    }
-    // If not in cookie, try to get from Authorization header as fallback
-    else {
-      const authHeader = req.headers.authorization;
-      if (authHeader && authHeader.startsWith('Bearer ')) {
-        token = authHeader.split(' ')[1];
-      }
-    }
+    // Extract token from cookie or header
+    const token = extractAccessToken(req);
     
     if (!token) {
-      return res.status(401).json({ error: 'Authentication required' });
+      console.log('No token provided in request');
+      return res.status(401).json({ 
+        error: 'Authentication required',
+        code: 'NO_TOKEN' 
+      });
     }
     
+    // Verify the access token
     let payload;
     try {
+      console.time('jwt.verify');
       payload = jwt.verify(token, process.env.JWT_ACCESS_SECRET, {
         audience: 'api.efham.com',
         issuer: 'https://api.efham.com'
       });
+      console.timeEnd('jwt.verify');
     } catch (tokenError) {
-      // If token is expired, try to refresh using the refresh token
-      if (tokenError.name === 'TokenExpiredError' && req.cookies && req.cookies.rt) {
-        return handleTokenRefresh(req, res, next);
+      // Only attempt refresh for expired tokens, not malformed ones
+      if (tokenError.name === 'TokenExpiredError') {
+        // For mobile/API clients, return a specific error code
+        // Let them handle refresh through a dedicated endpoint
+        console.log('Token expired:', tokenError);
+        return res.status(401).json({ 
+          error: 'Token expired',
+          code: 'TOKEN_EXPIRED',
+          canRefresh: true 
+        });
       }
       
-      // For other token errors, return unauthorized
-      return res.status(401).json({ error: 'Invalid token', details: tokenError.message });
+      console.log('Token verification error:', tokenError);
+      return res.status(401).json({ 
+        error: 'Invalid token',
+        code: 'INVALID_TOKEN',
+        details: tokenError.message 
+      });
     }
 
-    // Ensure the session behind this token is still active
+    // Verify session and user in a single query (more efficient)
+    console.time('Session.verify');
     const session = await Refresh.findOne({
       jti: payload.jti,
+      userId: payload.sub,
       'revoked.time': { $exists: false },
       expires: { $gt: new Date() }
-    }).select('jti');
+    })
+    .populate('userId', 'emailVerified')
+    .lean();
+    console.timeEnd('Session.verify');
     
     if (!session) {
-      // Clear authentication cookies since session is invalid
-      // res.clearCookie('token');
-      // res.clearCookie('rt');
-      
-      return res.status(401).json({ error: 'Session has been revoked or expired' });
+      console.log('No valid session found for token:', payload);
+      return res.status(401).json({ 
+        error: 'Session expired or revoked',
+        code: 'SESSION_INVALID' 
+      });
     }
 
-    // Update lastActivity timestamp
-    session.lastActivity = new Date();
-    session.save();
+    // Update last activity asynchronously (non-blocking)
+    Refresh.updateOne(
+      { _id: session._id },
+      { lastActivity: new Date() }
+    ).exec().catch(err => {
+      console.error('Failed to update session activity:', err);
+    });
 
-    // Attach the user ID for downstream handlers
+    // Attach user info for downstream handlers
     req.user = payload.sub;
+    req.sessionId = payload.jti;
+    
+    console.timeEnd('requireAuth');
     next();
   } catch (err) {
     console.error('Error in requireAuth middleware:', err);
-    return res.status(401).json({ error: 'Unauthorized' });
+    return res.status(500).json({ 
+      error: 'Authentication error',
+      code: 'AUTH_ERROR' 
+    });
   }
 }
 
-// Helper function to handle token refresh
-async function handleTokenRefresh(req, res, next) {
-  try {
-    console.log('try to refresh')
-    const refreshToken = req.cookies.rt;
-    if (!refreshToken) {
-      console.log('no refresh token')
-      return res.status(401).json({ error: 'Refresh token missing' });
-    }
 
-    // Find refresh tokens that aren't revoked and haven't expired
-    const refreshSessions = await Refresh.find({
-      'revoked.time': { $exists: false },
-      expires: { $gt: new Date() }
-    });
-
-    // Find the matching token by verifying hashes
-    let matchingSession = null;
-    let userId = null;
-
-    for (const session of refreshSessions) {
-      try {
-        const isMatch = await argon2.verify(session.tokenHash, refreshToken);
-        if (isMatch) {
-          matchingSession = session;
-          userId = session.userId;
-          break;
-        }
-      } catch (err) {
-        // Continue checking other tokens
-        console.log(err)
-      }
-    }
-
-    if (!matchingSession) {
-      return res.status(401).json({ error: 'Invalid or expired refresh token' });
-    }
-
-    // Generate new tokens
-    const jti = uuid();
-    const newAccessToken = generateAccessToken(userId, jti);
-    const newRefreshToken = generateRefreshToken();
-
-    // Revoke the old refresh token
-    matchingSession.revoked = {
-      time: new Date(),
-      reason: 'rotated',
-      replacedBy: jti
-    };
-    await matchingSession.save();
-
-    // Store the new refresh token
-    await Refresh.create({
-      userId,
-      tokenHash: await argon2.hash(newRefreshToken),
-      jti,
-      expires: new Date(Date.now() + ms(process.env.REFRESH_TTL || '7d')),
-      createdAt: new Date(),
-      createdByIp: req.ip
-    });
-
-    // Set the new tokens in cookies
-    setRefreshCookie(res, newRefreshToken);
-    setTokenCookie(res, newAccessToken);
-
-    // Attach the user ID for downstream handlers
-    req.user = userId;
-    next();
-  } catch (err) {
-    console.error('Error refreshing token:', err);
-    return res.status(401).json({ error: 'Failed to refresh token' });
+// Helper function to extract access token
+function extractAccessToken(req) {
+  // Prioritize cookie
+  if (req.cookies?.token) {
+    return req.cookies.token;
   }
+  
+  // Fallback to Authorization header
+  const authHeader = req.headers.authorization;
+  if (authHeader?.startsWith('Bearer ')) {
+    return authHeader.substring(7);
+  }
+  
+  return null;
 }
 
-module.exports = requireAuth;
+module.exports = requireAuth

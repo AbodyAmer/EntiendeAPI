@@ -1,5 +1,5 @@
 const express = require('express');
-const requireVerifiedAuth = require('../utils/requireVerifiedAuth')
+const { requireVerifiedAuth } = require('../utils/requireVerifiedAuth')
 const limiter = require('../utils/limiter');
 const DialectVote = require('../models/dialectVote');
 const ContentNotify = require('../models/contentnotify');
