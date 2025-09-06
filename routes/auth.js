@@ -238,6 +238,7 @@ router.post(
             // 8. Return access token (client holds in memory)
             return res.json({
                 accessToken,
+                refreshToken,
                 user: {
                     id: user._id,
                     email: user.email,
