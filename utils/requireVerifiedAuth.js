@@ -171,13 +171,6 @@ async function refreshToken(req, res) {
       });
     }
 
-    if (!session.userId?.emailVerified) {
-      return res.status(403).json({ 
-        error: 'Email verification required',
-        code: 'EMAIL_NOT_VERIFIED' 
-      });
-    }
-
     // Generate new tokens
     const newJti = uuid();
     const newAccessToken = generateAccessToken(session.userId._id, newJti);

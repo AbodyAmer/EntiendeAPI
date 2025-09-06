@@ -7,6 +7,7 @@ const uuid = require('uuid').v4;
 const ms = require('ms');
 const trustedDomains = require('../utils/trustedDomains')
 const requireAuth = require('../utils/requireAuth')
+const { refreshToken } = require('../utils/requireVerifiedAuth')
 const Users = require('../models/User');
 const Refresh = require('../models/Refresh');
 const limiter = require('../utils/limiter');
@@ -25,6 +26,8 @@ const VerificationCodes = require('../models/verificationcodes');
 
 const router = express.Router();
 
+
+router.post('/refresh-token', refreshToken)
 
 router.post('/verify-email', requireAuth, async (req, res) => {
     try {
