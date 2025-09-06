@@ -126,6 +126,7 @@ async function refreshToken(req, res) {
         issuer: 'https://api.efham.com'
       });
     } catch (err) {
+      console.log(err)
       return res.status(401).json({ 
         error: 'Invalid refresh token',
         code: 'INVALID_REFRESH_TOKEN' 
