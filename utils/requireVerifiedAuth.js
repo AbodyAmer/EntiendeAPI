@@ -246,6 +246,8 @@ async function refreshToken(req, res) {
     }
 
     console.timeEnd('refreshToken');
+
+    console.log(`Refresh token successful for user ${validSession.userId._id}`);
     return res.json(response);
   } catch (err) {
     console.error('Error refreshing token:', err);
