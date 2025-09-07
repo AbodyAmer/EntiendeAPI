@@ -28,11 +28,17 @@ function generateAccessToken(userId, uuidv4) {
 }
 
 /**
- * Generate an opaque refresh token (random string).
+ * Generate an opaque refresh token with ID for lookup and secret for verification.
+ * Format: tokenId.tokenSecret (32 chars . 128 chars)
  * @returns {string}
  */
 function generateRefreshToken() {
-  return crypto.randomBytes(64).toString('hex'); // 128 chars
+  // Generate token with two parts:
+  // 1. Token ID (16 bytes = 32 hex chars) - stored unhashed for efficient lookup
+  // 2. Token Secret (64 bytes = 128 hex chars) - only hash is stored
+  const tokenId = crypto.randomBytes(16).toString('hex');
+  const tokenSecret = crypto.randomBytes(64).toString('hex');
+  return `${tokenId}.${tokenSecret}`;
 }
 
 /**
@@ -68,9 +74,35 @@ function setTokenCookie(res, token) {
 
 }
 
+/**
+ * Parse a refresh token into its ID and secret components
+ * @param {string} refreshToken 
+ * @returns {{tokenId: string, tokenSecret: string} | null}
+ */
+function parseRefreshToken(refreshToken) {
+  if (!refreshToken || typeof refreshToken !== 'string') {
+    return null;
+  }
+  
+  const parts = refreshToken.split('.');
+  if (parts.length !== 2) {
+    // Handle legacy tokens without ID (backward compatibility)
+    return {
+      tokenId: null,
+      tokenSecret: refreshToken
+    };
+  }
+  
+  return {
+    tokenId: parts[0],
+    tokenSecret: parts[1]
+  };
+}
+
 module.exports = {
   generateAccessToken,
   generateRefreshToken,
+  parseRefreshToken,
   setRefreshCookie,
   setTokenCookie
 };

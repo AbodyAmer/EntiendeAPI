@@ -6,6 +6,7 @@ const { v4: uuid } = require('uuid');
 const {
   generateAccessToken,
   generateRefreshToken,
+  parseRefreshToken,
   setRefreshCookie,
   setTokenCookie
 } = require('./tokens');
@@ -120,93 +121,113 @@ async function refreshToken(req, res) {
       });
     }
 
-    // Decode the refresh token to get the JTI (if you store it there)
-    // Or use a more efficient lookup strategy
-    let payload;
-    try {
-      payload = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET, {
-        audience: 'api.efham.com',
-        issuer: 'https://api.efham.com'
-      });
-    } catch (err) {
-      console.log(err)
+    // Parse the refresh token to extract ID and secret
+    const parsed = parseRefreshToken(refreshToken);
+    if (!parsed) {
       return res.status(401).json({ 
-        error: 'Invalid refresh token',
-        code: 'INVALID_REFRESH_TOKEN' 
+        error: 'Invalid refresh token format',
+        code: 'INVALID_TOKEN_FORMAT' 
       });
     }
 
-    // Find the refresh session more efficiently
-    const session = await Refresh.findOne({
-      jti: payload.jti,
-      userId: payload.sub,
-      'revoked.time': { $exists: false },
-      expires: { $gt: new Date() }
-    }).populate('userId', 'emailVerified _id');
+    const { tokenId, tokenSecret } = parsed;
 
-    if (!session) {
-      return res.status(401).json({ 
-        error: 'Refresh token expired or revoked',
-        code: 'REFRESH_TOKEN_INVALID' 
-      });
-    }
-
-    // Verify the token hash
-    const isValid = await argon2.verify(session.tokenHash, refreshToken);
-    if (!isValid) {
-      // Possible token theft attempt
-      console.warn('Invalid refresh token hash for session:', session.jti);
+    let validSession;
+    
+    if (tokenId) {
+      // New format: efficient lookup by tokenId
+      validSession = await Refresh.findOne({
+        tokenId,
+        'revoked.time': { $exists: false },
+        expires: { $gt: new Date() }
+      }).populate('userId', 'emailVerified _id');
       
-      // Revoke all sessions for this user as a security measure
-      await Refresh.updateMany(
-        { userId: session.userId._id, 'revoked.time': { $exists: false } },
-        { 
-          revoked: {
-            time: new Date(),
-            reason: 'security_breach',
-            replacedBy: null
-          }
+      if (validSession) {
+        // Verify the token secret
+        const isValid = await argon2.verify(validSession.tokenHash, tokenSecret);
+        if (!isValid) {
+          // Token theft attempt - revoke all user sessions
+          console.warn('Invalid token secret for tokenId:', tokenId);
+          await Refresh.updateMany(
+            { userId: validSession.userId._id, 'revoked.time': { $exists: false } },
+            { 
+              revoked: {
+                time: new Date(),
+                reason: 'security_breach',
+                replacedBy: null
+              }
+            }
+          );
+          return res.status(401).json({ 
+            error: 'Invalid refresh token - all sessions revoked',
+            code: 'SECURITY_BREACH' 
+          });
         }
-      );
+      }
+    } else {
+      // Legacy format: fallback to slow hash checking (for backward compatibility)
+      console.log('Using legacy refresh token format - consider migrating');
+      const sessions = await Refresh.find({
+        tokenId: { $exists: false }, // Only check legacy tokens
+        'revoked.time': { $exists: false },
+        expires: { $gt: new Date() }
+      }).populate('userId', 'emailVerified _id');
       
+      for (const session of sessions) {
+        try {
+          const isValid = await argon2.verify(session.tokenHash, tokenSecret);
+          if (isValid) {
+            validSession = session;
+            break;
+          }
+        } catch (err) {
+          continue;
+        }
+      }
+    }
+
+    if (!validSession) {
       return res.status(401).json({ 
-        error: 'Invalid refresh token - all sessions revoked',
-        code: 'SECURITY_BREACH' 
+        error: 'Invalid or expired refresh token',
+        code: 'REFRESH_TOKEN_INVALID' 
       });
     }
 
     // Generate new tokens
     const newJti = uuid();
-    const newAccessToken = generateAccessToken(session.userId._id, newJti);
+    const newAccessToken = generateAccessToken(validSession.userId._id, newJti);
     const newRefreshToken = generateRefreshToken();
+    const newParsed = parseRefreshToken(newRefreshToken);
 
-    // Use a transaction for token rotation (if using MongoDB 4.0+)
-    const mongoSession = await mongoose.startSession();
-    try {
-      await mongoSession.withTransaction(async () => {
-        // Revoke old token
-        session.revoked = {
-          time: new Date(),
-          reason: 'rotated',
-          replacedBy: newJti
-        };
-        await session.save({ session: mongoSession });
+    // Revoke old token and create new refresh session
+    await Refresh.findByIdAndUpdate(validSession._id, {
+      revoked: {
+        time: new Date(),
+        reason: 'rotated',
+        replacedBy: newJti
+      }
+    });
 
-        // Create new refresh session
-        await Refresh.create([{
-          userId: session.userId._id,
-          tokenHash: await argon2.hash(newRefreshToken),
-          jti: newJti,
-          expires: new Date(Date.now() + ms(process.env.REFRESH_TTL || '7d')),
-          createdAt: new Date(),
-          createdByIp: req.ip,
-          userAgent: req.get('user-agent'),
-          deviceId: req.body?.deviceId // For mobile tracking
-        }], { session: mongoSession });
-      });
-    } finally {
-      await mongoSession.endSession();
-    }
+    // Create new refresh session with tokenId for efficient lookup
+    await Refresh.create({
+      userId: validSession.userId._id,
+      tokenId: newParsed.tokenId, // Store for efficient lookup
+      tokenHash: await argon2.hash(newParsed.tokenSecret), // Only hash the secret
+      jti: newJti,
+      expires: new Date(Date.now() + ms(process.env.REFRESH_TTL || '7d')),
+      createdAt: new Date(),
+      createdByIp: req.ip,
+      deviceInfo: {
+        clientType: req.clientType,
+        isNativeApp: req.clientInfo?.isNativeApp,
+        deviceType: req.clientInfo?.deviceType,
+        deviceModel: req.clientInfo?.deviceModel,
+        deviceVendor: req.clientInfo?.deviceVendor,
+        osName: req.clientInfo?.osName,
+        osVersion: req.clientInfo?.osVersion,
+        userAgent: req.clientInfo?.userAgent
+      }
+    });
 
     // Return tokens based on client type
     const response = {

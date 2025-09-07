@@ -14,6 +14,7 @@ const limiter = require('../utils/limiter');
 const {
     generateAccessToken,
     generateRefreshToken,
+    parseRefreshToken,
     setRefreshCookie,
     setTokenCookie
 } = require('../utils/tokens');
@@ -154,11 +155,13 @@ router.post(
             const jti = uuid()
             const accessToken = generateAccessToken(user._id, jti);
             const refreshToken = generateRefreshToken();
+            const { tokenId, tokenSecret } = parseRefreshToken(refreshToken);
 
-            // 6. Store hashed refresh token
+            // 6. Store hashed refresh token with tokenId for efficient lookup
             await Refresh.insertOne({
                 userId: user._id,
-                tokenHash: await argon2.hash(refreshToken),
+                tokenId, // Store unhashed for efficient lookup
+                tokenHash: await argon2.hash(tokenSecret), // Only hash the secret part
                 jti,
                 expires: new Date(Date.now() + ms(process.env.REFRESH_TTL)),
                 createdByIp: req.ip
@@ -213,11 +216,13 @@ router.post(
             const jti = uuid()
             const accessToken = generateAccessToken(user._id, jti);
             const refreshToken = generateRefreshToken();
+            const { tokenId, tokenSecret } = parseRefreshToken(refreshToken);
 
-            // 6. Persist hashed refresh token
+            // 6. Persist hashed refresh token with tokenId for efficient lookup
             await Refresh.insertOne({
                 userId: user._id,
-                tokenHash: await argon2.hash(refreshToken),
+                tokenId, // Store unhashed for efficient lookup
+                tokenHash: await argon2.hash(tokenSecret), // Only hash the secret part
                 jti,
                 expires: new Date(Date.now() + ms(process.env.REFRESH_TTL)),
                 createdAt: new Date(),

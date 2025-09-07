@@ -10,7 +10,14 @@ const refreshSchema = new mongoose.Schema({
     index: true 
   },
 
-  // Argon2 hash of the opaque refresh token
+  // Token ID for efficient lookup (first part of token, stored unhashed)
+  tokenId: { 
+    type: String, 
+    sparse: true, // Sparse index for backward compatibility with legacy tokens
+    index: true   // Index for O(1) lookups instead of O(n) hash checking
+  },
+
+  // Argon2 hash of the token secret (second part of token)
   tokenHash: { 
     type: String, 
     required: true 
