@@ -106,9 +106,12 @@ async function requireVerifiedAuth(req, res, next) {
 async function refreshToken(req, res) {
   try {
     console.time('refreshToken');
+    console.log("Refresh token request received");
     
     // Get refresh token from cookie or body (for mobile)
     const refreshToken = req.cookies?.rt || req.body?.refreshToken;
+
+    console.log("Using refresh token:", refreshToken)
     
     if (!refreshToken) {
       return res.status(401).json({ 
