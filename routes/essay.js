@@ -95,7 +95,7 @@ router.get('/', requireAuth, async (req, res) => {
     }
 });
 
-router.get('/:id', limiter, requireAuth, async (req, res) => {
+router.get('/getessay/:id', limiter, requireAuth, async (req, res) => {
     try {
         const { id } = req.params
         const { dialect = "MSA" } = req.query
@@ -204,8 +204,9 @@ router.get('/free/getlatest', requireVerifiedAuth, async (req, res) => {
     }
 })
 
-router.get('/getlatest', limiter, async (req, res) => {
+router.get('/getlatest', async (req, res) => {
     try {
+        console.log("get latest essays")
         const { page = 1 } = req.query;
         const limit = 20; // Number of essays per page
         const skip = (page - 1) * limit;

@@ -13,6 +13,7 @@ const ms = require('ms');
 
 async function requireAuth(req, res, next) {
   try {
+    console.log(" why I am running ")
     console.time('requireAuth');
     
     // Extract token from cookie or header
