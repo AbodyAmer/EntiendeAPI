@@ -8,9 +8,11 @@ const router = express.Router();
 
 router.get('/', requireVerifiedAuth, async (req, res) => {
     try {
-        const limit = 20;
+        const limit = 10;
         const userId = req.user
-        const sentences = await Fillin.find({ isApproved: true }).limit(limit)
+
+        const history = await FillinHistory.find({ userId })
+        const sentences = await Fillin.find({ _id: { $nin: history.map(h => h.sentence) },isApproved: true }).limit(limit)
         return res.json(sentences)
     } catch (error) {
         console.error(error);
