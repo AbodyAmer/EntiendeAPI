@@ -203,6 +203,31 @@ router.get('/free/getlatest', limiter, async (req, res) => {
     }
 })
 
+router.get('/getlatest', limiter, async (req, res) => {
+    try {
+        const { page = 1 } = req.query;
+        const limit = 9; // Number of essays per page
+        const skip = (page - 1) * limit;
+        const essays = await Essay.find({ }).sort({ _id: -1 }).skip(skip).limit(limit).lean();
+
+        return res.json({
+            essays: essays.map(essay => ({
+                _id: essay._id,
+                titleAr: essay.titleAr,
+                titleEn: essay.titleEn,
+                wordCount: essay.wordCount,
+                level: essay.level,
+                createdAt: essay.createdAt,
+                image: essay.image,
+                collection: essay.collection,
+            }))
+        });
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: error.message })
+    }
+})
+
 router.get('/free/:id', limiter, async (req, res) => {
     try {
         const { id } = req.params;
