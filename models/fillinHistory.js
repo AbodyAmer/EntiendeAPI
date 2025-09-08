@@ -1,5 +1,6 @@
 // Fill in the blanks game model
 const mongoose = require('mongoose');
+const { dialects } = require('../utils/enums');
 
 const fillinHistorySchema = new mongoose.Schema({
     userId: {
@@ -7,6 +8,11 @@ const fillinHistorySchema = new mongoose.Schema({
         ref: 'User',
         required: true,
         index: true
+    },
+    dialect: {
+        type: String,
+        enum: dialects,
+        required: true
     },
     sentence: {
         type: mongoose.Schema.Types.ObjectId,
