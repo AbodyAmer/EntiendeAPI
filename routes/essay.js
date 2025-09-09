@@ -117,7 +117,7 @@ router.get('/getessay/:id', limiter, requireAuth, async (req, res) => {
             dialect: selectedContent.dialect,
             content: jsonToHtml(selectedContent?.plainContent),
             tashkeelContent: jsonToHtml(selectedContent?.tashkeelContent),
-            quiz: selectedContent?.quiz,
+            // quiz: selectedContent?.quiz,
             availableDialects: essayContents.map(content => content.dialect)
         })
     } catch (error) {

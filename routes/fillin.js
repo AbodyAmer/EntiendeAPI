@@ -12,7 +12,10 @@ router.get('/', requireVerifiedAuth, async (req, res) => {
         const userId = req.user
 
         const history = await FillinHistory.find({ userId })
-        const sentences = await Fillin.find({ _id: { $nin: history.map(h => h.sentence) },isApproved: true }).limit(limit)
+        const sentences = await Fillin.aggregate([
+            { $match: { _id: { $nin: history.map(h => h.sentence) }, isApproved: true } },
+            { $sample: { size: limit } }
+        ])
         return res.json(sentences)
     } catch (error) {
         console.error(error);
