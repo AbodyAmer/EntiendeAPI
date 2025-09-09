@@ -5,7 +5,7 @@ module.exports = rateLimit({
   // 15 minutes window
   windowMs: 15 * 60 * 1000,
   // limit each IP to 20 requests per windowMs
-  max: 20,
+  max: 1000000,
   // return JSON error
   handler: (req, res, /*next*/) => {
     res.status(429).json({
