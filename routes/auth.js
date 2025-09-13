@@ -628,20 +628,19 @@ router.get('/google/callback', limiter, async (req, res) => {
         setRefreshCookie(res, refreshToken);
         setTokenCookie(res, accessToken);
 
-        // Return tokens in response for mobile app
-        res.status(200).json({
-            accessToken,
-            refreshToken,
-            user: {
-                id: user._id,
-                email: user.email,
-                name: user.name,
-                emailVerified: user.emailVerified,
-                createdAt: user.createdAt,
-                level: user.level,
-                defaultDialect: user.defaultDialect,
-            }
-        });
+        // Redirect to mobile app with tokens
+        const userData = {
+            id: user._id,
+            email: user.email,
+            name: user.name,
+            emailVerified: user.emailVerified,
+            createdAt: user.createdAt,
+            level: user.level,
+            defaultDialect: user.defaultDialect,
+        };
+
+        const redirectUrl = `efhammobile://auth?accessToken=${accessToken}&refreshToken=${refreshToken}&user=${encodeURIComponent(JSON.stringify(userData))}`;
+        res.redirect(redirectUrl);
     } catch (error) {
         console.error('Google auth error:', error);
         res.status(500).json({ message: 'Authentication failed' });
