@@ -562,9 +562,9 @@ router.get('/google', (req, res) => {
     res.json({ url: authorizeUrl });
 });
 
-router.post('/google/callback', limiter, async (req, res) => {
+router.get('/google/callback', limiter, async (req, res) => {
     try {
-        const { code } = req.body;
+        const { code } = req.query;
 
         if (!code) {
             return res.status(400).json({ message: 'Authorization code is required' });
@@ -628,18 +628,9 @@ router.post('/google/callback', limiter, async (req, res) => {
         setRefreshCookie(res, refreshToken);
         setTokenCookie(res, accessToken);
 
-        res.status(200).json({
-            accessToken,
-            user: {
-                id: user._id,
-                email: user.email,
-                name: user.name,
-                emailVerified: user.emailVerified,
-                createdAt: user.createdAt,
-                level: user.level,
-                defaultDialect: user.defaultDialect,
-            }
-        });
+        // Redirect to frontend with success
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+        res.redirect(`${frontendUrl}/auth/success?token=${accessToken}`);
     } catch (error) {
         console.error('Google auth error:', error);
         res.status(500).json({ message: 'Authentication failed' });
