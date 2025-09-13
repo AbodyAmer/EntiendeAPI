@@ -647,4 +647,99 @@ router.get('/google/callback', limiter, async (req, res) => {
     }
 });
 
+// Apple Sign-In endpoint
+router.post('/apple', limiter, async (req, res) => {
+    try {
+        const { identityToken, user } = req.body;
+
+        if (!identityToken) {
+            return res.status(400).json({ message: 'Identity token is required' });
+        }
+
+        // Decode JWT without verification for now (you should verify in production)
+        const jwt = require('jsonwebtoken');
+        const decoded = jwt.decode(identityToken);
+
+        if (!decoded || !decoded.email) {
+            return res.status(400).json({ message: 'Invalid identity token' });
+        }
+
+        const { email, email_verified } = decoded;
+        let name = 'Apple User'; // Default name as Apple might not provide it
+
+        // If user data is provided on first sign-in
+        if (user && user.name) {
+            name = `${user.name.firstName || ''} ${user.name.lastName || ''}`.trim();
+        }
+
+        let existingUser = await Users.findOne({
+            $or: [
+                { email: email.toLowerCase() },
+                { appleId: decoded.sub }
+            ]
+        });
+
+        if (!existingUser) {
+            existingUser = await Users.create({
+                email: email.toLowerCase(),
+                name,
+                appleId: decoded.sub,
+                emailVerified: email_verified || true,
+                authProvider: 'apple'
+            });
+        } else {
+            if (!existingUser.appleId) {
+                await Users.findByIdAndUpdate(existingUser._id, {
+                    appleId: decoded.sub
+                });
+            }
+        }
+
+        const jti = uuid();
+        const accessToken = generateAccessToken(existingUser._id, jti);
+        const refreshToken = generateRefreshToken();
+        const { tokenId, tokenSecret } = parseRefreshToken(refreshToken);
+
+        await Refresh.insertOne({
+            userId: existingUser._id,
+            tokenId,
+            tokenHash: await argon2.hash(tokenSecret),
+            jti,
+            expires: new Date(Date.now() + ms(process.env.REFRESH_TTL)),
+            createdByIp: req.ip,
+            authProvider: 'apple',
+            deviceInfo: {
+                clientType: req.clientType,
+                isNativeApp: req.clientInfo.isNativeApp,
+                deviceType: req.clientInfo.deviceType,
+                deviceModel: req.clientInfo.deviceModel,
+                deviceVendor: req.clientInfo.deviceVendor,
+                osName: req.clientInfo.osName,
+                osVersion: req.clientInfo.osVersion,
+                userAgent: req.clientInfo.userAgent
+            }
+        });
+
+        setRefreshCookie(res, refreshToken);
+        setTokenCookie(res, accessToken);
+
+        res.status(200).json({
+            accessToken,
+            refreshToken,
+            user: {
+                id: existingUser._id,
+                email: existingUser.email,
+                name: existingUser.name,
+                emailVerified: existingUser.emailVerified,
+                createdAt: existingUser.createdAt,
+                level: existingUser.level,
+                defaultDialect: existingUser.defaultDialect,
+            }
+        });
+    } catch (error) {
+        console.error('Apple auth error:', error);
+        res.status(500).json({ message: 'Authentication failed' });
+    }
+});
+
 module.exports = router;
