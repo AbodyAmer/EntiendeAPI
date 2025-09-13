@@ -14,10 +14,19 @@ const userSchema = new mongoose.Schema({
     required: true, 
     trim: true 
   },
-  hash: { 
-    // argon2 hash of the user’s password
-    type: String, 
-    required: true 
+  hash: {
+    // argon2 hash of the user's password
+    type: String,
+    required: false
+  },
+  googleId: {
+    type: String,
+    sparse: true,
+    index: true
+  },
+  authProvider: {
+    type: String,
+    default: 'local'
   },
   emailVerified: { 
     type: Boolean, 

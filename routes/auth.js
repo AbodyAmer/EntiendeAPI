@@ -5,6 +5,7 @@ const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const uuid = require('uuid').v4;
 const ms = require('ms');
+const { OAuth2Client } = require('google-auth-library');
 const trustedDomains = require('../utils/trustedDomains')
 const requireAuth = require('../utils/requireAuth')
 const { refreshToken } = require('../utils/requireVerifiedAuth')
@@ -26,6 +27,12 @@ const {
 const VerificationCodes = require('../models/verificationcodes');
 
 const router = express.Router();
+
+const googleClient = new OAuth2Client(
+    process.env.GOOGLE_CLIENT_ID,
+    process.env.GOOGLE_CLIENT_SECRET,
+    process.env.GOOGLE_REDIRECT_URI
+);
 
 
 router.post('/refresh-token', refreshToken)
@@ -543,6 +550,99 @@ router.post('/reset-password', limiter, async (req, res) => {
     } catch (error) {
         console.error('Reset password error:', error);
         res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.get('/google', (req, res) => {
+    const authorizeUrl = googleClient.generateAuthUrl({
+        access_type: 'offline',
+        scope: ['profile', 'email'],
+        prompt: 'consent'
+    });
+    res.json({ url: authorizeUrl });
+});
+
+router.post('/google/callback', limiter, async (req, res) => {
+    try {
+        const { code } = req.body;
+
+        if (!code) {
+            return res.status(400).json({ message: 'Authorization code is required' });
+        }
+
+        const { tokens } = await googleClient.getToken(code);
+        googleClient.setCredentials(tokens);
+
+        const ticket = await googleClient.verifyIdToken({
+            idToken: tokens.id_token,
+            audience: process.env.GOOGLE_CLIENT_ID
+        });
+
+        const payload = ticket.getPayload();
+        const { email, name, sub: googleId, email_verified } = payload;
+
+        let user = await Users.findOne({ email: email.toLowerCase() });
+
+        if (!user) {
+            user = await Users.create({
+                email: email.toLowerCase(),
+                name,
+                googleId,
+                emailVerified: true,
+                authProvider: 'google'
+            });
+
+        } else {
+            if (!user.googleId) {
+                await Users.findByIdAndUpdate(user._id, {
+                    googleId
+                });
+            }
+        }
+
+        const jti = uuid();
+        const accessToken = generateAccessToken(user._id, jti);
+        const refreshToken = generateRefreshToken();
+        const { tokenId, tokenSecret } = parseRefreshToken(refreshToken);
+
+        await Refresh.insertOne({
+            userId: user._id,
+            tokenId,
+            tokenHash: await argon2.hash(tokenSecret),
+            jti,
+            expires: new Date(Date.now() + ms(process.env.REFRESH_TTL)),
+            createdByIp: req.ip,
+            authProvider: 'google',
+            deviceInfo: {
+                clientType: req.clientType,
+                isNativeApp: req.clientInfo.isNativeApp,
+                deviceType: req.clientInfo.deviceType,
+                deviceModel: req.clientInfo.deviceModel,
+                deviceVendor: req.clientInfo.deviceVendor,
+                osName: req.clientInfo.osName,
+                osVersion: req.clientInfo.osVersion,
+                userAgent: req.clientInfo.userAgent
+            }
+        });
+
+        setRefreshCookie(res, refreshToken);
+        setTokenCookie(res, accessToken);
+
+        res.status(200).json({
+            accessToken,
+            user: {
+                id: user._id,
+                email: user.email,
+                name: user.name,
+                emailVerified: user.emailVerified,
+                createdAt: user.createdAt,
+                level: user.level,
+                defaultDialect: user.defaultDialect,
+            }
+        });
+    } catch (error) {
+        console.error('Google auth error:', error);
+        res.status(500).json({ message: 'Authentication failed' });
     }
 });
 
