@@ -628,9 +628,20 @@ router.get('/google/callback', limiter, async (req, res) => {
         setRefreshCookie(res, refreshToken);
         setTokenCookie(res, accessToken);
 
-        // Redirect to frontend with success
-        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
-        res.redirect(`${frontendUrl}/auth/success?token=${accessToken}`);
+        // Return tokens in response for mobile app
+        res.status(200).json({
+            accessToken,
+            refreshToken,
+            user: {
+                id: user._id,
+                email: user.email,
+                name: user.name,
+                emailVerified: user.emailVerified,
+                createdAt: user.createdAt,
+                level: user.level,
+                defaultDialect: user.defaultDialect,
+            }
+        });
     } catch (error) {
         console.error('Google auth error:', error);
         res.status(500).json({ message: 'Authentication failed' });
