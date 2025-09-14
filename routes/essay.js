@@ -242,6 +242,9 @@ router.get('/getlatest', async (req, res) => {
             }
         }
 
+        console.log("Query:", query);
+        console.log(req.query);
+
         const essays = await Essay.find(query).sort({ _id: -1 }).skip(skip).limit(limit).lean();
 
         return res.json({
