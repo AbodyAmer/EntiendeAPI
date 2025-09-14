@@ -207,10 +207,42 @@ router.get('/free/getlatest', requireVerifiedAuth, async (req, res) => {
 router.get('/getlatest', async (req, res) => {
     try {
         console.log("get latest essays")
-        const { page = 1 } = req.query;
+        const { page = 1, level } = req.query;
         const limit = 20; // Number of essays per page
         const skip = (page - 1) * limit;
-        const essays = await Essay.find({ }).sort({ _id: -1 }).skip(skip).limit(limit).lean();
+
+        // Map label to level range
+        function getLevelRange(levelLabel) {
+            if (!levelLabel) return null;
+
+            switch(levelLabel) {
+                case 'Elementary':
+                    return { $lte: 5 };
+                case 'Pre-Intermediate':
+                    return { $gte: 6, $lte: 8 };
+                case 'Intermediate':
+                    return { $gte: 9, $lte: 11 };
+                case 'Advanced':
+                    return { $gte: 12, $lte: 14 };
+                case 'Expert':
+                    return { $gte: 15, $lte: 17 };
+                case 'Mastery':
+                    return { $gte: 18, $lte: 19 };
+                default:
+                    return null;
+            }
+        }
+
+        // Build query based on level label
+        const query = {};
+        if (level) {
+            const levelRange = getLevelRange(level);
+            if (levelRange) {
+                query.level = levelRange;
+            }
+        }
+
+        const essays = await Essay.find(query).sort({ _id: -1 }).skip(skip).limit(limit).lean();
 
         return res.json({
             essays: essays.map(essay => ({
