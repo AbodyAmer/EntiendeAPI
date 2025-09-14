@@ -742,4 +742,34 @@ router.post('/apple', limiter, async (req, res) => {
     }
 });
 
+// Delete account endpoint
+router.delete('/delete-account', requireAuth, async (req, res) => {
+    try {
+        const userId = req.user; // Set by requireAuth middleware
+
+        // Remove all refresh tokens for this user
+        await Refresh.deleteMany({ userId: userId });
+
+        // Remove the user document
+        const deletedUser = await Users.findByIdAndDelete(userId);
+
+        if (!deletedUser) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Clear any cookies
+        res.clearCookie('refreshToken');
+        res.clearCookie('accessToken');
+
+        return res.json({
+            success: true,
+            message: 'Account deleted successfully'
+        });
+
+    } catch (err) {
+        console.error('Error in /auth/delete-account:', err);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 module.exports = router;
