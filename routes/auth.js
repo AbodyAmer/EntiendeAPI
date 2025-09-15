@@ -711,9 +711,9 @@ router.get('/google/callback', limiter, async (req, res) => {
 // Apple Sign-In endpoint
 router.post('/apple', limiter, async (req, res) => {
     try {
-        const { identityToken, user } = req.body;
+        const { identityToken, deviceId } = req.body;
 
-        console.log(req.body);
+        console.log('Apple login request:', req.body);
 
         if (!identityToken) {
             return res.status(400).json({ message: 'Identity token is required' });
@@ -727,44 +727,60 @@ router.post('/apple', limiter, async (req, res) => {
             return res.status(400).json({ message: 'Invalid identity token' });
         }
 
-        const { email, email_verified } = decoded;
+        const { email, email_verified, sub: appleId } = decoded;
         let name = 'Apple User'; // Default name as Apple might not provide it
 
-        // If user data is provided on first sign-in
-        if (user && user.name) {
-            name = `${user.name.firstName || ''} ${user.name.lastName || ''}`.trim();
-        }
-
-        let existingUser = await Users.findOne({
+        // 1. FIRST: Check if user with this email/appleId already exists (highest priority)
+        let user = await Users.findOne({
             $or: [
                 { email: email.toLowerCase() },
-                { appleId: decoded.sub }
+                { appleId: appleId }
             ]
         });
 
-        if (!existingUser) {
-            existingUser = await Users.create({
-                email: email.toLowerCase(),
-                name,
-                appleId: decoded.sub,
-                emailVerified: email_verified || true,
-                authProvider: 'apple'
-            });
-        } else {
-            if (!existingUser.appleId) {
-                await Users.findByIdAndUpdate(existingUser._id, {
-                    appleId: decoded.sub
-                });
+        if (user) {
+            // Existing user found - use it (ignore any guest data)
+            if (!user.appleId) {
+                user.appleId = appleId;
+                await user.save();
+            }
+            console.log('Using existing user account');
+        } else if (deviceId) {
+            // 2. SECOND: No email user found, check for guest to upgrade
+            const guestUser = await Users.findOne({ deviceId, isGuest: true });
+            if (guestUser) {
+                // Upgrade guest to Apple account
+                guestUser.email = email.toLowerCase();
+                guestUser.name = name;
+                guestUser.appleId = appleId;
+                guestUser.isGuest = false;
+                guestUser.authProvider = 'apple';
+                guestUser.emailVerified = email_verified || true;
+                await guestUser.save();
+                user = guestUser;
+                console.log('Upgraded guest account to Apple account');
             }
         }
 
+        // 3. THIRD: Create new user if neither found
+        if (!user) {
+            user = await Users.create({
+                email: email.toLowerCase(),
+                name,
+                appleId: appleId,
+                emailVerified: email_verified || true,
+                authProvider: 'apple'
+            });
+            console.log('Created new Apple user account');
+        }
+
         const jti = uuid();
-        const accessToken = generateAccessToken(existingUser._id, jti);
+        const accessToken = generateAccessToken(user._id, jti);
         const refreshToken = generateRefreshToken();
         const { tokenId, tokenSecret } = parseRefreshToken(refreshToken);
 
         await Refresh.insertOne({
-            userId: existingUser._id,
+            userId: user._id,
             tokenId,
             tokenHash: await argon2.hash(tokenSecret),
             jti,
@@ -790,13 +806,14 @@ router.post('/apple', limiter, async (req, res) => {
             accessToken,
             refreshToken,
             user: {
-                id: existingUser._id,
-                email: existingUser.email,
-                name: existingUser.name,
-                emailVerified: existingUser.emailVerified,
-                createdAt: existingUser.createdAt,
-                level: existingUser.level,
-                defaultDialect: existingUser.defaultDialect,
+                id: user._id,
+                email: user.email,
+                name: user.name,
+                emailVerified: user.emailVerified,
+                createdAt: user.createdAt,
+                level: user.level,
+                defaultDialect: user.defaultDialect,
+                isGuest: user.isGuest
             }
         });
     } catch (error) {
