@@ -713,6 +713,8 @@ router.post('/apple', limiter, async (req, res) => {
     try {
         const { identityToken, user } = req.body;
 
+        console.log(req.body);
+
         if (!identityToken) {
             return res.status(400).json({ message: 'Identity token is required' });
         }
