@@ -3,16 +3,27 @@ const mongoose = require('mongoose');
 const { dialects } = require('../utils/enums')
 
 const userSchema = new mongoose.Schema({
-  email: { 
-    type: String, 
-    required: true, 
-    unique: true, 
-    index: true 
+  email: {
+    type: String,
+    required: false,  // Now optional for guest users
+    unique: true,
+    sparse: true,     // Allow null values for unique index
+    index: true
   },
-  name: { 
-    type: String, 
-    required: true, 
-    trim: true 
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+    default: 'Guest'
+  },
+  deviceId: {
+    type: String,
+    sparse: true,
+    index: true
+  },
+  isGuest: {
+    type: Boolean,
+    default: false
   },
   hash: {
     // argon2 hash of the user's password
@@ -31,7 +42,8 @@ const userSchema = new mongoose.Schema({
   },
   authProvider: {
     type: String,
-    default: 'local'
+    default: 'local',
+    enum: ['local', 'google', 'apple', 'device']
   },
   emailVerified: { 
     type: Boolean, 

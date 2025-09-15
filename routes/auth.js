@@ -272,6 +272,67 @@ router.post(
     }
 );
 
+router.post('/device-login', limiter, async (req, res) => {
+    try {
+        const { deviceId } = req.body;
+        if (!deviceId) {
+            return res.status(400).json({ error: 'Device ID is required' });
+        }
+        
+        let user = await Users.findOne({ deviceId, isGuest: true });
+        if (!user) {
+            user = await Users.create({
+                deviceId,
+                isGuest: true,
+                name: 'Guest'
+            });
+        }
+
+        const jti = uuid();
+        const accessToken = generateAccessToken(user._id, jti);
+        const refreshToken = generateRefreshToken();
+        const { tokenId, tokenSecret } = parseRefreshToken(refreshToken);
+
+        await Refresh.insertOne({
+            userId: user._id,
+            tokenId,
+            tokenHash: await argon2.hash(tokenSecret),
+            jti,
+            expires: new Date(Date.now() + ms(process.env.REFRESH_TTL)),
+            createdByIp: req.ip,
+            authProvider: 'device',
+            deviceInfo: {
+                clientType: req.clientType,
+                isNativeApp: req.clientInfo.isNativeApp,
+                deviceType: req.clientInfo.deviceType,
+                deviceModel: req.clientInfo.deviceModel,
+                deviceVendor: req.clientInfo.deviceVendor,
+                osName: req.clientInfo.osName,
+                osVersion: req.clientInfo.osVersion,
+                userAgent: req.clientInfo.userAgent
+            }
+        });
+
+        return res.status(200).json({
+            accessToken,
+            refreshToken,
+            user: {
+                id: user._id,
+                email: user.email,
+                name: user.name,
+                emailVerified: user.emailVerified,
+                createdAt: user.createdAt,
+                level: user.level,
+                defaultDialect: user.defaultDialect,
+                isGuest: user.isGuest
+            }
+        });
+    } catch (err) {
+        console.error('Error in /auth/device-login:', err);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+})
+
 router.get('/me', requireAuth, async function (req, res) {
     try {
         // req.user was set by requireAuth (the user ID)
