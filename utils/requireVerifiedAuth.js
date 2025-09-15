@@ -73,12 +73,12 @@ async function requireVerifiedAuth(req, res, next) {
       });
     }
 
-    if (!session.userId?.emailVerified) {
-      return res.status(403).json({ 
-        error: 'Email verification required',
-        code: 'EMAIL_NOT_VERIFIED' 
-      });
-    }
+    // if (!session.userId?.emailVerified) {
+    //   return res.status(403).json({ 
+    //     error: 'Email verification required',
+    //     code: 'EMAIL_NOT_VERIFIED' 
+    //   });
+    // }
 
     // Update last activity asynchronously (non-blocking)
     Refresh.updateOne(
