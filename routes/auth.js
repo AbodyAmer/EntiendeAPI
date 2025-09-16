@@ -627,6 +627,8 @@ router.get('/google/callback', limiter, async (req, res) => {
     try {
         const { code } = req.query;
 
+        console.log(req.query);
+
         if (!code) {
             return res.status(400).json({ message: 'Authorization code is required' });
         }
