@@ -1,0 +1,1622 @@
+[
+  {
+    "category": "SOCIAL",
+    "situation": "Greetings & Small Talk",
+    "subSituationId": null,
+    "commonRank": 1,
+    "englishTranslation": "Peace be upon you (Hello)",
+    "dialects": [
+      {
+        "dialect": "MSA",
+        "text": "السلام _____",
+        "tashkeelText": "اَلسَّلَامُ _____",
+        "transliteration": "Assalamu _____",
+        "fulltext": "السلام عليكم",
+        "fulltashkeelText": "اَلسَّلَامُ عَلَيْكُمْ",
+        "fullTransliteration": "Assalamu alaikum",
+        "fillinWords": [
+          {
+            "word": "عليكم",
+            "tashkeelWord": "عَلَيْكُمْ",
+            "transliteration": "alaikum",
+            "isCorrect": true
+          },
+          {
+            "word": "لكم",
+            "tashkeelWord": "لَكُمْ",
+            "transliteration": "lakum",
+            "isCorrect": false
+          },
+          {
+            "word": "معكم",
+            "tashkeelWord": "مَعَكُمْ",
+            "transliteration": "ma'akum",
+            "isCorrect": false
+          },
+          {
+            "word": "إليكم",
+            "tashkeelWord": "إِلَيْكُمْ",
+            "transliteration": "ilaikum",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Egyptian",
+        "text": "السلام _____",
+        "tashkeelText": "اَلسَّلَامُ _____",
+        "transliteration": "Assalamu _____",
+        "fulltext": "السلام عليكم",
+        "fulltashkeelText": "اَلسَّلَامُ عَلَيْكُمْ",
+        "fullTransliteration": "Assalamu alaikum",
+        "fillinWords": [
+          {
+            "word": "عليكم",
+            "tashkeelWord": "عَلَيْكُمْ",
+            "transliteration": "alaikum",
+            "isCorrect": true
+          },
+          {
+            "word": "لكم",
+            "tashkeelWord": "لَكُمْ",
+            "transliteration": "lakum",
+            "isCorrect": false
+          },
+          {
+            "word": "معكم",
+            "tashkeelWord": "مَعَكُمْ",
+            "transliteration": "ma'akum",
+            "isCorrect": false
+          },
+          {
+            "word": "إليكم",
+            "tashkeelWord": "إِلَيْكُمْ",
+            "transliteration": "ilaikum",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Saudi",
+        "text": "السلام _____",
+        "tashkeelText": "اَلسَّلَامُ _____",
+        "transliteration": "Assalamu _____",
+        "fulltext": "السلام عليكم",
+        "fulltashkeelText": "اَلسَّلَامُ عَلَيْكُمْ",
+        "fullTransliteration": "Assalamu alaikum",
+        "fillinWords": [
+          {
+            "word": "عليكم",
+            "tashkeelWord": "عَلَيْكُمْ",
+            "transliteration": "alaikum",
+            "isCorrect": true
+          },
+          {
+            "word": "لكم",
+            "tashkeelWord": "لَكُمْ",
+            "transliteration": "lakum",
+            "isCorrect": false
+          },
+          {
+            "word": "معكم",
+            "tashkeelWord": "مَعَكُمْ",
+            "transliteration": "ma'akum",
+            "isCorrect": false
+          },
+          {
+            "word": "إليكم",
+            "tashkeelWord": "إِلَيْكُمْ",
+            "transliteration": "ilaikum",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      }
+    ],
+    "context": {
+      "whenToUse": "You want to greet someone",
+      "whoToSayTo": "Everyone - friends, strangers, shop owners, colleagues",
+      "speaker": "You",
+      "listener": "Anyone you're greeting",
+      "formality": "universal",
+      "emotion": "Friendly, respectful",
+      "culturalNote": "Always greet first before asking for something. Arabs consider it rude to make requests without greeting.",
+      "followUp": {
+        "englishTranslation": "And peace be upon you",
+        "dialects": [
+          {
+            "dialect": "MSA",
+            "fulltext": "وعليكم السلام",
+            "fulltashkeelText": "وَعَلَيْكُمُ السَّلَامُ",
+            "fullTransliteration": "Wa alaikum assalam",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Egyptian",
+            "fulltext": "وعليكم السلام",
+            "fulltashkeelText": "وَعَلَيْكُمُ السَّلَامُ",
+            "fullTransliteration": "Wa alaikum assalam",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Saudi",
+            "fulltext": "وعليكم السلام",
+            "fulltashkeelText": "وَعَلَيْكُمُ السَّلَامُ",
+            "fullTransliteration": "Wa alaikum assalam",
+            "audioUrl": null
+          }
+        ],
+        "speaker": "Other person",
+        "listener": "You",
+        "note": "Standard response to السلام عليكم"
+      }
+    },
+    "difficulty": "beginner",
+    "frequency": "very_high",
+    "tags": ["greeting", "essential", "universal"],
+    "isApproved": true
+  },
+  {
+    "categoryId": "SOCIAL",
+    "situationId": "Greetings & Small Talk",
+    "subSituationId": null,
+    "commonRank": 3,
+    "englishTranslation": "Good morning",
+    "dialects": [
+      {
+        "dialect": "MSA",
+        "text": "صباح _____",
+        "tashkeelText": "صَبَاحُ _____",
+        "transliteration": "Sabah _____",
+        "fulltext": "صباح الخير",
+        "fulltashkeelText": "صَبَاحُ الْخَيْرِ",
+        "fullTransliteration": "Sabah alkhair",
+        "fillinWords": [
+          {
+            "word": "الخير",
+            "tashkeelWord": "الْخَيْرِ",
+            "transliteration": "alkhair",
+            "isCorrect": true
+          },
+          {
+            "word": "النور",
+            "tashkeelWord": "النُّورِ",
+            "transliteration": "annoor",
+            "isCorrect": false
+          },
+          {
+            "word": "السلام",
+            "tashkeelWord": "السَّلَامِ",
+            "transliteration": "assalam",
+            "isCorrect": false
+          },
+          {
+            "word": "المساء",
+            "tashkeelWord": "الْمَسَاءِ",
+            "transliteration": "almasa",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Egyptian",
+        "text": "صباح _____",
+        "tashkeelText": "صَبَاحُ _____",
+        "transliteration": "Sabah _____",
+        "fulltext": "صباح الفل",
+        "fulltashkeelText": "صَبَاحُ الْفُلِّ",
+        "fullTransliteration": "Sabah elfull",
+        "fillinWords": [
+          {
+            "word": "الفل",
+            "tashkeelWord": "الْفُلِّ",
+            "transliteration": "elfull",
+            "isCorrect": true
+          },
+          {
+            "word": "النور",
+            "tashkeelWord": "النُّورِ",
+            "transliteration": "annoor",
+            "isCorrect": false
+          },
+          {
+            "word": "السلام",
+            "tashkeelWord": "السَّلَامِ",
+            "transliteration": "assalam",
+            "isCorrect": false
+          },
+          {
+            "word": "المساء",
+            "tashkeelWord": "الْمَسَاءِ",
+            "transliteration": "almasa",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Saudi",
+        "text": "صباح _____",
+        "tashkeelText": "صَبَاحُ _____",
+        "transliteration": "Sabah _____",
+        "fulltext": "صباح الخير",
+        "fulltashkeelText": "صَبَاحُ الْخَيْرِ",
+        "fullTransliteration": "Sabah alkhair",
+        "fillinWords": [
+          {
+            "word": "الخير",
+            "tashkeelWord": "الْخَيْرِ",
+            "transliteration": "alkhair",
+            "isCorrect": true
+          },
+          {
+            "word": "النور",
+            "tashkeelWord": "النُّورِ",
+            "transliteration": "annoor",
+            "isCorrect": false
+          },
+          {
+            "word": "السلام",
+            "tashkeelWord": "السَّلَامِ",
+            "transliteration": "assalam",
+            "isCorrect": false
+          },
+          {
+            "word": "المساء",
+            "tashkeelWord": "الْمَسَاءِ",
+            "transliteration": "almasa",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      }
+    ],
+    "context": {
+      "whenToUse": "You meet someone in the morning",
+      "whoToSayTo": "Friends, colleagues, shop owners",
+      "speaker": "You",
+      "listener": "Person you're greeting",
+      "formality": "semi-formal",
+      "emotion": "Friendly, warm",
+      "culturalNote": "Used after السلام عليكم or on its own in informal settings",
+      "followUp": {
+        "englishTranslation": "Morning of light (response)",
+        "dialects": [
+          {
+            "dialect": "MSA",
+            "fulltext": "صباح النور",
+            "fulltashkeelText": "صَبَاحُ النُّورِ",
+            "fullTransliteration": "Sabah annoor",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Egyptian",
+            "fulltext": "صباح النور",
+            "fulltashkeelText": "صَبَاحُ النُّورِ",
+            "fullTransliteration": "Sabah annoor",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Saudi",
+            "fulltext": "صباح النور",
+            "fulltashkeelText": "صَبَاحُ النُّورِ",
+            "fullTransliteration": "Sabah annoor",
+            "audioUrl": null
+          }
+        ],
+        "speaker": "Other person",
+        "listener": "You",
+        "note": "Common response to صباح الخير"
+      }
+    },
+    "difficulty": "beginner",
+    "frequency": "very_high",
+    "tags": ["greeting", "morning", "time-specific"],
+    "isApproved": true
+  },
+  {
+    "category": "SOCIAL",
+    "situation": "Greetings & Small Talk",
+    "subSituationId": null,
+    "commonRank": 4,
+    "englishTranslation": "Good evening",
+    "dialects": [
+      {
+        "dialect": "MSA",
+        "text": "مساء _____",
+        "tashkeelText": "مَسَاءُ _____",
+        "transliteration": "Masa _____",
+        "fulltext": "مساء الخير",
+        "fulltashkeelText": "مَسَاءُ الْخَيْرِ",
+        "fullTransliteration": "Masa alkhair",
+        "fillinWords": [
+          {
+            "word": "الخير",
+            "tashkeelWord": "الْخَيْرِ",
+            "transliteration": "alkhair",
+            "isCorrect": true
+          },
+          {
+            "word": "النور",
+            "tashkeelWord": "النُّورِ",
+            "transliteration": "annoor",
+            "isCorrect": false
+          },
+          {
+            "word": "السلام",
+            "tashkeelWord": "السَّلَامِ",
+            "transliteration": "assalam",
+            "isCorrect": false
+          },
+          {
+            "word": "الصباح",
+            "tashkeelWord": "الصَّبَاحِ",
+            "transliteration": "assabah",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Egyptian",
+        "text": "مساء _____",
+        "tashkeelText": "مَسَاءُ _____",
+        "transliteration": "Masa _____",
+        "fulltext": "مساء الفل",
+        "fulltashkeelText": "مَسَاءُ الْفُلِّ",
+        "fullTransliteration": "Masa elfull",
+        "fillinWords": [
+          {
+            "word": "الفل",
+            "tashkeelWord": "الْفُلِّ",
+            "transliteration": "elfull",
+            "isCorrect": true
+          },
+          {
+            "word": "النور",
+            "tashkeelWord": "النُّورِ",
+            "transliteration": "annoor",
+            "isCorrect": false
+          },
+          {
+            "word": "السلام",
+            "tashkeelWord": "السَّلَامِ",
+            "transliteration": "assalam",
+            "isCorrect": false
+          },
+          {
+            "word": "الصباح",
+            "tashkeelWord": "الصَّبَاحِ",
+            "transliteration": "assabah",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Saudi",
+        "text": "مساء _____",
+        "tashkeelText": "مَسَاءُ _____",
+        "transliteration": "Masa _____",
+        "fulltext": "مساء الخير",
+        "fulltashkeelText": "مَسَاءُ الْخَيْرِ",
+        "fullTransliteration": "Masa alkhair",
+        "fillinWords": [
+          {
+            "word": "الخير",
+            "tashkeelWord": "الْخَيْرِ",
+            "transliteration": "alkhair",
+            "isCorrect": true
+          },
+          {
+            "word": "النور",
+            "tashkeelWord": "النُّورِ",
+            "transliteration": "annoor",
+            "isCorrect": false
+          },
+          {
+            "word": "السلام",
+            "tashkeelWord": "السَّلَامِ",
+            "transliteration": "assalam",
+            "isCorrect": false
+          },
+          {
+            "word": "الصباح",
+            "tashkeelWord": "الصَّبَاحِ",
+            "transliteration": "assabah",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      }
+    ],
+    "context": {
+      "whenToUse": "You meet someone in the afternoon/evening",
+      "whoToSayTo": "Friends, colleagues, shop owners",
+      "speaker": "You",
+      "listener": "Person you're greeting",
+      "formality": "semi-formal",
+      "emotion": "Friendly, warm",
+      "culturalNote": "Can be used in the afternoon or evening, unlike English which distinguishes between them",
+      "followUp": {
+        "englishTranslation": "Evening of light (response)",
+        "dialects": [
+          {
+            "dialect": "MSA",
+            "fulltext": "مساء النور",
+            "fulltashkeelText": "مَسَاءُ النُّورِ",
+            "fullTransliteration": "Masa annoor",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Egyptian",
+            "fulltext": "مساء النور",
+            "fulltashkeelText": "مَسَاءُ النُّورِ",
+            "fullTransliteration": "Masa annoor",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Saudi",
+            "fulltext": "مساء النور",
+            "fulltashkeelText": "مَسَاءُ النُّورِ",
+            "fullTransliteration": "Masa annoor",
+            "audioUrl": null
+          }
+        ],
+        "speaker": "Other person",
+        "listener": "You",
+        "note": "Common response to مساء الخير"
+      }
+    },
+    "difficulty": "beginner",
+    "frequency": "very_high",
+    "tags": ["greeting", "evening", "time-specific"],
+    "isApproved": true
+  },
+  {
+    "category": "SOCIAL",
+    "situation": "Greetings & Small Talk",
+    "subSituationId": null,
+    "commonRank": 5,
+    "englishTranslation": "Hello / Welcome",
+    "dialects": [
+      {
+        "dialect": "MSA",
+        "text": "_____ بك",
+        "tashkeelText": "_____ بِكَ",
+        "transliteration": "_____ bik",
+        "fulltext": "مرحباً بك",
+        "fulltashkeelText": "مَرْحَبًا بِكَ",
+        "fullTransliteration": "Marhaban bik",
+        "fillinWords": [
+          {
+            "word": "مرحباً",
+            "tashkeelWord": "مَرْحَبًا",
+            "transliteration": "Marhaban",
+            "isCorrect": true
+          },
+          {
+            "word": "أهلاً",
+            "tashkeelWord": "أَهْلًا",
+            "transliteration": "Ahlan",
+            "isCorrect": false
+          },
+          {
+            "word": "شكراً",
+            "tashkeelWord": "شُكْرًا",
+            "transliteration": "Shukran",
+            "isCorrect": false
+          },
+          {
+            "word": "عفواً",
+            "tashkeelWord": "عَفْوًا",
+            "transliteration": "Afwan",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Egyptian",
+        "text": "أهلاً _____",
+        "tashkeelText": "أَهْلًا _____",
+        "transliteration": "Ahlan _____",
+        "fulltext": "أهلاً وسهلاً",
+        "fulltashkeelText": "أَهْلًا وَسَهْلًا",
+        "fullTransliteration": "Ahlan wa sahlan",
+        "fillinWords": [
+          {
+            "word": "وسهلاً",
+            "tashkeelWord": "وَسَهْلًا",
+            "transliteration": "wa sahlan",
+            "isCorrect": true
+          },
+          {
+            "word": "بيك",
+            "tashkeelWord": "بِيكَ",
+            "transliteration": "beek",
+            "isCorrect": false
+          },
+          {
+            "word": "عليك",
+            "tashkeelWord": "عَلَيْكَ",
+            "transliteration": "alayk",
+            "isCorrect": false
+          },
+          {
+            "word": "معاك",
+            "tashkeelWord": "مَعَاكَ",
+            "transliteration": "ma'ak",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Saudi",
+        "text": "هلا _____",
+        "tashkeelText": "هَلَا _____",
+        "transliteration": "Hala _____",
+        "fulltext": "هلا والله",
+        "fulltashkeelText": "هَلَا وَاللهِ",
+        "fullTransliteration": "Hala wallah",
+        "fillinWords": [
+          {
+            "word": "والله",
+            "tashkeelWord": "وَاللهِ",
+            "transliteration": "wallah",
+            "isCorrect": true
+          },
+          {
+            "word": "بيك",
+            "tashkeelWord": "بِيكَ",
+            "transliteration": "beek",
+            "isCorrect": false
+          },
+          {
+            "word": "عليك",
+            "tashkeelWord": "عَلَيْكَ",
+            "transliteration": "alayk",
+            "isCorrect": false
+          },
+          {
+            "word": "معاك",
+            "tashkeelWord": "مَعَاكَ",
+            "transliteration": "ma'ak",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      }
+    ],
+    "context": {
+      "whenToUse": "Someone arrives or casual greeting",
+      "whoToSayTo": "Friends, people entering your home or shop",
+      "speaker": "You",
+      "listener": "Person arriving",
+      "formality": "informal",
+      "emotion": "Friendly, welcoming",
+      "culturalNote": "More casual than السلام عليكم, often used among friends or in informal settings",
+      "followUp": {
+        "englishTranslation": "Hello (response) / Welcome to you",
+        "dialects": [
+          {
+            "dialect": "MSA",
+            "fulltext": "مرحباً",
+            "fulltashkeelText": "مَرْحَبًا",
+            "fullTransliteration": "Marhaban",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Egyptian",
+            "fulltext": "أهلاً بيك",
+            "fulltashkeelText": "أَهْلًا بِيكَ",
+            "fullTransliteration": "Ahlan beek",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Saudi",
+            "fulltext": "هلا فيك",
+            "fulltashkeelText": "هَلَا فِيكَ",
+            "fullTransliteration": "Hala feek",
+            "audioUrl": null
+          }
+        ],
+        "speaker": "Other person",
+        "listener": "You",
+        "note": "Reciprocal welcome greeting"
+      }
+    },
+    "difficulty": "beginner",
+    "frequency": "very_high",
+    "tags": ["greeting", "informal", "welcome"],
+    "isApproved": true
+  },
+  {
+    "category": "SOCIAL",
+    "situation": "Greetings & Small Talk",
+    "subSituationId": null,
+    "commonRank": 6,
+    "englishTranslation": "How are you?",
+    "dialects": [
+      {
+        "dialect": "MSA",
+        "text": "كيف _____؟",
+        "tashkeelText": "كَيْفَ _____؟",
+        "transliteration": "Kaifa _____?",
+        "fulltext": "كيف حالك؟",
+        "fulltashkeelText": "كَيْفَ حَالُكَ؟",
+        "fullTransliteration": "Kaifa haluk?",
+        "fillinWords": [
+          {
+            "word": "حالك",
+            "tashkeelWord": "حَالُكَ",
+            "transliteration": "haluk",
+            "isCorrect": true
+          },
+          {
+            "word": "اسمك",
+            "tashkeelWord": "اسْمُكَ",
+            "transliteration": "ismuk",
+            "isCorrect": false
+          },
+          {
+            "word": "عملك",
+            "tashkeelWord": "عَمَلُكَ",
+            "transliteration": "amaluk",
+            "isCorrect": false
+          },
+          {
+            "word": "بيتك",
+            "tashkeelWord": "بَيْتُكَ",
+            "transliteration": "baytuk",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Egyptian",
+        "text": "_____؟",
+        "tashkeelText": "_____؟",
+        "transliteration": "_____?",
+        "fulltext": "إزيك؟",
+        "fulltashkeelText": "إِزَّيَّكْ؟",
+        "fullTransliteration": "Ezzayak?",
+        "fillinWords": [
+          {
+            "word": "إزيك",
+            "tashkeelWord": "إِزَّيَّكْ",
+            "transliteration": "Ezzayak",
+            "isCorrect": true
+          },
+          {
+            "word": "إيه",
+            "tashkeelWord": "إِيهْ",
+            "transliteration": "Eh",
+            "isCorrect": false
+          },
+          {
+            "word": "فين",
+            "tashkeelWord": "فِينْ",
+            "transliteration": "Feen",
+            "isCorrect": false
+          },
+          {
+            "word": "ليه",
+            "tashkeelWord": "لِيهْ",
+            "transliteration": "Leh",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Saudi",
+        "text": "_____؟",
+        "tashkeelText": "_____؟",
+        "transliteration": "_____?",
+        "fulltext": "كيفك؟",
+        "fulltashkeelText": "كَيْفَكْ؟",
+        "fullTransliteration": "Kaifak?",
+        "fillinWords": [
+          {
+            "word": "كيفك",
+            "tashkeelWord": "كَيْفَكْ",
+            "transliteration": "Kaifak",
+            "isCorrect": true
+          },
+          {
+            "word": "وينك",
+            "tashkeelWord": "وِينَكْ",
+            "transliteration": "Wainak",
+            "isCorrect": false
+          },
+          {
+            "word": "اسمك",
+            "tashkeelWord": "اسْمَكْ",
+            "transliteration": "Ismak",
+            "isCorrect": false
+          },
+          {
+            "word": "شغلك",
+            "tashkeelWord": "شُغْلَكْ",
+            "transliteration": "Shughlak",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      }
+    ],
+    "context": {
+      "whenToUse": "You want to ask about someone's wellbeing",
+      "whoToSayTo": "Friends, acquaintances, colleagues",
+      "speaker": "You",
+      "listener": "Person you're talking to",
+      "formality": "universal",
+      "emotion": "Caring, friendly",
+      "culturalNote": "Always asked after initial greeting. Arabs take this question seriously and may give detailed answers.",
+      "followUp": {
+        "englishTranslation": "Fine, thank God",
+        "dialects": [
+          {
+            "dialect": "MSA",
+            "fulltext": "بخير، الحمد لله",
+            "fulltashkeelText": "بِخَيْرٍ، الْحَمْدُ لِلَّهِ",
+            "fullTransliteration": "Bikhair, alhamdu lillah",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Egyptian",
+            "fulltext": "تمام، الحمد لله",
+            "fulltashkeelText": "تَمَامْ، الْحَمْدُ لِلَّهِ",
+            "fullTransliteration": "Tamam, alhamdu lillah",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Saudi",
+            "fulltext": "بخير، الحمد لله",
+            "fulltashkeelText": "بِخَيْرٍ، الْحَمْدُ لِلَّهِ",
+            "fullTransliteration": "Bikhair, alhamdu lillah",
+            "audioUrl": null
+          }
+        ],
+        "speaker": "Other person",
+        "listener": "You",
+        "note": "Standard response - الحمد لله is essential part of the response"
+      }
+    },
+    "difficulty": "beginner",
+    "frequency": "very_high",
+    "tags": ["question", "wellbeing", "conversation"],
+    "isApproved": true
+  },
+  {
+    "category": "SOCIAL",
+    "situation": "Greetings & Small Talk",
+    "subSituationId": null,
+    "commonRank": 7,
+    "englishTranslation": "Fine, thank God",
+    "dialects": [
+      {
+        "dialect": "MSA",
+        "text": "بخير، _____ لله",
+        "tashkeelText": "بِخَيْرٍ، _____ لِلَّهِ",
+        "transliteration": "Bikhair, _____ lillah",
+        "fulltext": "بخير، الحمد لله",
+        "fulltashkeelText": "بِخَيْرٍ، الْحَمْدُ لِلَّهِ",
+        "fullTransliteration": "Bikhair, alhamdu lillah",
+        "fillinWords": [
+          {
+            "word": "الحمد",
+            "tashkeelWord": "الْحَمْدُ",
+            "transliteration": "alhamdu",
+            "isCorrect": true
+          },
+          {
+            "word": "الشكر",
+            "tashkeelWord": "الشُّكْرُ",
+            "transliteration": "ashshukr",
+            "isCorrect": false
+          },
+          {
+            "word": "الفضل",
+            "tashkeelWord": "الْفَضْلُ",
+            "transliteration": "alfadl",
+            "isCorrect": false
+          },
+          {
+            "word": "السلام",
+            "tashkeelWord": "السَّلَامُ",
+            "transliteration": "assalam",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Egyptian",
+        "text": "تمام، _____ لله",
+        "tashkeelText": "تَمَامْ، _____ لِلَّهِ",
+        "transliteration": "Tamam, _____ lillah",
+        "fulltext": "تمام، الحمد لله",
+        "fulltashkeelText": "تَمَامْ، الْحَمْدُ لِلَّهِ",
+        "fullTransliteration": "Tamam, alhamdu lillah",
+        "fillinWords": [
+          {
+            "word": "الحمد",
+            "tashkeelWord": "الْحَمْدُ",
+            "transliteration": "alhamdu",
+            "isCorrect": true
+          },
+          {
+            "word": "الشكر",
+            "tashkeelWord": "الشُّكْرُ",
+            "transliteration": "ashshukr",
+            "isCorrect": false
+          },
+          {
+            "word": "الفضل",
+            "tashkeelWord": "الْفَضْلُ",
+            "transliteration": "alfadl",
+            "isCorrect": false
+          },
+          {
+            "word": "السلام",
+            "tashkeelWord": "السَّلَامُ",
+            "transliteration": "assalam",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Saudi",
+        "text": "بخير، _____ لله",
+        "tashkeelText": "بِخَيْرٍ، _____ لِلَّهِ",
+        "transliteration": "Bikhair, _____ lillah",
+        "fulltext": "بخير، الحمد لله",
+        "fulltashkeelText": "بِخَيْرٍ، الْحَمْدُ لِلَّهِ",
+        "fullTransliteration": "Bikhair, alhamdu lillah",
+        "fillinWords": [
+          {
+            "word": "الحمد",
+            "tashkeelWord": "الْحَمْدُ",
+            "transliteration": "alhamdu",
+            "isCorrect": true
+          },
+          {
+            "word": "الشكر",
+            "tashkeelWord": "الشُّكْرُ",
+            "transliteration": "ashshukr",
+            "isCorrect": false
+          },
+          {
+            "word": "الفضل",
+            "tashkeelWord": "الْفَضْلُ",
+            "transliteration": "alfadl",
+            "isCorrect": false
+          },
+          {
+            "word": "السلام",
+            "tashkeelWord": "السَّلَامُ",
+            "transliteration": "assalam",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      }
+    ],
+    "context": {
+      "whenToUse": "Someone asked how you are",
+      "whoToSayTo": "Anyone who asks about your wellbeing",
+      "speaker": "You",
+      "listener": "Person who asked",
+      "formality": "universal",
+      "emotion": "Grateful, positive",
+      "culturalNote": "الحمد لله (thank God) is essential - even if things aren't great, this phrase shows gratitude",
+      "followUp": {
+        "englishTranslation": "And you? How are you?",
+        "dialects": [
+          {
+            "dialect": "MSA",
+            "fulltext": "وأنت؟ كيف حالك؟",
+            "fulltashkeelText": "وَأَنْتَ؟ كَيْفَ حَالُكَ؟",
+            "fullTransliteration": "Wa anta? Kaifa haluk?",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Egyptian",
+            "fulltext": "وإنت؟ إزيك؟",
+            "fulltashkeelText": "وَإِنْتَ؟ إِزَّيَّكْ؟",
+            "fullTransliteration": "We enta? Ezzayak?",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Saudi",
+            "fulltext": "وإنت؟ كيفك؟",
+            "fulltashkeelText": "وَإِنْتَ؟ كَيْفَكْ؟",
+            "fullTransliteration": "We ent? Kaifak?",
+            "audioUrl": null
+          }
+        ],
+        "speaker": "You",
+        "listener": "Other person",
+        "note": "Polite to ask back about their wellbeing"
+      }
+    },
+    "difficulty": "beginner",
+    "frequency": "very_high",
+    "tags": ["response", "wellbeing", "gratitude"],
+    "isApproved": true
+  },
+  {
+    "category": "SOCIAL",
+    "situation": "Greetings & Small Talk",
+    "subSituationId": null,
+    "commonRank": 8,
+    "englishTranslation": "What is your name?",
+    "dialects": [
+      {
+        "dialect": "MSA",
+        "text": "ما _____؟",
+        "tashkeelText": "مَا _____؟",
+        "transliteration": "Ma _____?",
+        "fulltext": "ما اسمك؟",
+        "fulltashkeelText": "مَا اسْمُكَ؟",
+        "fullTransliteration": "Ma ismuk?",
+        "fillinWords": [
+          {
+            "word": "اسمك",
+            "tashkeelWord": "اسْمُكَ",
+            "transliteration": "ismuk",
+            "isCorrect": true
+          },
+          {
+            "word": "حالك",
+            "tashkeelWord": "حَالُكَ",
+            "transliteration": "haluk",
+            "isCorrect": false
+          },
+          {
+            "word": "عملك",
+            "tashkeelWord": "عَمَلُكَ",
+            "transliteration": "amaluk",
+            "isCorrect": false
+          },
+          {
+            "word": "عمرك",
+            "tashkeelWord": "عُمْرُكَ",
+            "transliteration": "umruk",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Egyptian",
+        "text": "اسمك _____؟",
+        "tashkeelText": "اسْمَكْ _____؟",
+        "transliteration": "Ismak _____?",
+        "fulltext": "اسمك إيه؟",
+        "fulltashkeelText": "اسْمَكْ إِيهْ؟",
+        "fullTransliteration": "Ismak eh?",
+        "fillinWords": [
+          {
+            "word": "إيه",
+            "tashkeelWord": "إِيهْ",
+            "transliteration": "eh",
+            "isCorrect": true
+          },
+          {
+            "word": "مين",
+            "tashkeelWord": "مِينْ",
+            "transliteration": "meen",
+            "isCorrect": false
+          },
+          {
+            "word": "فين",
+            "tashkeelWord": "فِينْ",
+            "transliteration": "feen",
+            "isCorrect": false
+          },
+          {
+            "word": "ليه",
+            "tashkeelWord": "لِيهْ",
+            "transliteration": "leh",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Saudi",
+        "text": "وش _____؟",
+        "tashkeelText": "وِشْ _____؟",
+        "transliteration": "Wesh _____?",
+        "fulltext": "وش اسمك؟",
+        "fulltashkeelText": "وِشْ اسْمَكْ؟",
+        "fullTransliteration": "Wesh ismak?",
+        "fillinWords": [
+          {
+            "word": "اسمك",
+            "tashkeelWord": "اسْمَكْ",
+            "transliteration": "ismak",
+            "isCorrect": true
+          },
+          {
+            "word": "حالك",
+            "tashkeelWord": "حَالَكْ",
+            "transliteration": "halak",
+            "isCorrect": false
+          },
+          {
+            "word": "عملك",
+            "tashkeelWord": "عَمَلَكْ",
+            "transliteration": "amalak",
+            "isCorrect": false
+          },
+          {
+            "word": "بيتك",
+            "tashkeelWord": "بَيْتَكْ",
+            "transliteration": "baytak",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      }
+    ],
+    "context": {
+      "whenToUse": "You want to know someone's name",
+      "whoToSayTo": "New people you're meeting",
+      "speaker": "You",
+      "listener": "Person you just met",
+      "formality": "semi-formal",
+      "emotion": "Curious, friendly",
+      "culturalNote": "Names are very important in Arab culture. Often followed by asking about family.",
+      "followUp": {
+        "englishTranslation": "My name is...",
+        "dialects": [
+          {
+            "dialect": "MSA",
+            "fulltext": "اسمي...",
+            "fulltashkeelText": "اِسْمِي...",
+            "fullTransliteration": "Ismi...",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Egyptian",
+            "fulltext": "اسمي...",
+            "fulltashkeelText": "اِسْمِي...",
+            "fullTransliteration": "Ismi...",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Saudi",
+            "fulltext": "اسمي...",
+            "fulltashkeelText": "اِسْمِي...",
+            "fullTransliteration": "Ismi...",
+            "audioUrl": null
+          }
+        ],
+        "speaker": "Other person",
+        "listener": "You",
+        "note": "They will tell you their name"
+      }
+    },
+    "difficulty": "beginner",
+    "frequency": "very_high",
+    "tags": ["question", "introduction", "name"],
+    "isApproved": true
+  },
+  {
+    "category": "SOCIAL",
+    "situation": "Greetings & Small Talk",
+    "subSituationId": null,
+    "commonRank": 9,
+    "englishTranslation": "My name is...",
+    "dialects": [
+      {
+        "dialect": "MSA",
+        "text": "_____ أحمد",
+        "tashkeelText": "_____ أَحْمَد",
+        "transliteration": "_____ Ahmad",
+        "fulltext": "اسمي أحمد",
+        "fulltashkeelText": "اِسْمِي أَحْمَد",
+        "fullTransliteration": "Ismi Ahmad",
+        "fillinWords": [
+          {
+            "word": "اسمي",
+            "tashkeelWord": "اِسْمِي",
+            "transliteration": "Ismi",
+            "isCorrect": true
+          },
+          {
+            "word": "حالي",
+            "tashkeelWord": "حَالِي",
+            "transliteration": "Hali",
+            "isCorrect": false
+          },
+          {
+            "word": "عملي",
+            "tashkeelWord": "عَمَلِي",
+            "transliteration": "Amali",
+            "isCorrect": false
+          },
+          {
+            "word": "بيتي",
+            "tashkeelWord": "بَيْتِي",
+            "transliteration": "Bayti",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Egyptian",
+        "text": "_____ أحمد",
+        "tashkeelText": "_____ أَحْمَد",
+        "transliteration": "_____ Ahmad",
+        "fulltext": "اسمي أحمد",
+        "fulltashkeelText": "اِسْمِي أَحْمَد",
+        "fullTransliteration": "Ismi Ahmad",
+        "fillinWords": [
+          {
+            "word": "اسمي",
+            "tashkeelWord": "اِسْمِي",
+            "transliteration": "Ismi",
+            "isCorrect": true
+          },
+          {
+            "word": "حالي",
+            "tashkeelWord": "حَالِي",
+            "transliteration": "Hali",
+            "isCorrect": false
+          },
+          {
+            "word": "شغلي",
+            "tashkeelWord": "شُغْلِي",
+            "transliteration": "Shughli",
+            "isCorrect": false
+          },
+          {
+            "word": "بيتي",
+            "tashkeelWord": "بَيْتِي",
+            "transliteration": "Bayti",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Saudi",
+        "text": "_____ أحمد",
+        "tashkeelText": "_____ أَحْمَد",
+        "transliteration": "_____ Ahmad",
+        "fulltext": "اسمي أحمد",
+        "fulltashkeelText": "اِسْمِي أَحْمَد",
+        "fullTransliteration": "Ismi Ahmad",
+        "fillinWords": [
+          {
+            "word": "اسمي",
+            "tashkeelWord": "اِسْمِي",
+            "transliteration": "Ismi",
+            "isCorrect": true
+          },
+          {
+            "word": "حالي",
+            "tashkeelWord": "حَالِي",
+            "transliteration": "Hali",
+            "isCorrect": false
+          },
+          {
+            "word": "شغلي",
+            "tashkeelWord": "شُغْلِي",
+            "transliteration": "Shughli",
+            "isCorrect": false
+          },
+          {
+            "word": "بيتي",
+            "tashkeelWord": "بَيْتِي",
+            "transliteration": "Bayti",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      }
+    ],
+    "context": {
+      "whenToUse": "You want to introduce yourself",
+      "whoToSayTo": "Anyone you're meeting",
+      "speaker": "You",
+      "listener": "Person asking your name",
+      "formality": "universal",
+      "emotion": "Friendly, introducing",
+      "culturalNote": "Replace أحمد with your actual name. Arabs may also ask about your family name.",
+      "followUp": {
+        "englishTranslation": "Pleased to meet you",
+        "dialects": [
+          {
+            "dialect": "MSA",
+            "fulltext": "تشرفنا",
+            "fulltashkeelText": "تَشَرَّفْنَا",
+            "fullTransliteration": "Tasharrafna",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Egyptian",
+            "fulltext": "اتشرفنا",
+            "fulltashkeelText": "اِتْشَرَّفْنَا",
+            "fullTransliteration": "Etsharrafna",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Saudi",
+            "fulltext": "تشرفنا",
+            "fulltashkeelText": "تَشَرَّفْنَا",
+            "fullTransliteration": "Tasharrafna",
+            "audioUrl": null
+          }
+        ],
+        "speaker": "Other person",
+        "listener": "You",
+        "note": "Common polite response after introduction"
+      }
+    },
+    "difficulty": "beginner",
+    "frequency": "very_high",
+    "tags": ["introduction", "name", "personal"],
+    "isApproved": true
+  },
+  {
+    "category": "SOCIAL",
+    "situation": "Greetings & Small Talk",
+    "subSituationId": null,
+    "commonRank": 10,
+    "englishTranslation": "Pleased to meet you",
+    "dialects": [
+      {
+        "dialect": "MSA",
+        "text": "_____",
+        "tashkeelText": "_____",
+        "transliteration": "_____",
+        "fulltext": "تشرفنا",
+        "fulltashkeelText": "تَشَرَّفْنَا",
+        "fullTransliteration": "Tasharrafna",
+        "fillinWords": [
+          {
+            "word": "تشرفنا",
+            "tashkeelWord": "تَشَرَّفْنَا",
+            "transliteration": "Tasharrafna",
+            "isCorrect": true
+          },
+          {
+            "word": "شكراً",
+            "tashkeelWord": "شُكْرًا",
+            "transliteration": "Shukran",
+            "isCorrect": false
+          },
+          {
+            "word": "فرصة",
+            "tashkeelWord": "فُرْصَة",
+            "transliteration": "Fursa",
+            "isCorrect": false
+          },
+          {
+            "word": "عفواً",
+            "tashkeelWord": "عَفْوًا",
+            "transliteration": "Afwan",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Egyptian",
+        "text": "_____",
+        "tashkeelText": "_____",
+        "transliteration": "_____",
+        "fulltext": "اتشرفنا",
+        "fulltashkeelText": "اِتْشَرَّفْنَا",
+        "fullTransliteration": "Etsharrafna",
+        "fillinWords": [
+          {
+            "word": "اتشرفنا",
+            "tashkeelWord": "اِتْشَرَّفْنَا",
+            "transliteration": "Etsharrafna",
+            "isCorrect": true
+          },
+          {
+            "word": "شكراً",
+            "tashkeelWord": "شُكْرًا",
+            "transliteration": "Shukran",
+            "isCorrect": false
+          },
+          {
+            "word": "فرصة",
+            "tashkeelWord": "فُرْصَة",
+            "transliteration": "Fursa",
+            "isCorrect": false
+          },
+          {
+            "word": "متشكر",
+            "tashkeelWord": "مُتَشَكِّرْ",
+            "transliteration": "Mutashakkir",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Saudi",
+        "text": "_____",
+        "tashkeelText": "_____",
+        "transliteration": "_____",
+        "fulltext": "تشرفنا",
+        "fulltashkeelText": "تَشَرَّفْنَا",
+        "fullTransliteration": "Tasharrafna",
+        "fillinWords": [
+          {
+            "word": "تشرفنا",
+            "tashkeelWord": "تَشَرَّفْنَا",
+            "transliteration": "Tasharrafna",
+            "isCorrect": true
+          },
+          {
+            "word": "شكراً",
+            "tashkeelWord": "شُكْرًا",
+            "transliteration": "Shukran",
+            "isCorrect": false
+          },
+          {
+            "word": "فرصة",
+            "tashkeelWord": "فُرْصَة",
+            "transliteration": "Fursa",
+            "isCorrect": false
+          },
+          {
+            "word": "عفواً",
+            "tashkeelWord": "عَفْوًا",
+            "transliteration": "Afwan",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      }
+    ],
+    "context": {
+      "whenToUse": "You just met someone new",
+      "whoToSayTo": "Person who introduced themselves",
+      "speaker": "You",
+      "listener": "Person you just met",
+      "formality": "formal",
+      "emotion": "Polite, respectful",
+      "culturalNote": "Literally means 'we are honored'. Shows respect and formality in introductions.",
+      "followUp": {
+        "englishTranslation": "The honor is ours / Pleased to meet you too",
+        "dialects": [
+          {
+            "dialect": "MSA",
+            "fulltext": "الشرف لنا",
+            "fulltashkeelText": "الشَّرَفُ لَنَا",
+            "fullTransliteration": "Ashsharaf lana",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Egyptian",
+            "fulltext": "الشرف لينا",
+            "fulltashkeelText": "الشَّرَفُ لِينَا",
+            "fullTransliteration": "Ashsharaf leena",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Saudi",
+            "fulltext": "الشرف لنا",
+            "fulltashkeelText": "الشَّرَفُ لَنَا",
+            "fullTransliteration": "Ashsharaf lana",
+            "audioUrl": null
+          }
+        ],
+        "speaker": "Other person",
+        "listener": "You",
+        "note": "Reciprocal polite response"
+      }
+    },
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["introduction", "polite", "formal"],
+    "isApproved": true
+  },
+  {
+    "category": "SOCIAL",
+    "situation": "Greetings & Small Talk",
+    "subSituationId": null,
+    "commonRank": 20,
+    "englishTranslation": "Goodbye",
+    "dialects": [
+      {
+        "dialect": "MSA",
+        "text": "مع _____",
+        "tashkeelText": "مَعَ _____",
+        "transliteration": "Ma'a _____",
+        "fulltext": "مع السلامة",
+        "fulltashkeelText": "مَعَ السَّلَامَةِ",
+        "fullTransliteration": "Ma'a assalama",
+        "fillinWords": [
+          {
+            "word": "السلامة",
+            "tashkeelWord": "السَّلَامَةِ",
+            "transliteration": "assalama",
+            "isCorrect": true
+          },
+          {
+            "word": "الخير",
+            "tashkeelWord": "الْخَيْرِ",
+            "transliteration": "alkhair",
+            "isCorrect": false
+          },
+          {
+            "word": "النور",
+            "tashkeelWord": "النُّورِ",
+            "transliteration": "annoor",
+            "isCorrect": false
+          },
+          {
+            "word": "الحمد",
+            "tashkeelWord": "الْحَمْدِ",
+            "transliteration": "alhamd",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Egyptian",
+        "text": "مع _____",
+        "tashkeelText": "مَعَ _____",
+        "transliteration": "Ma'a _____",
+        "fulltext": "مع السلامة",
+        "fulltashkeelText": "مَعَ السَّلَامَةِ",
+        "fullTransliteration": "Ma'a assalama",
+        "fillinWords": [
+          {
+            "word": "السلامة",
+            "tashkeelWord": "السَّلَامَةِ",
+            "transliteration": "assalama",
+            "isCorrect": true
+          },
+          {
+            "word": "الخير",
+            "tashkeelWord": "الْخَيْرِ",
+            "transliteration": "alkhair",
+            "isCorrect": false
+          },
+          {
+            "word": "النور",
+            "tashkeelWord": "النُّورِ",
+            "transliteration": "annoor",
+            "isCorrect": false
+          },
+          {
+            "word": "الحمد",
+            "tashkeelWord": "الْحَمْدِ",
+            "transliteration": "alhamd",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      },
+      {
+        "dialect": "Saudi",
+        "text": "مع _____",
+        "tashkeelText": "مَعَ _____",
+        "transliteration": "Ma'a _____",
+        "fulltext": "مع السلامة",
+        "fulltashkeelText": "مَعَ السَّلَامَةِ",
+        "fullTransliteration": "Ma'a assalama",
+        "fillinWords": [
+          {
+            "word": "السلامة",
+            "tashkeelWord": "السَّلَامَةِ",
+            "transliteration": "assalama",
+            "isCorrect": true
+          },
+          {
+            "word": "الخير",
+            "tashkeelWord": "الْخَيْرِ",
+            "transliteration": "alkhair",
+            "isCorrect": false
+          },
+          {
+            "word": "النور",
+            "tashkeelWord": "النُّورِ",
+            "transliteration": "annoor",
+            "isCorrect": false
+          },
+          {
+            "word": "الحمد",
+            "tashkeelWord": "الْحَمْدِ",
+            "transliteration": "alhamd",
+            "isCorrect": false
+          }
+        ],
+        "audioUrl": null,
+        "audioSlowUrl": null
+      }
+    ],
+    "context": {
+      "whenToUse": "You want to say goodbye",
+      "whoToSayTo": "Anyone you're leaving",
+      "speaker": "You",
+      "listener": "Person you're leaving",
+      "formality": "universal",
+      "emotion": "Friendly, polite",
+      "culturalNote": "Literally means 'with safety/peace'. Shows you wish them well.",
+      "followUp": {
+        "englishTranslation": "God keep you safe / Goodbye",
+        "dialects": [
+          {
+            "dialect": "MSA",
+            "fulltext": "الله يسلمك",
+            "fulltashkeelText": "اللهُ يُسَلِّمُكَ",
+            "fullTransliteration": "Allah yusallimuk",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Egyptian",
+            "fulltext": "سلام",
+            "fulltashkeelText": "سَلَامْ",
+            "fullTransliteration": "Salam",
+            "audioUrl": null
+          },
+          {
+            "dialect": "Saudi",
+            "fulltext": "الله معاك",
+            "fulltashkeelText": "اللهُ مَعَاكْ",
+            "fullTransliteration": "Allah ma'ak",
+            "audioUrl": null
+          }
+        ],
+        "speaker": "Other person",
+        "listener": "You",
+        "note": "Common response wishing you safety"
+      }
+    },
+    "difficulty": "beginner",
+    "frequency": "very_high",
+    "tags": ["farewell", "goodbye", "parting"],
+    "isApproved": true
+  }
+]

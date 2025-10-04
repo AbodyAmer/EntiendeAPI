@@ -4,6 +4,8 @@ const essay = require('./essay')
 const userFeedback = require('./userFeedback')
 const oneSentence = require('./oneSentence')
 const fillin = require('./fillin')
+const phrases = require('./phrases')
+const game = require('./game')
 const express = require('express')
 const router = express.Router()
 
@@ -13,5 +15,7 @@ router.use('/essay', essay)
 router.use('/one-sentence', oneSentence)
 router.use('/user-feedback', userFeedback)
 router.use('/fillin', fillin)
+router.use('/phrases', phrases)
+router.use('/game', game)
 
 module.exports = router
