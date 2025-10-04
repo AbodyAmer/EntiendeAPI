@@ -21,7 +21,7 @@ const router = express.Router();
  * - limit: Number of unique phrases to return (default: 10, max: 50)
  * - excludeSeen: Exclude recently seen phrases (default: true)
  */
-router.get('/exercises', async (req, res) => {
+router.get('/exercises', requireVerifiedAuth, async (req, res) => {
     try {
         const userId = req.user;
         const {
@@ -31,7 +31,7 @@ router.get('/exercises', async (req, res) => {
             situationId,
             commonRankStart,
             commonRankEnd,
-            limit = 10,
+            limit = 5,
             excludeSeen = 'true'
         } = req.query;
 
