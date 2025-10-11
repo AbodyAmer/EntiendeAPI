@@ -35,13 +35,21 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
             excludeSeen = 'true'
         } = req.query;
 
-        // Build filter - SIMPLE!
+        // Build filter - exercises are now nested by dialect
         const filter = {
             isActive: true,
             isApproved: true,
-            'exercises.0': { $exists: true }, // Only phrases with exercises
-            'exercises.type': type // Filter by exercise type
+            exercises: { $exists: true, $ne: null } // Only phrases with exercises
         };
+
+        // Filter by exercise type within any dialect array
+        if (type) {
+            filter.$or = [
+                { 'exercises.saudi.type': type },
+                { 'exercises.egyptian.type': type },
+                { 'exercises.msa.type': type }
+            ];
+        }
 
         if (difficulty) {
             filter.difficulty = difficulty;
@@ -96,6 +104,7 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
                     commonRank: 1,
                     context: 1,
                     variations: 1,
+                    gameContext: 1, // ✅ GAME CONTEXT AT PHRASE LEVEL
                     exercises: 1,
                     followUp: 1, // ✅ FOLLOW-UPS INCLUDED!
                     difficulty: 1,
@@ -159,8 +168,22 @@ router.post('/submit', requireVerifiedAuth, async (req, res) => {
             });
         }
 
-        // Find the specific exercise
-        const exercise = phrase.exercises.id(exerciseId);
+        // Find the specific exercise - exercises are now nested by dialect
+        let exercise = null;
+        let exerciseDialect = dialect;
+
+        // Search through dialect arrays to find the exercise by ID
+        const dialects = ['saudi', 'egyptian', 'msa'];
+        for (const d of dialects) {
+            if (phrase.exercises && phrase.exercises[d]) {
+                exercise = phrase.exercises[d].find(ex => ex._id.toString() === exerciseId);
+                if (exercise) {
+                    exerciseDialect = d;
+                    break;
+                }
+            }
+        }
+
         if (!exercise) {
             return res.status(404).json({
                 success: false,
@@ -189,7 +212,7 @@ router.post('/submit', requireVerifiedAuth, async (req, res) => {
         // Record the attempt
         progress.recordAttempt({
             exerciseId,
-            dialect: dialect || exercise.dialect,
+            dialect: dialect || exerciseDialect,
             difficulty: difficulty || exercise.difficulty,
             userAnswer,
             isCorrect,
@@ -222,7 +245,8 @@ router.post('/submit', requireVerifiedAuth, async (req, res) => {
                 isCorrect,
                 correctAnswer: correctAnswers,
                 userAnswer,
-                explanation: exercise.gameContext.hint,
+                explanation: phrase.gameContext?.hint || null, // gameContext is now at phrase level
+                scenario: phrase.gameContext?.scenario || null,
                 followUp: isCorrect ? phrase.followUp : null, // Include follow-up if correct
                 progress: {
                     successRate: progress.stats.successRate,

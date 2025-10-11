@@ -5,18 +5,8 @@ const mongoose = require('mongoose');
  * This replaces the 3-collection architecture (Phrases, PhraseVariations, BlankPhrases)
  */
 
-// Embedded schema for dialect variations
-const variationSchema = new mongoose.Schema({
-    dialect: {
-        type: String,
-        required: true,
-        enum: ['msa', 'egyptian', 'saudi']
-    },
-    gender: {
-        type: String,
-        enum: ['male', 'female', 'neutral'],
-        default: null
-    },
+// Embedded schema for individual variation (text + audio for one dialect-gender combo)
+const variationTextSchema = new mongoose.Schema({
     text: {
         type: String,
         required: true
@@ -35,28 +25,85 @@ const variationSchema = new mongoose.Schema({
     }
 }, { _id: false });
 
-// Embedded schema for exercises (supports multiple game types)
-const exerciseSchema = new mongoose.Schema({
+// Schema for gender-based variations within a dialect
+const dialectGenderSchema = new mongoose.Schema({
+    male: {
+        type: variationTextSchema,
+        default: null
+    },
+    female: {
+        type: variationTextSchema,
+        default: null
+    },
+    neutral: {
+        type: variationTextSchema,
+        default: null
+    }
+}, { _id: false });
+
+// Main variations structure: nested by dialect then gender
+const variationsSchema = new mongoose.Schema({
+    msa: {
+        type: dialectGenderSchema,
+        default: null
+    },
+    egyptian: {
+        type: dialectGenderSchema,
+        default: null
+    },
+    saudi: {
+        type: dialectGenderSchema,
+        default: null
+    }
+}, { _id: false });
+
+// Schema for game context (shared across all exercises for this phrase)
+const gameContextSchema = new mongoose.Schema({
+    scenario: {
+        type: String,
+        required: true
+    },
+    hint: {
+        type: String
+    },
+    // Instructions by exercise type (avoids duplication)
+    instructions: {
+        type: Map,
+        of: String,
+        default: () => new Map()
+    }
+}, { _id: false });
+
+// Schema for a single exercise variant
+const exerciseVariantSchema = new mongoose.Schema({
     type: {
         type: String,
         required: true,
         enum: ['fill-in-blank', 'reorder', 'multiple-choice', 'matching', 'typing'],
         default: 'fill-in-blank'
     },
-    dialect: {
-        type: String,
-        required: true,
-        enum: ['msa', 'egyptian', 'saudi']
-    },
     gender: {
         type: String,
         enum: ['male', 'female', 'neutral'],
-        default: null
+        required: true
     },
     difficulty: {
         type: String,
         enum: ['beginner', 'intermediate', 'advanced'],
         required: true
+    },
+    // The display sentence/phrase with blank placeholder (e.g., "_____ بكرة؟" or "أنت _____ بكرة؟")
+    displaySentence: {
+        type: String,
+        required: true
+    },
+    // Display sentence with tashkeel
+    displaySentenceTashkeel: {
+        type: String
+    },
+    // Transliteration of the full sentence (optional)
+    displaySentenceTransliteration: {
+        type: String
     },
     // For fill-in-blank: contains ALL options (correct + distractors)
     blankWords: [{
@@ -78,13 +125,24 @@ const exerciseSchema = new mongoose.Schema({
     // Generic data field for future exercise types
     exerciseData: {
         type: mongoose.Schema.Types.Mixed
-    },
-    gameContext: {
-        scenario: { type: String, required: true },
-        hint: { type: String },
-        instructions: { type: String }
     }
-}, { _id: true }); // Keep _id for exercise tracking
+}, { _id: true });
+
+// Exercises organized by dialect (primary query dimension), each dialect has array of variants
+const exercisesSchema = new mongoose.Schema({
+    msa: {
+        type: [exerciseVariantSchema],
+        default: []
+    },
+    egyptian: {
+        type: [exerciseVariantSchema],
+        default: []
+    },
+    saudi: {
+        type: [exerciseVariantSchema],
+        default: []
+    }
+}, { _id: false });
 
 // Embedded schema for follow-up phrases
 const followUpSchema = new mongoose.Schema({
@@ -95,7 +153,15 @@ const followUpSchema = new mongoose.Schema({
     whenHeard: {
         type: String
     },
-    variations: [variationSchema] // Follow-ups also have dialect variations
+    isSamePerson: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
+    variations: {
+        type: variationsSchema,
+        required: true
+    }
 }, { _id: false });
 
 // Embedded schema for context
@@ -159,22 +225,35 @@ const phraseV2Schema = new mongoose.Schema({
         required: true
     },
 
-    // All dialect variations embedded
+    // All dialect variations embedded (nested by dialect then gender)
     variations: {
-        type: [variationSchema],
+        type: variationsSchema,
         required: true,
         validate: {
             validator: function(v) {
-                return v.length >= 1; // At least one variation required
+                // At least one dialect must have at least one gender variation
+                const dialects = ['msa', 'egyptian', 'saudi'];
+                return dialects.some(dialect => {
+                    if (v[dialect]) {
+                        return v[dialect].male || v[dialect].female || v[dialect].neutral;
+                    }
+                    return false;
+                });
             },
-            message: 'At least one dialect variation is required'
+            message: 'At least one dialect with one gender variation is required'
         }
     },
 
-    // All exercises embedded
+    // Game context (shared across all exercises)
+    gameContext: {
+        type: gameContextSchema,
+        default: null
+    },
+
+    // All exercises embedded (nested by dialect then gender)
     exercises: {
-        type: [exerciseSchema],
-        default: []
+        type: exercisesSchema,
+        default: null
     },
 
     // Follow-up phrase (if any)
@@ -222,25 +301,69 @@ phraseV2Schema.index({ category: 1, situation: 1, difficulty: 1, isActive: 1 });
 phraseV2Schema.index({ commonRank: 1, isActive: 1 });
 phraseV2Schema.index({ tags: 1 });
 
+// Indexes for nested dialect queries (checking if dialect exists)
+phraseV2Schema.index({ 'variations.msa': 1 });
+phraseV2Schema.index({ 'variations.egyptian': 1 });
+phraseV2Schema.index({ 'variations.saudi': 1 });
+
 // Virtual to get all unique dialects available
 phraseV2Schema.virtual('availableDialects').get(function() {
-    return [...new Set(this.variations.map(v => v.dialect))];
+    const dialects = [];
+    if (this.variations.msa && (this.variations.msa.male || this.variations.msa.female || this.variations.msa.neutral)) {
+        dialects.push('msa');
+    }
+    if (this.variations.egyptian && (this.variations.egyptian.male || this.variations.egyptian.female || this.variations.egyptian.neutral)) {
+        dialects.push('egyptian');
+    }
+    if (this.variations.saudi && (this.variations.saudi.male || this.variations.saudi.female || this.variations.saudi.neutral)) {
+        dialects.push('saudi');
+    }
+    return dialects;
 });
 
-// Method to get variation by dialect
-phraseV2Schema.methods.getVariation = function(dialect, gender = null) {
-    return this.variations.find(v =>
-        v.dialect === dialect &&
-        (gender ? v.gender === gender : true)
-    );
+// Method to get variation by dialect and gender
+phraseV2Schema.methods.getVariation = function(dialect, gender = 'neutral') {
+    if (!this.variations[dialect]) {
+        return null;
+    }
+    // Try requested gender first, fallback to neutral, then any available
+    return this.variations[dialect][gender] ||
+           this.variations[dialect].neutral ||
+           this.variations[dialect].male ||
+           this.variations[dialect].female;
 };
 
-// Method to get exercise by dialect and difficulty
-phraseV2Schema.methods.getExercise = function(dialect, difficulty = null) {
-    return this.exercises.find(e =>
-        e.dialect === dialect &&
-        (difficulty ? e.difficulty === difficulty : true)
-    );
+// Method to get all gender variations for a dialect
+phraseV2Schema.methods.getDialectVariations = function(dialect) {
+    return this.variations[dialect] || null;
+};
+
+// Method to get exercises by dialect with optional filters
+phraseV2Schema.methods.getExercises = function(dialect, filters = {}) {
+    if (!this.exercises || !this.exercises[dialect]) {
+        return [];
+    }
+
+    let exercises = this.exercises[dialect];
+
+    // Apply filters
+    if (filters.gender) {
+        exercises = exercises.filter(e => e.gender === filters.gender);
+    }
+    if (filters.difficulty) {
+        exercises = exercises.filter(e => e.difficulty === filters.difficulty);
+    }
+    if (filters.type) {
+        exercises = exercises.filter(e => e.type === filters.type);
+    }
+
+    return exercises;
+};
+
+// Method to get a single exercise by dialect, gender, difficulty
+phraseV2Schema.methods.getExercise = function(dialect, gender, difficulty) {
+    const exercises = this.getExercises(dialect, { gender, difficulty });
+    return exercises.length > 0 ? exercises[0] : null;
 };
 
 module.exports = mongoose.model('Phrase', phraseV2Schema);
