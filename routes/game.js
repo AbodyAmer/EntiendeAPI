@@ -1,6 +1,6 @@
 const express = require('express');
 const { requireVerifiedAuth } = require('../utils/requireVerifiedAuth');
-const PhraseV2 = require('../models/Phrase');
+const Phrase = require('../models/Phrase');
 const UserProgress = require('../models/UserProgress');
 const Category = require('../models/Category');
 const Situation = require('../models/Situation');
@@ -91,7 +91,7 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
         const limitNum = Math.min(50, Math.max(1, parseInt(limit)));
 
         // SIMPLE QUERY - No complex aggregation!
-        const phrases = await PhraseV2.aggregate([
+        const phrases = await Phrase.aggregate([
             { $match: filter },
             { $sample: { size: limitNum } },
             // Optionally populate category and situation names,
@@ -160,7 +160,7 @@ router.post('/submit', requireVerifiedAuth, async (req, res) => {
         }
 
         // Get the phrase
-        const phrase = await PhraseV2.findById(phraseId);
+        const phrase = await Phrase.findById(phraseId);
         if (!phrase) {
             return res.status(404).json({
                 success: false,
@@ -224,7 +224,7 @@ router.post('/submit', requireVerifiedAuth, async (req, res) => {
         // Get the next phrase recommendation if this was correct
         let nextPhrase = null;
         if (isCorrect) {
-            const nextPhrases = await PhraseV2.aggregate([
+            const nextPhrases = await Phrase.aggregate([
                 {
                     $match: {
                         _id: { $ne: phraseId },
