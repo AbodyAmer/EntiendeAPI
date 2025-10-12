@@ -181,7 +181,7 @@ const contextSchema = new mongoose.Schema({
     },
     formality: {
         type: String,
-        enum: ['informal', 'semi-formal', 'formal', 'very-formal', 'universal']
+        enum: ['informal', 'semi-formal', 'formal', 'very-formal', 'universal', 'neutral']
     },
     emotion: {
         type: String
@@ -197,6 +197,9 @@ const phraseV2Schema = new mongoose.Schema({
     englishTranslation: {
         type: String,
         required: true
+    },
+    intent: {
+        type: String
     },
 
     // Organization

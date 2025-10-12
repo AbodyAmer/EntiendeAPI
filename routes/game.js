@@ -31,7 +31,7 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
             situationId,
             commonRankStart,
             commonRankEnd,
-            limit = 5,
+            limit = 10,
             excludeSeen = 'true'
         } = req.query;
 

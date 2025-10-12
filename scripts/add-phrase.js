@@ -31,6 +31,7 @@ async function addPhrase(phraseData, categoryName, situationName) {
             englishTranslation: phraseData.englishTranslation,
             category: category._id,
             situation: situation._id,
+            intent: phraseData.intent,
             context: phraseData.context,
             variations: phraseData.variations,
             commonRank: 1000000,
@@ -84,121 +85,197 @@ if (require.main === module) {
 
             // Example phrase data
             const examplePhrase =   {
-    englishTranslation: "Send me the location",
-    context: {
-      whenToUse: "Need directions/location pin. Via WhatsApp/maps.",
-      formality: "informal"
+    "englishTranslation": "Call me when you arrive",
+    "context": {
+      "whenToUse": "Planning to meet someone at your place or specific location",
+      "formality": "informal"
     },
-    variations: {
-      saudi: {
-        male: { 
-          text: "ارسل لي الموقع",
-          tashkeelText: "إرْسِل لي المَوْقِع",
-          transliteration: "irsil lii il-maw'i'"
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "كلمني لما توصل",
+          "tashkeelText": "كَلِّمْني لَمّا تْوَصَّل",
+          "transliteration": "kallemni lamma tosal"
         },
-        female: { 
-          text: "ارسلي لي الموقع",
-          tashkeelText: "إرْسِلي لي المَوْقِع",
-          transliteration: "irsilii lii il-maw'i'"
-        }
+        "female": {
+          "text": "كلميني لما توصلي",
+          "tashkeelText": "كَلِّميني لَمّا تْوَصَّلي",
+          "transliteration": "kallemini lamma tosali"
+        },
+        "neutral": null
       },
-      egyptian: {
-        male: { 
-          text: "ابعت لي الموقع",
-          tashkeelText: "ابْعَت لي المَوْقِع",
-          transliteration: "ib'at lii il-maw'i'"
+      "saudi": {
+        "male": {
+          "text": "اتصل علي لما توصل",
+          "tashkeelText": "اتَّصِل عَلَيَّ لَمّا تْوَصَّل",
+          "transliteration": "ittasil alay lamma tosal"
         },
-        female: { 
-          text: "ابعتي لي الموقع",
-          tashkeelText: "ابْعَتي لي المَوْقِع",
-          transliteration: "ib'atii lii il-maw'i'"
+        "female": {
+          "text": "اتصلي علي لما توصلين",
+          "tashkeelText": "اتَّصِلي عَلَيَّ لَمّا تْوَصَّلين",
+          "transliteration": "ittasili alay lamma tosaleen"
+        },
+        "neutral": null
+      }
+    },
+    "followUp": {
+      "englishTranslation": "Will do",
+      "isSamePerson": false,
+      "variations": {
+        "msa": null,
+        "egyptian": {
+          "male": null,
+          "female": null,
+          "neutral": {
+            "text": "حاضر",
+            "tashkeelText": "حاضِر",
+            "transliteration": "hadir"
+          }
+        },
+        "saudi": {
+          "male": null,
+          "female": null,
+          "neutral": {
+            "text": "تمام",
+            "tashkeelText": "تَمام",
+            "transliteration": "tamam"
+          }
         }
       }
     },
-    followUp: {
-      englishTranslation: "Okay, right now",
-      isSamePerson: false,
-      variations: {
-        saudi: { 
-          neutral: { 
-            text: "حاضر، الحين",
-            tashkeelText: "حاضِر، الحين",
-            transliteration: "haadır, il-heen"
-          }
+    "hasGenderVariation": true,
+    "tags": ["coordinating", "phone-calls", "meeting-up"],
+        "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "intermediate",
+          "displaySentence": "كلمني لما _____",
+          "displaySentenceTashkeel": "كَلِّمْني لَمّا _____",
+          "displaySentenceTransliteration": "kallemni lamma _____",
+          "blankWords": [
+            {
+              "word": "توصل",
+              "tashkeelWord": "تْوَصَّل",
+              "transliteration": "tosal",
+              "isCorrect": true
+            },
+            {
+              "word": "تنام",
+              "tashkeelWord": "تْنام",
+              "transliteration": "tnam",
+              "isCorrect": false
+            },
+            {
+              "word": "تاكل",
+              "tashkeelWord": "تاكُل",
+              "transliteration": "takul",
+              "isCorrect": false
+            }
+          ],
+          "reorderWords": [],
+          "matchingPairs": []
         },
-        egyptian: { 
-          neutral: { 
-            text: "حاضر، دلوقتي",
-            tashkeelText: "حاضِر، دِلْوَقْتي",
-            transliteration: "haadır, dilwa'tii"
-          }
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "intermediate",
+          "displaySentence": "كلميني لما _____",
+          "displaySentenceTashkeel": "كَلِّميني لَمّا _____",
+          "displaySentenceTransliteration": "kallemini lamma _____",
+          "blankWords": [
+            {
+              "word": "توصلي",
+              "tashkeelWord": "تْوَصَّلي",
+              "transliteration": "tosali",
+              "isCorrect": true
+            },
+            {
+              "word": "تنامي",
+              "tashkeelWord": "تْنامي",
+              "transliteration": "tnami",
+              "isCorrect": false
+            },
+            {
+              "word": "تاكلي",
+              "tashkeelWord": "تاكُلي",
+              "transliteration": "takuli",
+              "isCorrect": false
+            }
+          ],
+          "reorderWords": [],
+          "matchingPairs": []
         }
-      }
-    },
-    hasGenderVariation: true,
-    tags: ["request", "navigation", "imperative"],
-    exercises: {
-  saudi: [
-    {
-      type: 'fill-in-blank',
-      gender: 'male',
-      difficulty: 'beginner',
-      displaySentence: "_____ لي الموقع",
-      displaySentenceTashkeel: "_____ لي المَوْقِع",
-      displaySentenceTransliteration: "_____ lii il-maw'i'",
-      blankWords: [
-        { word: "ارسل", tashkeelWord: "إرْسِل", transliteration: "irsil", isCorrect: true },
-        { word: "اتصل", tashkeelWord: "إتَّصِل", transliteration: "ittasil", isCorrect: false },
-        { word: "اعطي", tashkeelWord: "أعْطي", transliteration: "a'ti", isCorrect: false }
-      ]
-    },
-    {
-      type: 'fill-in-blank',
-      gender: 'female',
-      difficulty: 'beginner',
-      displaySentence: "_____ لي الموقع",
-      displaySentenceTashkeel: "_____ لي المَوْقِع",
-      displaySentenceTransliteration: "_____ lii il-maw'i'",
-      blankWords: [
-        { word: "ارسلي", tashkeelWord: "إرْسِلي", transliteration: "irsilii", isCorrect: true },
-        { word: "اتصلي", tashkeelWord: "إتَّصِلي", transliteration: "ittasilii", isCorrect: false },
-        { word: "اعطي", tashkeelWord: "أعْطي", transliteration: "a'ti", isCorrect: false }
-      ]
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "intermediate",
+          "displaySentence": "_____ علي لما توصل",
+          "displaySentenceTashkeel": "_____ عَلَيَّ لَمّا تْوَصَّل",
+          "displaySentenceTransliteration": "_____ alay lamma tosal",
+          "blankWords": [
+            {
+              "word": "اتصل",
+              "tashkeelWord": "اتَّصِل",
+              "transliteration": "ittasil",
+              "isCorrect": true
+            },
+            {
+              "word": "ارسل",
+              "tashkeelWord": "إرْسِل",
+              "transliteration": "irsil",
+              "isCorrect": false
+            },
+            {
+              "word": "رد",
+              "tashkeelWord": "رُدّ",
+              "transliteration": "rudd",
+              "isCorrect": false
+            }
+          ],
+          "reorderWords": [],
+          "matchingPairs": []
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "intermediate",
+          "displaySentence": "_____ علي لما توصلين",
+          "displaySentenceTashkeel": "_____ عَلَيَّ لَمّا تْوَصَّلين",
+          "displaySentenceTransliteration": "_____ alay lamma tosaleen",
+          "blankWords": [
+            {
+              "word": "اتصلي",
+              "tashkeelWord": "اتَّصِلي",
+              "transliteration": "ittasili",
+              "isCorrect": true
+            },
+            {
+              "word": "ارسلي",
+              "tashkeelWord": "إرْسِلي",
+              "transliteration": "irsili",
+              "isCorrect": false
+            },
+            {
+              "word": "ردي",
+              "tashkeelWord": "رُدّي",
+              "transliteration": "ruddi",
+              "isCorrect": false
+            }
+          ],
+          "reorderWords": [],
+          "matchingPairs": []
+        }
+      ],
+      "msa": []
     }
-  ],
-  egyptian: [
-    {
-      type: 'fill-in-blank',
-      gender: 'male',
-      difficulty: 'beginner',
-      displaySentence: "_____ لي الموقع",
-      displaySentenceTashkeel: "_____ لي المَوْقِع",
-      displaySentenceTransliteration: "_____ lii il-maw'i'",
-      blankWords: [
-        { word: "ابعت", tashkeelWord: "ابْعَت", transliteration: "ib'at", isCorrect: true },
-        { word: "اتصل", tashkeelWord: "إتَّصِل", transliteration: "ittasil", isCorrect: false },
-        { word: "ادي", tashkeelWord: "إدّي", transliteration: "iddi", isCorrect: false }
-      ]
-    },
-    {
-      type: 'fill-in-blank',
-      gender: 'female',
-      difficulty: 'beginner',
-      displaySentence: "_____ لي الموقع",
-      displaySentenceTashkeel: "_____ لي المَوْقِع",
-      displaySentenceTransliteration: "_____ lii il-maw'i'",
-      blankWords: [
-        { word: "ابعتي", tashkeelWord: "ابْعَتي", transliteration: "ib'atii", isCorrect: true },
-        { word: "اتصلي", tashkeelWord: "إتَّصِلي", transliteration: "ittasilii", isCorrect: false },
-        { word: "ادي", tashkeelWord: "إدّي", transliteration: "iddi", isCorrect: false }
-      ]
-    }
-  ]
-}
   }
 
-            // Add the phrase
-            return addPhrase(examplePhrase, 'ESSENTIAL', 'transportation');
+            return addPhrase(examplePhrase, 'SOCIAL', 'making-friends');
         })
         .then(() => {
             console.log('\n✅ Script completed successfully');
