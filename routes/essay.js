@@ -179,7 +179,7 @@ router.post('/finish', limiter, requireAuth, async (req, res) => {
 })
 
 
-router.get('/free/getlatest', requireVerifiedAuth, async (req, res) => {
+router.get('/free/getlatest', async (req, res) => {
     try {
         const { page = 1 } = req.query;
         const limit = 9; // Number of essays per page
