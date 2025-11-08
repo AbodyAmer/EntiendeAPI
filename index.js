@@ -24,6 +24,13 @@ app.use(cors({
 }));
 
 app.use(clientDetector)  // Detect client type
+
+// Log all incoming requests
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`)
+  next()
+})
+
 app.use(bodyParser.json())
 app.use(cookieParser())
 
