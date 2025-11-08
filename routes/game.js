@@ -125,6 +125,7 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
             }
         ]);
 
+        console.log(phrases.length + " phrases fetched for exercises");
         res.json({
             success: true,
             data: phrases,
