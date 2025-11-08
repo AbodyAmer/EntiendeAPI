@@ -295,6 +295,11 @@ const phraseV2Schema = new mongoose.Schema({
         type: Boolean,
         default: false,
         index: true
+    },
+    showme: {
+        type: Boolean,
+        default: false,
+        index: true
     }
 
 }, { timestamps: true });

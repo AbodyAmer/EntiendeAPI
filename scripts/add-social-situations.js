@@ -6,10 +6,10 @@ const Situation = require('../models/Situation');
 const socialSituations = [
 
   {
-    name: "education",
-    displayName: "Education",
-    arabicName: "التعليم",
-    description: "Talk about school, studies, learning, and academic life",
+    name: "describe-yourself",
+    displayName: "Describe Yourself",
+    arabicName: "اوصف نفسك",
+    description: "Talk about yourself, your background, interests, and personality",
     icon: "📚",
     order: 5
   }

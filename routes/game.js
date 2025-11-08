@@ -4,6 +4,7 @@ const Phrase = require('../models/Phrase');
 const UserProgress = require('../models/UserProgress');
 const Category = require('../models/Category');
 const Situation = require('../models/Situation');
+const User = require('../models/User');
 const router = express.Router();
 
 /**
@@ -35,12 +36,21 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
             excludeSeen = 'true'
         } = req.query;
 
+        // Check if this is the marketing user
+        const user = await User.findById(userId).select('email').lean();
+        const isMarketingUser = user?.email === 'abdullah.eshaq94@gmail.com';
+
         // Build filter - exercises are now nested by dialect
         const filter = {
             isActive: true,
             isApproved: true,
             exercises: { $exists: true, $ne: null } // Only phrases with exercises
         };
+
+        // If marketing user, include showme flag filter
+        if (isMarketingUser) {
+            filter.showme = true;
+        }
 
         // Filter by exercise type within any dialect array
         if (type) {
@@ -108,7 +118,8 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
                     exercises: 1,
                     followUp: 1, // ✅ FOLLOW-UPS INCLUDED!
                     difficulty: 1,
-                    hasGenderVariation: 1
+                    hasGenderVariation: 1,
+                    showme: 1 // Include showme flag for marketing user
                 }
             }
         ]);

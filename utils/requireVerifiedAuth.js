@@ -112,8 +112,6 @@ async function refreshToken(req, res) {
     // Get refresh token from cookie or body (for mobile)
     const refreshToken = req.cookies?.rt || req.body?.refreshToken;
 
-    console.log("Using refresh token:", refreshToken)
-    
     if (!refreshToken) {
       return res.status(401).json({ 
         error: 'Refresh token required',

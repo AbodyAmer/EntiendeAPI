@@ -118,142 +118,462 @@ if (require.main === module) {
     // Example: Replace this array with your phrases
     const phrasesArray = [
   {
-    "englishTranslation": "I'm traveling for tourism",
-    "intent": "Say I'm traveling for tourism",
+    "englishTranslation": "Where is the foreigners queue?",
+    "category": "ESSENTIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 1,
     "context": {
-      "whenToUse": "When explaining purpose of travel at airport/visa",
+      "whenToUse": "When looking for the immigration line at the airport.",
       "formality": "neutral"
     },
     "variations": {
       "msa": null,
       "egyptian": {
         "male": {
-          "text": "مسافر سياحة",
-          "tashkeelText": "مُسَافِر سِيَاحَة",
-          "transliteration": "musafir siyaha"
+          "text": "فين طابور الأجانب؟",
+          "tashkeelText": "فِين طابُور الأَجانِب؟",
+          "transliteration": "feenTaboor el-aganeb?"
         },
         "female": {
-          "text": "مسافرة سياحة",
-          "tashkeelText": "مُسَافْرَة سِيَاحَة",
-          "transliteration": "musafra siyaha"
+          "text": "فين طابور الأجانب؟",
+          "tashkeelText": "فِين طابُور الأَجانِب؟",
+          "transliteration": "feen Taboor el-aganeb?"
         },
         "neutral": null
       },
       "saudi": {
         "male": {
-          "text": "مسافر سياحة",
-          "tashkeelText": "مُسَافِر سِيَاحَة",
-          "transliteration": "musafir siyaha"
+          "text": "وين طابور الأجانب؟",
+          "tashkeelText": "وِين طابُور الأَجانِب؟",
+          "transliteration": "ween Taboor el-aganeb?"
         },
         "female": {
-          "text": "مسافرة سياحة",
-          "tashkeelText": "مُسَافْرَة سِيَاحَة",
-          "transliteration": "musafra siyaha"
+          "text": "وين طابور الأجانب؟",
+          "tashkeelText": "وِين طابُور الأَجانِب؟",
+          "transliteration": "ween Taboor el-aganeb?"
         },
         "neutral": null
       }
     },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "فين _____ الأجانب؟",
+          "displaySentenceTashkeel": "فِين _____ الأَجانِب؟",
+          "displaySentenceTransliteration": "feen _____ el-aganeb?",
+          "blankWords": [
+            {
+              "word": "طابور",
+              "tashkeelWord": "طابُور",
+              "transliteration": "Taboor",
+              "isCorrect": true
+            },
+            {
+              "word": "مطار",
+              "tashkeelWord": "مَطار",
+              "transliteration": "maTaar",
+              "isCorrect": false
+            },
+            {
+              "word": "بوابة",
+              "tashkeelWord": "بَوّابة",
+              "transliteration": "bawwaaba",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "فين _____ الأجانب؟",
+          "displaySentenceTashkeel": "فِين _____ الأَجانِب؟",
+          "displaySentenceTransliteration": "feen _____ el-aganeb?",
+          "blankWords": [
+            {
+              "word": "طابور",
+              "tashkeelWord": "طابُور",
+              "transliteration": "Taboor",
+              "isCorrect": true
+            },
+            {
+              "word": "مطار",
+              "tashkeelWord": "مَطار",
+              "transliteration": "maTaar",
+              "isCorrect": false
+            },
+            {
+              "word": "بوابة",
+              "tashkeelWord": "بَوّابة",
+              "transliteration": "bawwaaba",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "وين _____ الأجانب؟",
+          "displaySentenceTashkeel": "وِين _____ الأَجانِب؟",
+          "displaySentenceTransliteration": "ween _____ el-aganeb?",
+          "blankWords": [
+            {
+              "word": "طابور",
+              "tashkeelWord": "طابُور",
+              "transliteration": "Taboor",
+              "isCorrect": true
+            },
+            {
+              "word": "مطار",
+              "tashkeelWord": "مَطار",
+              "transliteration": "maTaar",
+              "isCorrect": false
+            },
+            {
+              "word": "بوابة",
+              "tashkeelWord": "بَوّابة",
+              "transliteration": "bawwaaba",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "وين _____ الأجانب؟",
+          "displaySentenceTashkeel": "وِين _____ الأَجانِب؟",
+          "displaySentenceTransliteration": "ween _____ el-aganeb?",
+          "blankWords": [
+            {
+              "word": "طابور",
+              "tashkeelWord": "طابُور",
+              "transliteration": "Taboor",
+              "isCorrect": true
+            },
+            {
+              "word": "مطار",
+              "tashkeelWord": "مَطار",
+              "transliteration": "maTaar",
+              "isCorrect": false
+            },
+            {
+              "word": "بوابة",
+              "tashkeelWord": "بَوّابة",
+              "transliteration": "bawwaaba",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "followUp": null,
+    "hasGenderVariation": false,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["immigration", "queue", "airport", "navigation"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "What is the purpose of your visit?",
+    "category": "ESSENTIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 2,
+    "context": {
+      "whenToUse": "Immigration officer asking about your reason for visiting.",
+      "formality": "formal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "ايه سبب زيارتك؟",
+          "tashkeelText": "إِيه سَبَب زِيارَتَك؟",
+          "transliteration": "eh sabab zeyartak?"
+        },
+        "female": {
+          "text": "ايه سبب زيارتك؟",
+          "tashkeelText": "إِيه سَبَب زِيارَتِك؟",
+          "transliteration": "eh sabab zeyartik?"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "ايش سبب زيارتك؟",
+          "tashkeelText": "إِيش سَبَب زِيارَتَك؟",
+          "transliteration": "esh sabab zeyartak?"
+        },
+        "female": {
+          "text": "ايش سبب زيارتك؟",
+          "tashkeelText": "إِيش سَبَب زِيارَتِك؟",
+          "transliteration": "esh sabab zeyartik?"
+        },
+        "neutral": null
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "ايه سبب _____؟",
+          "displaySentenceTashkeel": "إِيه سَبَب _____؟",
+          "displaySentenceTransliteration": "eh sabab _____?",
+          "blankWords": [
+            {
+              "word": "زيارتك",
+              "tashkeelWord": "زِيارَتَك",
+              "transliteration": "zeyartak",
+              "isCorrect": true
+            },
+            {
+              "word": "رحلتك",
+              "tashkeelWord": "رِحْلَتَك",
+              "transliteration": "re7ltak",
+              "isCorrect": false
+            },
+            {
+              "word": "سفرك",
+              "tashkeelWord": "سَفَرَك",
+              "transliteration": "safarak",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "ايه سبب _____؟",
+          "displaySentenceTashkeel": "إِيه سَبَب _____؟",
+          "displaySentenceTransliteration": "eh sabab _____?",
+          "blankWords": [
+            {
+              "word": "زيارتك",
+              "tashkeelWord": "زِيارَتِك",
+              "transliteration": "zeyartik",
+              "isCorrect": true
+            },
+            {
+              "word": "رحلتك",
+              "tashkeelWord": "رِحْلَتِك",
+              "transliteration": "re7ltik",
+              "isCorrect": false
+            },
+            {
+              "word": "سفرك",
+              "tashkeelWord": "سَفَرِك",
+              "transliteration": "safarik",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "ايش سبب _____؟",
+          "displaySentenceTashkeel": "إِيش سَبَب _____؟",
+          "displaySentenceTransliteration": "esh sabab _____?",
+          "blankWords": [
+            {
+              "word": "زيارتك",
+              "tashkeelWord": "زِيارَتَك",
+              "transliteration": "zeyartak",
+              "isCorrect": true
+            },
+            {
+              "word": "رحلتك",
+              "tashkeelWord": "رِحْلَتَك",
+              "transliteration": "re7ltak",
+              "isCorrect": false
+            },
+            {
+              "word": "سفرك",
+              "tashkeelWord": "سَفَرَك",
+              "transliteration": "safarak",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "ايش سبب _____؟",
+          "displaySentenceTashkeel": "إِيش سَبَب _____؟",
+          "displaySentenceTransliteration": "esh sabab _____?",
+          "blankWords": [
+            {
+              "word": "زيارتك",
+              "tashkeelWord": "زِيارَتِك",
+              "transliteration": "zeyartik",
+              "isCorrect": true
+            },
+            {
+              "word": "رحلتك",
+              "tashkeelWord": "رِحْلَتِك",
+              "transliteration": "re7ltik",
+              "isCorrect": false
+            },
+            {
+              "word": "سفرك",
+              "tashkeelWord": "سَفَرِك",
+              "transliteration": "safarik",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
     "followUp": {
-      "englishTranslation": "Arrive safely",
+      "englishTranslation": "I'm here for tourism",
       "isSamePerson": false,
       "variations": {
         "msa": null,
         "egyptian": {
           "male": {
-            "text": "توصل بالسلامة",
-            "tashkeelText": "تُوصَل بِالسَّلَامَة",
-            "transliteration": "toosal bis-salama"
+            "text": "جاي سياحة",
+            "tashkeelText": "جاي سِياحة",
+            "transliteration": "gay seyaa7a"
           },
           "female": {
-            "text": "توصلي بالسلامة",
-            "tashkeelText": "تُوصَلِي بِالسَّلَامَة",
-            "transliteration": "toosali bis-salama"
+            "text": "جاية سياحة",
+            "tashkeelText": "جاية سِياحة",
+            "transliteration": "gaya seyaa7a"
           },
           "neutral": null
         },
         "saudi": {
           "male": {
-            "text": "توصل بالسلامة",
-            "tashkeelText": "تُوصَل بِالسَّلَامَة",
-            "transliteration": "toosal bis-salama"
+            "text": "جيت سياحة",
+            "tashkeelText": "جِيت سِياحة",
+            "transliteration": "jeet seyaa7a"
           },
           "female": {
-            "text": "توصلي بالسلامة",
-            "tashkeelText": "تُوصَلِي بِالسَّلَامَة",
-            "transliteration": "toosali bis-salama"
+            "text": "جيت سياحة",
+            "tashkeelText": "جِيت سِياحة",
+            "transliteration": "jeet seyaa7a"
           },
           "neutral": null
         }
       }
     },
     "hasGenderVariation": true,
-    "tags": [
-      "statement",
-      "travel",
-      "identity",
-      "logistics"
-    ],
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["immigration", "purpose", "question", "officer"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "How long are you staying?",
+    "category": "ESSENTIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 3,
+    "context": {
+      "whenToUse": "Immigration officer asking about duration of stay.",
+      "formality": "formal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "هتقعد قد ايه؟",
+          "tashkeelText": "هَتِقعُد قَدّ إِيه؟",
+          "transliteration": "hate23od add eh?"
+        },
+        "female": {
+          "text": "هتقعدي قد ايه؟",
+          "tashkeelText": "هَتِقعُدي قَدّ إِيه؟",
+          "transliteration": "hate23odi add eh?"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "كم مدة إقامتك؟",
+          "tashkeelText": "كَم مُدَّة إِقامَتَك؟",
+          "transliteration": "kam muddat e2amatak?"
+        },
+        "female": {
+          "text": "كم مدة إقامتك؟",
+          "tashkeelText": "كَم مُدَّة إِقامَتِك؟",
+          "transliteration": "kam muddat e2amatik?"
+        },
+        "neutral": null
+      }
+    },
     "exercises": {
       "egyptian": [
         {
           "type": "fill-in-blank",
           "gender": "male",
           "difficulty": "beginner",
-          "displaySentence": "مسافر _____",
-          "displaySentenceTashkeel": "مُسَافِر _____",
-          "displaySentenceTransliteration": "musafir _____",
+          "displaySentence": "هتقعد _____؟",
+          "displaySentenceTashkeel": "هَتِقعُد _____؟",
+          "displaySentenceTransliteration": "hate23od _____?",
           "blankWords": [
             {
-              "word": "سياحة",
-              "tashkeelWord": "سِيَاحَة",
-              "transliteration": "siyaha",
+              "word": "قد ايه",
+              "tashkeelWord": "قَدّ إِيه",
+              "transliteration": "add eh",
               "isCorrect": true
             },
             {
-              "word": "شغل",
-              "tashkeelWord": "شُغْل",
-              "transliteration": "shughl",
+              "word": "كام يوم",
+              "tashkeelWord": "كام يوم",
+              "transliteration": "kam yoom",
               "isCorrect": false
             },
             {
-              "word": "دراسة",
-              "tashkeelWord": "دِرَاسَة",
-              "transliteration": "dirasa",
+              "word": "لحد امتى",
+              "tashkeelWord": "لِحَدّ إِمْتَى",
+              "transliteration": "le7add emta",
               "isCorrect": false
             }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
+          ]
         },
         {
           "type": "fill-in-blank",
           "gender": "female",
           "difficulty": "beginner",
-          "displaySentence": "مسافرة _____",
-          "displaySentenceTashkeel": "مُسَافْرَة _____",
-          "displaySentenceTransliteration": "musafra _____",
+          "displaySentence": "هتقعدي _____؟",
+          "displaySentenceTashkeel": "هَتِقعُدي _____؟",
+          "displaySentenceTransliteration": "hate23odi _____?",
           "blankWords": [
             {
-              "word": "سياحة",
-              "tashkeelWord": "سِيَاحَة",
-              "transliteration": "siyaha",
+              "word": "قد ايه",
+              "tashkeelWord": "قَدّ إِيه",
+              "transliteration": "add eh",
               "isCorrect": true
             },
             {
-              "word": "شغل",
-              "tashkeelWord": "شُغْل",
-              "transliteration": "shughl",
+              "word": "كام يوم",
+              "tashkeelWord": "كام يوم",
+              "transliteration": "kam yoom",
               "isCorrect": false
             },
             {
-              "word": "دراسة",
-              "tashkeelWord": "دِرَاسَة",
-              "transliteration": "dirasa",
+              "word": "لحد امتى",
+              "tashkeelWord": "لِحَدّ إِمْتَى",
+              "transliteration": "le7add emta",
               "isCorrect": false
             }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
+          ]
         }
       ],
       "saudi": [
@@ -261,705 +581,1585 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "male",
           "difficulty": "beginner",
-          "displaySentence": "مسافر _____",
-          "displaySentenceTashkeel": "مُسَافِر _____",
-          "displaySentenceTransliteration": "musafir _____",
+          "displaySentence": "كم _____ إقامتك؟",
+          "displaySentenceTashkeel": "كَم _____ إِقامَتَك؟",
+          "displaySentenceTransliteration": "kam _____ e2amatak?",
           "blankWords": [
             {
-              "word": "سياحة",
-              "tashkeelWord": "سِيَاحَة",
-              "transliteration": "siyaha",
+              "word": "مدة",
+              "tashkeelWord": "مُدَّة",
+              "transliteration": "mudda",
               "isCorrect": true
             },
             {
-              "word": "شغل",
-              "tashkeelWord": "شُغْل",
-              "transliteration": "shughl",
+              "word": "وقت",
+              "tashkeelWord": "وَقْت",
+              "transliteration": "wa2t",
               "isCorrect": false
             },
             {
-              "word": "دراسة",
-              "tashkeelWord": "دِرَاسَة",
-              "transliteration": "dirasa",
+              "word": "تاريخ",
+              "tashkeelWord": "تارِيخ",
+              "transliteration": "tareekh",
               "isCorrect": false
             }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
+          ]
         },
         {
           "type": "fill-in-blank",
           "gender": "female",
           "difficulty": "beginner",
-          "displaySentence": "مسافرة _____",
-          "displaySentenceTashkeel": "مُسَافْرَة _____",
-          "displaySentenceTransliteration": "musafra _____",
+          "displaySentence": "كم _____ إقامتك؟",
+          "displaySentenceTashkeel": "كَم _____ إِقامَتِك؟",
+          "displaySentenceTransliteration": "kam _____ e2amatik?",
           "blankWords": [
             {
-              "word": "سياحة",
-              "tashkeelWord": "سِيَاحَة",
-              "transliteration": "siyaha",
+              "word": "مدة",
+              "tashkeelWord": "مُدَّة",
+              "transliteration": "mudda",
               "isCorrect": true
             },
             {
-              "word": "شغل",
-              "tashkeelWord": "شُغْل",
-              "transliteration": "shughl",
+              "word": "وقت",
+              "tashkeelWord": "وَقْت",
+              "transliteration": "wa2t",
               "isCorrect": false
             },
             {
-              "word": "دراسة",
-              "tashkeelWord": "دِرَاسَة",
-              "transliteration": "dirasa",
+              "word": "تاريخ",
+              "tashkeelWord": "تارِيخ",
+              "transliteration": "tareekh",
               "isCorrect": false
             }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
+          ]
         }
       ],
       "msa": []
-    }
-  },
-  {
-    "englishTranslation": "Do I need a visa?",
-    "intent": "Ask if I need a visa",
-    "context": {
-      "whenToUse": "When checking visa requirements before travel",
-      "formality": "neutral"
-    },
-    "variations": {
-      "msa": null,
-      "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "محتاج تأشيرة؟",
-          "tashkeelText": "مُحْتَاج تَأْشِيرَة؟",
-          "transliteration": "muhtag ta'shira?"
-        }
-      },
-      "saudi": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "هل احتاج تأشيرة؟",
-          "tashkeelText": "هَل أحْتَاج تَأْشِيرَة؟",
-          "transliteration": "hal ahtaj ta'shira?"
-        }
-      }
     },
     "followUp": {
-      "englishTranslation": "Yes, you need one",
+      "englishTranslation": "I'm staying for two weeks",
       "isSamePerson": false,
       "variations": {
         "msa": null,
         "egyptian": {
-          "male": null,
-          "female": null,
-          "neutral": {
-            "text": "ايوة، لازم",
-            "tashkeelText": "أَيْوَة، لَازِم",
-            "transliteration": "aywa, lazim"
-          }
+          "male": {
+            "text": "هقعد أسبوعين",
+            "tashkeelText": "هَقعُد أُسْبوعين",
+            "transliteration": "ha23od osboo3een"
+          },
+          "female": {
+            "text": "هقعد أسبوعين",
+            "tashkeelText": "هَقعُد أُسْبوعين",
+            "transliteration": "ha23od osboo3een"
+          },
+          "neutral": null
         },
         "saudi": {
-          "male": null,
-          "female": null,
-          "neutral": {
-            "text": "ايوه، لازم",
-            "tashkeelText": "أَيْوَه، لَازِم",
-            "transliteration": "aywa, lazim"
-          }
+          "male": {
+            "text": "بقعد أسبوعين",
+            "tashkeelText": "بَأقعُد أُسْبُوعَيْن",
+            "transliteration": "ba2a3od osboo3ayn"
+          },
+          "female": {
+            "text": "بقعد أسبوعين",
+            "tashkeelText": "بَأقعُد أُسْبُوعَيْن",
+            "transliteration": "ba2a3od osboo3ayn"
+          },
+          "neutral": null
         }
       }
     },
-    "hasGenderVariation": false,
-    "tags": [
-      "question",
-      "travel",
-      "logistics",
-      "request"
-    ],
+    "hasGenderVariation": true,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["immigration", "duration", "question", "officer"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "Look at the camera",
+    "category": "ESSENTIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 4,
+    "context": {
+      "whenToUse": "Officer instructing passenger during biometric check.",
+      "formality": "formal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "بص للكاميرا",
+          "tashkeelText": "بُصّ لِلكاميرا",
+          "transliteration": "boSS lel-camera"
+        },
+        "female": {
+          "text": "بصي للكاميرا",
+          "tashkeelText": "بُصّي لِلكاميرا",
+          "transliteration": "boSSi lel-camera"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "طالع الكاميرا",
+          "tashkeelText": "طالِع الكاميرا",
+          "transliteration": "Taale3 el-camera"
+        },
+        "female": {
+          "text": "طالعي الكاميرا",
+          "tashkeelText": "طالِعي الكاميرا",
+          "transliteration": "Taale3i el-camera"
+        },
+        "neutral": null
+      }
+    },
     "exercises": {
       "egyptian": [
         {
           "type": "fill-in-blank",
-          "gender": "neutral",
+          "gender": "male",
           "difficulty": "beginner",
-          "displaySentence": "محتاج _____؟",
-          "displaySentenceTashkeel": "مُحْتَاج _____؟",
-          "displaySentenceTransliteration": "muhtag _____?",
+          "displaySentence": "بص _____",
+          "displaySentenceTashkeel": "بُصّ _____",
+          "displaySentenceTransliteration": "boSS _____",
           "blankWords": [
             {
-              "word": "تأشيرة",
-              "tashkeelWord": "تَأْشِيرَة",
-              "transliteration": "ta'shira",
+              "word": "للكاميرا",
+              "tashkeelWord": "لِلكاميرا",
+              "transliteration": "lel-camera",
               "isCorrect": true
             },
             {
-              "word": "فلوس",
-              "tashkeelWord": "فُلُوس",
-              "transliteration": "fulus",
+              "word": "للشاشة",
+              "tashkeelWord": "لِلشاشة",
+              "transliteration": "lel-shasha",
               "isCorrect": false
             },
             {
-              "word": "جواز",
-              "tashkeelWord": "جَوَاز",
-              "transliteration": "gawaz",
+              "word": "فوق",
+              "tashkeelWord": "فوق",
+              "transliteration": "foo2",
               "isCorrect": false
             }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "بصي _____",
+          "displaySentenceTashkeel": "بُصّي _____",
+          "displaySentenceTransliteration": "boSSi _____",
+          "blankWords": [
+            {
+              "word": "للكاميرا",
+              "tashkeelWord": "لِلكاميرا",
+              "transliteration": "lel-camera",
+              "isCorrect": true
+            },
+            {
+              "word": "للشاشة",
+              "tashkeelWord": "لِلشاشة",
+              "transliteration": "lel-shasha",
+              "isCorrect": false
+            },
+            {
+              "word": "فوق",
+              "tashkeelWord": "فوق",
+              "transliteration": "foo2",
+              "isCorrect": false
+            }
+          ]
         }
       ],
       "saudi": [
         {
           "type": "fill-in-blank",
-          "gender": "neutral",
+          "gender": "male",
           "difficulty": "beginner",
-          "displaySentence": "هل احتاج _____؟",
-          "displaySentenceTashkeel": "هَل أحْتَاج _____؟",
-          "displaySentenceTransliteration": "hal ahtaj _____?",
+          "displaySentence": "طالع _____",
+          "displaySentenceTashkeel": "طالِع _____",
+          "displaySentenceTransliteration": "Taale3 _____",
           "blankWords": [
             {
-              "word": "تأشيرة",
-              "tashkeelWord": "تَأْشِيرَة",
-              "transliteration": "ta'shira",
+              "word": "الكاميرا",
+              "tashkeelWord": "الكاميرا",
+              "transliteration": "el-camera",
               "isCorrect": true
             },
             {
-              "word": "فلوس",
-              "tashkeelWord": "فُلُوس",
-              "transliteration": "fulus",
+              "word": "الشاشة",
+              "tashkeelWord": "الشاشة",
+              "transliteration": "el-shasha",
               "isCorrect": false
             },
             {
-              "word": "جواز",
-              "tashkeelWord": "جَوَاز",
-              "transliteration": "gawaz",
+              "word": "الجهاز",
+              "tashkeelWord": "الجِهاز",
+              "transliteration": "el-jehaaz",
               "isCorrect": false
             }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "طالعي _____",
+          "displaySentenceTashkeel": "طالِعي _____",
+          "displaySentenceTransliteration": "Taale3i _____",
+          "blankWords": [
+            {
+              "word": "الكاميرا",
+              "tashkeelWord": "الكاميرا",
+              "transliteration": "el-camera",
+              "isCorrect": true
+            },
+            {
+              "word": "الشاشة",
+              "tashkeelWord": "الشاشة",
+              "transliteration": "el-shasha",
+              "isCorrect": false
+            },
+            {
+              "word": "الجهاز",
+              "tashkeelWord": "الجِهاز",
+              "transliteration": "el-jehaaz",
+              "isCorrect": false
+            }
+          ]
         }
       ],
       "msa": []
-    }
+    },
+    "followUp": null,
+    "hasGenderVariation": true,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["immigration", "biometrics", "camera", "command"],
+    "isActive": true,
+    "isApproved": true
   },
   {
-    "englishTranslation": "How long does the visa take?",
-    "intent": "Ask how long the visa takes",
+    "englishTranslation": "Put your finger here",
+    "category": "ESSENTIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 5,
     "context": {
-      "whenToUse": "When inquiring about visa processing time",
-      "formality": "neutral"
+      "whenToUse": "Officer instructing for fingerprint scan.",
+      "formality": "formal"
     },
     "variations": {
       "msa": null,
       "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "التأشيرة تاخد قد ايه؟",
-          "tashkeelText": "التَّأْشِيرَة تَاخُد قَدْ إِيه؟",
-          "transliteration": "it-ta'shira takhud add eh?"
-        }
+        "male": {
+          "text": "حط صباعك هنا",
+          "tashkeelText": "حُطّ صُباعَك هِنا",
+          "transliteration": "7oTT Sobaa3ak hena"
+        },
+        "female": {
+          "text": "حطي صباعك هنا",
+          "tashkeelText": "حُطّي صُباعِك هِنا",
+          "transliteration": "7oTTi Sobaa3ik hena"
+        },
+        "neutral": null
       },
       "saudi": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "التأشيرة تاخذ كم يوم؟",
-          "tashkeelText": "التَّأْشِيرَة تَاخُذ كَم يَوْم؟",
-          "transliteration": "it-ta'shira takhudh kam yom?"
-        }
-      }
-    },
-    "followUp": {
-      "englishTranslation": "About a week",
-      "isSamePerson": false,
-      "variations": {
-        "msa": null,
-        "egyptian": {
-          "male": null,
-          "female": null,
-          "neutral": {
-            "text": "حوالي أسبوع",
-            "tashkeelText": "حَوَالِي أُسْبُوع",
-            "transliteration": "hawali usbu'"
-          }
+        "male": {
+          "text": "حط إصبعك هنا",
+          "tashkeelText": "حُطّ إِصْبَعَك هِنا",
+          "transliteration": "7oTT eSba3ak hena"
         },
-        "saudi": {
-          "male": null,
-          "female": null,
-          "neutral": {
-            "text": "تقريباً أسبوع",
-            "tashkeelText": "تَقْرِيبَاً أُسْبُوع",
-            "transliteration": "taqriban usbu'"
-          }
-        }
+        "female": {
+          "text": "حطي إصبعك هنا",
+          "tashkeelText": "حُطّي إِصْبَعِك هِنا",
+          "transliteration": "7oTTi eSba3ik hena"
+        },
+        "neutral": null
       }
     },
-    "hasGenderVariation": false,
-    "tags": [
-      "question",
-      "travel",
-      "time",
-      "logistics"
-    ],
     "exercises": {
       "egyptian": [
         {
           "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "intermediate",
-          "displaySentence": "التأشيرة تاخد _____ ايه؟",
-          "displaySentenceTashkeel": "التَّأْشِيرَة تَاخُد _____ إِيه؟",
-          "displaySentenceTransliteration": "it-ta'shira takhud _____ eh?",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "حط _____ هنا",
+          "displaySentenceTashkeel": "حُطّ _____ هِنا",
+          "displaySentenceTransliteration": "7oTT _____ hena",
           "blankWords": [
             {
-              "word": "قد",
-              "tashkeelWord": "قَدْ",
-              "transliteration": "add",
+              "word": "صباعك",
+              "tashkeelWord": "صُباعَك",
+              "transliteration": "Sobaa3ak",
               "isCorrect": true
             },
             {
-              "word": "ليه",
-              "tashkeelWord": "لِيه",
-              "transliteration": "leih",
+              "word": "ايدك",
+              "tashkeelWord": "إيدَك",
+              "transliteration": "eedak",
               "isCorrect": false
             },
             {
-              "word": "فين",
-              "tashkeelWord": "فِين",
-              "transliteration": "fein",
+              "word": "الباسبور",
+              "tashkeelWord": "الباسبور",
+              "transliteration": "el-passport",
               "isCorrect": false
             }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "حطي _____ هنا",
+          "displaySentenceTashkeel": "حُطّي _____ هِنا",
+          "displaySentenceTransliteration": "7oTTi _____ hena",
+          "blankWords": [
+            {
+              "word": "صباعك",
+              "tashkeelWord": "صُباعِك",
+              "transliteration": "Sobaa3ik",
+              "isCorrect": true
+            },
+            {
+              "word": "ايدك",
+              "tashkeelWord": "إيدِك",
+              "transliteration": "eedik",
+              "isCorrect": false
+            },
+            {
+              "word": "الباسبور",
+              "tashkeelWord": "الباسبور",
+              "transliteration": "el-passport",
+              "isCorrect": false
+            }
+          ]
         }
       ],
       "saudi": [
         {
           "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "intermediate",
-          "displaySentence": "التأشيرة تاخذ _____ يوم؟",
-          "displaySentenceTashkeel": "التَّأْشِيرَة تَاخُذ _____ يَوْم؟",
-          "displaySentenceTransliteration": "it-ta'shira takhudh _____ yom?",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "حط _____ هنا",
+          "displaySentenceTashkeel": "حُطّ _____ هِنا",
+          "displaySentenceTransliteration": "7oTT _____ hena",
           "blankWords": [
             {
-              "word": "كم",
-              "tashkeelWord": "كَم",
-              "transliteration": "kam",
+              "word": "إصبعك",
+              "tashkeelWord": "إِصْبَعَك",
+              "transliteration": "eSba3ak",
               "isCorrect": true
             },
             {
-              "word": "وين",
-              "tashkeelWord": "وَيْن",
-              "transliteration": "wein",
+              "word": "يدك",
+              "tashkeelWord": "يَدَك",
+              "transliteration": "yadak",
               "isCorrect": false
             },
             {
-              "word": "متى",
-              "tashkeelWord": "مَتَى",
-              "transliteration": "mata",
+              "word": "جوازك",
+              "tashkeelWord": "جَوازَك",
+              "transliteration": "jawaazak",
               "isCorrect": false
             }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "حطي _____ هنا",
+          "displaySentenceTashkeel": "حُطّي _____ هِنا",
+          "displaySentenceTransliteration": "7oTTi _____ hena",
+          "blankWords": [
+            {
+              "word": "إصبعك",
+              "tashkeelWord": "إِصْبَعِك",
+              "transliteration": "eSba3ik",
+              "isCorrect": true
+            },
+            {
+              "word": "يدك",
+              "tashkeelWord": "يَدِك",
+              "transliteration": "yadik",
+              "isCorrect": false
+            },
+            {
+              "word": "جوازك",
+              "tashkeelWord": "جَوازِك",
+              "transliteration": "jawaazik",
+              "isCorrect": false
+            }
+          ]
         }
       ],
       "msa": []
-    }
+    },
+    "followUp": null,
+    "hasGenderVariation": true,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["immigration", "biometrics", "fingerprint", "command"],
+    "isActive": true,
+    "isApproved": true
   },
   {
-    "englishTranslation": "Can I get visa on arrival?",
-    "intent": "Ask if it's visa on arrival",
+    "englishTranslation": "Go to inspection",
+    "category": "ESSENTIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 6,
     "context": {
-      "whenToUse": "When checking if you can get visa at airport",
+      "whenToUse": "Officer directing passenger to customs inspection area.",
+      "formality": "formal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "روح على التفتيش",
+          "tashkeelText": "رُوح عَلى التَّفْتِيش",
+          "transliteration": "roo7 3ala el-tafteesh"
+        },
+        "female": {
+          "text": "روحي على التفتيش",
+          "tashkeelText": "رُوحي عَلى التَّفْتِيش",
+          "transliteration": "roo7i 3ala el-tafteesh"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "روح للتفتيش",
+          "tashkeelText": "رُوح لِلتَّفْتِيش",
+          "transliteration": "roo7 lel-tafteesh"
+        },
+        "female": {
+          "text": "روحي للتفتيش",
+          "tashkeelText": "رُوحي لِلتَّفْتِيش",
+          "transliteration": "roo7i lel-tafteesh"
+        },
+        "neutral": null
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "روح _____ التفتيش",
+          "displaySentenceTashkeel": "رُوح _____ التَّفْتِيش",
+          "displaySentenceTransliteration": "roo7 _____ el-tafteesh",
+          "blankWords": [
+            {
+              "word": "على",
+              "tashkeelWord": "عَلى",
+              "transliteration": "3ala",
+              "isCorrect": true
+            },
+            {
+              "word": "من",
+              "tashkeelWord": "مِن",
+              "transliteration": "min",
+              "isCorrect": false
+            },
+            {
+              "word": "في",
+              "tashkeelWord": "في",
+              "transliteration": "fee",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "روحي _____ التفتيش",
+          "displaySentenceTashkeel": "رُوحي _____ التَّفْتِيش",
+          "displaySentenceTransliteration": "roo7i _____ el-tafteesh",
+          "blankWords": [
+            {
+              "word": "على",
+              "tashkeelWord": "عَلى",
+              "transliteration": "3ala",
+              "isCorrect": true
+            },
+            {
+              "word": "من",
+              "tashkeelWord": "مِن",
+              "transliteration": "min",
+              "isCorrect": false
+            },
+            {
+              "word": "في",
+              "tashkeelWord": "في",
+              "transliteration": "fee",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "روح _____",
+          "displaySentenceTashkeel": "رُوح _____",
+          "displaySentenceTransliteration": "roo7 _____",
+          "blankWords": [
+            {
+              "word": "للتفتيش",
+              "tashkeelWord": "لِلتَّفْتِيش",
+              "transliteration": "lel-tafteesh",
+              "isCorrect": true
+            },
+            {
+              "word": "للجمرك",
+              "tashkeelWord": "لِلجُمْرُك",
+              "transliteration": "lel-jumruk",
+              "isCorrect": false
+            },
+            {
+              "word": "للبوابة",
+              "tashkeelWord": "لِلبَوّابة",
+              "transliteration": "lel-bawwaaba",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "روحي _____",
+          "displaySentenceTashkeel": "رُوحي _____",
+          "displaySentenceTransliteration": "roo7i _____",
+          "blankWords": [
+            {
+              "word": "للتفتيش",
+              "tashkeelWord": "لِلتَّفْتِيش",
+              "transliteration": "lel-tafteesh",
+              "isCorrect": true
+            },
+            {
+              "word": "للجمرك",
+              "tashkeelWord": "لِلجُمْرُك",
+              "transliteration": "lel-jumruk",
+              "isCorrect": false
+            },
+            {
+              "word": "للبوابة",
+              "tashkeelWord": "لِلبَوّابة",
+              "transliteration": "lel-bawwaaba",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "followUp": null,
+    "hasGenderVariation": true,
+    "difficulty": "beginner",
+    "frequency": "medium",
+    "tags": ["immigration", "inspection", "customs", "command"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "Random inspection",
+    "category": "ESSENTIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 7,
+    "context": {
+      "whenToUse": "Officer announcing selection for random bag check.",
+      "formality": "formal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "تفتيش عشوائي",
+          "tashkeelText": "تَفْتِيش عَشْوائِي",
+          "transliteration": "tafteesh 3ashwa2i"
+        },
+        "female": {
+          "text": "تفتيش عشوائي",
+          "tashkeelText": "تَفْتِيش عَشْوائِي",
+          "transliteration": "tafteesh 3ashwa2i"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "تفتيش عشوائي",
+          "tashkeelText": "تَفْتِيش عَشْوائِي",
+          "transliteration": "tafteesh 3ashwa2i"
+        },
+        "female": {
+          "text": "تفتيش عشوائي",
+          "tashkeelText": "تَفْتِيش عَشْوائِي",
+          "transliteration": "tafteesh 3ashwa2i"
+        },
+        "neutral": null
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "_____ عشوائي",
+          "displaySentenceTashkeel": "_____ عَشْوائِي",
+          "displaySentenceTransliteration": "_____ 3ashwa2i",
+          "blankWords": [
+            {
+              "word": "تفتيش",
+              "tashkeelWord": "تَفْتِيش",
+              "transliteration": "tafteesh",
+              "isCorrect": true
+            },
+            {
+              "word": "فحص",
+              "tashkeelWord": "فَحْص",
+              "transliteration": "fa7S",
+              "isCorrect": false
+            },
+            {
+              "word": "جمرك",
+              "tashkeelWord": "جُمْرُك",
+              "transliteration": "jumruk",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "_____ عشوائي",
+          "displaySentenceTashkeel": "_____ عَشْوائِي",
+          "displaySentenceTransliteration": "_____ 3ashwa2i",
+          "blankWords": [
+            {
+              "word": "تفتيش",
+              "tashkeelWord": "تَفْتِيش",
+              "transliteration": "tafteesh",
+              "isCorrect": true
+            },
+            {
+              "word": "فحص",
+              "tashkeelWord": "فَحْص",
+              "transliteration": "fa7S",
+              "isCorrect": false
+            },
+            {
+              "word": "جمرك",
+              "tashkeelWord": "جُمْرُك",
+              "transliteration": "jumruk",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "_____ عشوائي",
+          "displaySentenceTashkeel": "_____ عَشْوائِي",
+          "displaySentenceTransliteration": "_____ 3ashwa2i",
+          "blankWords": [
+            {
+              "word": "تفتيش",
+              "tashkeelWord": "تَفْتِيش",
+              "transliteration": "tafteesh",
+              "isCorrect": true
+            },
+            {
+              "word": "فحص",
+              "tashkeelWord": "فَحْص",
+              "transliteration": "fa7S",
+              "isCorrect": false
+            },
+            {
+              "word": "جمرك",
+              "tashkeelWord": "جُمْرُك",
+              "transliteration": "jumruk",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "_____ عشوائي",
+          "displaySentenceTashkeel": "_____ عَشْوائِي",
+          "displaySentenceTransliteration": "_____ 3ashwa2i",
+          "blankWords": [
+            {
+              "word": "تفتيش",
+              "tashkeelWord": "تَفْتِيش",
+              "transliteration": "tafteesh",
+              "isCorrect": true
+            },
+            {
+              "word": "فحص",
+              "tashkeelWord": "فَحْص",
+              "transliteration": "fa7S",
+              "isCorrect": false
+            },
+            {
+              "word": "جمرك",
+              "tashkeelWord": "جُمْرُك",
+              "transliteration": "jumruk",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "followUp": null,
+    "hasGenderVariation": false,
+    "difficulty": "beginner",
+    "frequency": "medium",
+    "tags": ["inspection", "customs", "random", "announcement"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "Open your bag",
+    "category": "ESSENTIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 8,
+    "context": {
+      "whenToUse": "Inspection officer requesting to check luggage.",
+      "formality": "formal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "افتح شنطتك",
+          "tashkeelText": "اِفْتَح شَنْطِتَك",
+          "transliteration": "efta7 shanTitak"
+        },
+        "female": {
+          "text": "افتحي شنطتك",
+          "tashkeelText": "اِفْتَحِي شَنْطِتِك",
+          "transliteration": "efta7i shanTitik"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "افتح شنطتك",
+          "tashkeelText": "اِفْتَح شَنْطَتَك",
+          "transliteration": "efta7 shanTatak"
+        },
+        "female": {
+          "text": "افتحي شنطتك",
+          "tashkeelText": "اِفْتَحِي شَنْطَتِك",
+          "transliteration": "efta7i shanTatik"
+        },
+        "neutral": null
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "افتح _____",
+          "displaySentenceTashkeel": "اِفْتَح _____",
+          "displaySentenceTransliteration": "efta7 _____",
+          "blankWords": [
+            {
+              "word": "شنطتك",
+              "tashkeelWord": "شَنْطِتَك",
+              "transliteration": "shanTitak",
+              "isCorrect": true
+            },
+            {
+              "word": "الباسبور بتاعك",
+              "tashkeelWord": "الباسبور بِتاعَك",
+              "transliteration": "el-passport beta3ak",
+              "isCorrect": false
+            },
+            {
+              "word": "الشنط الكبيرة",
+              "tashkeelWord": "الشَنَط الكِبيرة",
+              "transliteration": "el-shanaT el-kebeera",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "افتحي _____",
+          "displaySentenceTashkeel": "اِفْتَحِي _____",
+          "displaySentenceTransliteration": "efta7i _____",
+          "blankWords": [
+            {
+              "word": "شنطتك",
+              "tashkeelWord": "شَنْطِتِك",
+              "transliteration": "shanTitik",
+              "isCorrect": true
+            },
+            {
+              "word": "الباسبور بتاعك",
+              "tashkeelWord": "الباسبور بِتاعِك",
+              "transliteration": "el-passport beta3ik",
+              "isCorrect": false
+            },
+            {
+              "word": "الشنط الكبيرة",
+              "tashkeelWord": "الشَنَط الكِبيرة",
+              "transliteration": "el-shanaT el-kebeera",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "افتح _____",
+          "displaySentenceTashkeel": "اِفْتَح _____",
+          "displaySentenceTransliteration": "efta7 _____",
+          "blankWords": [
+            {
+              "word": "شنطتك",
+              "tashkeelWord": "شَنْطَتَك",
+              "transliteration": "shanTatak",
+              "isCorrect": true
+            },
+            {
+              "word": "جوازك",
+              "tashkeelWord": "جَوازَك",
+              "transliteration": "jawaazak",
+              "isCorrect": false
+            },
+            {
+              "word": "حقيبتك",
+              "tashkeelWord": "حَقيبَتَك",
+              "transliteration": "7a2eebatak",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "افتحي _____",
+          "displaySentenceTashkeel": "اِفْتَحِي _____",
+          "displaySentenceTransliteration": "efta7i _____",
+          "blankWords": [
+            {
+              "word": "شنطتك",
+              "tashkeelWord": "شَنْطَتِك",
+              "transliteration": "shanTatik",
+              "isCorrect": true
+            },
+            {
+              "word": "جوازك",
+              "tashkeelWord": "جَوازِك",
+              "transliteration": "jawaazik",
+              "isCorrect": false
+            },
+            {
+              "word": "حقيبتك",
+              "tashkeelWord": "حَقيبَتِك",
+              "transliteration": "7a2eebatik",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "followUp": null,
+    "hasGenderVariation": true,
+    "difficulty": "beginner",
+    "frequency": "medium",
+    "tags": ["inspection", "customs", "luggage", "command"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "Do you have anything prohibited?",
+    "category": "ESSENTIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 9,
+    "context": {
+      "whenToUse": "Customs officer checking for illegal items.",
+      "formality": "formal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "معاك ممنوعات؟",
+          "tashkeelText": "مَعاك مَمْنوعات؟",
+          "transliteration": "ma3aak mamno3aat?"
+        },
+        "female": {
+          "text": "معاكي ممنوعات؟",
+          "tashkeelText": "مَعاكي مَمْنوعات؟",
+          "transliteration": "ma3aaki mamno3aat?"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "عندك ممنوعات؟",
+          "tashkeelText": "عِندَك مَمْنوعات؟",
+          "transliteration": "3endak mamno3aat?"
+        },
+        "female": {
+          "text": "عندك ممنوعات؟",
+          "tashkeelText": "عِندِك مَمْنوعات؟",
+          "transliteration": "3endik mamno3aat?"
+        },
+        "neutral": null
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "معاك _____؟",
+          "displaySentenceTashkeel": "مَعاك _____؟",
+          "displaySentenceTransliteration": "ma3aak _____?",
+          "blankWords": [
+            {
+              "word": "ممنوعات",
+              "tashkeelWord": "مَمْنوعات",
+              "transliteration": "mamno3aat",
+              "isCorrect": true
+            },
+            {
+              "word": "شنط",
+              "tashkeelWord": "شُنَط",
+              "transliteration": "shunaT",
+              "isCorrect": false
+            },
+            {
+              "word": "حاجات",
+              "tashkeelWord": "حاجات",
+              "transliteration": "7agaat",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "معاكي _____؟",
+          "displaySentenceTashkeel": "مَعاكي _____؟",
+          "displaySentenceTransliteration": "ma3aaki _____?",
+          "blankWords": [
+            {
+              "word": "ممنوعات",
+              "tashkeelWord": "مَمْنوعات",
+              "transliteration": "mamno3aat",
+              "isCorrect": true
+            },
+            {
+              "word": "شنط",
+              "tashkeelWord": "شُنَط",
+              "transliteration": "shunaT",
+              "isCorrect": false
+            },
+            {
+              "word": "حاجات",
+              "tashkeelWord": "حاجات",
+              "transliteration": "7agaat",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "عندك _____؟",
+          "displaySentenceTashkeel": "عِندَك _____؟",
+          "displaySentenceTransliteration": "3endak _____?",
+          "blankWords": [
+            {
+              "word": "ممنوعات",
+              "tashkeelWord": "مَمْنوعات",
+              "transliteration": "mamno3aat",
+              "isCorrect": true
+            },
+            {
+              "word": "أمتعة",
+              "tashkeelWord": "أَمْتِعة",
+              "transliteration": "amte3a",
+              "isCorrect": false
+            },
+            {
+              "word": "مشتريات",
+              "tashkeelWord": "مُشْتَرَيات",
+              "transliteration": "mushtarayaat",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "عندك _____؟",
+          "displaySentenceTashkeel": "عِندِك _____؟",
+          "displaySentenceTransliteration": "3endik _____?",
+          "blankWords": [
+            {
+              "word": "ممنوعات",
+              "tashkeelWord": "مَمْنوعات",
+              "transliteration": "mamno3aat",
+              "isCorrect": true
+            },
+            {
+              "word": "أمتعة",
+              "tashkeelWord": "أَمْتِعة",
+              "transliteration": "amte3a",
+              "isCorrect": false
+            },
+            {
+              "word": "مشتريات",
+              "tashkeelWord": "مُشْتَرَيات",
+              "transliteration": "mushtarayaat",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "followUp": null,
+    "hasGenderVariation": true,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["inspection", "customs", "prohibited", "question"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "Welcome to Saudi Arabia",
+    "category": "ESSENTIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 10,
+    "context": {
+      "whenToUse": "Officer welcoming after clearing immigration.",
+      "formality": "formal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "أهلا وسهلا بيك في مصر",
+          "tashkeelText": "أَهْلًا وَسَهْلًا بيك فِي مِصْر",
+          "transliteration": "ahlan wa sahlan beek fi maSr"
+        },
+        "female": {
+          "text": "أهلا وسهلا بيكي في مصر",
+          "tashkeelText": "أَهْلًا وَسَهْلًا بيكي فِي مِصْر",
+          "transliteration": "ahlan wa sahlan beeki fi maSr"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "أهلا وسهلا بك في السعودية",
+          "tashkeelText": "أَهْلًا وَسَهْلًا بِك فِي السُّعُودِيَّة",
+          "transliteration": "ahlan wa sahlan bek fi el-sa3oodeya"
+        },
+        "female": {
+          "text": "أهلا وسهلا بك في السعودية",
+          "tashkeelText": "أَهْلًا وَسَهْلًا بِك فِي السُّعُودِيَّة",
+          "transliteration": "ahlan wa sahlan bek fi el-sa3oodeya"
+        },
+        "neutral": null
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "_____ في مصر",
+          "displaySentenceTashkeel": "_____ فِي مِصْر",
+          "displaySentenceTransliteration": "_____ fi maSr",
+          "blankWords": [
+            {
+              "word": "أهلا وسهلا بيك",
+              "tashkeelWord": "أَهْلًا وَسَهْلًا بيك",
+              "transliteration": "ahlan wa sahlan beek",
+              "isCorrect": true
+            },
+            {
+              "word": "روح على التفتيش",
+              "tashkeelWord": "رُوح عَلى التَّفْتِيش",
+              "transliteration": "roo7 3ala el-tafteesh",
+              "isCorrect": false
+            },
+            {
+              "word": "افتح شنطتك",
+              "tashkeelWord": "اِفْتَح شَنْطِتَك",
+              "transliteration": "efta7 shanTitak",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "_____ في مصر",
+          "displaySentenceTashkeel": "_____ فِي مِصْر",
+          "displaySentenceTransliteration": "_____ fi maSr",
+          "blankWords": [
+            {
+              "word": "أهلا وسهلا بيكي",
+              "tashkeelWord": "أَهْلًا وَسَهْلًا بيكي",
+              "transliteration": "ahlan wa sahlan beeki",
+              "isCorrect": true
+            },
+            {
+              "word": "روحي على التفتيش",
+              "tashkeelWord": "رُوحي عَلى التَّفْتِيش",
+              "transliteration": "roo7i 3ala el-tafteesh",
+              "isCorrect": false
+            },
+            {
+              "word": "افتحي شنطتك",
+              "tashkeelWord": "اِفْتَحِي شَنْطِتِك",
+              "transliteration": "efta7i shanTitik",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "_____ في السعودية",
+          "displaySentenceTashkeel": "_____ فِي السُّعُودِيَّة",
+          "displaySentenceTransliteration": "_____ fi el-sa3oodeya",
+          "blankWords": [
+            {
+              "word": "أهلا وسهلا بك",
+              "tashkeelWord": "أَهْلًا وَسَهْلًا بِك",
+              "transliteration": "ahlan wa sahlan bek",
+              "isCorrect": true
+            },
+            {
+              "word": "روح للتفتيش",
+              "tashkeelWord": "رُوح لِلتَّفْتِيش",
+              "transliteration": "roo7 lel-tafteesh",
+              "isCorrect": false
+            },
+            {
+              "word": "افتح شنطتك",
+              "tashkeelWord": "اِفْتَح شَنْطَتَك",
+              "transliteration": "efta7 shanTatak",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "_____ في السعودية",
+          "displaySentenceTashkeel": "_____ فِي السُّعُودِيَّة",
+          "displaySentenceTransliteration": "_____ fi el-sa3oodeya",
+          "blankWords": [
+            {
+              "word": "أهلا وسهلا بك",
+              "tashkeelWord": "أَهْلًا وَسَهْلًا بِك",
+              "transliteration": "ahlan wa sahlan bek",
+              "isCorrect": true
+            },
+            {
+              "word": "روحي للتفتيش",
+              "tashkeelWord": "رُوحي لِلتَّفْتِيش",
+              "transliteration": "roo7i lel-tafteesh",
+              "isCorrect": false
+            },
+            {
+              "word": "افتحي شنطتك",
+              "tashkeelWord": "اِفْتَحِي شَنْطَتِك",
+              "transliteration": "efta7i shanTatik",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "followUp": null,
+    "hasGenderVariation": true,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["immigration", "welcome", "greeting", "clearance"],
+    "isActive": true,
+    "isApproved": true
+  },
+    {
+    "englishTranslation": "Thank God for your safe arrival",
+    "category": "SOCIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 11,
+    "context": {
+      "whenToUse": "Greeting someone who just arrived from travel.",
       "formality": "neutral"
     },
     "variations": {
       "msa": null,
       "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "اقدر اخد التأشيرة من المطار؟",
-          "tashkeelText": "أقْدَر آخُد التَّأْشِيرَة مِن المَطَار؟",
-          "transliteration": "a'dar akhud it-ta'shira min il-matar?"
-        }
+        "male": {
+          "text": "الحمدلله على السلامة",
+          "tashkeelText": "الحَمْدُلله عَلى السَّلامة",
+          "transliteration": "el-7amdulellah 3ala el-salama"
+        },
+        "female": {
+          "text": "الحمدلله على السلامة",
+          "tashkeelText": "الحَمْدُلله عَلى السَّلامة",
+          "transliteration": "el-7amdulellah 3ala el-salama"
+        },
+        "neutral": null
       },
       "saudi": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "يعطوني التأشيرة من المطار؟",
-          "tashkeelText": "يِعْطُونِي التَّأْشِيرَة مِن المَطَار؟",
-          "transliteration": "yi'tooni it-ta'shira min il-matar?"
-        }
-      }
-    },
-    "followUp": {
-      "englishTranslation": "Yes, you can get it there",
-      "isSamePerson": false,
-      "variations": {
-        "msa": null,
-        "egyptian": {
-          "male": null,
-          "female": null,
-          "neutral": {
-            "text": "ايوة، تقدر تاخدها هناك",
-            "tashkeelText": "أَيْوَة، تِقْدَر تَاخُدْهَا هِنَاك",
-            "transliteration": "aywa, ti'dar takhudhha hinak"
-          }
+        "male": {
+          "text": "الحمدلله على السلامة",
+          "tashkeelText": "الحَمْدُلله عَلى السَّلامة",
+          "transliteration": "el-7amdulellah 3ala el-salama"
         },
-        "saudi": {
-          "male": null,
-          "female": null,
-          "neutral": {
-            "text": "ايوه، تقدر تاخذها هناك",
-            "tashkeelText": "أَيْوَه، تِقْدَر تَاخُذْهَا هِنَاك",
-            "transliteration": "aywa, ti'dar takhudhha hinak"
-          }
-        }
+        "female": {
+          "text": "الحمدلله على السلامة",
+          "tashkeelText": "الحَمْدُلله عَلى السَّلامة",
+          "transliteration": "el-7amdulellah 3ala el-salama"
+        },
+        "neutral": null
       }
     },
-    "hasGenderVariation": false,
-    "tags": [
-      "question",
-      "travel",
-      "logistics",
-      "location"
-    ],
     "exercises": {
       "egyptian": [
         {
           "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "intermediate",
-          "displaySentence": "اقدر اخد التأشيرة من _____؟",
-          "displaySentenceTashkeel": "أقْدَر آخُد التَّأْشِيرَة مِن _____؟",
-          "displaySentenceTransliteration": "a'dar akhud it-ta'shira min _____?",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "الحمدلله على _____",
+          "displaySentenceTashkeel": "الحَمْدُلله عَلى _____",
+          "displaySentenceTransliteration": "el-7amdulellah 3ala _____",
           "blankWords": [
+            {
+              "word": "السلامة",
+              "tashkeelWord": "السَّلامة",
+              "transliteration": "el-salama",
+              "isCorrect": true
+            },
+            {
+              "word": "الوصول",
+              "tashkeelWord": "الوُصول",
+              "transliteration": "el-wuSool",
+              "isCorrect": false
+            },
+            {
+              "word": "الرحلة",
+              "tashkeelWord": "الرِّحْلة",
+              "transliteration": "el-re7la",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "الحمدلله على _____",
+          "displaySentenceTashkeel": "الحَمْدُلله عَلى _____",
+          "displaySentenceTransliteration": "el-7amdulellah 3ala _____",
+          "blankWords": [
+            {
+              "word": "السلامة",
+              "tashkeelWord": "السَّلامة",
+              "transliteration": "el-salama",
+              "isCorrect": true
+            },
+            {
+              "word": "الوصول",
+              "tashkeelWord": "الوُصول",
+              "transliteration": "el-wuSool",
+              "isCorrect": false
+            },
+            {
+              "word": "الرحلة",
+              "tashkeelWord": "الرِّحْلة",
+              "transliteration": "el-re7la",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "الحمدلله على _____",
+          "displaySentenceTashkeel": "الحَمْدُلله عَلى _____",
+          "displaySentenceTransliteration": "el-7amdulellah 3ala _____",
+          "blankWords": [
+            {
+              "word": "السلامة",
+              "tashkeelWord": "السَّلامة",
+              "transliteration": "el-salama",
+              "isCorrect": true
+            },
+            {
+              "word": "الوصول",
+              "tashkeelWord": "الوُصول",
+              "transliteration": "el-wuSool",
+              "isCorrect": false
+            },
+            {
+              "word": "الرحلة",
+              "tashkeelWord": "الرِّحْلة",
+              "transliteration": "el-re7la",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "الحمدلله على _____",
+          "displaySentenceTashkeel": "الحَمْدُلله عَلى _____",
+          "displaySentenceTransliteration": "el-7amdulellah 3ala _____",
+          "blankWords": [
+            {
+              "word": "السلامة",
+              "tashkeelWord": "السَّلامة",
+              "transliteration": "el-salama",
+              "isCorrect": true
+            },
+            {
+              "word": "الوصول",
+              "tashkeelWord": "الوُصول",
+              "transliteration": "el-wuSool",
+              "isCorrect": false
+            },
+            {
+              "word": "الرحلة",
+              "tashkeelWord": "الرِّحْلة",
+              "transliteration": "el-re7la",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "followUp": null,
+    "hasGenderVariation": false,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["greeting", "arrival", "safety", "welcome"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "Arrive safely",
+    "category": "SOCIAL",
+    "situation": "Airport & Travel",
+    "commonRank": 12,
+    "context": {
+      "whenToUse": "Wishing someone safe travels before departure.",
+      "formality": "neutral"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "توصل بالسلامة",
+          "tashkeelText": "تُوصَل بِالسَّلامة",
+          "transliteration": "tewSal bel-salama"
+        },
+        "female": {
+          "text": "توصلي بالسلامة",
+          "tashkeelText": "تُوصَلي بِالسَّلامة",
+          "transliteration": "tewSali bel-salama"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "توصل بالسلامة",
+          "tashkeelText": "تُوصَل بِالسَّلامة",
+          "transliteration": "tewSal bel-salama"
+        },
+        "female": {
+          "text": "توصلي بالسلامة",
+          "tashkeelText": "تُوصَلي بِالسَّلامة",
+          "transliteration": "tewSali bel-salama"
+        },
+        "neutral": null
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "توصل _____",
+          "displaySentenceTashkeel": "تُوصَل _____",
+          "displaySentenceTransliteration": "tewSal _____",
+          "blankWords": [
+            {
+              "word": "بالسلامة",
+              "tashkeelWord": "بِالسَّلامة",
+              "transliteration": "bel-salama",
+              "isCorrect": true
+            },
+            {
+              "word": "بكرة",
+              "tashkeelWord": "بُكْرة",
+              "transliteration": "bokra",
+              "isCorrect": false
+            },
             {
               "word": "المطار",
-              "tashkeelWord": "المَطَار",
-              "transliteration": "il-matar",
+              "tashkeelWord": "المَطار",
+              "transliteration": "el-maTaar",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "توصلي _____",
+          "displaySentenceTashkeel": "تُوصَلي _____",
+          "displaySentenceTransliteration": "tewSali _____",
+          "blankWords": [
+            {
+              "word": "بالسلامة",
+              "tashkeelWord": "بِالسَّلامة",
+              "transliteration": "bel-salama",
               "isCorrect": true
             },
             {
-              "word": "الفندق",
-              "tashkeelWord": "الفُنْدُق",
-              "transliteration": "il-funduq",
+              "word": "بكرة",
+              "tashkeelWord": "بُكْرة",
+              "transliteration": "bokra",
               "isCorrect": false
             },
-            {
-              "word": "البنك",
-              "tashkeelWord": "البَنْك",
-              "transliteration": "il-bank",
-              "isCorrect": false
-            }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
-        }
-      ],
-      "saudi": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "intermediate",
-          "displaySentence": "يعطوني التأشيرة من _____؟",
-          "displaySentenceTashkeel": "يِعْطُونِي التَّأْشِيرَة مِن _____؟",
-          "displaySentenceTransliteration": "yi'tooni it-ta'shira min _____?",
-          "blankWords": [
             {
               "word": "المطار",
-              "tashkeelWord": "المَطَار",
-              "transliteration": "il-matar",
-              "isCorrect": true
-            },
-            {
-              "word": "الفندق",
-              "tashkeelWord": "الفُنْدُق",
-              "transliteration": "il-funduq",
-              "isCorrect": false
-            },
-            {
-              "word": "البنك",
-              "tashkeelWord": "البَنْك",
-              "transliteration": "il-bank",
+              "tashkeelWord": "المَطار",
+              "transliteration": "el-maTaar",
               "isCorrect": false
             }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
-        }
-      ],
-      "msa": []
-    }
-  },
-  {
-    "englishTranslation": "How much weight is allowed?",
-    "intent": "Ask how much weight is allowed",
-    "context": {
-      "whenToUse": "When checking baggage weight limit",
-      "formality": "neutral"
-    },
-    "variations": {
-      "msa": null,
-      "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "كام الوزن المسموح؟",
-          "tashkeelText": "كَام الوَزْن المَسْمُوح؟",
-          "transliteration": "kam il-wazn il-masmuh?"
-        }
-      },
-      "saudi": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "كم الوزن المسموح؟",
-          "tashkeelText": "كَم الوَزْن المَسْمُوح؟",
-          "transliteration": "kam il-wazn il-masmuh?"
-        }
-      }
-    },
-    "followUp": {
-      "englishTranslation": "Twenty-three kilos",
-      "isSamePerson": false,
-      "variations": {
-        "msa": null,
-        "egyptian": {
-          "male": null,
-          "female": null,
-          "neutral": {
-            "text": "ثلاثة وعشرين كيلو",
-            "tashkeelText": "ثَلَاثَة وَعِشْرِين كِيلُو",
-            "transliteration": "talata wi-'ishreen kilo"
-          }
-        },
-        "saudi": {
-          "male": null,
-          "female": null,
-          "neutral": {
-            "text": "ثلاثة وعشرين كيلو",
-            "tashkeelText": "ثَلَاثَة وَعِشْرِين كِيلُو",
-            "transliteration": "thalatha wi-'ishreen kilo"
-          }
-        }
-      }
-    },
-    "hasGenderVariation": false,
-    "tags": [
-      "question",
-      "travel",
-      "logistics",
-      "request"
-    ],
-    "exercises": {
-      "egyptian": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "كام _____ المسموح؟",
-          "displaySentenceTashkeel": "كَام _____ المَسْمُوح؟",
-          "displaySentenceTransliteration": "kam _____ il-masmuh?",
-          "blankWords": [
-            {
-              "word": "الوزن",
-              "tashkeelWord": "الوَزْن",
-              "transliteration": "il-wazn",
-              "isCorrect": true
-            },
-            {
-              "word": "السعر",
-              "tashkeelWord": "السِّعْر",
-              "transliteration": "is-se'r",
-              "isCorrect": false
-            },
-            {
-              "word": "الوقت",
-              "tashkeelWord": "الوَقْت",
-              "transliteration": "il-wa't",
-              "isCorrect": false
-            }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
+          ]
         }
       ],
       "saudi": [
         {
           "type": "fill-in-blank",
-          "gender": "neutral",
+          "gender": "male",
           "difficulty": "beginner",
-          "displaySentence": "كم _____ المسموح؟",
-          "displaySentenceTashkeel": "كَم _____ المَسْمُوح؟",
-          "displaySentenceTransliteration": "kam _____ il-masmuh?",
+          "displaySentence": "توصل _____",
+          "displaySentenceTashkeel": "تُوصَل _____",
+          "displaySentenceTransliteration": "tewSal _____",
           "blankWords": [
             {
-              "word": "الوزن",
-              "tashkeelWord": "الوَزْن",
-              "transliteration": "il-wazn",
+              "word": "بالسلامة",
+              "tashkeelWord": "بِالسَّلامة",
+              "transliteration": "bel-salama",
               "isCorrect": true
             },
             {
-              "word": "السعر",
-              "tashkeelWord": "السِّعْر",
-              "transliteration": "is-se'r",
+              "word": "بكرة",
+              "tashkeelWord": "بُكْرة",
+              "transliteration": "bokra",
               "isCorrect": false
             },
             {
-              "word": "الوقت",
-              "tashkeelWord": "الوَقْت",
-              "transliteration": "il-wa't",
+              "word": "المطار",
+              "tashkeelWord": "المَطار",
+              "transliteration": "el-maTaar",
               "isCorrect": false
             }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
-        }
-      ],
-      "msa": []
-    }
-  },
-  {
-    "englishTranslation": "Do I need to weigh my bag?",
-    "intent": "Ask if I need to weigh my bag",
-    "context": {
-      "whenToUse": "When unsure about baggage weight check requirement",
-      "formality": "neutral"
-    },
-    "variations": {
-      "msa": null,
-      "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "لازم اوزن الشنطة؟",
-          "tashkeelText": "لَازِم أوَزِّن الشَّنْطَة؟",
-          "transliteration": "lazim awazzin il-shanta?"
-        }
-      },
-      "saudi": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "لازم اوزن الشنطة؟",
-          "tashkeelText": "لَازِم أوَزِّن الشَّنْطَة؟",
-          "transliteration": "lazim awazzin il-shanta?"
-        }
-      }
-    },
-    "followUp": {
-      "englishTranslation": "Yes, at the desk",
-      "isSamePerson": false,
-      "variations": {
-        "msa": null,
-        "egyptian": {
-          "male": null,
-          "female": null,
-          "neutral": {
-            "text": "ايوة، عند الشباك",
-            "tashkeelText": "أَيْوَة، عِنْد الشُّبَّاك",
-            "transliteration": "aywa, 'ind il-shubbak"
-          }
+          ]
         },
-        "saudi": {
-          "male": null,
-          "female": null,
-          "neutral": {
-            "text": "ايوه، عند المكتب",
-            "tashkeelText": "أَيْوَه، عِنْد المَكْتَب",
-            "transliteration": "aywa, 'ind il-maktab"
-          }
-        }
-      }
-    },
-    "hasGenderVariation": false,
-    "tags": [
-      "question",
-      "travel",
-      "logistics",
-      "request"
-    ],
-    "exercises": {
-      "egyptian": [
         {
           "type": "fill-in-blank",
-          "gender": "neutral",
+          "gender": "female",
           "difficulty": "beginner",
-          "displaySentence": "لازم _____ الشنطة؟",
-          "displaySentenceTashkeel": "لَازِم _____ الشَّنْطَة؟",
-          "displaySentenceTransliteration": "lazim _____ il-shanta?",
+          "displaySentence": "توصلي _____",
+          "displaySentenceTashkeel": "تُوصَلي _____",
+          "displaySentenceTransliteration": "tewSali _____",
           "blankWords": [
             {
-              "word": "اوزن",
-              "tashkeelWord": "أوَزِّن",
-              "transliteration": "awazzin",
+              "word": "بالسلامة",
+              "tashkeelWord": "بِالسَّلامة",
+              "transliteration": "bel-salama",
               "isCorrect": true
             },
             {
-              "word": "اشتري",
-              "tashkeelWord": "أشْتَري",
-              "transliteration": "ashtari",
+              "word": "بكرة",
+              "tashkeelWord": "بُكْرة",
+              "transliteration": "bokra",
               "isCorrect": false
             },
             {
-              "word": "افتح",
-              "tashkeelWord": "أفْتَح",
-              "transliteration": "aftah",
+              "word": "المطار",
+              "tashkeelWord": "المَطار",
+              "transliteration": "el-maTaar",
               "isCorrect": false
             }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
-        }
-      ],
-      "saudi": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "لازم _____ الشنطة؟",
-          "displaySentenceTashkeel": "لَازِم _____ الشَّنْطَة؟",
-          "displaySentenceTransliteration": "lazim _____ il-shanta?",
-          "blankWords": [
-            {
-              "word": "اوزن",
-              "tashkeelWord": "أوَزِّن",
-              "transliteration": "awazzin",
-              "isCorrect": true
-            },
-            {
-              "word": "اشتري",
-              "tashkeelWord": "أشْتَري",
-              "transliteration": "ashtari",
-              "isCorrect": false
-            },
-            {
-              "word": "افتح",
-              "tashkeelWord": "أفْتَح",
-              "transliteration": "aftah",
-              "isCorrect": false
-            }
-          ],
-          "reorderWords": [],
-          "matchingPairs": []
+          ]
         }
       ],
       "msa": []
-    }
+    },
+    "followUp": null,
+    "hasGenderVariation": true,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["farewell", "departure", "safety", "blessing"],
+    "isActive": true,
+    "isApproved": true
   }
 ]
 
