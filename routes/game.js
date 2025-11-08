@@ -100,7 +100,6 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
 
         const limitNum = Math.min(50, Math.max(1, parseInt(limit)));
 
-        console.log("Exercise filter:", JSON.stringify(filter));
         // SIMPLE QUERY - No complex aggregation!
         const phrases = await Phrase.aggregate([
             { $match: filter },
@@ -124,8 +123,6 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
                 }
             }
         ]);
-
-        console.log(phrases.length + " phrases fetched for exercises");
         res.json({
             success: true,
             data: phrases,
