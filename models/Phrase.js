@@ -16,14 +16,8 @@ const variationTextSchema = new mongoose.Schema({
     },
     transliteration: {
         type: String
-    },
-    audioUrl: {
-        type: String
-    },
-    audioSlowUrl: {
-        type: String
     }
-}, { _id: false });
+});
 
 // Schema for gender-based variations within a dialect
 const dialectGenderSchema = new mongoose.Schema({
@@ -274,12 +268,10 @@ const phraseV2Schema = new mongoose.Schema({
         type: String,
         enum: ['beginner', 'intermediate', 'advanced'],
         required: true,
-        index: true
     },
     frequency: {
         type: String,
-        enum: ['very_high', 'high', 'medium', 'low', 'very_low'],
-        required: true
+        enum: ['very_high', 'high', 'medium', 'low', 'very_low']
     },
     tags: [{
         type: String
@@ -306,13 +298,7 @@ const phraseV2Schema = new mongoose.Schema({
 
 // Indexes for common queries
 phraseV2Schema.index({ category: 1, situation: 1, difficulty: 1, isActive: 1 });
-phraseV2Schema.index({ commonRank: 1, isActive: 1 });
-phraseV2Schema.index({ tags: 1 });
 
-// Indexes for nested dialect queries (checking if dialect exists)
-phraseV2Schema.index({ 'variations.msa': 1 });
-phraseV2Schema.index({ 'variations.egyptian': 1 });
-phraseV2Schema.index({ 'variations.saudi': 1 });
 
 // Virtual to get all unique dialects available
 phraseV2Schema.virtual('availableDialects').get(function() {
