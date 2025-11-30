@@ -2,212 +2,185 @@
 
 ## Project Overview
 
-**Efham** (افهم - "Understand" in Arabic) is a practical Arabic learning application that teaches users the exact phrases they need for real-life situations. Unlike traditional language learning apps that focus on grammar rules or random sentences, Efham organizes learning by actual scenarios users face - from ordering at restaurants to navigating airports to attending cultural events like weddings.
+**Efham** (افهم - "Understand" in Arabic) is a mobile application (React Native/iOS & Android) that teaches **conversational Arabic dialects** through practical, context-based phrases. We teach how people **actually speak** in daily life, not formal Modern Standard Arabic (MSA).
 
-## Version 1.1.0 Update
+## Core Concept
 
-We've recently transitioned from v1.0.0 to v1.1.0 with a significant strategic pivot:
-- **Removed**: Story-based learning format
-- **Added**: Fill-in-the-blank exercises as the primary learning method
-- **Focus**: Interactive practice through contextual sentence completion
+**Situational phrase learning**: Users learn phrases organized by real-life situations they'll encounter (airport, restaurant, making friends, etc.) - not random vocabulary lists or grammar drills.
 
-## What Problem We Solve
+## What Makes Efham Unique
 
-People learning Arabic face a critical gap: they can study grammar and vocabulary for years but still freeze when they need to actually speak in real situations. They don't know:
-- What to say when entering a restaurant
-- How to handle airport immigration questions  
-- What's appropriate at a wedding or funeral
-- How to ask for help in an emergency
-- The cultural context of when/how to use phrases
+### 1. Dialect-First Approach
+- **Egyptian Arabic** (Cairo dialect)
+- **Saudi Arabic** (Hijazi/Jeddad dialect)
+- **Zero MSA** - only authentic conversational language
+- We teach how people actually speak, not textbook Arabic
 
-## Our Solution
+### 2. Gender-Adaptive Learning
+- Users select their gender (male/female)
+- App teaches appropriate phrase variations for the speaker
+- Critical feature for Arabic where verb conjugations and adjectives change by speaker gender
+- Every phrase has male/female/neutral variations where applicable
 
-Efham provides a **situation-first learning system** where users can:
-1. **Browse by real-life situation** (15 core situations like Airport, Restaurant, Wedding, Emergency)
-2. **Learn 30-50 practical phrases per situation** that natives actually use
-3. **Practice with fill-in-the-blank exercises** that reinforce natural speech patterns
-4. **Hear native speaker audio** for every phrase (normal and slow speeds)
-5. **Understand cultural context** - not just what to say, but when, how, and to whom
+### 3. Context-Driven Organization
+- **25 situations** organized across **3 categories**:
+  - **SOCIAL**: Greetings, Making Friends, Phone Calls, etc.
+  - **ESSENTIAL**: Airport, Restaurant, Shopping, Emergency, Transportation
+  - **CULTURAL**: Weddings, Funerals, Religious Settings, Family Gatherings
+- Each phrase includes:
+  - **When to use it** (specific context and situation)
+  - **Both dialect variations** with full tashkeel (diacritics)
+  - **Transliteration** for pronunciation guidance
+  - **Fill-in-blank exercises** for active practice
+  - **Optional follow-up responses** for conversation flow
+  - **Cultural context** (formality level, who to say it to)
 
-## Target Users
+## Tech Stack
 
-### Primary Audiences:
-1. **Travelers** (30%) - Need survival phrases quickly for upcoming trips
-2. **Expats/Immigrants** (40%) - Living in Arab countries, need daily communication skills
-3. **Heritage Learners** (20%) - Arab diaspora reconnecting with their roots
-4. **Professionals** (10%) - Working with Arab clients/colleagues
+- **Mobile App**: React Native (iOS & Android)
+- **Backend API**: Node.js / Express
+- **Database**: MongoDB
+- **Payment**: RevenueCat (planned for in-app subscriptions)
+- **Landing Page**: Next.js (this web app repository)
 
-### User Pain Points:
-- "I studied Arabic for months but couldn't order coffee"
-- "I don't know if I'm being polite or rude"
-- "I need airport phrases for tomorrow's flight"
-- "Textbook Arabic doesn't match what people actually say"
+## Landing Page Purpose
 
-## Core Features (v1.1.0)
+This repository contains the **marketing landing page** for Efham. The website is NOT a login portal or web version of the app - it's purely for:
+- Marketing and app promotion
+- Explaining the value proposition
+- Directing users to download the iOS/Android apps
+- App Store and Google Play download links
 
-### 1. Situation Library
-- **15 real-life situations** organized into 3 categories:
-  - **ESSENTIAL** (Survival): Airport, Restaurant, Shopping, Emergency, Transportation
-  - **SOCIAL** (Integration): Greetings, Making Friends, Phone Calls, Workplace, Neighbors
-  - **CULTURAL** (Deep Integration): Weddings, Funerals, Religious Settings, Family Gatherings, Holidays
-- Each situation contains 30-50 carefully curated phrases
+**Important**: There is NO user login, NO web-based learning interface. Everything happens in the mobile apps.
 
-### 2. Fill-in-the-Blank Practice (New in v1.1.0)
-- **Context-rich exercises**: "You're at a restaurant, the waiter asks..."
-- **Pattern-based learning**: Users learn transferable structures, not just memorization
-- **Smart distractors**: Wrong answers that test understanding
-- **Immediate feedback**: Learn from mistakes instantly
+## Quality Standard
 
-### 3. Native Speaker Audio
-- Every phrase recorded by native Arabic speakers
-- Normal speed + slow speed options
-- Clear pronunciation for learner imitation
+**Authenticity over correctness**: Every phrase must pass the test "Would a native speaker actually say this in real conversation today?"
 
-### 4. Cultural Intelligence
-- **When to use**: Specific contexts for each phrase
-- **Who to say it to**: Formality levels and audience
-- **Cultural notes**: Avoid faux pas, understand etiquette
-- **What to say next**: Natural conversation flow
+We reject bookish/formal words that exist in dictionaries but nobody uses in daily speech.
 
-### 5. Multi-Dialect Support
-- **MSA** (Modern Standard Arabic) as foundation
-- **Egyptian** dialect (ready in production)
-- **Saudi** dialect (ready in production)
-- Future: Levantine and Maghrebi dialects
+**Examples:**
+- ✅ **عايز** (Egyptian) / **أبغى** (Saudi) - "I want" (how people actually speak)
+- ❌ **أريد** - formal MSA, sounds unnatural and textbook-like
 
-## What Makes Efham Different
+## Current Status (as of v1.1.0)
 
-### vs. Competitors (Clozemaster, Duolingo, etc.)
-- **No nonsensical sentences**: Every phrase is verified by native speakers as natural and useful
-- **Situation-organized**: Not random phrases but organized by when you'll use them
-- **Cultural depth**: Not just translation but full context of appropriate usage
-- **Just-in-time learning**: Learn what you need for tomorrow's situation today
-- **Quality over quantity**: 500 perfect phrases vs 50,000 random sentences
+- **~250+ phrases** completed and reviewed
+- **6 situations** fully built with exercises
+- Working **gender variation system**
+- **Dialect switching** functional
+- Building toward **1,000-phrase milestone**
 
-### Our Unique Position
-Think of Efham as "**The Lonely Planet Phrasebook reimagined as an intelligent app**" - combining:
-- Trusted, curated content
-- Situation-based organization
-- Interactive practice
-- Audio pronunciation
-- Cultural intelligence
-- Progress tracking
+## The Mission
 
-## Content Quality Standards
+Enable learners to have real conversations in Arabic by teaching the phrases people actually use, organized by the situations where they'll need them.
 
-Every phrase in Efham must be:
-1. **Actually used by native speakers** in real life
-2. **Culturally appropriate** with proper formality
-3. **Immediately practical** for the target situation
-4. **Short enough to remember** (3-10 words typically)
-5. **Pattern-based** to enable creative language use
+---
 
-## Business Model
+# Technical Architecture (Backend API)
 
-- **Paid-only strategy**: No free tier to filter out non-serious users
-- **Pricing**: $8.99/month or annual discount
-- **Launch strategy**: Introductory pricing for early adopters
-- **Value proposition**: Quality content worth paying for
+## Database Schema - Single Collection Architecture
 
-## Success Metrics
+We use a **single-collection embedded architecture** that maximizes performance and simplifies data management for the mobile apps.
 
-- Users can confidently handle real-life situations after using Efham
-- Phrases learned translate directly to successful real-world interactions
-- Users report feeling prepared and culturally aware
-- High retention due to practical value
+### Main Collection: **Phrase**
 
-## Vision
-
-Transform Arabic learning from an academic exercise into a practical skill. Every Efham user should be able to walk into any situation - restaurant, airport, wedding, emergency - and know exactly what to say, how to say it, and feel confident they're being culturally appropriate.
-
-## Current Development Focus (v1.1.0)
-
-The shift to fill-in-the-blank exercises represents our commitment to active learning over passive consumption. Users don't just read phrases - they practice them in context, building muscle memory for real conversations. This interactive approach, combined with our situational organization and cultural depth, creates a complete solution for practical Arabic communication.
-
-## Key Principles
-
-1. **Practical over theoretical** - If you won't say it in real life, we don't teach it
-2. **Quality over quantity** - Better to master 500 useful phrases than struggle with 5000 random ones
-3. **Context is king** - Every phrase comes with full situational and cultural context
-4. **Active practice** - Fill-in-the-blank exercises ensure active engagement, not passive reading
-5. **Native verification** - Every phrase personally reviewed by native Arabic speakers
-
-## The Efham Promise
-
-When you use Efham, you're not learning Arabic from a textbook or algorithm. You're learning the exact phrases that native speakers use, organized by the situations where you'll need them, with the cultural intelligence to use them appropriately. Whether you're ordering food, catching a flight, or attending a wedding, Efham ensures you know what to say and how to say it with confidence.
-
-
-# Technical Architecture
-
-## Database Schema (v1.1.0) - Single Collection Architecture
-
-We've evolved to a **single-collection embedded architecture** that maximizes performance and simplifies data management.
-
-### Main Collection: **PhraseV2**
-A comprehensive document that contains everything about a phrase - its meaning, all dialect variations, and all exercises.
+A comprehensive document that contains everything about a phrase - its meaning, all dialect variations, exercises, and cultural context.
 
 **Document Structure:**
 ```javascript
 {
   // Core phrase information
   englishTranslation: String,
+  intent: String,
+
+  // Organization
   category: ObjectId (ref: Category),
   situation: ObjectId (ref: Situation),
   commonRank: Number,
 
-  // Context and usage
+  // Context and cultural guidance
   context: {
     whenToUse: String,
     whoToSayTo: String,
     speaker: String,
     listener: String,
-    formality: Enum ['informal', 'semi-formal', 'formal', 'very-formal', 'universal'],
+    formality: Enum ['informal', 'semi-formal', 'formal', 'very-formal', 'universal', 'neutral'],
     emotion: String,
     culturalNote: String
   },
 
-  // All dialect variations embedded
-  variations: [{
-    dialect: Enum ['msa', 'egyptian', 'saudi'],
-    gender: Enum ['male', 'female', 'neutral'] or null,
-    text: String (Arabic without tashkeel),
-    tashkeelText: String (Arabic with tashkeel),
-    transliteration: String,
-    audioUrl: String,
-    audioSlowUrl: String
-  }],
-
-  // All exercises embedded
-  exercises: [{
-    type: Enum ['fill-in-blank', 'reorder', 'multiple-choice', 'matching', 'typing'],
-    dialect: String,
-    gender: String or null,
-    difficulty: Enum ['beginner', 'intermediate', 'advanced'],
-    blankWords: Array (for fill-in-blank),
-    reorderWords: Array (for reorder),
-    matchingPairs: Array (for matching),
-    exerciseData: Mixed (flexible for future types),
-    gameContext: {
-      scenario: String,
-      hint: String,
-      instructions: String
+  // All dialect variations embedded (nested by dialect then gender)
+  variations: {
+    egyptian: {
+      male: {
+        text: String,
+        tashkeelText: String,
+        transliteration: String
+      },
+      female: {
+        text: String,
+        tashkeelText: String,
+        transliteration: String
+      },
+      neutral: {
+        text: String,
+        tashkeelText: String,
+        transliteration: String
+      }
+    },
+    saudi: {
+      male: { /* same structure */ },
+      female: { /* same structure */ },
+      neutral: { /* same structure */ }
     }
-  }],
+  },
 
-  // Follow-up phrase (if any)
+  // Game context for exercises
+  gameContext: {
+    scenario: String,
+    hint: String,
+    instructions: Map
+  },
+
+  // All exercises embedded (nested by dialect)
+  exercises: {
+    egyptian: [{
+      type: Enum ['fill-in-blank', 'reorder', 'multiple-choice', 'matching', 'typing'],
+      gender: Enum ['male', 'female', 'neutral'],
+      difficulty: Enum ['beginner', 'intermediate', 'advanced'],
+      displaySentence: String,
+      displaySentenceTashkeel: String,
+      displaySentenceTransliteration: String,
+      blankWords: [{
+        word: String,
+        tashkeelWord: String,
+        transliteration: String,
+        isCorrect: Boolean
+      }]
+    }],
+    saudi: [/* same structure */]
+  },
+
+  // Follow-up phrase (optional)
   followUp: {
     englishTranslation: String,
     whenHeard: String,
-    variations: [Same structure as main variations]
+    isSamePerson: Boolean,
+    variations: {
+      egyptian: { /* same as main variations */ },
+      saudi: { /* same as main variations */ }
+    }
   },
 
   // Metadata
   hasGenderVariation: Boolean,
-  difficulty: String,
-  frequency: String,
+  difficulty: Enum ['beginner', 'intermediate', 'advanced'],
+  frequency: Enum ['very_high', 'high', 'medium', 'low', 'very_low'],
   tags: [String],
   isActive: Boolean,
   isApproved: Boolean,
+  showme: Boolean,
   timestamps: true
 }
 ```
@@ -215,101 +188,135 @@ A comprehensive document that contains everything about a phrase - its meaning, 
 ### Supporting Collections
 
 **Categories:**
-- `_id`: ObjectId
-- `name`: String (e.g., "SOCIAL", "ESSENTIAL", "CULTURAL")
-- `nameAr`: String (Arabic name)
-- `order`: Number
-- `isActive`: Boolean
+```javascript
+{
+  _id: ObjectId,
+  name: String,        // e.g., "SOCIAL", "ESSENTIAL", "CULTURAL"
+  nameAr: String,      // Arabic name
+  order: Number,
+  isActive: Boolean
+}
+```
 
 **Situations:**
-- `_id`: ObjectId
-- `name`: String (e.g., "Greetings & Small Talk", "Airport")
-- `nameAr`: String (Arabic name)
-- `category`: ObjectId (ref to Category)
-- `order`: Number
-- `isActive`: Boolean
+```javascript
+{
+  _id: ObjectId,
+  name: String,        // e.g., "Greetings & Small Talk", "Airport"
+  nameAr: String,      // Arabic name
+  category: ObjectId,  // ref to Category
+  order: Number,
+  isActive: Boolean
+}
+```
 
-## Key Architecture Evolution (v1.0.0 → v1.1.0)
+**User Progress: BlankHistory**
+Tracks user performance and learning progress for fill-in-blank exercises.
 
-### Why Single Collection?
+```javascript
+{
+  user: ObjectId (ref: User),
+  phrase: ObjectId (ref: Phrase),
+  exerciseType: Enum ['fill-in-blank', ...],
+  dialect: Enum ['egyptian', 'saudi'],
+  gender: Enum ['male', 'female', 'neutral'],
+  difficulty: Enum ['beginner', 'intermediate', 'advanced'],
 
-**Previous Architecture (v1.0.0):**
-- Mixed structure with `fillin` collection
-- Unclear separation of concerns
-- Complex nested structures
+  isCorrect: Boolean,
 
-**Current Architecture (v1.1.0):**
-- 1 main collection: PhraseV2
-- Everything embedded - zero JOINs needed
-- Atomic updates - entire phrase updated at once
-- **Performance**: Single query retrieves everything
-- **Simplicity**: No referential integrity issues
-- **MongoDB-native**: Leverages document model strengths
+  attempt: {
+    userAnswer: String,
+    correctAnswer: String,
+    blankIndices: [Number],
+    timeSpent: Number,
+    attemptNumber: Number,
+    hintsUsed: Number
+  },
 
-### Design Benefits
+  situation: ObjectId,
+  category: ObjectId,
+
+  mastery: {
+    level: Number (0-100),
+    practiceCount: Number,
+    correctCount: Number,
+    lastPracticed: Date,
+    nextReview: Date  // for spaced repetition
+  },
+
+  timestamps: true
+}
+```
+
+## Architecture Benefits
+
+### Why Single Collection for Phrases?
 
 1. **Query Performance**
    - Fetch complete phrase with one query
    - No JOIN operations needed
-   - Optimal for read-heavy workloads (99% of operations)
+   - Optimal for mobile apps (minimal network requests)
 
 2. **Data Consistency**
    - Atomic updates to entire phrase
    - No orphaned variations or exercises
-   - Simpler transaction management
 
-3. **Developer Experience**
-   - Single model to work with
-   - Cleaner API endpoints
-   - Reduced complexity in business logic
+3. **Mobile-First Design**
+   - Reduced API calls
+   - Better offline support potential
+   - Smaller payload sizes with targeted queries
 
 4. **Scalability**
-   - Document size well within MongoDB's 16MB limit
+   - Document size well within MongoDB's limits (~100KB per phrase)
    - Efficient indexing on embedded arrays
-   - Easy horizontal scaling with sharding
+   - Easy horizontal scaling
 
-### Trade-offs Accepted
+## API Design Philosophy
 
-- **Update frequency**: Phrases don't change often, making embedding ideal
-- **Document size**: Even with all variations and exercises, documents stay under 100KB
-- **Query patterns**: 99% reads vs 1% writes justifies optimization for reads
-
-## Data Flow Examples
-
-**Creating new phrase:**
-1. Create single PhraseV2 document with all variations and exercises embedded
-2. Done - no additional operations needed
-
-**User plays game:**
-1. Query PhraseV2 by dialect and difficulty
-2. Extract embedded exercise directly
-3. Display and track progress
-
-**Content update:**
-1. Update single PhraseV2 document
-2. All variations and exercises updated atomically
-
-## Migration Path
-
-- **v1.0.0**: Used collection name `fillin` with mixed structure, story-based learning
-- **v1.1.0**: Single-collection embedded architecture with PhraseV2 (current)
-  - Removed story-based learning
-  - Added fill-in-the-blank exercises as primary learning method
-  - Everything embedded in single document for performance
+The backend API is designed for **mobile app consumption**:
+- RESTful endpoints organized by feature
+- JWT authentication for users
+- Dialect and gender filtering at query level
+- Pagination and progressive loading support
+- Minimal data transfer for mobile networks
 
 ## Indexing Strategy
 
-**PhraseV2 Collection:**
+**Phrase Collection:**
 - `{ category: 1, situation: 1, difficulty: 1, isActive: 1 }` - Primary browsing
 - `{ commonRank: 1, isActive: 1 }` - Ranked queries
 - `{ tags: 1 }` - Tag-based filtering
-- `{ "variations.dialect": 1 }` - Dialect-specific queries
-- `{ "exercises.type": 1, "exercises.difficulty": 1 }` - Game queries
 
-**Categories Collection:**
-- `{ name: 1 }` - Unique name lookup
-- `{ order: 1 }` - Ordered listing
+**BlankHistory Collection:**
+- `{ user: 1, phrase: 1 }` - User progress lookup
+- `{ user: 1, situation: 1 }` - Progress by situation
+- `{ user: 1, 'mastery.nextReview': 1 }` - Spaced repetition queries
+- `{ user: 1, dialect: 1, difficulty: 1 }` - Filtered practice sessions
 
-**Situations Collection:**
-- `{ category: 1 }` - Situations by category
-- `{ name: 1, category: 1 }` - Unique within category 
+## Key Principles
+
+1. **Dialect Authenticity** - Every phrase must be verified by native speakers
+2. **Gender Accuracy** - All gender variations must be linguistically correct
+3. **Context is King** - Never teach a phrase without explaining when/how to use it
+4. **Mobile-First** - All technical decisions prioritize mobile app performance
+5. **Quality over Quantity** - Better 500 perfect phrases than 5,000 mediocre ones
+
+## Content Guidelines
+
+### What Gets Approved
+- Phrases native speakers use daily
+- Natural, conversational Arabic
+- Gender-appropriate variations
+- Clear contextual usage
+- Culturally relevant scenarios
+
+### What Gets Rejected
+- Formal MSA that sounds bookish
+- Phrases only found in textbooks
+- Grammatically correct but unnatural speech
+- Overly formal words nobody actually says
+- Context-free vocabulary lists
+
+## The Efham Promise
+
+When users learn from Efham, they're not learning Arabic from a textbook or algorithm. They're learning the exact phrases that native speakers use in Cairo and Jeddah, organized by the situations where they'll need them, with the cultural intelligence to use them appropriately.

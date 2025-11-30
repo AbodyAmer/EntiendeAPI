@@ -2,6 +2,7 @@ const express = require('express');
 const { requireVerifiedAuth } = require('../utils/requireVerifiedAuth');
 const Phrase = require('../models/Phrase');
 const UserProgress = require('../models/UserProgress');
+const BlankHistory = require('../models/blankhistory');
 const Category = require('../models/Category');
 const Situation = require('../models/Situation');
 const User = require('../models/User');
@@ -382,6 +383,113 @@ router.get('/stats', requireVerifiedAuth, async (req, res) => {
         res.status(500).json({
             success: false,
             error: 'Failed to fetch user stats'
+        });
+    }
+});
+
+/**
+ * POST /game/history
+ * Save exercise history
+ *
+ * Body:
+ * - phraseId: ID of the phrase
+ * - dialect: Which dialect was used (egyptian, saudi, msa)
+ * - gender: Which gender variation was used (male, female, neutral)
+ * - isCorrect: Whether the user answered correctly
+ * - gameType: Type of game (fill-in-blank, reorder, multiple-choice, matching, typing)
+ */
+router.post('/history', requireVerifiedAuth, async (req, res) => {
+    try {
+        const userId = req.user;
+        const { phraseId, dialect, gender, isCorrect, gameType } = req.body;
+
+        // Validate required fields
+        if (!phraseId || !dialect || !gender || typeof isCorrect !== 'boolean' || !gameType) {
+            return res.status(400).json({
+                success: false,
+                error: 'phraseId, dialect, gender, isCorrect, and gameType are required'
+            });
+        }
+
+        // Validate gameType
+        const validGameTypes = ['fill-in-blank', 'reorder', 'multiple-choice', 'matching', 'typing'];
+        if (!validGameTypes.includes(gameType)) {
+            return res.status(400).json({
+                success: false,
+                error: `Invalid gameType. Must be one of: ${validGameTypes.join(', ')}`
+            });
+        }
+
+        // Validate dialect
+        if (!['egyptian', 'saudi', 'msa'].includes(dialect)) {
+            return res.status(400).json({
+                success: false,
+                error: 'Invalid dialect. Must be egyptian, saudi, or msa'
+            });
+        }
+
+        // Validate gender
+        if (!['male', 'female', 'neutral'].includes(gender)) {
+            return res.status(400).json({
+                success: false,
+                error: 'Invalid gender. Must be male, female, or neutral'
+            });
+        }
+
+        // Verify phrase exists
+        const phrase = await Phrase.findById(phraseId);
+        if (!phrase) {
+            return res.status(404).json({
+                success: false,
+                error: 'Phrase not found'
+            });
+        }
+
+        // Only save history for fill-in-blank for now
+        // Other game types don't have history collections yet
+        if (gameType === 'fill-in-blank') {
+            const history = new BlankHistory({
+                user: userId,
+                phrase: phraseId,
+                dialect,
+                gender,
+                isCorrect
+            });
+
+            await history.save();
+
+            res.status(201).json({
+                success: true,
+                data: {
+                    id: history._id,
+                    phraseId: history.phrase,
+                    dialect: history.dialect,
+                    gender: history.gender,
+                    isCorrect: history.isCorrect,
+                    gameType: 'fill-in-blank',
+                    createdAt: history.createdAt
+                }
+            });
+        } else {
+            // For other game types, acknowledge but don't save (no schema yet)
+            res.status(200).json({
+                success: true,
+                message: `History tracking for ${gameType} is not implemented yet`,
+                data: {
+                    phraseId,
+                    dialect,
+                    gender,
+                    isCorrect,
+                    gameType
+                }
+            });
+        }
+
+    } catch (error) {
+        console.error('Error saving game history:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Failed to save history'
         });
     }
 });

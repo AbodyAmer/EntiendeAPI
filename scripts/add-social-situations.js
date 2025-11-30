@@ -4,15 +4,15 @@ const Category = require('../models/Category');
 const Situation = require('../models/Situation');
 
 const socialSituations = [
+{
+  name: "weather",
+  displayName: "Weather",
+  arabicName: "الطقس",
+  description: "Phrases for talking about weather conditions and daily forecasts.",
+  icon: "☀️",
+  order: 6
+}
 
-  {
-    name: "describe-yourself",
-    displayName: "Describe Yourself",
-    arabicName: "اوصف نفسك",
-    description: "Talk about yourself, your background, interests, and personality",
-    icon: "📚",
-    order: 5
-  }
 ];
 
 async function addSocialSituations() {
