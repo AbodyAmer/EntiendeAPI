@@ -1,7 +1,6 @@
 const express = require('express');
 const { requireVerifiedAuth } = require('../utils/requireVerifiedAuth');
 const Phrase = require('../models/Phrase');
-const UserProgress = require('../models/UserProgress');
 const BlankHistory = require('../models/blankhistory');
 const Category = require('../models/Category');
 const Situation = require('../models/Situation');
@@ -81,21 +80,6 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
             }
             if (commonRankEnd) {
                 filter.commonRank.$lte = parseInt(commonRankEnd);
-            }
-        }
-
-        // Exclude recently seen phrases if requested
-        if (excludeSeen === 'true') {
-            const recentProgress = await UserProgress.find({
-                userId,
-                'stats.lastAttempted': {
-                    $gte: new Date(Date.now() - 24 * 60 * 60 * 1000) // Last 24 hours
-                }
-            }).select('phraseId');
-
-            const seenPhraseIds = recentProgress.map(p => p.phraseId);
-            if (seenPhraseIds.length > 0) {
-                filter._id = { $nin: seenPhraseIds };
             }
         }
 
