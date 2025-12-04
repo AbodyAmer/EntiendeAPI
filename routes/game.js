@@ -36,6 +36,8 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
             excludeSeen = 'true'
         } = req.query;
 
+        console.log(req.query);
+
         // Check if this is the marketing user
         const user = await User.findById(userId).select('email').lean();
         const isMarketingUser = user?.email === 'abdullah.eshaq94@gmail.com';
