@@ -5,6 +5,7 @@ const BlankHistory = require('../models/blankhistory');
 const Category = require('../models/Category');
 const Situation = require('../models/Situation');
 const User = require('../models/User');
+const { default: mongoose } = require('mongoose');
 const router = express.Router();
 
 /**
@@ -72,7 +73,7 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
         }
 
         if (situationId) {
-            filter.situation = situationId;
+            filter.situation = mongoose.Types.ObjectId(situationId);
         }
 
         if (commonRankStart || commonRankEnd) {
