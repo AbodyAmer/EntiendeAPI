@@ -118,13 +118,10 @@ if (require.main === module) {
     // Example: Replace this array with your phrases
     const phrasesArray = [
   {
-    "englishTranslation": "Can I have a fork?",
-    "category": "ESSENTIAL",
-    "situation": "Restaurant & Food",
-    "impact": "high",
+    "englishTranslation": "I broke my arm",
     "context": {
-      "whenToUse": "When asking waiter for a fork at restaurant",
-      "formality": "neutral"
+      "whenToUse": "Telling medical staff you broke a bone",
+      "formality": "informal"
     },
     "variations": {
       "msa": null,
@@ -132,18 +129,18 @@ if (require.main === module) {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "ممكن شوكة؟",
-          "tashkeelText": "مُمْكِن شَوْكَة؟",
-          "transliteration": "mumkin shawka?"
+          "text": "كسرت إيدي",
+          "tashkeelText": "كَسَرْت إِيدِي",
+          "transliteration": "kasart eedi"
         }
       },
       "saudi": {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "ممكن شوكة؟",
-          "tashkeelText": "مُمْكِن شَوْكَة؟",
-          "transliteration": "mumkin shawka?"
+          "text": "كسرت يدي",
+          "tashkeelText": "كَسَرْت يَدِي",
+          "transliteration": "kasart yadi"
         }
       }
     },
@@ -153,26 +150,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "ممكن _____؟",
-          "displaySentenceTashkeel": "مُمْكِن _____؟",
-          "displaySentenceTransliteration": "mumkin _____?",
+          "displaySentence": "_____ إيدي",
+          "displaySentenceTashkeel": "_____ إِيدِي",
+          "displaySentenceTransliteration": "_____ eedi",
           "blankWords": [
             {
-              "word": "شوكة",
-              "tashkeelWord": "شَوْكَة",
-              "transliteration": "shawka",
+              "word": "كسرت",
+              "tashkeelWord": "كَسَرْت",
+              "transliteration": "kasart",
               "isCorrect": true
             },
             {
-              "word": "معلقة",
-              "tashkeelWord": "مَعْلَقَة",
-              "transliteration": "ma3la2a",
+              "word": "وقعت",
+              "tashkeelWord": "وَقَعْت",
+              "transliteration": "we'e't",
               "isCorrect": false
             },
             {
-              "word": "سكينة",
-              "tashkeelWord": "سِكِّينَة",
-              "transliteration": "sikkeena",
+              "word": "حرقت",
+              "tashkeelWord": "حَرَقْت",
+              "transliteration": "haraqt",
               "isCorrect": false
             }
           ]
@@ -183,26 +180,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "ممكن _____؟",
-          "displaySentenceTashkeel": "مُمْكِن _____؟",
-          "displaySentenceTransliteration": "mumkin _____?",
+          "displaySentence": "_____ يدي",
+          "displaySentenceTashkeel": "_____ يَدِي",
+          "displaySentenceTransliteration": "_____ yadi",
           "blankWords": [
             {
-              "word": "شوكة",
-              "tashkeelWord": "شَوْكَة",
-              "transliteration": "shawka",
+              "word": "كسرت",
+              "tashkeelWord": "كَسَرْت",
+              "transliteration": "kasart",
               "isCorrect": true
             },
             {
-              "word": "ملعقة",
-              "tashkeelWord": "مِلْعَقَة",
-              "transliteration": "mil3aqa",
+              "word": "طحت",
+              "tashkeelWord": "طِحْت",
+              "transliteration": "taht",
               "isCorrect": false
             },
             {
-              "word": "سكينة",
-              "tashkeelWord": "سِكِّينَة",
-              "transliteration": "sikkeena",
+              "word": "حرقت",
+              "tashkeelWord": "حَرَقْت",
+              "transliteration": "haraqt",
               "isCorrect": false
             }
           ]
@@ -213,18 +210,15 @@ if (require.main === module) {
     "hasGenderVariation": false,
     "difficulty": "beginner",
     "frequency": "high",
-    "tags": ["restaurant", "utensils", "request"],
+    "tags": ["emergency", "medical", "injury", "bone", "fracture"],
     "isActive": true,
     "isApproved": true
   },
   {
-    "englishTranslation": "Here or takeaway?",
-    "category": "ESSENTIAL",
-    "situation": "Restaurant & Food",
-    "impact": "high",
+    "englishTranslation": "I burned myself",
     "context": {
-      "whenToUse": "Waiter asking if you'll eat at restaurant or takeaway",
-      "formality": "neutral"
+      "whenToUse": "Explaining you got burned and need treatment",
+      "formality": "informal"
     },
     "variations": {
       "msa": null,
@@ -232,18 +226,18 @@ if (require.main === module) {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "هنا ولا تيك أواي؟",
-          "tashkeelText": "هِنَا وَلّا تِيك أَوَاي؟",
-          "transliteration": "hena walla take away?"
+          "text": "انا اتحرقت",
+          "tashkeelText": "أَنَا اتْحَرَقْت",
+          "transliteration": "ana etharaqt"
         }
       },
       "saudi": {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "هنا ولا سفري؟",
-          "tashkeelText": "هِنَا وَلّا سَفْرِي؟",
-          "transliteration": "hena walla safari?"
+          "text": "انحرقت",
+          "tashkeelText": "انْحَرَقْت",
+          "transliteration": "inharaqt"
         }
       }
     },
@@ -253,26 +247,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "هنا ولا _____؟",
-          "displaySentenceTashkeel": "هِنَا وَلّا _____؟",
-          "displaySentenceTransliteration": "hena walla _____?",
+          "displaySentence": "أنا _____",
+          "displaySentenceTashkeel": "أَنَا _____",
+          "displaySentenceTransliteration": "ana _____",
           "blankWords": [
             {
-              "word": "تيك أواي",
-              "tashkeelWord": "تِيك أَوَاي",
-              "transliteration": "take away",
+              "word": "اتحرقت",
+              "tashkeelWord": "اتْحَرَقْت",
+              "transliteration": "etharaqt",
               "isCorrect": true
             },
             {
-              "word": "توصيل",
-              "tashkeelWord": "تَوْصِيل",
-              "transliteration": "tawseel",
+              "word": "اتجرحت",
+              "tashkeelWord": "اتْجَرَحْت",
+              "transliteration": "etgaraht",
               "isCorrect": false
             },
             {
-              "word": "جوه",
-              "tashkeelWord": "جُوَّه",
-              "transliteration": "guwwa",
+              "word": "اتكسرت",
+              "tashkeelWord": "اتْكَسَرْت",
+              "transliteration": "etkasart",
               "isCorrect": false
             }
           ]
@@ -283,226 +277,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "هنا ولا _____؟",
-          "displaySentenceTashkeel": "هِنَا وَلّا _____؟",
-          "displaySentenceTransliteration": "hena walla _____?",
+          "displaySentence": "_____",
+          "displaySentenceTashkeel": "_____",
+          "displaySentenceTransliteration": "_____",
           "blankWords": [
             {
-              "word": "سفري",
-              "tashkeelWord": "سَفْرِي",
-              "transliteration": "safari",
+              "word": "انحرقت",
+              "tashkeelWord": "انْحَرَقْت",
+              "transliteration": "inharaqt",
               "isCorrect": true
             },
             {
-              "word": "توصيل",
-              "tashkeelWord": "تَوْصِيل",
-              "transliteration": "tawseel",
+              "word": "انجرحت",
+              "tashkeelWord": "انْجَرَحْت",
+              "transliteration": "injaraht",
               "isCorrect": false
             },
             {
-              "word": "داخل",
-              "tashkeelWord": "دَاخِل",
-              "transliteration": "dakhil",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "msa": []
-    },
-    "hasGenderVariation": false,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["restaurant", "ordering", "question"],
-    "isActive": true,
-    "isApproved": true
-  },
-  {
-    "englishTranslation": "Takeaway, please",
-    "category": "ESSENTIAL",
-    "situation": "Restaurant & Food",
-    "impact": "high",
-    "context": {
-      "whenToUse": "Telling waiter you want takeaway, not eating at restaurant",
-      "formality": "neutral"
-    },
-    "variations": {
-      "msa": null,
-      "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "تيك أواي لو سمحت",
-          "tashkeelText": "تِيك أَوَاي لَوْ سَمَحْت",
-          "transliteration": "take away law sama7t"
-        }
-      },
-      "saudi": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "سفري، لو سمحت",
-          "tashkeelText": "سَفْرِي، لَوْ سَمَحْت",
-          "transliteration": "safari, law sama7t"
-        }
-      }
-    },
-    "exercises": {
-      "egyptian": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "_____ لو سمحت",
-          "displaySentenceTashkeel": "_____ لَوْ سَمَحْت",
-          "displaySentenceTransliteration": "_____ law sama7t",
-          "blankWords": [
-            {
-              "word": "تيك أواي",
-              "tashkeelWord": "تِيك أَوَاي",
-              "transliteration": "take away",
-              "isCorrect": true
-            },
-            {
-              "word": "توصيل",
-              "tashkeelWord": "تَوْصِيل",
-              "transliteration": "tawseel",
-              "isCorrect": false
-            },
-            {
-              "word": "هنا",
-              "tashkeelWord": "هِنَا",
-              "transliteration": "hena",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "saudi": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "_____، لو سمحت",
-          "displaySentenceTashkeel": "_____، لَوْ سَمَحْت",
-          "displaySentenceTransliteration": "_____, law sama7t",
-          "blankWords": [
-            {
-              "word": "سفري",
-              "tashkeelWord": "سَفْرِي",
-              "transliteration": "safari",
-              "isCorrect": true
-            },
-            {
-              "word": "توصيل",
-              "tashkeelWord": "تَوْصِيل",
-              "transliteration": "tawseel",
-              "isCorrect": false
-            },
-            {
-              "word": "هنا",
-              "tashkeelWord": "هِنَا",
-              "transliteration": "hena",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "msa": []
-    },
-    "hasGenderVariation": false,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["restaurant", "ordering", "request"],
-    "isActive": true,
-    "isApproved": true
-  },
-  {
-    "englishTranslation": "I didn't order this",
-    "category": "ESSENTIAL",
-    "situation": "Restaurant & Food",
-    "impact": "high",
-    "context": {
-      "whenToUse": "When waiter brings wrong dish to your table",
-      "formality": "neutral"
-    },
-    "variations": {
-      "msa": null,
-      "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "أنا ما طلبتش ده",
-          "tashkeelText": "أَنَا مَا طَلَبْتِش دَه",
-          "transliteration": "ana ma talabteesh da"
-        }
-      },
-      "saudi": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "أنا ما طلبت هذا",
-          "tashkeelText": "أَنَا مَا طَلَبْت هَذَا",
-          "transliteration": "ana ma talabat hadha"
-        }
-      }
-    },
-    "exercises": {
-      "egyptian": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "أنا ما _____ ده",
-          "displaySentenceTashkeel": "أَنَا مَا _____ دَه",
-          "displaySentenceTransliteration": "ana ma _____ da",
-          "blankWords": [
-            {
-              "word": "طلبتش",
-              "tashkeelWord": "طَلَبْتِش",
-              "transliteration": "talabteesh",
-              "isCorrect": true
-            },
-            {
-              "word": "أكلتش",
-              "tashkeelWord": "أَكَلْتِش",
-              "transliteration": "akalteesh",
-              "isCorrect": false
-            },
-            {
-              "word": "شفتش",
-              "tashkeelWord": "شُفْتِش",
-              "transliteration": "shufteesh",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "saudi": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "أنا ما _____ هذا",
-          "displaySentenceTashkeel": "أَنَا مَا _____ هَذَا",
-          "displaySentenceTransliteration": "ana ma _____ hadha",
-          "blankWords": [
-            {
-              "word": "طلبت",
-              "tashkeelWord": "طَلَبْت",
-              "transliteration": "talabat",
-              "isCorrect": true
-            },
-            {
-              "word": "أكلت",
-              "tashkeelWord": "أَكَلْت",
-              "transliteration": "akalat",
-              "isCorrect": false
-            },
-            {
-              "word": "شفت",
-              "tashkeelWord": "شُفْت",
-              "transliteration": "shuft",
+              "word": "انكسرت",
+              "tashkeelWord": "انْكَسَرْت",
+              "transliteration": "inkasart",
               "isCorrect": false
             }
           ]
@@ -513,98 +307,67 @@ if (require.main === module) {
     "hasGenderVariation": false,
     "difficulty": "beginner",
     "frequency": "medium",
-    "tags": ["restaurant", "problem", "correction"],
+    "tags": ["emergency", "medical", "injury", "burn"],
     "isActive": true,
     "isApproved": true
   },
   {
-    "englishTranslation": "I want rice with chicken",
-    "category": "ESSENTIAL",
-    "situation": "Restaurant & Food",
-    "impact": "high",
+    "englishTranslation": "I'm bleeding",
     "context": {
-      "whenToUse": "Ordering your meal at restaurant, specifying rice and chicken",
-      "formality": "neutral"
+      "whenToUse": "Alerting someone you're bleeding from injury",
+      "formality": "informal"
     },
     "variations": {
       "msa": null,
       "egyptian": {
-        "male": {
-          "text": "عايز رز و فراخ",
-          "tashkeelText": "عَايِز رُز وْ فِرَاخ",
-          "transliteration": "3ayez roz w ferakh"
-        },
-        "female": {
-          "text": "عايزة رز و فراخ",
-          "tashkeelText": "عَايْزَة رُز وْ فِرَاخ",
-          "transliteration": "3ayza roz w ferakh"
-        },
-        "neutral": null
-      },
-      "saudi": {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "أبغى رز و دجاج",
-          "tashkeelText": "أَبْغَى رُز وْ دَجَاج",
-          "transliteration": "abgha roz w dajaj"
+          "text": "أنا بنزف",
+          "tashkeelText": "أَنَا بَنْزِف",
+          "transliteration": "ana banzif"
         }
+      },
+      "saudi": {
+        "male": {
+          "text": "جالس أنزف",
+          "tashkeelText": "جَالِس أَنْزِف",
+          "transliteration": "jaalis anzif"
+        },
+        "female": {
+          "text": "جالسة أنزف",
+          "tashkeelText": "جَالِسَة أَنْزِف",
+          "transliteration": "jaalsa anzif"
+        },
+        "neutral": null
       }
     },
     "exercises": {
       "egyptian": [
         {
           "type": "fill-in-blank",
-          "gender": "male",
+          "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "عايز _____ و فراخ",
-          "displaySentenceTashkeel": "عَايِز _____ وْ فِرَاخ",
-          "displaySentenceTransliteration": "3ayez _____ w ferakh",
+          "displaySentence": "أنا _____",
+          "displaySentenceTashkeel": "أَنَا _____",
+          "displaySentenceTransliteration": "ana _____",
           "blankWords": [
             {
-              "word": "رز",
-              "tashkeelWord": "رُز",
-              "transliteration": "roz",
+              "word": "بنزف",
+              "tashkeelWord": "بَنْزِف",
+              "transliteration": "banzif",
               "isCorrect": true
             },
             {
-              "word": "عيش",
-              "tashkeelWord": "عِيش",
-              "transliteration": "3eesh",
+              "word": "برجع",
+              "tashkeelWord": "بَرْجَع",
+              "transliteration": "batraga'",
               "isCorrect": false
             },
             {
-              "word": "مكرونة",
-              "tashkeelWord": "مَكْرُونَة",
-              "transliteration": "makrona",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "type": "fill-in-blank",
-          "gender": "female",
-          "difficulty": "beginner",
-          "displaySentence": "عايزة _____ و فراخ",
-          "displaySentenceTashkeel": "عَايْزَة _____ وْ فِرَاخ",
-          "displaySentenceTransliteration": "3ayza _____ w ferakh",
-          "blankWords": [
-            {
-              "word": "رز",
-              "tashkeelWord": "رُز",
-              "transliteration": "roz",
-              "isCorrect": true
-            },
-            {
-              "word": "عيش",
-              "tashkeelWord": "عِيش",
-              "transliteration": "3eesh",
-              "isCorrect": false
-            },
-            {
-              "word": "مكرونة",
-              "tashkeelWord": "مَكْرُونَة",
-              "transliteration": "makrona",
+              "word": "بتعب",
+              "tashkeelWord": "بَتْعَب",
+              "transliteration": "bat'ab",
               "isCorrect": false
             }
           ]
@@ -613,28 +376,56 @@ if (require.main === module) {
       "saudi": [
         {
           "type": "fill-in-blank",
-          "gender": "neutral",
+          "gender": "male",
           "difficulty": "beginner",
-          "displaySentence": "أبغى _____ و دجاج",
-          "displaySentenceTashkeel": "أَبْغَى _____ وْ دَجَاج",
-          "displaySentenceTransliteration": "abgha _____ w dajaj",
+          "displaySentence": "جالس _____",
+          "displaySentenceTashkeel": "جَالِس _____",
+          "displaySentenceTransliteration": "jaalis _____",
           "blankWords": [
             {
-              "word": "رز",
-              "tashkeelWord": "رُز",
-              "transliteration": "roz",
+              "word": "أنزف",
+              "tashkeelWord": "أَنْزِف",
+              "transliteration": "anzif",
               "isCorrect": true
             },
             {
-              "word": "خبز",
-              "tashkeelWord": "خُبْز",
-              "transliteration": "khubz",
+              "word": "أستفرغ",
+              "tashkeelWord": "أَسْتَفْرِغ",
+              "transliteration": "astafrighh",
               "isCorrect": false
             },
             {
-              "word": "مكرونة",
-              "tashkeelWord": "مَكْرُونَة",
-              "transliteration": "makrona",
+              "word": "أتعب",
+              "tashkeelWord": "أَتْعَب",
+              "transliteration": "at'ab",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "جالسة _____",
+          "displaySentenceTashkeel": "جَالِسَة _____",
+          "displaySentenceTransliteration": "jaalsa _____",
+          "blankWords": [
+            {
+              "word": "أنزف",
+              "tashkeelWord": "أَنْزِف",
+              "transliteration": "anzif",
+              "isCorrect": true
+            },
+            {
+              "word": "أستفرغ",
+              "tashkeelWord": "أَسْتَفْرِغ",
+              "transliteration": "astafrighh",
+              "isCorrect": false
+            },
+            {
+              "word": "أتعب",
+              "tashkeelWord": "أَتْعَب",
+              "transliteration": "at'ab",
               "isCorrect": false
             }
           ]
@@ -645,18 +436,15 @@ if (require.main === module) {
     "hasGenderVariation": true,
     "difficulty": "beginner",
     "frequency": "high",
-    "tags": ["restaurant", "ordering", "food"],
+    "tags": ["emergency", "medical", "injury", "blood"],
     "isActive": true,
     "isApproved": true
   },
   {
-    "englishTranslation": "One french fries",
-    "category": "ESSENTIAL",
-    "situation": "Restaurant & Food",
-    "impact": "high",
+    "englishTranslation": "Where is the pharmacy?",
     "context": {
-      "whenToUse": "Ordering one portion of french fries at restaurant",
-      "formality": "neutral"
+      "whenToUse": "Asking for pharmacy location to get medicine",
+      "formality": "informal"
     },
     "variations": {
       "msa": null,
@@ -664,18 +452,18 @@ if (require.main === module) {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "واحد بطاطس مقلية",
-          "tashkeelText": "وَاحِد بَطَاطِس مَقْلِيَّة",
-          "transliteration": "wa7ed batates ma2liyya"
+          "text": "فين الصيدلية؟",
+          "tashkeelText": "فِين الصَّيْدَلِيَّة؟",
+          "transliteration": "feen el-saydaleyya?"
         }
       },
       "saudi": {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "واحد بطاطس مقلي",
-          "tashkeelText": "وَاحِد بَطَاطِس مَقْلِي",
-          "transliteration": "wa7ed batates ma2li"
+          "text": "وين الصيدلية؟",
+          "tashkeelText": "وِين الصَّيْدَلِيَّة؟",
+          "transliteration": "wayn as-saydaliyya?"
         }
       }
     },
@@ -685,26 +473,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "واحد _____",
-          "displaySentenceTashkeel": "وَاحِد _____",
-          "displaySentenceTransliteration": "wa7ed _____",
+          "displaySentence": "فين _____؟",
+          "displaySentenceTashkeel": "فِين _____؟",
+          "displaySentenceTransliteration": "feen _____?",
           "blankWords": [
             {
-              "word": "بطاطس مقلية",
-              "tashkeelWord": "بَطَاطِس مَقْلِيَّة",
-              "transliteration": "batates ma2liyya",
+              "word": "الصيدلية",
+              "tashkeelWord": "الصَّيْدَلِيَّة",
+              "transliteration": "el-saydaleyya",
               "isCorrect": true
             },
             {
-              "word": "رز",
-              "tashkeelWord": "رُز",
-              "transliteration": "roz",
+              "word": "المستشفى",
+              "tashkeelWord": "المُسْتَشْفَى",
+              "transliteration": "el-mostashfa",
               "isCorrect": false
             },
             {
-              "word": "سلطة",
-              "tashkeelWord": "سَلَطَة",
-              "transliteration": "salata",
+              "word": "العيادة",
+              "tashkeelWord": "العِيَادَة",
+              "transliteration": "el-'iyaada",
               "isCorrect": false
             }
           ]
@@ -715,26 +503,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "واحد _____",
-          "displaySentenceTashkeel": "وَاحِد _____",
-          "displaySentenceTransliteration": "wa7ed _____",
+          "displaySentence": "وين _____؟",
+          "displaySentenceTashkeel": "وِين _____؟",
+          "displaySentenceTransliteration": "wayn _____?",
           "blankWords": [
             {
-              "word": "بطاطس مقلي",
-              "tashkeelWord": "بَطَاطِس مَقْلِي",
-              "transliteration": "batates ma2li",
+              "word": "الصيدلية",
+              "tashkeelWord": "الصَّيْدَلِيَّة",
+              "transliteration": "as-saydaliyya",
               "isCorrect": true
             },
             {
-              "word": "رز",
-              "tashkeelWord": "رُز",
-              "transliteration": "roz",
+              "word": "المستشفى",
+              "tashkeelWord": "المُسْتَشْفَى",
+              "transliteration": "al-mostashfa",
               "isCorrect": false
             },
             {
-              "word": "سلطة",
-              "tashkeelWord": "سَلَطَة",
-              "transliteration": "salata",
+              "word": "العيادة",
+              "tashkeelWord": "العِيَادَة",
+              "transliteration": "al-'iyaada",
               "isCorrect": false
             }
           ]
@@ -745,31 +533,189 @@ if (require.main === module) {
     "hasGenderVariation": false,
     "difficulty": "beginner",
     "frequency": "high",
-    "tags": ["restaurant", "ordering", "food"],
+    "tags": ["medical", "pharmacy", "directions", "question"],
     "isActive": true,
     "isApproved": true
   },
   {
-    "englishTranslation": "I want vegetable soup",
-    "category": "ESSENTIAL",
-    "situation": "Restaurant & Food",
-    "impact": "high",
+    "englishTranslation": "Do you have a prescription?",
     "context": {
-      "whenToUse": "Ordering vegetable soup as starter or main dish",
-      "formality": "neutral"
+      "whenToUse": "Pharmacist checking if doctor gave you prescription",
+      "formality": "informal"
     },
     "variations": {
       "msa": null,
       "egyptian": {
         "male": {
-          "text": "عايز شوربة خضار",
-          "tashkeelText": "عَايِز شُوْرْبَة خُضَار",
-          "transliteration": "3ayez shorbet khodar"
+          "text": "معاك روشتة؟",
+          "tashkeelText": "مَعَاك رُوشِتَّة؟",
+          "transliteration": "ma'aak roshetta?"
         },
         "female": {
-          "text": "عايزة شوربة خضار",
-          "tashkeelText": "عَايْزَة شُوْرْبَة خُضَار",
-          "transliteration": "3ayza shorbet khodar"
+          "text": "معاكي روشتة؟",
+          "tashkeelText": "مَعَاكِي رُوشِتَّة؟",
+          "transliteration": "ma'aaki roshetta?"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "عندك وصفة طبية؟",
+          "tashkeelText": "عِنْدَك وَصْفَة طِبِّيَّة؟",
+          "transliteration": "'indak wasfah tibbiyya?"
+        },
+        "female": {
+          "text": "عندك وصفة طبية؟",
+          "tashkeelText": "عِنْدِك وَصْفَة طِبِّيَّة؟",
+          "transliteration": "'indik wasfah tibbiyya?"
+        },
+        "neutral": null
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "معاك _____؟",
+          "displaySentenceTashkeel": "مَعَاك _____؟",
+          "displaySentenceTransliteration": "ma'aak _____?",
+          "blankWords": [
+            {
+              "word": "روشتة",
+              "tashkeelWord": "رُوشِتَّة",
+              "transliteration": "roshetta",
+              "isCorrect": true
+            },
+            {
+              "word": "عذر طبي",
+              "tashkeelWord": "عُذْر طِبِّي",
+              "transliteration": "'ozr tibbi",
+              "isCorrect": false
+            },
+            {
+              "word": "ملف طبي",
+              "tashkeelWord": "مَلَف طِبِّي",
+              "transliteration": "malaf tibbi",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "معاكي _____؟",
+          "displaySentenceTashkeel": "مَعَاكِي _____؟",
+          "displaySentenceTransliteration": "ma'aaki _____?",
+          "blankWords": [
+            {
+              "word": "روشتة",
+              "tashkeelWord": "رُوشِتَّة",
+              "transliteration": "roshetta",
+              "isCorrect": true
+            },
+            {
+              "word": "عذر طبي",
+              "tashkeelWord": "عُذْر طِبِّي",
+              "transliteration": "'ozr tibbi",
+              "isCorrect": false
+            },
+            {
+              "word": "ملف طبي",
+              "tashkeelWord": "مَلَف طِبِّي",
+              "transliteration": "malaf tibbi",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "عندك _____؟",
+          "displaySentenceTashkeel": "عِنْدَك _____؟",
+          "displaySentenceTransliteration": "'indak _____?",
+          "blankWords": [
+            {
+              "word": "وصفة طبية",
+              "tashkeelWord": "وَصْفَة طِبِّيَّة",
+              "transliteration": "wasfah tibbiyya",
+              "isCorrect": true
+            },
+            {
+              "word": "عذر طبي",
+              "tashkeelWord": "عُذْر طِبِّي",
+              "transliteration": "'ozr tibbi",
+              "isCorrect": false
+            },
+            {
+              "word": "ملف طبي",
+              "tashkeelWord": "مَلَف طِبِّي",
+              "transliteration": "malaf tibbi",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "عندك _____؟",
+          "displaySentenceTashkeel": "عِنْدِك _____؟",
+          "displaySentenceTransliteration": "'indik _____?",
+          "blankWords": [
+            {
+              "word": "وصفة طبية",
+              "tashkeelWord": "وَصْفَة طِبِّيَّة",
+              "transliteration": "wasfah tibbiyya",
+              "isCorrect": true
+            },
+            {
+              "word": "عذر طبي",
+              "tashkeelWord": "عُذْر طِبِّي",
+              "transliteration": "'ozr tibbi",
+              "isCorrect": false
+            },
+            {
+              "word": "ملف طبي",
+              "tashkeelWord": "مَلَف طِبِّي",
+              "transliteration": "malaf tibbi",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "hasGenderVariation": true,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["medical", "pharmacy", "prescription", "question"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "I need bandages",
+    "context": {
+      "whenToUse": "Asking pharmacist for bandages for wound",
+      "formality": "informal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "محتاج شاش",
+          "tashkeelText": "مُحْتَاج شَاش",
+          "transliteration": "mehtaag shaash"
+        },
+        "female": {
+          "text": "محتاجة شاش",
+          "tashkeelText": "مُحْتَاجَة شَاش",
+          "transliteration": "mehtaaga shaash"
         },
         "neutral": null
       },
@@ -777,9 +723,9 @@ if (require.main === module) {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "أبغى شوربة خضار",
-          "tashkeelText": "أَبْغَى شُوْرْبَة خُضَار",
-          "transliteration": "abgha shorbat khodar"
+          "text": "أبغى شاش",
+          "tashkeelText": "أَبْغَى شَاش",
+          "transliteration": "abgha shaash"
         }
       }
     },
@@ -789,26 +735,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "male",
           "difficulty": "beginner",
-          "displaySentence": "عايز _____",
-          "displaySentenceTashkeel": "عَايِز _____",
-          "displaySentenceTransliteration": "3ayez _____",
+          "displaySentence": "محتاج _____",
+          "displaySentenceTashkeel": "مُحْتَاج _____",
+          "displaySentenceTransliteration": "mehtaag _____",
           "blankWords": [
             {
-              "word": "شوربة خضار",
-              "tashkeelWord": "شُوْرْبَة خُضَار",
-              "transliteration": "shorbet khodar",
+              "word": "شاش",
+              "tashkeelWord": "شَاش",
+              "transliteration": "shaash",
               "isCorrect": true
             },
             {
-              "word": "شوربة فراخ",
-              "tashkeelWord": "شُوْرْبَة فِرَاخ",
-              "transliteration": "shorbet ferakh",
+              "word": "دوا",
+              "tashkeelWord": "دَوَا",
+              "transliteration": "dawa",
               "isCorrect": false
             },
             {
-              "word": "سلطة",
-              "tashkeelWord": "سَلَطَة",
-              "transliteration": "salata",
+              "word": "علاج",
+              "tashkeelWord": "عِلَاج",
+              "transliteration": "'elaag",
               "isCorrect": false
             }
           ]
@@ -817,26 +763,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "female",
           "difficulty": "beginner",
-          "displaySentence": "عايزة _____",
-          "displaySentenceTashkeel": "عَايْزَة _____",
-          "displaySentenceTransliteration": "3ayza _____",
+          "displaySentence": "محتاجة _____",
+          "displaySentenceTashkeel": "مُحْتَاجَة _____",
+          "displaySentenceTransliteration": "mehtaaga _____",
           "blankWords": [
             {
-              "word": "شوربة خضار",
-              "tashkeelWord": "شُوْرْبَة خُضَار",
-              "transliteration": "shorbet khodar",
+              "word": "شاش",
+              "tashkeelWord": "شَاش",
+              "transliteration": "shaash",
               "isCorrect": true
             },
             {
-              "word": "شوربة فراخ",
-              "tashkeelWord": "شُوْرْبَة فِرَاخ",
-              "transliteration": "shorbet ferakh",
+              "word": "دوا",
+              "tashkeelWord": "دَوَا",
+              "transliteration": "dawa",
               "isCorrect": false
             },
             {
-              "word": "سلطة",
-              "tashkeelWord": "سَلَطَة",
-              "transliteration": "salata",
+              "word": "علاج",
+              "tashkeelWord": "عِلَاج",
+              "transliteration": "'elaag",
               "isCorrect": false
             }
           ]
@@ -852,21 +798,21 @@ if (require.main === module) {
           "displaySentenceTransliteration": "abgha _____",
           "blankWords": [
             {
-              "word": "شوربة خضار",
-              "tashkeelWord": "شُوْرْبَة خُضَار",
-              "transliteration": "shorbat khodar",
+              "word": "شاش",
+              "tashkeelWord": "شَاش",
+              "transliteration": "shaash",
               "isCorrect": true
             },
             {
-              "word": "شوربة دجاج",
-              "tashkeelWord": "شُوْرْبَة دَجَاج",
-              "transliteration": "shorbat dajaj",
+              "word": "دوا",
+              "tashkeelWord": "دَوَا",
+              "transliteration": "dawa",
               "isCorrect": false
             },
             {
-              "word": "سلطة",
-              "tashkeelWord": "سَلَطَة",
-              "transliteration": "salata",
+              "word": "علاج",
+              "tashkeelWord": "عِلَاج",
+              "transliteration": "'ilaaj",
               "isCorrect": false
             }
           ]
@@ -877,44 +823,134 @@ if (require.main === module) {
     "hasGenderVariation": true,
     "difficulty": "beginner",
     "frequency": "medium",
-    "tags": ["restaurant", "ordering", "soup"],
+    "tags": ["medical", "pharmacy", "bandages", "supplies"],
     "isActive": true,
     "isApproved": true
   },
   {
-    "englishTranslation": "Eat with your right hand",
-    "category": "ESSENTIAL",
-    "situation": "Restaurant & Food",
-    "impact": "high",
+    "englishTranslation": "I fell down",
     "context": {
-      "whenToUse": "Cultural advice about eating manners in Arab culture",
-      "formality": "neutral"
+      "whenToUse": "Explaining you fell and might be injured",
+      "formality": "informal"
     },
     "variations": {
       "msa": null,
       "egyptian": {
-        "male": {
-          "text": "كُل بإيدك اليمين",
-          "tashkeelText": "كُلْ بِإِيدَك اليَمِين",
-          "transliteration": "kol b-eedak el yameen"
-        },
-        "female": {
-          "text": "كُلي بإيدك اليمين",
-          "tashkeelText": "كُلِي بِإِيدِك اليَمِين",
-          "transliteration": "koli b-eedek el yameen"
-        },
-        "neutral": null
+        "male": null,
+        "female": null,
+        "neutral": {
+          "text": "وقعت",
+          "tashkeelText": "وَقَعْت",
+          "transliteration": "we'e't"
+        }
+      },
+      "saudi": {
+        "male": null,
+        "female": null,
+        "neutral": {
+          "text": "طحت",
+          "tashkeelText": "طِحْت",
+          "transliteration": "taht"
+        }
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "neutral",
+          "difficulty": "beginner",
+          "displaySentence": "_____",
+          "displaySentenceTashkeel": "_____",
+          "displaySentenceTransliteration": "_____",
+          "blankWords": [
+            {
+              "word": "وقعت",
+              "tashkeelWord": "وَقَعْت",
+              "transliteration": "we'e't",
+              "isCorrect": true
+            },
+            {
+              "word": "كسرت",
+              "tashkeelWord": "كَسَرْت",
+              "transliteration": "kasart",
+              "isCorrect": false
+            },
+            {
+              "word": "جرحت",
+              "tashkeelWord": "جَرَحْت",
+              "transliteration": "garaht",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "neutral",
+          "difficulty": "beginner",
+          "displaySentence": "_____",
+          "displaySentenceTashkeel": "_____",
+          "displaySentenceTransliteration": "_____",
+          "blankWords": [
+            {
+              "word": "طحت",
+              "tashkeelWord": "طِحْت",
+              "transliteration": "taht",
+              "isCorrect": true
+            },
+            {
+              "word": "كسرت",
+              "tashkeelWord": "كَسَرْت",
+              "transliteration": "kasart",
+              "isCorrect": false
+            },
+            {
+              "word": "جرحت",
+              "tashkeelWord": "جَرَحْت",
+              "transliteration": "jaraht",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "hasGenderVariation": false,
+    "difficulty": "beginner",
+    "frequency": "medium",
+    "tags": ["emergency", "medical", "injury", "accident"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "I'm vomiting",
+    "context": {
+      "whenToUse": "Telling doctor you're throwing up/vomiting",
+      "formality": "informal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": null,
+        "female": null,
+        "neutral": {
+          "text": "انا برجع",
+          "tashkeelText": "أَنَا بَرْجَع",
+          "transliteration": "ana batraga'"
+        }
       },
       "saudi": {
         "male": {
-          "text": "كُل بيدك اليمين",
-          "tashkeelText": "كُلْ بِيَدَك اليَمِين",
-          "transliteration": "kol b-yadak el yameen"
+          "text": "جالس أستفرغ",
+          "tashkeelText": "جَالِس أَسْتَفْرِغ",
+          "transliteration": "jaalis astafrighh"
         },
         "female": {
-          "text": "كُلي بيدك اليمين",
-          "tashkeelText": "كُلِي بِيَدِك اليَمِين",
-          "transliteration": "koli b-yadek el yameen"
+          "text": "جالسة أستفرغ",
+          "tashkeelText": "جَالِسَة أَسْتَفْرِغ",
+          "transliteration": "jaalsa astafrighh"
         },
         "neutral": null
       }
@@ -923,56 +959,28 @@ if (require.main === module) {
       "egyptian": [
         {
           "type": "fill-in-blank",
-          "gender": "male",
+          "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "_____ بإيدك اليمين",
-          "displaySentenceTashkeel": "_____ بِإِيدَك اليَمِين",
-          "displaySentenceTransliteration": "_____ b-eedak el yameen",
+          "displaySentence": "أنا _____",
+          "displaySentenceTashkeel": "أَنَا _____",
+          "displaySentenceTransliteration": "ana _____",
           "blankWords": [
             {
-              "word": "كُل",
-              "tashkeelWord": "كُلْ",
-              "transliteration": "kol",
+              "word": "برجع",
+              "tashkeelWord": "بَرْجَع",
+              "transliteration": "batraga'",
               "isCorrect": true
             },
             {
-              "word": "اشرب",
-              "tashkeelWord": "اِشْرَب",
-              "transliteration": "eshrab",
+              "word": "بنزف",
+              "tashkeelWord": "بَنْزِف",
+              "transliteration": "banzif",
               "isCorrect": false
             },
             {
-              "word": "امسك",
-              "tashkeelWord": "اِمْسِك",
-              "transliteration": "emsek",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "type": "fill-in-blank",
-          "gender": "female",
-          "difficulty": "beginner",
-          "displaySentence": "_____ بإيدك اليمين",
-          "displaySentenceTashkeel": "_____ بِإِيدِك اليَمِين",
-          "displaySentenceTransliteration": "_____ b-eedek el yameen",
-          "blankWords": [
-            {
-              "word": "كُلي",
-              "tashkeelWord": "كُلِي",
-              "transliteration": "koli",
-              "isCorrect": true
-            },
-            {
-              "word": "اشربي",
-              "tashkeelWord": "اِشْرَبِي",
-              "transliteration": "eshrabi",
-              "isCorrect": false
-            },
-            {
-              "word": "امسكي",
-              "tashkeelWord": "اِمْسِكِي",
-              "transliteration": "emseki",
+              "word": "بتألم",
+              "tashkeelWord": "بَتْأَلَّم",
+              "transliteration": "bata'allam",
               "isCorrect": false
             }
           ]
@@ -983,26 +991,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "male",
           "difficulty": "beginner",
-          "displaySentence": "_____ بيدك اليمين",
-          "displaySentenceTashkeel": "_____ بِيَدَك اليَمِين",
-          "displaySentenceTransliteration": "_____ b-yadak el yameen",
+          "displaySentence": "جالس _____",
+          "displaySentenceTashkeel": "جَالِس _____",
+          "displaySentenceTransliteration": "jaalis _____",
           "blankWords": [
             {
-              "word": "كُل",
-              "tashkeelWord": "كُلْ",
-              "transliteration": "kol",
+              "word": "أستفرغ",
+              "tashkeelWord": "أَسْتَفْرِغ",
+              "transliteration": "astafrighh",
               "isCorrect": true
             },
             {
-              "word": "اشرب",
-              "tashkeelWord": "اِشْرَب",
-              "transliteration": "eshrab",
+              "word": "أنزف",
+              "tashkeelWord": "أَنْزِف",
+              "transliteration": "anzif",
               "isCorrect": false
             },
             {
-              "word": "امسك",
-              "tashkeelWord": "اِمْسِك",
-              "transliteration": "emsek",
+              "word": "أتألم",
+              "tashkeelWord": "أَتْأَلَّم",
+              "transliteration": "ata'allam",
               "isCorrect": false
             }
           ]
@@ -1011,26 +1019,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "female",
           "difficulty": "beginner",
-          "displaySentence": "_____ بيدك اليمين",
-          "displaySentenceTashkeel": "_____ بِيَدِك اليَمِين",
-          "displaySentenceTransliteration": "_____ b-yadek el yameen",
+          "displaySentence": "جالسة _____",
+          "displaySentenceTashkeel": "جَالِسَة _____",
+          "displaySentenceTransliteration": "jaalsa _____",
           "blankWords": [
             {
-              "word": "كُلي",
-              "tashkeelWord": "كُلِي",
-              "transliteration": "koli",
+              "word": "أستفرغ",
+              "tashkeelWord": "أَسْتَفْرِغ",
+              "transliteration": "astafrighh",
               "isCorrect": true
             },
             {
-              "word": "اشربي",
-              "tashkeelWord": "اِشْرَبِي",
-              "transliteration": "eshrabi",
+              "word": "أنزف",
+              "tashkeelWord": "أَنْزِف",
+              "transliteration": "anzif",
               "isCorrect": false
             },
             {
-              "word": "امسكي",
-              "tashkeelWord": "اِمْسِكِي",
-              "transliteration": "emseki",
+              "word": "أتألم",
+              "tashkeelWord": "أَتْأَلَّم",
+              "transliteration": "ata'allam",
               "isCorrect": false
             }
           ]
@@ -1041,18 +1049,15 @@ if (require.main === module) {
     "hasGenderVariation": true,
     "difficulty": "beginner",
     "frequency": "medium",
-    "tags": ["restaurant", "culture", "manners"],
+    "tags": ["emergency", "medical", "symptoms", "illness"],
     "isActive": true,
     "isApproved": true
   },
   {
-    "englishTranslation": "The food is a lot",
-    "category": "ESSENTIAL",
-    "situation": "Restaurant & Food",
-    "impact": "high",
+    "englishTranslation": "I have an injury in my back",
     "context": {
-      "whenToUse": "Commenting when portion size is very large or too much",
-      "formality": "neutral"
+      "whenToUse": "Describing back injury location to doctor",
+      "formality": "informal"
     },
     "variations": {
       "msa": null,
@@ -1060,18 +1065,18 @@ if (require.main === module) {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "الأكل كتير",
-          "tashkeelText": "الأَكْل كِتِير",
-          "transliteration": "el akl keteer"
+          "text": "عندي إصابة في ظهري",
+          "tashkeelText": "عَنْدِي إِصَابَة فِي ظَهْرِي",
+          "transliteration": "'andi isaaba fe dahri"
         }
       },
       "saudi": {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "الأكل كثير",
-          "tashkeelText": "الأَكْل كَثِير",
-          "transliteration": "el akl katheer"
+          "text": "عندي إصابة في ظهري",
+          "tashkeelText": "عِنْدِي إِصَابَة فِي ظَهْرِي",
+          "transliteration": "'indi isaaba fe dhahri"
         }
       }
     },
@@ -1081,26 +1086,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "_____ كتير",
-          "displaySentenceTashkeel": "_____ كِتِير",
-          "displaySentenceTransliteration": "_____ keteer",
+          "displaySentence": "عندي _____ في ظهري",
+          "displaySentenceTashkeel": "عَنْدِي _____ فِي ظَهْرِي",
+          "displaySentenceTransliteration": "'andi _____ fe dahri",
           "blankWords": [
             {
-              "word": "الأكل",
-              "tashkeelWord": "الأَكْل",
-              "transliteration": "el akl",
+              "word": "إصابة",
+              "tashkeelWord": "إِصَابَة",
+              "transliteration": "isaaba",
               "isCorrect": true
             },
             {
-              "word": "الميه",
-              "tashkeelWord": "المِيَّه",
-              "transliteration": "el mayya",
+              "word": "جرح",
+              "tashkeelWord": "جُرْح",
+              "transliteration": "gorh",
               "isCorrect": false
             },
             {
-              "word": "الناس",
-              "tashkeelWord": "النَّاس",
-              "transliteration": "el nas",
+              "word": "كسر",
+              "tashkeelWord": "كَسْر",
+              "transliteration": "kasr",
               "isCorrect": false
             }
           ]
@@ -1111,26 +1116,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "_____ كثير",
-          "displaySentenceTashkeel": "_____ كَثِير",
-          "displaySentenceTransliteration": "_____ katheer",
+          "displaySentence": "عندي _____ في ظهري",
+          "displaySentenceTashkeel": "عِنْدِي _____ فِي ظَهْرِي",
+          "displaySentenceTransliteration": "'indi _____ fe dhahri",
           "blankWords": [
             {
-              "word": "الأكل",
-              "tashkeelWord": "الأَكْل",
-              "transliteration": "el akl",
+              "word": "إصابة",
+              "tashkeelWord": "إِصَابَة",
+              "transliteration": "isaaba",
               "isCorrect": true
             },
             {
-              "word": "الماء",
-              "tashkeelWord": "المَاء",
-              "transliteration": "el ma'",
+              "word": "جرح",
+              "tashkeelWord": "جُرْح",
+              "transliteration": "jurh",
               "isCorrect": false
             },
             {
-              "word": "الناس",
-              "tashkeelWord": "النَّاس",
-              "transliteration": "el nas",
+              "word": "كسر",
+              "tashkeelWord": "كَسْر",
+              "transliteration": "kasr",
               "isCorrect": false
             }
           ]
@@ -1141,37 +1146,38 @@ if (require.main === module) {
     "hasGenderVariation": false,
     "difficulty": "beginner",
     "frequency": "medium",
-    "tags": ["restaurant", "quantity", "comment"],
+    "tags": ["medical", "injury", "body-parts", "pain"],
     "isActive": true,
     "isApproved": true
   },
   {
-    "englishTranslation": "My favorite dish is pasta",
-    "category": "ESSENTIAL",
-    "situation": "Restaurant & Food",
-    "impact": "high",
+    "englishTranslation": "I need treatment",
     "context": {
-      "whenToUse": "Tell your favorite food",
-      "formality": "neutral"
+      "whenToUse": "Requesting medical treatment at hospital",
+      "formality": "informal"
     },
     "variations": {
       "msa": null,
       "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "أكلتي المفضلة مكرونة",
-          "tashkeelText": "أَكْلَتِي المُفَضَّلَة مَكْرُونَة",
-          "transliteration": "aklati el mofaddala makrona"
-        }
+        "male": {
+          "text": "محتاج علاج",
+          "tashkeelText": "مُحْتَاج عِلَاج",
+          "transliteration": "mehtaag 'elaag"
+        },
+        "female": {
+          "text": "محتاجة علاج",
+          "tashkeelText": "مُحْتَاجَة عِلَاج",
+          "transliteration": "mehtaaga 'elaag"
+        },
+        "neutral": null
       },
       "saudi": {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "أكلتي المفضلة مكرونة",
-          "tashkeelText": "أَكْلَتِي المُفَضَّلَة مَكْرُونَة",
-          "transliteration": "aklati el mofaddala makrona"
+          "text": "أبغى علاج",
+          "tashkeelText": "أَبْغَى عِلَاج",
+          "transliteration": "abgha 'ilaaj"
         }
       }
     },
@@ -1179,28 +1185,56 @@ if (require.main === module) {
       "egyptian": [
         {
           "type": "fill-in-blank",
-          "gender": "neutral",
+          "gender": "male",
           "difficulty": "beginner",
-          "displaySentence": "أكلتي المفضلة _____",
-          "displaySentenceTashkeel": "أَكْلَتِي المُفَضَّلَة _____",
-          "displaySentenceTransliteration": "aklati el mofaddala _____",
+          "displaySentence": "محتاج _____",
+          "displaySentenceTashkeel": "مُحْتَاج _____",
+          "displaySentenceTransliteration": "mehtaag _____",
           "blankWords": [
             {
-              "word": "مكرونة",
-              "tashkeelWord": "مَكْرُونَة",
-              "transliteration": "makrona",
+              "word": "علاج",
+              "tashkeelWord": "عِلَاج",
+              "transliteration": "'elaag",
               "isCorrect": true
             },
             {
-              "word": "رز",
-              "tashkeelWord": "رُز",
-              "transliteration": "roz",
+              "word": "راحة",
+              "tashkeelWord": "رَاحَة",
+              "transliteration": "raaha",
               "isCorrect": false
             },
             {
-              "word": "فراخ",
-              "tashkeelWord": "فِرَاخ",
-              "transliteration": "ferakh",
+              "word": "نوم",
+              "tashkeelWord": "نَوْم",
+              "transliteration": "nawm",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "محتاجة _____",
+          "displaySentenceTashkeel": "مُحْتَاجَة _____",
+          "displaySentenceTransliteration": "mehtaaga _____",
+          "blankWords": [
+            {
+              "word": "علاج",
+              "tashkeelWord": "عِلَاج",
+              "transliteration": "'elaag",
+              "isCorrect": true
+            },
+            {
+              "word": "راحة",
+              "tashkeelWord": "رَاحَة",
+              "transliteration": "raaha",
+              "isCorrect": false
+            },
+            {
+              "word": "نوم",
+              "tashkeelWord": "نَوْم",
+              "transliteration": "nawm",
               "isCorrect": false
             }
           ]
@@ -1211,26 +1245,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "أكلتي المفضلة _____",
-          "displaySentenceTashkeel": "أَكْلَتِي المُفَضَّلَة _____",
-          "displaySentenceTransliteration": "aklati el mofaddala _____",
+          "displaySentence": "أبغى _____",
+          "displaySentenceTashkeel": "أَبْغَى _____",
+          "displaySentenceTransliteration": "abgha _____",
           "blankWords": [
             {
-              "word": "مكرونة",
-              "tashkeelWord": "مَكْرُونَة",
-              "transliteration": "makrona",
+              "word": "علاج",
+              "tashkeelWord": "عِلَاج",
+              "transliteration": "'ilaaj",
               "isCorrect": true
             },
             {
-              "word": "رز",
-              "tashkeelWord": "رُز",
-              "transliteration": "roz",
+              "word": "راحة",
+              "tashkeelWord": "رَاحَة",
+              "transliteration": "raaha",
               "isCorrect": false
             },
             {
-              "word": "دجاج",
-              "tashkeelWord": "دَجَاج",
-              "transliteration": "dajaj",
+              "word": "نوم",
+              "tashkeelWord": "نَوْم",
+              "transliteration": "nawm",
               "isCorrect": false
             }
           ]
@@ -1238,16 +1272,16 @@ if (require.main === module) {
       ],
       "msa": []
     },
-    "hasGenderVariation": false,
+    "hasGenderVariation": true,
     "difficulty": "beginner",
-    "frequency": "medium",
-    "tags": ["restaurant", "preference", "food"],
+    "frequency": "high",
+    "tags": ["medical", "treatment", "hospital", "healthcare"],
     "isActive": true,
     "isApproved": true
   }
 ]
     const categoryName = 'ESSENTIAL'; // Change this
-    const situationName = 'restaurant-food'; // Change this
+    const situationName = 'emergency-medical'; // Change this
 
     if (phrasesArray.length === 0) {
         console.error('❌ No phrases provided. Please add phrases to the phrasesArray.');
