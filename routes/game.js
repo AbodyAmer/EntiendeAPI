@@ -73,7 +73,7 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
         }
 
         if (situationId) {
-            filter.situation = mongoose.Types.ObjectId(situationId);
+            filter.situation = new mongoose.Types.ObjectId(situationId);
         }
 
         if (commonRankStart || commonRankEnd) {
