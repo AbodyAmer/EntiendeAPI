@@ -87,6 +87,7 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
 
         const limitNum = Math.min(50, Math.max(1, parseInt(limit)));
 
+        console.log('Filter for exercises:', filter);
         // SIMPLE QUERY - No complex aggregation!
         const phrases = await Phrase.aggregate([
             { $match: filter },
