@@ -37,7 +37,6 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
             excludeSeen = 'true'
         } = req.query;
 
-        console.log(req.query);
 
         // Check if this is the marketing user
         const user = await User.findById(userId).select('email').lean();
@@ -64,31 +63,14 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
             ];
         }
 
-        if (difficulty) {
-            filter.difficulty = difficulty;
-        }
-
-        if (categoryId) {
-            filter.category = categoryId;
-        }
 
         if (situationId) {
             filter.situation = new mongoose.Types.ObjectId(situationId);
         }
 
-        if (commonRankStart || commonRankEnd) {
-            filter.commonRank = {};
-            if (commonRankStart) {
-                filter.commonRank.$gte = parseInt(commonRankStart);
-            }
-            if (commonRankEnd) {
-                filter.commonRank.$lte = parseInt(commonRankEnd);
-            }
-        }
 
         const limitNum = Math.min(50, Math.max(1, parseInt(limit)));
 
-        console.log('Filter for exercises:', filter);
         // SIMPLE QUERY - No complex aggregation!
         const phrases = await Phrase.aggregate([
             { $match: filter },
