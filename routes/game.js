@@ -385,6 +385,7 @@ router.get('/stats', requireVerifiedAuth, async (req, res) => {
 router.post('/history', requireVerifiedAuth, async (req, res) => {
     try {
         const userId = req.user;
+        
         const { phraseId, dialect, gender, isCorrect, gameType } = req.body;
 
         // Validate required fields
@@ -474,6 +475,22 @@ router.post('/history', requireVerifiedAuth, async (req, res) => {
         res.status(500).json({
             success: false,
             error: 'Failed to save history'
+        });
+    }
+});
+
+router.get('/situations', requireVerifiedAuth, async (req, res) => {
+    try {
+        const situations = await Situation.find({ isActive: true }).select('name description').lean();
+        res.json({
+            success: true,
+            data: situations
+        });
+    } catch (error) {
+        console.error('Error fetching situations:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Failed to fetch situations'
         });
     }
 });
