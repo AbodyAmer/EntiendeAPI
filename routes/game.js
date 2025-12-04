@@ -481,7 +481,7 @@ router.post('/history', requireVerifiedAuth, async (req, res) => {
 
 router.get('/situations', requireVerifiedAuth, async (req, res) => {
     try {
-        const situations = await Situation.find({ isActive: true }).select('name description').lean();
+        const situations = await Situation.find({ isActive: true }).select('name description displayName').lean();
         res.json({
             success: true,
             data: situations
