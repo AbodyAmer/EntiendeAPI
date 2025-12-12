@@ -118,9 +118,11 @@ if (require.main === module) {
     // Example: Replace this array with your phrases
     const phrasesArray = [
   {
-    "englishTranslation": "I broke my arm",
+    "englishTranslation": "Where should we meet?",
+    "category": "SOCIAL",
+    "situation": "Social Life",
     "context": {
-      "whenToUse": "Telling medical staff you broke a bone",
+      "whenToUse": "Asking for the meetup location",
       "formality": "informal"
     },
     "variations": {
@@ -129,18 +131,18 @@ if (require.main === module) {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "كسرت إيدي",
-          "tashkeelText": "كَسَرْت إِيدِي",
-          "transliteration": "kasart eedi"
+          "text": "نتقابل فين؟",
+          "tashkeelText": "نِتْقَابِل فِين؟",
+          "transliteration": "netʾabel fein?"
         }
       },
       "saudi": {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "كسرت يدي",
-          "tashkeelText": "كَسَرْت يَدِي",
-          "transliteration": "kasart yadi"
+          "text": "وين نتقابل؟",
+          "tashkeelText": "وَيْن نِتْقَابَل؟",
+          "transliteration": "wein netʾabel?"
         }
       }
     },
@@ -150,349 +152,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "_____ إيدي",
-          "displaySentenceTashkeel": "_____ إِيدِي",
-          "displaySentenceTransliteration": "_____ eedi",
+          "displaySentence": "_____ فين؟",
+          "displaySentenceTashkeel": "_____ فِين؟",
+          "displaySentenceTransliteration": "_____ fein?",
           "blankWords": [
             {
-              "word": "كسرت",
-              "tashkeelWord": "كَسَرْت",
-              "transliteration": "kasart",
+              "word": "نتقابل",
+              "tashkeelWord": "نِتْقَابِل",
+              "transliteration": "netʾabel",
               "isCorrect": true
             },
             {
-              "word": "وقعت",
-              "tashkeelWord": "وَقَعْت",
-              "transliteration": "we'e't",
+              "word": "نروح",
+              "tashkeelWord": "نِرُوح",
+              "transliteration": "nerūḥ",
               "isCorrect": false
             },
             {
-              "word": "حرقت",
-              "tashkeelWord": "حَرَقْت",
-              "transliteration": "haraqt",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "saudi": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "_____ يدي",
-          "displaySentenceTashkeel": "_____ يَدِي",
-          "displaySentenceTransliteration": "_____ yadi",
-          "blankWords": [
-            {
-              "word": "كسرت",
-              "tashkeelWord": "كَسَرْت",
-              "transliteration": "kasart",
-              "isCorrect": true
-            },
-            {
-              "word": "طحت",
-              "tashkeelWord": "طِحْت",
-              "transliteration": "taht",
-              "isCorrect": false
-            },
-            {
-              "word": "حرقت",
-              "tashkeelWord": "حَرَقْت",
-              "transliteration": "haraqt",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "msa": []
-    },
-    "hasGenderVariation": false,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["emergency", "medical", "injury", "bone", "fracture"],
-    "isActive": true,
-    "isApproved": true
-  },
-  {
-    "englishTranslation": "I burned myself",
-    "context": {
-      "whenToUse": "Explaining you got burned and need treatment",
-      "formality": "informal"
-    },
-    "variations": {
-      "msa": null,
-      "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "انا اتحرقت",
-          "tashkeelText": "أَنَا اتْحَرَقْت",
-          "transliteration": "ana etharaqt"
-        }
-      },
-      "saudi": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "انحرقت",
-          "tashkeelText": "انْحَرَقْت",
-          "transliteration": "inharaqt"
-        }
-      }
-    },
-    "exercises": {
-      "egyptian": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "أنا _____",
-          "displaySentenceTashkeel": "أَنَا _____",
-          "displaySentenceTransliteration": "ana _____",
-          "blankWords": [
-            {
-              "word": "اتحرقت",
-              "tashkeelWord": "اتْحَرَقْت",
-              "transliteration": "etharaqt",
-              "isCorrect": true
-            },
-            {
-              "word": "اتجرحت",
-              "tashkeelWord": "اتْجَرَحْت",
-              "transliteration": "etgaraht",
-              "isCorrect": false
-            },
-            {
-              "word": "اتكسرت",
-              "tashkeelWord": "اتْكَسَرْت",
-              "transliteration": "etkasart",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "saudi": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "_____",
-          "displaySentenceTashkeel": "_____",
-          "displaySentenceTransliteration": "_____",
-          "blankWords": [
-            {
-              "word": "انحرقت",
-              "tashkeelWord": "انْحَرَقْت",
-              "transliteration": "inharaqt",
-              "isCorrect": true
-            },
-            {
-              "word": "انجرحت",
-              "tashkeelWord": "انْجَرَحْت",
-              "transliteration": "injaraht",
-              "isCorrect": false
-            },
-            {
-              "word": "انكسرت",
-              "tashkeelWord": "انْكَسَرْت",
-              "transliteration": "inkasart",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "msa": []
-    },
-    "hasGenderVariation": false,
-    "difficulty": "beginner",
-    "frequency": "medium",
-    "tags": ["emergency", "medical", "injury", "burn"],
-    "isActive": true,
-    "isApproved": true
-  },
-  {
-    "englishTranslation": "I'm bleeding",
-    "context": {
-      "whenToUse": "Alerting someone you're bleeding from injury",
-      "formality": "informal"
-    },
-    "variations": {
-      "msa": null,
-      "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "أنا بنزف",
-          "tashkeelText": "أَنَا بَنْزِف",
-          "transliteration": "ana banzif"
-        }
-      },
-      "saudi": {
-        "male": {
-          "text": "جالس أنزف",
-          "tashkeelText": "جَالِس أَنْزِف",
-          "transliteration": "jaalis anzif"
-        },
-        "female": {
-          "text": "جالسة أنزف",
-          "tashkeelText": "جَالِسَة أَنْزِف",
-          "transliteration": "jaalsa anzif"
-        },
-        "neutral": null
-      }
-    },
-    "exercises": {
-      "egyptian": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "أنا _____",
-          "displaySentenceTashkeel": "أَنَا _____",
-          "displaySentenceTransliteration": "ana _____",
-          "blankWords": [
-            {
-              "word": "بنزف",
-              "tashkeelWord": "بَنْزِف",
-              "transliteration": "banzif",
-              "isCorrect": true
-            },
-            {
-              "word": "برجع",
-              "tashkeelWord": "بَرْجَع",
-              "transliteration": "batraga'",
-              "isCorrect": false
-            },
-            {
-              "word": "بتعب",
-              "tashkeelWord": "بَتْعَب",
-              "transliteration": "bat'ab",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "saudi": [
-        {
-          "type": "fill-in-blank",
-          "gender": "male",
-          "difficulty": "beginner",
-          "displaySentence": "جالس _____",
-          "displaySentenceTashkeel": "جَالِس _____",
-          "displaySentenceTransliteration": "jaalis _____",
-          "blankWords": [
-            {
-              "word": "أنزف",
-              "tashkeelWord": "أَنْزِف",
-              "transliteration": "anzif",
-              "isCorrect": true
-            },
-            {
-              "word": "أستفرغ",
-              "tashkeelWord": "أَسْتَفْرِغ",
-              "transliteration": "astafrighh",
-              "isCorrect": false
-            },
-            {
-              "word": "أتعب",
-              "tashkeelWord": "أَتْعَب",
-              "transliteration": "at'ab",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "type": "fill-in-blank",
-          "gender": "female",
-          "difficulty": "beginner",
-          "displaySentence": "جالسة _____",
-          "displaySentenceTashkeel": "جَالِسَة _____",
-          "displaySentenceTransliteration": "jaalsa _____",
-          "blankWords": [
-            {
-              "word": "أنزف",
-              "tashkeelWord": "أَنْزِف",
-              "transliteration": "anzif",
-              "isCorrect": true
-            },
-            {
-              "word": "أستفرغ",
-              "tashkeelWord": "أَسْتَفْرِغ",
-              "transliteration": "astafrighh",
-              "isCorrect": false
-            },
-            {
-              "word": "أتعب",
-              "tashkeelWord": "أَتْعَب",
-              "transliteration": "at'ab",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "msa": []
-    },
-    "hasGenderVariation": true,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["emergency", "medical", "injury", "blood"],
-    "isActive": true,
-    "isApproved": true
-  },
-  {
-    "englishTranslation": "Where is the pharmacy?",
-    "context": {
-      "whenToUse": "Asking for pharmacy location to get medicine",
-      "formality": "informal"
-    },
-    "variations": {
-      "msa": null,
-      "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "فين الصيدلية؟",
-          "tashkeelText": "فِين الصَّيْدَلِيَّة؟",
-          "transliteration": "feen el-saydaleyya?"
-        }
-      },
-      "saudi": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "وين الصيدلية؟",
-          "tashkeelText": "وِين الصَّيْدَلِيَّة؟",
-          "transliteration": "wayn as-saydaliyya?"
-        }
-      }
-    },
-    "exercises": {
-      "egyptian": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "فين _____؟",
-          "displaySentenceTashkeel": "فِين _____؟",
-          "displaySentenceTransliteration": "feen _____?",
-          "blankWords": [
-            {
-              "word": "الصيدلية",
-              "tashkeelWord": "الصَّيْدَلِيَّة",
-              "transliteration": "el-saydaleyya",
-              "isCorrect": true
-            },
-            {
-              "word": "المستشفى",
-              "tashkeelWord": "المُسْتَشْفَى",
-              "transliteration": "el-mostashfa",
-              "isCorrect": false
-            },
-            {
-              "word": "العيادة",
-              "tashkeelWord": "العِيَادَة",
-              "transliteration": "el-'iyaada",
+              "word": "نقعد",
+              "tashkeelWord": "نِقْعُد",
+              "transliteration": "neʾʿod",
               "isCorrect": false
             }
           ]
@@ -504,25 +183,25 @@ if (require.main === module) {
           "gender": "neutral",
           "difficulty": "beginner",
           "displaySentence": "وين _____؟",
-          "displaySentenceTashkeel": "وِين _____؟",
-          "displaySentenceTransliteration": "wayn _____?",
+          "displaySentenceTashkeel": "وَيْن _____؟",
+          "displaySentenceTransliteration": "wein _____?",
           "blankWords": [
             {
-              "word": "الصيدلية",
-              "tashkeelWord": "الصَّيْدَلِيَّة",
-              "transliteration": "as-saydaliyya",
+              "word": "نتقابل",
+              "tashkeelWord": "نِتْقَابَل",
+              "transliteration": "netʾabel",
               "isCorrect": true
             },
             {
-              "word": "المستشفى",
-              "tashkeelWord": "المُسْتَشْفَى",
-              "transliteration": "al-mostashfa",
+              "word": "نروح",
+              "tashkeelWord": "نِرُوح",
+              "transliteration": "nerūḥ",
               "isCorrect": false
             },
             {
-              "word": "العيادة",
-              "tashkeelWord": "العِيَادَة",
-              "transliteration": "al-'iyaada",
+              "word": "نقعد",
+              "tashkeelWord": "نِقْعُد",
+              "transliteration": "neʾʿod",
               "isCorrect": false
             }
           ]
@@ -533,199 +212,36 @@ if (require.main === module) {
     "hasGenderVariation": false,
     "difficulty": "beginner",
     "frequency": "high",
-    "tags": ["medical", "pharmacy", "directions", "question"],
+    "tags": ["planning", "meeting", "location", "social-life"],
     "isActive": true,
     "isApproved": true
   },
   {
-    "englishTranslation": "Do you have a prescription?",
+    "englishTranslation": "What time works for you?",
+    "category": "SOCIAL",
+    "situation": "Social Life",
     "context": {
-      "whenToUse": "Pharmacist checking if doctor gave you prescription",
+      "whenToUse": "Asking what time is good for them",
       "formality": "informal"
     },
     "variations": {
       "msa": null,
       "egyptian": {
-        "male": {
-          "text": "معاك روشتة؟",
-          "tashkeelText": "مَعَاك رُوشِتَّة؟",
-          "transliteration": "ma'aak roshetta?"
-        },
-        "female": {
-          "text": "معاكي روشتة؟",
-          "tashkeelText": "مَعَاكِي رُوشِتَّة؟",
-          "transliteration": "ma'aaki roshetta?"
-        },
-        "neutral": null
-      },
-      "saudi": {
-        "male": {
-          "text": "عندك وصفة طبية؟",
-          "tashkeelText": "عِنْدَك وَصْفَة طِبِّيَّة؟",
-          "transliteration": "'indak wasfah tibbiyya?"
-        },
-        "female": {
-          "text": "عندك وصفة طبية؟",
-          "tashkeelText": "عِنْدِك وَصْفَة طِبِّيَّة؟",
-          "transliteration": "'indik wasfah tibbiyya?"
-        },
-        "neutral": null
-      }
-    },
-    "exercises": {
-      "egyptian": [
-        {
-          "type": "fill-in-blank",
-          "gender": "male",
-          "difficulty": "beginner",
-          "displaySentence": "معاك _____؟",
-          "displaySentenceTashkeel": "مَعَاك _____؟",
-          "displaySentenceTransliteration": "ma'aak _____?",
-          "blankWords": [
-            {
-              "word": "روشتة",
-              "tashkeelWord": "رُوشِتَّة",
-              "transliteration": "roshetta",
-              "isCorrect": true
-            },
-            {
-              "word": "عذر طبي",
-              "tashkeelWord": "عُذْر طِبِّي",
-              "transliteration": "'ozr tibbi",
-              "isCorrect": false
-            },
-            {
-              "word": "ملف طبي",
-              "tashkeelWord": "مَلَف طِبِّي",
-              "transliteration": "malaf tibbi",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "type": "fill-in-blank",
-          "gender": "female",
-          "difficulty": "beginner",
-          "displaySentence": "معاكي _____؟",
-          "displaySentenceTashkeel": "مَعَاكِي _____؟",
-          "displaySentenceTransliteration": "ma'aaki _____?",
-          "blankWords": [
-            {
-              "word": "روشتة",
-              "tashkeelWord": "رُوشِتَّة",
-              "transliteration": "roshetta",
-              "isCorrect": true
-            },
-            {
-              "word": "عذر طبي",
-              "tashkeelWord": "عُذْر طِبِّي",
-              "transliteration": "'ozr tibbi",
-              "isCorrect": false
-            },
-            {
-              "word": "ملف طبي",
-              "tashkeelWord": "مَلَف طِبِّي",
-              "transliteration": "malaf tibbi",
-              "isCorrect": false
-            }
-          ]
+        "male": null,
+        "female": null,
+        "neutral": {
+          "text": "أي وقت يناسبك؟",
+          "tashkeelText": "أَيّ وَقْت يِناسِبَك؟",
+          "transliteration": "ayy waʾt yenāsebak?"
         }
-      ],
-      "saudi": [
-        {
-          "type": "fill-in-blank",
-          "gender": "male",
-          "difficulty": "beginner",
-          "displaySentence": "عندك _____؟",
-          "displaySentenceTashkeel": "عِنْدَك _____؟",
-          "displaySentenceTransliteration": "'indak _____?",
-          "blankWords": [
-            {
-              "word": "وصفة طبية",
-              "tashkeelWord": "وَصْفَة طِبِّيَّة",
-              "transliteration": "wasfah tibbiyya",
-              "isCorrect": true
-            },
-            {
-              "word": "عذر طبي",
-              "tashkeelWord": "عُذْر طِبِّي",
-              "transliteration": "'ozr tibbi",
-              "isCorrect": false
-            },
-            {
-              "word": "ملف طبي",
-              "tashkeelWord": "مَلَف طِبِّي",
-              "transliteration": "malaf tibbi",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "type": "fill-in-blank",
-          "gender": "female",
-          "difficulty": "beginner",
-          "displaySentence": "عندك _____؟",
-          "displaySentenceTashkeel": "عِنْدِك _____؟",
-          "displaySentenceTransliteration": "'indik _____?",
-          "blankWords": [
-            {
-              "word": "وصفة طبية",
-              "tashkeelWord": "وَصْفَة طِبِّيَّة",
-              "transliteration": "wasfah tibbiyya",
-              "isCorrect": true
-            },
-            {
-              "word": "عذر طبي",
-              "tashkeelWord": "عُذْر طِبِّي",
-              "transliteration": "'ozr tibbi",
-              "isCorrect": false
-            },
-            {
-              "word": "ملف طبي",
-              "tashkeelWord": "مَلَف طِبِّي",
-              "transliteration": "malaf tibbi",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "msa": []
-    },
-    "hasGenderVariation": true,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["medical", "pharmacy", "prescription", "question"],
-    "isActive": true,
-    "isApproved": true
-  },
-  {
-    "englishTranslation": "I need bandages",
-    "context": {
-      "whenToUse": "Asking pharmacist for bandages for wound",
-      "formality": "informal"
-    },
-    "variations": {
-      "msa": null,
-      "egyptian": {
-        "male": {
-          "text": "محتاج شاش",
-          "tashkeelText": "مُحْتَاج شَاش",
-          "transliteration": "mehtaag shaash"
-        },
-        "female": {
-          "text": "محتاجة شاش",
-          "tashkeelText": "مُحْتَاجَة شَاش",
-          "transliteration": "mehtaaga shaash"
-        },
-        "neutral": null
       },
       "saudi": {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "أبغى شاش",
-          "tashkeelText": "أَبْغَى شَاش",
-          "transliteration": "abgha shaash"
+          "text": "أي وقت يناسبك؟",
+          "tashkeelText": "أَيّ وَقْت يِناسِبَك؟",
+          "transliteration": "ayy waʾt yenāsebak?"
         }
       }
     },
@@ -733,56 +249,28 @@ if (require.main === module) {
       "egyptian": [
         {
           "type": "fill-in-blank",
-          "gender": "male",
+          "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "محتاج _____",
-          "displaySentenceTashkeel": "مُحْتَاج _____",
-          "displaySentenceTransliteration": "mehtaag _____",
+          "displaySentence": "أي _____ يناسبك؟",
+          "displaySentenceTashkeel": "أَيّ _____ يِناسِبَك؟",
+          "displaySentenceTransliteration": "ayy _____ yenāsebak?",
           "blankWords": [
             {
-              "word": "شاش",
-              "tashkeelWord": "شَاش",
-              "transliteration": "shaash",
+              "word": "وقت",
+              "tashkeelWord": "وَقْت",
+              "transliteration": "waʾt",
               "isCorrect": true
             },
             {
-              "word": "دوا",
-              "tashkeelWord": "دَوَا",
-              "transliteration": "dawa",
+              "word": "يوم",
+              "tashkeelWord": "يَوْم",
+              "transliteration": "yōm",
               "isCorrect": false
             },
             {
-              "word": "علاج",
-              "tashkeelWord": "عِلَاج",
-              "transliteration": "'elaag",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "type": "fill-in-blank",
-          "gender": "female",
-          "difficulty": "beginner",
-          "displaySentence": "محتاجة _____",
-          "displaySentenceTashkeel": "مُحْتَاجَة _____",
-          "displaySentenceTransliteration": "mehtaaga _____",
-          "blankWords": [
-            {
-              "word": "شاش",
-              "tashkeelWord": "شَاش",
-              "transliteration": "shaash",
-              "isCorrect": true
-            },
-            {
-              "word": "دوا",
-              "tashkeelWord": "دَوَا",
-              "transliteration": "dawa",
-              "isCorrect": false
-            },
-            {
-              "word": "علاج",
-              "tashkeelWord": "عِلَاج",
-              "transliteration": "'elaag",
+              "word": "مكان",
+              "tashkeelWord": "مَكَان",
+              "transliteration": "makān",
               "isCorrect": false
             }
           ]
@@ -793,26 +281,288 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "neutral",
           "difficulty": "beginner",
-          "displaySentence": "أبغى _____",
-          "displaySentenceTashkeel": "أَبْغَى _____",
-          "displaySentenceTransliteration": "abgha _____",
+          "displaySentence": "أي _____ يناسبك؟",
+          "displaySentenceTashkeel": "أَيّ _____ يِناسِبَك؟",
+          "displaySentenceTransliteration": "ayy _____ yenāsebak?",
           "blankWords": [
             {
-              "word": "شاش",
-              "tashkeelWord": "شَاش",
-              "transliteration": "shaash",
+              "word": "وقت",
+              "tashkeelWord": "وَقْت",
+              "transliteration": "waʾt",
               "isCorrect": true
             },
             {
-              "word": "دوا",
-              "tashkeelWord": "دَوَا",
-              "transliteration": "dawa",
+              "word": "يوم",
+              "tashkeelWord": "يَوْم",
+              "transliteration": "yōm",
               "isCorrect": false
             },
             {
-              "word": "علاج",
-              "tashkeelWord": "عِلَاج",
-              "transliteration": "'ilaaj",
+              "word": "مكان",
+              "tashkeelWord": "مَكَان",
+              "transliteration": "makān",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "hasGenderVariation": false,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["planning", "scheduling", "time", "social-life"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "I'm on the way",
+    "category": "SOCIAL",
+    "situation": "Social Life",
+    "context": {
+      "whenToUse": "Telling someone you're coming now",
+      "formality": "informal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": null,
+        "female": null,
+        "neutral": {
+          "text": "أنا في السكة",
+          "tashkeelText": "أَنا في السِّكَّة",
+          "transliteration": "ana fe-ssekka"
+        }
+      },
+      "saudi": {
+        "male": null,
+        "female": null,
+        "neutral": {
+          "text": "أنا في الطريق",
+          "tashkeelText": "أَنا في الطَّريق",
+          "transliteration": "ana fe-ṭṭarīq"
+        }
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "neutral",
+          "difficulty": "beginner",
+          "displaySentence": "أنا في _____",
+          "displaySentenceTashkeel": "أَنا في _____",
+          "displaySentenceTransliteration": "ana fe _____",
+          "blankWords": [
+            {
+              "word": "السكة",
+              "tashkeelWord": "السِّكَّة",
+              "transliteration": "ssekka",
+              "isCorrect": true
+            },
+            {
+              "word": "البيت",
+              "tashkeelWord": "البَيْت",
+              "transliteration": "el-beit",
+              "isCorrect": false
+            },
+            {
+              "word": "الشغل",
+              "tashkeelWord": "الشُّغْل",
+              "transliteration": "eshshoɣl",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "neutral",
+          "difficulty": "beginner",
+          "displaySentence": "أنا في _____",
+          "displaySentenceTashkeel": "أَنا في _____",
+          "displaySentenceTransliteration": "ana fe _____",
+          "blankWords": [
+            {
+              "word": "الطريق",
+              "tashkeelWord": "الطَّريق",
+              "transliteration": "aṭṭarīq",
+              "isCorrect": true
+            },
+            {
+              "word": "البيت",
+              "tashkeelWord": "البَيْت",
+              "transliteration": "el-beit",
+              "isCorrect": false
+            },
+            {
+              "word": "الشغل",
+              "tashkeelWord": "الشُّغْل",
+              "transliteration": "eshshoɣl",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "hasGenderVariation": false,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["coordination", "meeting", "traveling", "social-life"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "I'm free today",
+    "category": "SOCIAL",
+    "situation": "Social Life",
+    "context": {
+      "whenToUse": "Saying you have no plans today",
+      "formality": "informal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "أنا فاضي النهاردة",
+          "tashkeelText": "أَنا فَاضِي النَّهارْدَه",
+          "transliteration": "ana fāḍi ennaharda"
+        },
+        "female": {
+          "text": "أنا فاضية النهاردة",
+          "tashkeelText": "أَنا فَاضْيَة النَّهارْدَه",
+          "transliteration": "ana fāḍya ennaharda"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "أنا فاضي اليوم",
+          "tashkeelText": "أَنا فَاضِي اليَوْم",
+          "transliteration": "ana fāḍi elyōm"
+        },
+        "female": {
+          "text": "أنا فاضية اليوم",
+          "tashkeelText": "أَنا فَاضْيَة اليَوْم",
+          "transliteration": "ana fāḍya elyōm"
+        },
+        "neutral": null
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "أنا _____ النهاردة",
+          "displaySentenceTashkeel": "أَنا _____ النَّهارْدَه",
+          "displaySentenceTransliteration": "ana _____ ennaharda",
+          "blankWords": [
+            {
+              "word": "فاضي",
+              "tashkeelWord": "فَاضِي",
+              "transliteration": "fāḍi",
+              "isCorrect": true
+            },
+            {
+              "word": "مشغول",
+              "tashkeelWord": "مَشْغُول",
+              "transliteration": "mashɣūl",
+              "isCorrect": false
+            },
+            {
+              "word": "تعبان",
+              "tashkeelWord": "تَعْبَان",
+              "transliteration": "taʿbān",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "أنا _____ النهاردة",
+          "displaySentenceTashkeel": "أَنا _____ النَّهارْدَه",
+          "displaySentenceTransliteration": "ana _____ ennaharda",
+          "blankWords": [
+            {
+              "word": "فاضية",
+              "tashkeelWord": "فَاضْيَة",
+              "transliteration": "fāḍya",
+              "isCorrect": true
+            },
+            {
+              "word": "مشغولة",
+              "tashkeelWord": "مَشْغُولَة",
+              "transliteration": "mashɣūla",
+              "isCorrect": false
+            },
+            {
+              "word": "تعبانة",
+              "tashkeelWord": "تَعْبَانَة",
+              "transliteration": "taʿbāna",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "أنا _____ اليوم",
+          "displaySentenceTashkeel": "أَنا _____ اليَوْم",
+          "displaySentenceTransliteration": "ana _____ elyōm",
+          "blankWords": [
+            {
+              "word": "فاضي",
+              "tashkeelWord": "فَاضِي",
+              "transliteration": "fāḍi",
+              "isCorrect": true
+            },
+            {
+              "word": "مشغول",
+              "tashkeelWord": "مَشْغُول",
+              "transliteration": "mashɣūl",
+              "isCorrect": false
+            },
+            {
+              "word": "تعبان",
+              "tashkeelWord": "تَعْبَان",
+              "transliteration": "taʿbān",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "أنا _____ اليوم",
+          "displaySentenceTashkeel": "أَنا _____ اليَوْم",
+          "displaySentenceTransliteration": "ana _____ elyōm",
+          "blankWords": [
+            {
+              "word": "فاضية",
+              "tashkeelWord": "فَاضْيَة",
+              "transliteration": "fāḍya",
+              "isCorrect": true
+            },
+            {
+              "word": "مشغولة",
+              "tashkeelWord": "مَشْغُولَة",
+              "transliteration": "mashɣūla",
+              "isCorrect": false
+            },
+            {
+              "word": "تعبانة",
+              "tashkeelWord": "تَعْبَانَة",
+              "transliteration": "taʿbāna",
               "isCorrect": false
             }
           ]
@@ -822,15 +572,17 @@ if (require.main === module) {
     },
     "hasGenderVariation": true,
     "difficulty": "beginner",
-    "frequency": "medium",
-    "tags": ["medical", "pharmacy", "bandages", "supplies"],
+    "frequency": "high",
+    "tags": ["availability", "planning", "free-time", "social-life"],
     "isActive": true,
     "isApproved": true
   },
   {
-    "englishTranslation": "I fell down",
+    "englishTranslation": "Long time no see",
+    "category": "SOCIAL",
+    "situation": "Social Life",
     "context": {
-      "whenToUse": "Explaining you fell and might be injured",
+      "whenToUse": "Saying you haven't seen them in a while",
       "formality": "informal"
     },
     "variations": {
@@ -839,18 +591,117 @@ if (require.main === module) {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "وقعت",
-          "tashkeelText": "وَقَعْت",
-          "transliteration": "we'e't"
+          "text": "من زمان عنك",
+          "tashkeelText": "مِن زَمَان عَنَّك",
+          "transliteration": "men zamān ʿannak"
         }
       },
       "saudi": {
         "male": null,
         "female": null,
         "neutral": {
-          "text": "طحت",
-          "tashkeelText": "طِحْت",
-          "transliteration": "taht"
+          "text": "زمان عنك",
+          "tashkeelText": "زَمَان عَنَّك",
+          "transliteration": "zamān ʿannak"
+        }
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "neutral",
+          "difficulty": "beginner",
+          "displaySentence": "_____ عنك",
+          "displaySentenceTashkeel": "_____ عَنَّك",
+          "displaySentenceTransliteration": "_____ ʿannak",
+          "blankWords": [
+            {
+              "word": "من زمان",
+              "tashkeelWord": "مِن زَمَان",
+              "transliteration": "men zamān",
+              "isCorrect": true
+            },
+            {
+              "word": "شوية",
+              "tashkeelWord": "شُوَيَّة",
+              "transliteration": "shwayya",
+              "isCorrect": false
+            },
+            {
+              "word": "كثير",
+              "tashkeelWord": "كِتِير",
+              "transliteration": "ketīr",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "neutral",
+          "difficulty": "beginner",
+          "displaySentence": "_____ عنك",
+          "displaySentenceTashkeel": "_____ عَنَّك",
+          "displaySentenceTransliteration": "_____ ʿannak",
+          "blankWords": [
+            {
+              "word": "زمان",
+              "tashkeelWord": "زَمَان",
+              "transliteration": "zamān",
+              "isCorrect": true
+            },
+            {
+              "word": "شوية",
+              "tashkeelWord": "شُوَيَّة",
+              "transliteration": "shwayya",
+              "isCorrect": false
+            },
+            {
+              "word": "كثير",
+              "tashkeelWord": "كَثِير",
+              "transliteration": "kathīr",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "hasGenderVariation": false,
+    "difficulty": "beginner",
+    "frequency": "medium",
+    "tags": ["greeting", "reunion", "time", "social-life"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "It's okay",
+    "category": "SOCIAL",
+    "situation": "Social Life",
+    "context": {
+      "whenToUse": "Saying something is fine/acceptable",
+      "formality": "informal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": null,
+        "female": null,
+        "neutral": {
+          "text": "عادي",
+          "tashkeelText": "عَادِي",
+          "transliteration": "ʿādi"
+        }
+      },
+      "saudi": {
+        "male": null,
+        "female": null,
+        "neutral": {
+          "text": "عادي",
+          "tashkeelText": "عَادِي",
+          "transliteration": "ʿādi"
         }
       }
     },
@@ -865,21 +716,21 @@ if (require.main === module) {
           "displaySentenceTransliteration": "_____",
           "blankWords": [
             {
-              "word": "وقعت",
-              "tashkeelWord": "وَقَعْت",
-              "transliteration": "we'e't",
+              "word": "عادي",
+              "tashkeelWord": "عَادِي",
+              "transliteration": "ʿādi",
               "isCorrect": true
             },
             {
-              "word": "كسرت",
-              "tashkeelWord": "كَسَرْت",
-              "transliteration": "kasart",
+              "word": "تمام",
+              "tashkeelWord": "تَمَام",
+              "transliteration": "tamām",
               "isCorrect": false
             },
             {
-              "word": "جرحت",
-              "tashkeelWord": "جَرَحْت",
-              "transliteration": "garaht",
+              "word": "ممتاز",
+              "tashkeelWord": "مُمْتَاز",
+              "transliteration": "momtāz",
               "isCorrect": false
             }
           ]
@@ -895,21 +746,21 @@ if (require.main === module) {
           "displaySentenceTransliteration": "_____",
           "blankWords": [
             {
-              "word": "طحت",
-              "tashkeelWord": "طِحْت",
-              "transliteration": "taht",
+              "word": "عادي",
+              "tashkeelWord": "عَادِي",
+              "transliteration": "ʿādi",
               "isCorrect": true
             },
             {
-              "word": "كسرت",
-              "tashkeelWord": "كَسَرْت",
-              "transliteration": "kasart",
+              "word": "تمام",
+              "tashkeelWord": "تَمَام",
+              "transliteration": "tamām",
               "isCorrect": false
             },
             {
-              "word": "جرحت",
-              "tashkeelWord": "جَرَحْت",
-              "transliteration": "jaraht",
+              "word": "ممتاز",
+              "tashkeelWord": "مُمْتَاز",
+              "transliteration": "momtāz",
               "isCorrect": false
             }
           ]
@@ -919,38 +770,44 @@ if (require.main === module) {
     },
     "hasGenderVariation": false,
     "difficulty": "beginner",
-    "frequency": "medium",
-    "tags": ["emergency", "medical", "injury", "accident"],
+    "frequency": "high",
+    "tags": ["reassurance", "acceptance", "response", "social-life"],
     "isActive": true,
     "isApproved": true
   },
   {
-    "englishTranslation": "I'm vomiting",
+    "englishTranslation": "No worries",
+    "category": "SOCIAL",
+    "situation": "Social Life",
     "context": {
-      "whenToUse": "Telling doctor you're throwing up/vomiting",
+      "whenToUse": "Telling someone not to worry",
       "formality": "informal"
     },
     "variations": {
       "msa": null,
       "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "انا برجع",
-          "tashkeelText": "أَنَا بَرْجَع",
-          "transliteration": "ana batraga'"
-        }
+        "male": {
+          "text": "ما تشيلش هم",
+          "tashkeelText": "مَا تِشِيلْش هَمّ",
+          "transliteration": "ma tshīlsh hamm"
+        },
+        "female": {
+          "text": "ما تشيليش هم",
+          "tashkeelText": "مَا تِشِيلِيش هَمّ",
+          "transliteration": "ma tshīlīsh hamm"
+        },
+        "neutral": null
       },
       "saudi": {
         "male": {
-          "text": "جالس أستفرغ",
-          "tashkeelText": "جَالِس أَسْتَفْرِغ",
-          "transliteration": "jaalis astafrighh"
+          "text": "لا تشيل هم",
+          "tashkeelText": "لا تِشِيل هَمّ",
+          "transliteration": "la tshīl hamm"
         },
         "female": {
-          "text": "جالسة أستفرغ",
-          "tashkeelText": "جَالِسَة أَسْتَفْرِغ",
-          "transliteration": "jaalsa astafrighh"
+          "text": "لا تشيلي هم",
+          "tashkeelText": "لا تِشِيلِي هَمّ",
+          "transliteration": "la tshīli hamm"
         },
         "neutral": null
       }
@@ -959,28 +816,481 @@ if (require.main === module) {
       "egyptian": [
         {
           "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "ما تشيلش _____",
+          "displaySentenceTashkeel": "مَا تِشِيلْش _____",
+          "displaySentenceTransliteration": "ma tshīlsh _____",
+          "blankWords": [
+            {
+              "word": "هم",
+              "tashkeelWord": "هَمّ",
+              "transliteration": "hamm",
+              "isCorrect": true
+            },
+            {
+              "word": "شغل",
+              "tashkeelWord": "شُغْل",
+              "transliteration": "shoɣl",
+              "isCorrect": false
+            },
+            {
+              "word": "حاجة",
+              "tashkeelWord": "حَاجَة",
+              "transliteration": "ḥāga",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "ما تشيليش _____",
+          "displaySentenceTashkeel": "مَا تِشِيلِيش _____",
+          "displaySentenceTransliteration": "ma tshīlīsh _____",
+          "blankWords": [
+            {
+              "word": "هم",
+              "tashkeelWord": "هَمّ",
+              "transliteration": "hamm",
+              "isCorrect": true
+            },
+            {
+              "word": "شغل",
+              "tashkeelWord": "شُغْل",
+              "transliteration": "shoɣl",
+              "isCorrect": false
+            },
+            {
+              "word": "حاجة",
+              "tashkeelWord": "حَاجَة",
+              "transliteration": "ḥāga",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "لا تشيل _____",
+          "displaySentenceTashkeel": "لا تِشِيل _____",
+          "displaySentenceTransliteration": "la tshīl _____",
+          "blankWords": [
+            {
+              "word": "هم",
+              "tashkeelWord": "هَمّ",
+              "transliteration": "hamm",
+              "isCorrect": true
+            },
+            {
+              "word": "شغل",
+              "tashkeelWord": "شُغْل",
+              "transliteration": "shoɣl",
+              "isCorrect": false
+            },
+            {
+              "word": "حاجة",
+              "tashkeelWord": "حَاجَة",
+              "transliteration": "ḥāja",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "لا تشيلي _____",
+          "displaySentenceTashkeel": "لا تِشِيلِي _____",
+          "displaySentenceTransliteration": "la tshīli _____",
+          "blankWords": [
+            {
+              "word": "هم",
+              "tashkeelWord": "هَمّ",
+              "transliteration": "hamm",
+              "isCorrect": true
+            },
+            {
+              "word": "شغل",
+              "tashkeelWord": "شُغْل",
+              "transliteration": "shoɣl",
+              "isCorrect": false
+            },
+            {
+              "word": "حاجة",
+              "tashkeelWord": "حَاجَة",
+              "transliteration": "ḥāja",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "hasGenderVariation": true,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["reassurance", "comfort", "concern", "social-life"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "Let's go",
+    "category": "SOCIAL",
+    "situation": "Social Life",
+    "context": {
+      "whenToUse": "Suggesting to leave or start now",
+      "formality": "informal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": null,
+        "female": null,
+        "neutral": {
+          "text": "يلا",
+          "tashkeelText": "يَلَّا",
+          "transliteration": "yalla"
+        }
+      },
+      "saudi": {
+        "male": null,
+        "female": null,
+        "neutral": {
+          "text": "يلا",
+          "tashkeelText": "يَلَّا",
+          "transliteration": "yalla"
+        }
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
           "gender": "neutral",
+          "difficulty": "beginner",
+          "displaySentence": "_____",
+          "displaySentenceTashkeel": "_____",
+          "displaySentenceTransliteration": "_____",
+          "blankWords": [
+            {
+              "word": "يلا",
+              "tashkeelWord": "يَلَّا",
+              "transliteration": "yalla",
+              "isCorrect": true
+            },
+            {
+              "word": "خلاص",
+              "tashkeelWord": "خَلَاص",
+              "transliteration": "khalāṣ",
+              "isCorrect": false
+            },
+            {
+              "word": "ماشي",
+              "tashkeelWord": "مَاشِي",
+              "transliteration": "māshi",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "neutral",
+          "difficulty": "beginner",
+          "displaySentence": "_____",
+          "displaySentenceTashkeel": "_____",
+          "displaySentenceTransliteration": "_____",
+          "blankWords": [
+            {
+              "word": "يلا",
+              "tashkeelWord": "يَلَّا",
+              "transliteration": "yalla",
+              "isCorrect": true
+            },
+            {
+              "word": "خلاص",
+              "tashkeelWord": "خَلَاص",
+              "transliteration": "khalāṣ",
+              "isCorrect": false
+            },
+            {
+              "word": "ماشي",
+              "tashkeelWord": "مَاشِي",
+              "transliteration": "māshi",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "hasGenderVariation": false,
+    "difficulty": "beginner",
+    "frequency": "high",
+    "tags": ["invitation", "departure", "action", "social-life"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "Take a picture",
+    "category": "SOCIAL",
+    "situation": "Social Life",
+    "context": {
+      "whenToUse": "Asking someone to take your photo",
+      "formality": "informal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "خذ صورة",
+          "tashkeelText": "خُذْ صُورَة",
+          "transliteration": "khud ṣūra"
+        },
+        "female": {
+          "text": "خدي صورة",
+          "tashkeelText": "خُدِي صُورَة",
+          "transliteration": "khudi ṣūra"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "خذ صورة",
+          "tashkeelText": "خُذْ صُورَة",
+          "transliteration": "khudh ṣūra"
+        },
+        "female": {
+          "text": "خذي صورة",
+          "tashkeelText": "خُذِي صُورَة",
+          "transliteration": "khudhi ṣūra"
+        },
+        "neutral": null
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "خذ _____",
+          "displaySentenceTashkeel": "خُذْ _____",
+          "displaySentenceTransliteration": "khud _____",
+          "blankWords": [
+            {
+              "word": "صورة",
+              "tashkeelWord": "صُورَة",
+              "transliteration": "ṣūra",
+              "isCorrect": true
+            },
+            {
+              "word": "رقم",
+              "tashkeelWord": "رَقَم",
+              "transliteration": "raʾam",
+              "isCorrect": false
+            },
+            {
+              "word": "موبايل",
+              "tashkeelWord": "مُوبَايِل",
+              "transliteration": "mōbāyel",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "خدي _____",
+          "displaySentenceTashkeel": "خُدِي _____",
+          "displaySentenceTransliteration": "khudi _____",
+          "blankWords": [
+            {
+              "word": "صورة",
+              "tashkeelWord": "صُورَة",
+              "transliteration": "ṣūra",
+              "isCorrect": true
+            },
+            {
+              "word": "رقم",
+              "tashkeelWord": "رَقَم",
+              "transliteration": "raʾam",
+              "isCorrect": false
+            },
+            {
+              "word": "موبايل",
+              "tashkeelWord": "مُوبَايِل",
+              "transliteration": "mōbāyel",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "saudi": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
+          "difficulty": "beginner",
+          "displaySentence": "خذ _____",
+          "displaySentenceTashkeel": "خُذْ _____",
+          "displaySentenceTransliteration": "khudh _____",
+          "blankWords": [
+            {
+              "word": "صورة",
+              "tashkeelWord": "صُورَة",
+              "transliteration": "ṣūra",
+              "isCorrect": true
+            },
+            {
+              "word": "رقم",
+              "tashkeelWord": "رَقَم",
+              "transliteration": "raʾam",
+              "isCorrect": false
+            },
+            {
+              "word": "موبايل",
+              "tashkeelWord": "مُوبَايِل",
+              "transliteration": "mōbāyel",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "خذي _____",
+          "displaySentenceTashkeel": "خُذِي _____",
+          "displaySentenceTransliteration": "khudhi _____",
+          "blankWords": [
+            {
+              "word": "صورة",
+              "tashkeelWord": "صُورَة",
+              "transliteration": "ṣūra",
+              "isCorrect": true
+            },
+            {
+              "word": "رقم",
+              "tashkeelWord": "رَقَم",
+              "transliteration": "raʾam",
+              "isCorrect": false
+            },
+            {
+              "word": "موبايل",
+              "tashkeelWord": "مُوبَايِل",
+              "transliteration": "mōbāyel",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "msa": []
+    },
+    "hasGenderVariation": true,
+    "difficulty": "beginner",
+    "frequency": "medium",
+    "tags": ["photography", "request", "command", "social-life"],
+    "isActive": true,
+    "isApproved": true
+  },
+  {
+    "englishTranslation": "I'm bored",
+    "category": "SOCIAL",
+    "situation": "Social Life",
+    "context": {
+      "whenToUse": "Expressing that you want to do something",
+      "formality": "informal"
+    },
+    "variations": {
+      "msa": null,
+      "egyptian": {
+        "male": {
+          "text": "أنا زهقان",
+          "tashkeelText": "أَنَا زَهْقَان",
+          "transliteration": "ana zahʾān"
+        },
+        "female": {
+          "text": "أنا زهقانة",
+          "tashkeelText": "أَنَا زَهْقَانَة",
+          "transliteration": "ana zahʾāna"
+        },
+        "neutral": null
+      },
+      "saudi": {
+        "male": {
+          "text": "أنا طفشان",
+          "tashkeelText": "أَنَا طَفْشَان",
+          "transliteration": "ana ṭafshān"
+        },
+        "female": {
+          "text": "أنا طفشانة",
+          "tashkeelText": "أَنَا طَفْشَانَة",
+          "transliteration": "ana ṭafshāna"
+        },
+        "neutral": null
+      }
+    },
+    "exercises": {
+      "egyptian": [
+        {
+          "type": "fill-in-blank",
+          "gender": "male",
           "difficulty": "beginner",
           "displaySentence": "أنا _____",
           "displaySentenceTashkeel": "أَنَا _____",
           "displaySentenceTransliteration": "ana _____",
           "blankWords": [
             {
-              "word": "برجع",
-              "tashkeelWord": "بَرْجَع",
-              "transliteration": "batraga'",
+              "word": "زهقان",
+              "tashkeelWord": "زَهْقَان",
+              "transliteration": "zahʾān",
               "isCorrect": true
             },
             {
-              "word": "بنزف",
-              "tashkeelWord": "بَنْزِف",
-              "transliteration": "banzif",
+              "word": "تعبان",
+              "tashkeelWord": "تَعْبَان",
+              "transliteration": "taʿbān",
               "isCorrect": false
             },
             {
-              "word": "بتألم",
-              "tashkeelWord": "بَتْأَلَّم",
-              "transliteration": "bata'allam",
+              "word": "جوعان",
+              "tashkeelWord": "جُوعَان",
+              "transliteration": "gūʿān",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "type": "fill-in-blank",
+          "gender": "female",
+          "difficulty": "beginner",
+          "displaySentence": "أنا _____",
+          "displaySentenceTashkeel": "أَنَا _____",
+          "displaySentenceTransliteration": "ana _____",
+          "blankWords": [
+            {
+              "word": "زهقانة",
+              "tashkeelWord": "زَهْقَانَة",
+              "transliteration": "zahʾāna",
+              "isCorrect": true
+            },
+            {
+              "word": "تعبانة",
+              "tashkeelWord": "تَعْبَانَة",
+              "transliteration": "taʿbāna",
+              "isCorrect": false
+            },
+            {
+              "word": "جوعانة",
+              "tashkeelWord": "جُوعَانَة",
+              "transliteration": "gūʿāna",
               "isCorrect": false
             }
           ]
@@ -991,26 +1301,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "male",
           "difficulty": "beginner",
-          "displaySentence": "جالس _____",
-          "displaySentenceTashkeel": "جَالِس _____",
-          "displaySentenceTransliteration": "jaalis _____",
+          "displaySentence": "أنا _____",
+          "displaySentenceTashkeel": "أَنَا _____",
+          "displaySentenceTransliteration": "ana _____",
           "blankWords": [
             {
-              "word": "أستفرغ",
-              "tashkeelWord": "أَسْتَفْرِغ",
-              "transliteration": "astafrighh",
+              "word": "طفشان",
+              "tashkeelWord": "طَفْشَان",
+              "transliteration": "ṭafshān",
               "isCorrect": true
             },
             {
-              "word": "أنزف",
-              "tashkeelWord": "أَنْزِف",
-              "transliteration": "anzif",
+              "word": "تعبان",
+              "tashkeelWord": "تَعْبَان",
+              "transliteration": "taʿbān",
               "isCorrect": false
             },
             {
-              "word": "أتألم",
-              "tashkeelWord": "أَتْأَلَّم",
-              "transliteration": "ata'allam",
+              "word": "جوعان",
+              "tashkeelWord": "جُوعَان",
+              "transliteration": "jūʿān",
               "isCorrect": false
             }
           ]
@@ -1019,26 +1329,26 @@ if (require.main === module) {
           "type": "fill-in-blank",
           "gender": "female",
           "difficulty": "beginner",
-          "displaySentence": "جالسة _____",
-          "displaySentenceTashkeel": "جَالِسَة _____",
-          "displaySentenceTransliteration": "jaalsa _____",
+          "displaySentence": "أنا _____",
+          "displaySentenceTashkeel": "أَنَا _____",
+          "displaySentenceTransliteration": "ana _____",
           "blankWords": [
             {
-              "word": "أستفرغ",
-              "tashkeelWord": "أَسْتَفْرِغ",
-              "transliteration": "astafrighh",
+              "word": "طفشانة",
+              "tashkeelWord": "طَفْشَانَة",
+              "transliteration": "ṭafshāna",
               "isCorrect": true
             },
             {
-              "word": "أنزف",
-              "tashkeelWord": "أَنْزِف",
-              "transliteration": "anzif",
+              "word": "تعبانة",
+              "tashkeelWord": "تَعْبَانَة",
+              "transliteration": "taʿbāna",
               "isCorrect": false
             },
             {
-              "word": "أتألم",
-              "tashkeelWord": "أَتْأَلَّم",
-              "transliteration": "ata'allam",
+              "word": "جوعانة",
+              "tashkeelWord": "جُوعَانَة",
+              "transliteration": "jūʿāna",
               "isCorrect": false
             }
           ]
@@ -1049,239 +1359,13 @@ if (require.main === module) {
     "hasGenderVariation": true,
     "difficulty": "beginner",
     "frequency": "medium",
-    "tags": ["emergency", "medical", "symptoms", "illness"],
-    "isActive": true,
-    "isApproved": true
-  },
-  {
-    "englishTranslation": "I have an injury in my back",
-    "context": {
-      "whenToUse": "Describing back injury location to doctor",
-      "formality": "informal"
-    },
-    "variations": {
-      "msa": null,
-      "egyptian": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "عندي إصابة في ظهري",
-          "tashkeelText": "عَنْدِي إِصَابَة فِي ظَهْرِي",
-          "transliteration": "'andi isaaba fe dahri"
-        }
-      },
-      "saudi": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "عندي إصابة في ظهري",
-          "tashkeelText": "عِنْدِي إِصَابَة فِي ظَهْرِي",
-          "transliteration": "'indi isaaba fe dhahri"
-        }
-      }
-    },
-    "exercises": {
-      "egyptian": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "عندي _____ في ظهري",
-          "displaySentenceTashkeel": "عَنْدِي _____ فِي ظَهْرِي",
-          "displaySentenceTransliteration": "'andi _____ fe dahri",
-          "blankWords": [
-            {
-              "word": "إصابة",
-              "tashkeelWord": "إِصَابَة",
-              "transliteration": "isaaba",
-              "isCorrect": true
-            },
-            {
-              "word": "جرح",
-              "tashkeelWord": "جُرْح",
-              "transliteration": "gorh",
-              "isCorrect": false
-            },
-            {
-              "word": "كسر",
-              "tashkeelWord": "كَسْر",
-              "transliteration": "kasr",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "saudi": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "عندي _____ في ظهري",
-          "displaySentenceTashkeel": "عِنْدِي _____ فِي ظَهْرِي",
-          "displaySentenceTransliteration": "'indi _____ fe dhahri",
-          "blankWords": [
-            {
-              "word": "إصابة",
-              "tashkeelWord": "إِصَابَة",
-              "transliteration": "isaaba",
-              "isCorrect": true
-            },
-            {
-              "word": "جرح",
-              "tashkeelWord": "جُرْح",
-              "transliteration": "jurh",
-              "isCorrect": false
-            },
-            {
-              "word": "كسر",
-              "tashkeelWord": "كَسْر",
-              "transliteration": "kasr",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "msa": []
-    },
-    "hasGenderVariation": false,
-    "difficulty": "beginner",
-    "frequency": "medium",
-    "tags": ["medical", "injury", "body-parts", "pain"],
-    "isActive": true,
-    "isApproved": true
-  },
-  {
-    "englishTranslation": "I need treatment",
-    "context": {
-      "whenToUse": "Requesting medical treatment at hospital",
-      "formality": "informal"
-    },
-    "variations": {
-      "msa": null,
-      "egyptian": {
-        "male": {
-          "text": "محتاج علاج",
-          "tashkeelText": "مُحْتَاج عِلَاج",
-          "transliteration": "mehtaag 'elaag"
-        },
-        "female": {
-          "text": "محتاجة علاج",
-          "tashkeelText": "مُحْتَاجَة عِلَاج",
-          "transliteration": "mehtaaga 'elaag"
-        },
-        "neutral": null
-      },
-      "saudi": {
-        "male": null,
-        "female": null,
-        "neutral": {
-          "text": "أبغى علاج",
-          "tashkeelText": "أَبْغَى عِلَاج",
-          "transliteration": "abgha 'ilaaj"
-        }
-      }
-    },
-    "exercises": {
-      "egyptian": [
-        {
-          "type": "fill-in-blank",
-          "gender": "male",
-          "difficulty": "beginner",
-          "displaySentence": "محتاج _____",
-          "displaySentenceTashkeel": "مُحْتَاج _____",
-          "displaySentenceTransliteration": "mehtaag _____",
-          "blankWords": [
-            {
-              "word": "علاج",
-              "tashkeelWord": "عِلَاج",
-              "transliteration": "'elaag",
-              "isCorrect": true
-            },
-            {
-              "word": "راحة",
-              "tashkeelWord": "رَاحَة",
-              "transliteration": "raaha",
-              "isCorrect": false
-            },
-            {
-              "word": "نوم",
-              "tashkeelWord": "نَوْم",
-              "transliteration": "nawm",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "type": "fill-in-blank",
-          "gender": "female",
-          "difficulty": "beginner",
-          "displaySentence": "محتاجة _____",
-          "displaySentenceTashkeel": "مُحْتَاجَة _____",
-          "displaySentenceTransliteration": "mehtaaga _____",
-          "blankWords": [
-            {
-              "word": "علاج",
-              "tashkeelWord": "عِلَاج",
-              "transliteration": "'elaag",
-              "isCorrect": true
-            },
-            {
-              "word": "راحة",
-              "tashkeelWord": "رَاحَة",
-              "transliteration": "raaha",
-              "isCorrect": false
-            },
-            {
-              "word": "نوم",
-              "tashkeelWord": "نَوْم",
-              "transliteration": "nawm",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "saudi": [
-        {
-          "type": "fill-in-blank",
-          "gender": "neutral",
-          "difficulty": "beginner",
-          "displaySentence": "أبغى _____",
-          "displaySentenceTashkeel": "أَبْغَى _____",
-          "displaySentenceTransliteration": "abgha _____",
-          "blankWords": [
-            {
-              "word": "علاج",
-              "tashkeelWord": "عِلَاج",
-              "transliteration": "'ilaaj",
-              "isCorrect": true
-            },
-            {
-              "word": "راحة",
-              "tashkeelWord": "رَاحَة",
-              "transliteration": "raaha",
-              "isCorrect": false
-            },
-            {
-              "word": "نوم",
-              "tashkeelWord": "نَوْم",
-              "transliteration": "nawm",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "msa": []
-    },
-    "hasGenderVariation": true,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["medical", "treatment", "hospital", "healthcare"],
+    "tags": ["feelings", "boredom", "state", "social-life"],
     "isActive": true,
     "isApproved": true
   }
 ]
-    const categoryName = 'ESSENTIAL'; // Change this
-    const situationName = 'emergency-medical'; // Change this
+    const categoryName = 'SOCIAL'; // Change this
+    const situationName = 'social-life'; // Change this
 
     if (phrasesArray.length === 0) {
         console.error('❌ No phrases provided. Please add phrases to the phrasesArray.');

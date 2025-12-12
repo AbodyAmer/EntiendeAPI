@@ -1,6 +1,7 @@
 const express = require('express');
 const { requireVerifiedAuth } = require('../utils/requireVerifiedAuth');
 const Phrase = require('../models/Phrase');
+const MyPhrase = require('../models/MyPhrase');
 const BlankHistory = require('../models/blankhistory');
 const Category = require('../models/Category');
 const Situation = require('../models/Situation');
@@ -461,6 +462,144 @@ router.post('/history', requireVerifiedAuth, async (req, res) => {
         res.status(500).json({
             success: false,
             error: 'Failed to save history'
+        });
+    }
+});
+
+/**
+ * POST /game/myphrases
+ * Save or update a phrase in the user's saved list (bookmarks)
+ *
+ * Body:
+ * - phraseId (required)
+ * - dialect: msa | egyptian | saudi (optional, default msa)
+ * - gender: male | female | neutral (optional, default neutral)
+ */
+router.post('/myphrases', requireVerifiedAuth, async (req, res) => {
+    try {
+        const userId = req.user;
+        const {
+            phraseId,
+            dialect = 'msa',
+            gender = 'neutral'
+        } = req.body;
+
+        if (!phraseId) {
+            return res.status(400).json({
+                success: false,
+                error: 'phraseId is required'
+            });
+        }
+
+        const allowedDialects = ['msa', 'egyptian', 'saudi'];
+        const normalizedDialect = String(dialect).toLowerCase();
+        if (!allowedDialects.includes(normalizedDialect)) {
+            return res.status(400).json({
+                success: false,
+                error: 'Invalid dialect. Must be one of msa, egyptian, saudi'
+            });
+        }
+
+        const allowedGenders = ['male', 'female', 'neutral'];
+        if (!allowedGenders.includes(gender)) {
+            return res.status(400).json({
+                success: false,
+                error: 'Invalid gender. Must be male, female, or neutral'
+            });
+        }
+
+        // Ensure phrase exists before saving
+        const phrase = await Phrase.findById(phraseId).select('_id').lean();
+        if (!phrase) {
+            return res.status(404).json({
+                success: false,
+                error: 'Phrase not found'
+            });
+        }
+
+        const update = {
+            dialect: normalizedDialect,
+            gender
+        };
+
+        const myPhrase = await MyPhrase.findOneAndUpdate(
+            { user: userId, phrase: phraseId },
+            {
+                $set: update,
+                $setOnInsert: {
+                    user: userId,
+                    phrase: phraseId
+                }
+            },
+            {
+                new: true,
+                upsert: true,
+                setDefaultsOnInsert: true
+            }
+        ).lean();
+
+        res.status(201).json({
+            success: true,
+            data: myPhrase
+        });
+    } catch (error) {
+        console.error('Error saving phrase:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Failed to save phrase'
+        });
+    }
+});
+
+/**
+ * GET /game/myphrases
+ * Fetch saved phrases for the authenticated user
+ *
+ * Query:
+ * - limit: number of results (default 20, max 50)
+ * - skip: offset for pagination (default 0)
+ */
+router.get('/myphrases', requireVerifiedAuth, async (req, res) => {
+    try {
+        const userId = req.user;
+        const {
+            limit = 20,
+            skip = 0
+        } = req.query;
+
+        const limitNum = Math.min(50, Math.max(1, parseInt(limit)));
+        const skipNum = Math.max(0, parseInt(skip));
+
+        const myPhrases = await MyPhrase.find({ user: userId })
+            .sort({ updatedAt: -1 })
+            .skip(skipNum)
+            .limit(limitNum)
+            .populate({
+                path: 'phrase',
+                select: [
+                    'englishTranslation',
+                    'intent',
+                    'category',
+                    'situation',
+                    'context',
+                    'variations'
+                ]
+            })
+            .lean();
+
+        // Drop entries where the phrase no longer exists
+        const filtered = myPhrases.filter(p => p.phrase);
+
+        res.json({
+            success: true,
+            data: filtered,
+            count: filtered.length
+        });
+    } catch (error) {
+        console.error('Error fetching saved phrases:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Failed to fetch saved phrases'
         });
     }
 });
