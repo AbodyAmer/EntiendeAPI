@@ -16,6 +16,10 @@ const variationTextSchema = new mongoose.Schema({
     },
     transliteration: {
         type: String
+    },
+    hasAudio: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -138,25 +142,6 @@ const exercisesSchema = new mongoose.Schema({
     }
 }, { _id: false });
 
-// Embedded schema for follow-up phrases
-const followUpSchema = new mongoose.Schema({
-    englishTranslation: {
-        type: String,
-        required: true
-    },
-    whenHeard: {
-        type: String
-    },
-    isSamePerson: {
-        type: Boolean,
-        default: false,
-        required: true
-    },
-    variations: {
-        type: variationsSchema,
-        required: true
-    }
-}, { _id: false });
 
 // Embedded schema for context
 const contextSchema = new mongoose.Schema({
@@ -209,12 +194,6 @@ const phraseV2Schema = new mongoose.Schema({
         required: true,
         index: true
     },
-    commonRank: {
-        type: Number,
-        required: true,
-        min: 1,
-        index: true
-    },
 
     // Context and usage
     context: {
@@ -253,30 +232,6 @@ const phraseV2Schema = new mongoose.Schema({
         default: null
     },
 
-    // Follow-up phrase (if any)
-    followUp: {
-        type: followUpSchema,
-        default: null
-    },
-
-    // Metadata
-    hasGenderVariation: {
-        type: Boolean,
-        default: false
-    },
-    difficulty: {
-        type: String,
-        enum: ['beginner', 'intermediate', 'advanced'],
-        required: true,
-    },
-    frequency: {
-        type: String,
-        enum: ['very_high', 'high', 'medium', 'low', 'very_low']
-    },
-    tags: [{
-        type: String
-    }],
-
     // Status flags
     isActive: {
         type: Boolean,
@@ -296,8 +251,6 @@ const phraseV2Schema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-// Indexes for common queries
-phraseV2Schema.index({ category: 1, situation: 1, difficulty: 1, isActive: 1 });
 
 
 // Virtual to get all unique dialects available

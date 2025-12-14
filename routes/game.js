@@ -583,6 +583,9 @@ router.get('/myphrases', requireVerifiedAuth, async (req, res) => {
                     'situation',
                     'context',
                     'variations'
+                ],
+                populate: [
+                    { path: 'category', select: 'name description displayName' },
                 ]
             })
             .lean();
