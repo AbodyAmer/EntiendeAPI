@@ -585,7 +585,7 @@ router.get('/myphrases', requireVerifiedAuth, async (req, res) => {
                     'variations'
                 ],
                 populate: [
-                    { path: 'situation', select: 'name description displayName' },
+                    { path: 'situation', model: 'Situation', select: 'name description displayName' },
                 ]
             })
             .lean();
