@@ -609,7 +609,7 @@ router.get('/myphrases', requireVerifiedAuth, async (req, res) => {
 
 router.get('/situations', requireVerifiedAuth, async (req, res) => {
     try {
-        const situations = await Situation.find({ isActive: true }).select('name description displayName').lean();
+        const situations = await Situation.find({ isActive: true }).select('name description displayName isFree').lean();
         res.json({
             success: true,
             data: situations
