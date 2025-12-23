@@ -40,7 +40,11 @@ const situationSchema = new mongoose.Schema({
     },
     tags: [{
         type: String
-    }]
+    }],
+    isFree: {
+        type: Boolean,
+        default: false
+    }
 }, { timestamps: true });
 
 situationSchema.index({ categoryId: 1, order: 1 });

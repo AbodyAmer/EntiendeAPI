@@ -85,11 +85,6 @@ const exerciseVariantSchema = new mongoose.Schema({
         enum: ['male', 'female', 'neutral'],
         required: true
     },
-    difficulty: {
-        type: String,
-        enum: ['beginner', 'intermediate', 'advanced'],
-        required: true
-    },
     // The display sentence/phrase with blank placeholder (e.g., "_____ بكرة؟" or "أنت _____ بكرة؟")
     displaySentence: {
         type: String,
@@ -297,9 +292,6 @@ phraseV2Schema.methods.getExercises = function(dialect, filters = {}) {
     if (filters.gender) {
         exercises = exercises.filter(e => e.gender === filters.gender);
     }
-    if (filters.difficulty) {
-        exercises = exercises.filter(e => e.difficulty === filters.difficulty);
-    }
     if (filters.type) {
         exercises = exercises.filter(e => e.type === filters.type);
     }
@@ -307,10 +299,5 @@ phraseV2Schema.methods.getExercises = function(dialect, filters = {}) {
     return exercises;
 };
 
-// Method to get a single exercise by dialect, gender, difficulty
-phraseV2Schema.methods.getExercise = function(dialect, gender, difficulty) {
-    const exercises = this.getExercises(dialect, { gender, difficulty });
-    return exercises.length > 0 ? exercises[0] : null;
-};
 
 module.exports = mongoose.model('Phrase', phraseV2Schema);
