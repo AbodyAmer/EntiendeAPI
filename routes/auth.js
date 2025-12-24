@@ -61,6 +61,8 @@ router.get('/me', requireAuth, async function (req, res) {
             createdAt: user.createdAt,
             level: user.level,
             defaultDialect: user.defaultDialect,
+            appleId: user.appleId,
+            googleId: user.googleId,
         }
         });
 
