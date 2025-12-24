@@ -405,6 +405,8 @@ router.get('/google/callback', limiter, async (req, res) => {
             createdAt: user.createdAt,
             level: user.level,
             defaultDialect: user.defaultDialect,
+            appleId: user.appleId,
+            googleId: user.googleId,
         };
 
         const redirectUrl = `efhammobile://auth?accessToken=${accessToken}&refreshToken=${refreshToken}&user=${encodeURIComponent(JSON.stringify(userData))}`;
@@ -520,7 +522,9 @@ router.post('/apple', limiter, async (req, res) => {
                 createdAt: user.createdAt,
                 level: user.level,
                 defaultDialect: user.defaultDialect,
-                isGuest: user.isGuest
+                isGuest: user.isGuest,
+                appleId: user.appleId,
+                googleId: user.googleId,
             }
         });
     } catch (error) {
