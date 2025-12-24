@@ -46,11 +46,7 @@ async function addPhrasesBatch(phrasesArray, categoryName, situationName) {
                     situation: situation._id,
                     context: phraseData.context,
                     variations: phraseData.variations,
-                    commonRank: 1000000,
                     hasGenderVariation: phraseData.hasGenderVariation || false,
-                    tags: phraseData.tags || [],
-                    difficulty: phraseData.difficulty || 'beginner',
-                    frequency: phraseData.frequency || 'medium',
                     isActive: true,
                     isApproved: true
                 };
@@ -63,11 +59,6 @@ async function addPhrasesBatch(phrasesArray, categoryName, situationName) {
                 // Add exercises if provided
                 if (phraseData.exercises) {
                     phraseDocument.exercises = phraseData.exercises;
-                }
-
-                // Add followUp if provided
-                if (phraseData.followUp) {
-                    phraseDocument.followUp = phraseData.followUp;
                 }
 
                 // Create and save phrase
@@ -116,351 +107,128 @@ if (require.main === module) {
     const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/efham';
 
     // Example: Replace this array with your phrases
-    const phrasesArray = [
-  {
-    "englishTranslation": "Don’t worry",
-    "context": {
-      "whenToUse": "Reassuring someone so they don’t worry about a problem.",
-      "formality": "informal"
-    },
-    "hasGenderVariation": true,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["comforting", "reassurance", "emotions"],
-    "variations": {
-      "egyptian": {
-        "male": {
-          "text": "متقلقش",
-          "tashkeelText": "مَا تْقَلَقْش",
-          "transliteration": "ma-tqala’ash"
-        },
-        "female": {
-          "text": "متقلقيش",
-          "tashkeelText": "مَا تْقَلَقِيش",
-          "transliteration": "ma-tqala’eesh"
-        }
+    const phrasesArray = [{
+  "englishTranslation": "Stop here please",
+  "commonRank": 1000000,
+  "context": {
+    "whenToUse": "Asking driver to pull over or stop.",
+    "formality": "informal"
+  },
+  "variations": {
+    "msa": null,
+    "egyptian": {
+      "male": {
+        "text": "على جنبك هنا يا أسطى",
+        "tashkeelText": "عَلَى جَنْبَك هِنَا يَا أُسْطَى",
+        "transliteration": "'ala gambak hina ya osta",
       },
-      "saudi": {
-        "male": {
-          "text": "لا تشيل هم",
-          "tashkeelText": "لَا تْشِيلْ هَمّ",
-          "transliteration": "la tsheel hamm"
-        },
-        "female": {
-          "text": "لا تشيلي هم",
-          "tashkeelText": "لَا تْشِيلِي هَمّ",
-          "transliteration": "la tsheelee hamm"
-        }
-      }
+      "female": {
+        "text": "على جنبك هنا لو سمحتي",
+        "tashkeelText": "عَلَى جَنْبِك هِنَا لَو سَمَحْتِي",
+        "transliteration": "'ala gambik hina law sama7ti",
+      },
+      "neutral": null
+    },
+    "saudi": {
+      "male": {
+        "text": "على جنبك هنا يا كابتن",
+        "tashkeelText": "عَلَى جَنْبَك هِنَا يَا كَابْتِن",
+        "transliteration": "'ala janbak hina ya captain",
+      },
+      "female": {
+        "text": "على جنبك هنا لو سمحتي",
+        "tashkeelText": "عَلَى جَنْبِك هِنَا لَو سَمَحْتِي",
+        "transliteration": "'ala janbik hina law sama7ti",
+      },
+      "neutral": null
     }
   },
-  {
-    "englishTranslation": "It’s okay",
-    "context": {
-      "whenToUse": "Calming someone and saying the situation is okay.",
-      "formality": "informal"
-    },
-    "hasGenderVariation": false,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["comforting", "reassurance"],
-    "variations": {
-      "egyptian": {
-        "neutral": {
-          "text": "عادي",
-          "tashkeelText": "عَادِي",
-          "transliteration": "ʿaadi"
-        }
-      },
-      "saudi": {
-        "neutral": {
-          "text": "عادي",
-          "tashkeelText": "عَادِي",
-          "transliteration": "ʿaadi"
-        }
+  "gameContext": null,
+  "exercises": {
+    "msa": [],
+    "egyptian": [
+      {
+        "type": "fill-in-blank",
+        "gender": "male",
+        "difficulty": "beginner",
+        "displaySentence": "_____ هنا يا أسطى",
+        "displaySentenceTashkeel": "_____ هِنَا يَا أُسْطَى",
+        "displaySentenceTransliteration": "_____ hina ya osta",
+        "blankWords": [
+          {
+            "word": "على جنبك",
+            "tashkeelWord": "عَلَى جَنْبَك",
+            "transliteration": "'ala gambak",
+            "isCorrect": true,
+          },
+          {
+            "word": "فوق السطوح",
+            "tashkeelWord": "فُوق السُّطُوح",
+            "transliteration": "foo' el sotoo7",
+            "isCorrect": false,
+          },
+          {
+            "word": "تحت الكبري",
+            "tashkeelWord": "تَحْت الكُبْرِي",
+            "transliteration": "ta7t el kobri",
+            "isCorrect": false,
+          }
+        ],
+        "reorderWords": [],
+        "matchingPairs": []
       }
-    }
+    ],
+    "saudi": [
+      {
+        "type": "fill-in-blank",
+        "gender": "male",
+        "difficulty": "beginner",
+        "displaySentence": "_____ هنا يا كابتن",
+        "displaySentenceTashkeel": "_____ هِنَا يَا كَابْتِن",
+        "displaySentenceTransliteration": "_____ hina ya captain",
+        "blankWords": [
+          {
+            "word": "على جنبك",
+            "tashkeelWord": "عَلَى جَنْبَك",
+            "transliteration": "'ala janbak",
+            "isCorrect": true,
+          }
+        ],
+        "reorderWords": [],
+        "matchingPairs": []
+      }
+    ]
   },
-  {
-    "englishTranslation": "I’m here with you",
-    "context": {
-      "whenToUse": "Letting someone know you’re with them emotionally.",
-      "formality": "informal"
-    },
-    "hasGenderVariation": true,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["support", "comforting"],
-    "variations": {
-      "egyptian": {
-        "male": {
-          "text": "أنا معاك",
-          "tashkeelText": "أَنَا مَعَاك",
-          "transliteration": "ana maʿaak"
-        },
-        "female": {
-          "text": "أنا معاكي",
-          "tashkeelText": "أَنَا مَعَاكِي",
-          "transliteration": "ana maʿaaki"
-        }
-      },
-      "saudi": {
-        "male": {
-          "text": "أنا معاك",
-          "tashkeelText": "أَنَا مَعَاك",
-          "transliteration": "ana maʿaak"
-        },
-        "female": {
-          "text": "أنا معاكي",
-          "tashkeelText": "أَنَا مَعَاكِي",
-          "transliteration": "ana maʿaaki"
-        }
-      }
-    }
+  "followUp": null,
+  "hasGenderVariation": true,
+  "difficulty": "beginner",
+  "frequency": "high",
+  "tags": [
+    "taxi",
+    "request",
+    "location",
+    "insider"
+  ],
+  "isActive": true,
+  "isApproved": true,
+  "showme": false,
+  "createdAt": {
+    "$date": "2025-11-12T16:49:42.353Z"
   },
-  {
-    "englishTranslation": "You’re not alone",
-    "context": {
-      "whenToUse": "Reassuring someone they are not alone in this.",
-      "formality": "informal"
-    },
-    "hasGenderVariation": true,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["comforting", "support"],
-    "variations": {
-      "saudi": {
-        "male": {
-          "text": "منت لحالك",
-          "tashkeelText": "مَنْتْ لِحَالَك",
-          "transliteration": "mant li-haalak"
-        },
-        "female": {
-          "text": "منت لحالك",
-          "tashkeelText": "مَنْتْ لِحَالِك",
-          "transliteration": "mant li-haalik"
-        }
-      },
-      "egyptian": {
-        "male": {
-          "text": "إنت مش لوحدك",
-          "tashkeelText": "إِنْتَ مِشْ لَوَحْدَك",
-          "transliteration": "enta mish lewaḥdak"
-        },
-        "female": {
-          "text": "إنت مش لوحدك",
-          "tashkeelText": "إِنْتِ مِشْ لَوَحْدِك",
-          "transliteration": "enti mish lewaḥdik"
-        }
-      }
-    }
+  "updatedAt": {
+    "$date": "2025-12-23T18:00:00.000Z"
   },
-  {
-    "englishTranslation": "It’s not your fault",
-    "context": {
-      "whenToUse": "Reassuring someone that the mistake isn’t their fault.",
-      "formality": "informal"
-    },
-    "hasGenderVariation": true,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["comforting", "reassurance"],
-    "variations": {
-      "saudi": {
-        "male": {
-          "text": "ما هي غلطتك",
-          "tashkeelText": "مَا هِي غَلْطَتَك",
-          "transliteration": "ma hi ghaltatak"
-        },
-        "female": {
-          "text": "ما هي غلطتك",
-          "tashkeelText": "مَا هِي غَلْطَتِك",
-          "transliteration": "ma hi ghaltatik"
-        }
-      },
-      "egyptian": {
-        "male": {
-          "text": "دي مش غلطتك",
-          "tashkeelText": "دِي مِشْ غَلْطَتَك",
-          "transliteration": "di mish ghaltatak"
-        },
-        "female": {
-          "text": "دي مش غلطتك",
-          "tashkeelText": "دِي مِشْ غَلْطَتِك",
-          "transliteration": "di mish ghaltatik"
-        }
-      }
-    }
-  },
-  {
-    "englishTranslation": "That must be hard",
-    "context": {
-      "whenToUse": "Showing empathy when someone is going through something hard.",
-      "formality": "informal"
-    },
-    "hasGenderVariation": false,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["empathy", "comforting"],
-    "variations": {
-      "egyptian": {
-        "neutral": {
-          "text": "أكيد الموضوع صعب",
-          "tashkeelText": "أَكِيدْ المَوْضُوعْ صَعْب",
-          "transliteration": "akeed el-mawdooʿ saʿb"
-        }
-      },
-      "saudi": {
-        "neutral": {
-          "text": "أكيد الموضوع صعب",
-          "tashkeelText": "أَكِيدْ المَوْضُوعْ صَعْب",
-          "transliteration": "akeed el-mawdooʿ saʿb"
-        }
-      }
-    }
-  },
-  {
-    "englishTranslation": "I understand you",
-    "context": {
-      "whenToUse": "Showing understanding of how someone feels.",
-      "formality": "informal"
-    },
-    "hasGenderVariation": true,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["empathy", "comforting"],
-    "variations": {
-      "egyptian": {
-        "male": {
-          "text": "فاهمك",
-          "tashkeelText": "فَاهِمَك",
-          "transliteration": "faahmak"
-        },
-        "female": {
-          "text": "فاهمتك",
-          "tashkeelText": "فَاهِمْتِك",
-          "transliteration": "faahmitik"
-        }
-      },
-      "saudi": {
-        "male": {
-          "text": "فاهمك",
-          "tashkeelText": "فَاهِمَك",
-          "transliteration": "faahmak"
-        },
-        "female": {
-          "text": "فاهمتك",
-          "tashkeelText": "فَاهِمْتِك",
-          "transliteration": "faahmitik"
-        }
-      }
-    }
-  },
-  {
-    "englishTranslation": "I feel you",
-    "context": {
-      "whenToUse": "Expressing that you deeply relate to their feelings.",
-      "formality": "informal"
-    },
-    "hasGenderVariation": true,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["empathy", "comforting"],
-    "variations": {
-      "saudi": {
-        "male": {
-          "text": "حاس فيك",
-          "tashkeelText": "حَاسّ فِيك",
-          "transliteration": "ḥaass feek"
-        },
-        "female": {
-          "text": "حاسة فيك",
-          "tashkeelText": "حَاسَّة فِيك",
-          "transliteration": "ḥaassa feek"
-        }
-      },
-      "egyptian": {
-        "male": {
-          "text": "حاسس بيك",
-          "tashkeelText": "حَاسِسْ بِيْك",
-          "transliteration": "ḥaases beek"
-        },
-        "female": {
-          "text": "حاسة بيك",
-          "tashkeelText": "حَاسَّة بِيْك",
-          "transliteration": "ḥaassa beek"
-        }
-      }
-    }
-  },
-  {
-    "englishTranslation": "Everything will be okay",
-    "context": {
-      "whenToUse": "Reassuring someone that things will turn out okay.",
-      "formality": "informal"
-    },
-    "hasGenderVariation": false,
-    "difficulty": "beginner",
-    "frequency": "high",
-    "tags": ["reassurance", "comforting"],
-    "variations": {
-      "saudi": {
-        "neutral": {
-          "text": "كل شيء بيكون تمام",
-          "tashkeelText": "كُلّ شَيْ بِيْكُونْ تَمَام",
-          "transliteration": "kul shay bikoon tamaam"
-        }
-      },
-      "egyptian": {
-        "neutral": {
-          "text": "كل حاجة هتبقى كويسة",
-          "tashkeelText": "كُلّ حَاجَة هَتِبْقَى كُوَيِّسَة",
-          "transliteration": "kul ḥaaga hatib’a kwayyesa"
-        }
-      }
-    }
-  },
-  {
-    "englishTranslation": "Stay strong",
-    "context": {
-      "whenToUse": "Encouraging someone to stay strong emotionally.",
-      "formality": "informal"
-    },
-    "hasGenderVariation": true,
-    "difficulty": "beginner",
-    "frequency": "medium",
-    "tags": ["encouragement", "comforting"],
-    "variations": {
-      "saudi": {
-        "male": {
-          "text": "خليك قوي",
-          "tashkeelText": "خَلِّيكْ قَوِيّ",
-          "transliteration": "khallik qawiyy"
-        },
-        "female": {
-          "text": "خليكي قوية",
-          "tashkeelText": "خَلِّيكِي قَوِيَّة",
-          "transliteration": "khalliki qawiyya"
-        }
-      },
-      "egyptian": {
-        "male": {
-          "text": "خليك جامد",
-          "tashkeelText": "خَلِّيكْ جَامِد",
-          "transliteration": "khallik gaamed"
-        },
-        "female": {
-          "text": "خليكي جامدة",
-          "tashkeelText": "خَلِّيكِي جَامِدَة",
-          "transliteration": "khalliki gaamda"
-        }
-      }
-    }
-  }
-]
+  "__v": 0
+}]
 
-    const categoryName = 'SOCIAL'; // Change this
-    const situationName = ''; // Change this
+
+
+
+
+
+
+    const categoryName = 'ESSENTIAL'; // Change this
+    const situationName = 'getting-around'; // Change this
 
     if (phrasesArray.length === 0) {
         console.error('❌ No phrases provided. Please add phrases to the phrasesArray.');
