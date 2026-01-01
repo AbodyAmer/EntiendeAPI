@@ -11,12 +11,6 @@ const variationTextSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    tashkeelText: {
-        type: String
-    },
-    transliteration: {
-        type: String
-    },
     hasAudio: {
         type: Boolean,
         default: false
@@ -41,15 +35,23 @@ const dialectGenderSchema = new mongoose.Schema({
 
 // Main variations structure: nested by dialect then gender
 const variationsSchema = new mongoose.Schema({
-    msa: {
+    spain: {
         type: dialectGenderSchema,
         default: null
     },
-    egyptian: {
+    mexico: {
         type: dialectGenderSchema,
         default: null
     },
-    saudi: {
+    argentina: {
+        type: dialectGenderSchema,
+        default: null
+    },
+    puerto_rico: {
+        type: dialectGenderSchema,
+        default: null
+    },
+    colombia: {
         type: dialectGenderSchema,
         default: null
     }
@@ -85,24 +87,14 @@ const exerciseVariantSchema = new mongoose.Schema({
         enum: ['male', 'female', 'neutral'],
         required: true
     },
-    // The display sentence/phrase with blank placeholder (e.g., "_____ بكرة؟" or "أنت _____ بكرة؟")
+    // The display sentence/phrase with blank placeholder (e.g., "Estoy _____" or "Tomo el _____")
     displaySentence: {
         type: String,
         required: true
     },
-    // Display sentence with tashkeel
-    displaySentenceTashkeel: {
-        type: String
-    },
-    // Transliteration of the full sentence (optional)
-    displaySentenceTransliteration: {
-        type: String
-    },
     // For fill-in-blank: contains ALL options (correct + distractors)
     blankWords: [{
         word: { type: String, required: true },
-        tashkeelWord: { type: String },
-        transliteration: { type: String },
         isCorrect: { type: Boolean, required: true }
     }],
     // For reorder: words to arrange in correct order
@@ -123,15 +115,23 @@ const exerciseVariantSchema = new mongoose.Schema({
 
 // Exercises organized by dialect (primary query dimension), each dialect has array of variants
 const exercisesSchema = new mongoose.Schema({
-    msa: {
+    spain: {
         type: [exerciseVariantSchema],
         default: []
     },
-    egyptian: {
+    mexico: {
         type: [exerciseVariantSchema],
         default: []
     },
-    saudi: {
+    argentina: {
+        type: [exerciseVariantSchema],
+        default: []
+    },
+    puerto_rico: {
+        type: [exerciseVariantSchema],
+        default: []
+    },
+    colombia: {
         type: [exerciseVariantSchema],
         default: []
     }
@@ -144,24 +144,9 @@ const contextSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    whoToSayTo: {
-        type: String
-    },
-    speaker: {
-        type: String
-    },
-    listener: {
-        type: String
-    },
     formality: {
         type: String,
-        enum: ['informal', 'semi-formal', 'formal', 'very-formal', 'universal', 'neutral']
-    },
-    emotion: {
-        type: String
-    },
-    culturalNote: {
-        type: String
+        enum: ['informal', 'semi-formal', 'formal', 'universal', 'neutral']
     }
 }, { _id: false });
 
@@ -203,7 +188,7 @@ const phraseV2Schema = new mongoose.Schema({
         validate: {
             validator: function(v) {
                 // At least one dialect must have at least one gender variation
-                const dialects = ['msa', 'egyptian', 'saudi'];
+                const dialects = ['spain', 'mexico', 'argentina', 'puerto_rico', 'colombia'];
                 return dialects.some(dialect => {
                     if (v[dialect]) {
                         return v[dialect].male || v[dialect].female || v[dialect].neutral;
@@ -251,15 +236,14 @@ const phraseV2Schema = new mongoose.Schema({
 // Virtual to get all unique dialects available
 phraseV2Schema.virtual('availableDialects').get(function() {
     const dialects = [];
-    if (this.variations.msa && (this.variations.msa.male || this.variations.msa.female || this.variations.msa.neutral)) {
-        dialects.push('msa');
-    }
-    if (this.variations.egyptian && (this.variations.egyptian.male || this.variations.egyptian.female || this.variations.egyptian.neutral)) {
-        dialects.push('egyptian');
-    }
-    if (this.variations.saudi && (this.variations.saudi.male || this.variations.saudi.female || this.variations.saudi.neutral)) {
-        dialects.push('saudi');
-    }
+    const dialectKeys = ['spain', 'mexico', 'argentina', 'puerto_rico', 'colombia'];
+
+    dialectKeys.forEach(dialect => {
+        if (this.variations[dialect] && (this.variations[dialect].male || this.variations[dialect].female || this.variations[dialect].neutral)) {
+            dialects.push(dialect);
+        }
+    });
+
     return dialects;
 });
 

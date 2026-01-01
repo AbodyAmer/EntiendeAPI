@@ -25,7 +25,7 @@ const blankHistorySchema = new mongoose.Schema({
     // Dialect used for this exercise
     dialect: {
         type: String,
-        enum: ['egyptian', 'saudi', 'msa'],
+        enum: ['spain', 'mexico', 'argentina', 'puerto_rico', 'colombia'],
         required: true
     },
 

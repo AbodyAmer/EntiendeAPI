@@ -5,7 +5,7 @@ const router = express.Router();
 router.post('/verify', (req, res) => {
     try {
         console.log(req.body);
-    res.send('Payment route is under construction.');
+        res.send('Payment route is under construction.');
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal server error' });

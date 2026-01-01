@@ -20,9 +20,9 @@ const myPhraseSchema = new mongoose.Schema({
     },
     dialect: {
         type: String,
-        enum: ['msa', 'egyptian', 'saudi'],
+        enum: ['spain', 'mexico', 'argentina', 'puerto_rico', 'colombia'],
         lowercase: true,
-        default: 'msa'
+        default: 'spain'
     },
     gender: {
         type: String,

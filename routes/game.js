@@ -58,9 +58,11 @@ router.get('/exercises', requireVerifiedAuth, async (req, res) => {
         // Filter by exercise type within any dialect array
         if (type) {
             filter.$or = [
-                { 'exercises.saudi.type': type },
-                { 'exercises.egyptian.type': type },
-                { 'exercises.msa.type': type }
+                { 'exercises.spain.type': type },
+                { 'exercises.mexico.type': type },
+                { 'exercises.argentina.type': type },
+                { 'exercises.puerto_rico.type': type },
+                { 'exercises.colombia.type': type }
             ];
         }
 
@@ -155,7 +157,7 @@ router.post('/submit', requireVerifiedAuth, async (req, res) => {
         let exerciseDialect = dialect;
 
         // Search through dialect arrays to find the exercise by ID
-        const dialects = ['saudi', 'egyptian', 'msa'];
+        const dialects = ['spain', 'mexico', 'argentina', 'puerto_rico', 'colombia'];
         for (const d of dialects) {
             if (phrase.exercises && phrase.exercises[d]) {
                 exercise = phrase.exercises[d].find(ex => ex._id.toString() === exerciseId);
@@ -364,7 +366,7 @@ router.get('/stats', requireVerifiedAuth, async (req, res) => {
  *
  * Body:
  * - phraseId: ID of the phrase
- * - dialect: Which dialect was used (egyptian, saudi, msa)
+ * - dialect: Which dialect was used (spain, mexico, argentina, puerto_rico, colombia)
  * - gender: Which gender variation was used (male, female, neutral)
  * - isCorrect: Whether the user answered correctly
  * - gameType: Type of game (fill-in-blank, reorder, multiple-choice, matching, typing)
@@ -393,10 +395,10 @@ router.post('/history', requireVerifiedAuth, async (req, res) => {
         }
 
         // Validate dialect
-        if (!['egyptian', 'saudi', 'msa'].includes(dialect)) {
+        if (!['spain', 'mexico', 'argentina', 'puerto_rico', 'colombia'].includes(dialect)) {
             return res.status(400).json({
                 success: false,
-                error: 'Invalid dialect. Must be egyptian, saudi, or msa'
+                error: 'Invalid dialect. Must be spain, mexico, argentina, puerto_rico, or colombia'
             });
         }
 
@@ -472,7 +474,7 @@ router.post('/history', requireVerifiedAuth, async (req, res) => {
  *
  * Body:
  * - phraseId (required)
- * - dialect: msa | egyptian | saudi (optional, default msa)
+ * - dialect: spain | mexico | argentina | puerto_rico | colombia (optional, default spain)
  * - gender: male | female | neutral (optional, default neutral)
  */
 router.post('/myphrases', requireVerifiedAuth, async (req, res) => {
@@ -480,7 +482,7 @@ router.post('/myphrases', requireVerifiedAuth, async (req, res) => {
         const userId = req.user;
         const {
             phraseId,
-            dialect = 'msa',
+            dialect = 'spain',
             gender = 'neutral'
         } = req.body;
 
@@ -491,12 +493,12 @@ router.post('/myphrases', requireVerifiedAuth, async (req, res) => {
             });
         }
 
-        const allowedDialects = ['msa', 'egyptian', 'saudi'];
+        const allowedDialects = ['spain', 'mexico', 'argentina', 'puerto_rico', 'colombia'];
         const normalizedDialect = String(dialect).toLowerCase();
         if (!allowedDialects.includes(normalizedDialect)) {
             return res.status(400).json({
                 success: false,
-                error: 'Invalid dialect. Must be one of msa, egyptian, saudi'
+                error: 'Invalid dialect. Must be one of spain, mexico, argentina, puerto_rico, colombia'
             });
         }
 
