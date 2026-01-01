@@ -41,4 +41,4 @@ app.use(cookieParser())
 // Web routes (protected by CORS)
 app.use('/', routes)
 
-app.listen(7070, () => console.log("API is running on port 7070"))
+app.listen(process.env.PORT || 7070, () => console.log("API is running on port 7070"))
